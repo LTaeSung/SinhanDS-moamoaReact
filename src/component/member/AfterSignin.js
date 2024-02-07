@@ -4,6 +4,7 @@ import axios from "axios";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 
+//네이버 api 사용 로그인
 const NaverAfter = () => {
   const { bootpath } = useContext(BootPath);
   const params = useLocation();
