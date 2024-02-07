@@ -8,7 +8,7 @@ const NaverAfter = () => {
   const { bootpath } = useContext(BootPath);
   const params = useLocation();
   console.log(params);
-  const callbackUrl = "http://localhost:8090/member/login" + params.search;
+  const callbackUrl = bootpath + "/member/login" + params.search;
 
   getApi(params, callbackUrl);
   return <></>;
