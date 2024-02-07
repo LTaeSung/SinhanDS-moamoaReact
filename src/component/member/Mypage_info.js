@@ -7,6 +7,8 @@ function Mypage_info() {
   return (
     <>
       <MemberHeader />
+      {sessionStorage.getItem("email")}
+      {sessionStorage.getItem("no")}
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원정보</h3>
