@@ -9,7 +9,8 @@ import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
 import HostFunding from "./component/funding/HostFunding";
 import FundingList from "./component/funding/FundingList";
-import Friendlist from "./component/member/FriendList";
+import FriendList from "./component/member/FriendList";
+import FriendAdd from "./component/member/FriendAdd";
 
 function App() {
   return (
@@ -19,13 +20,17 @@ function App() {
       <header className="App-header">
         <container className="App-container">
           <Routes>
-            <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/member/friend/list" element={<Friendlist />} />
             <Route path="/" element={<DevLogin />} />
-            <Route path="/member/friend" element={<Friendlist />} />
-            <Route path="/member/signup" element={<Signup />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
+
+            <Route path="/member/info" element={<Mypage_info />} />
+            <Route path="/member/signup" element={<Signup />} />
+
+            <Route path="/member/friend/list" element={<FriendList />} />
+            <Route path="/member/friend/input" element={<FriendAdd />} />
+
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/host" element={<HostFunding />} />
             <Route path="/funding/list" element={<FundingList />} />
