@@ -8,7 +8,7 @@ import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
 import HostFunding from "./component/funding/HostFunding";
 import FundingList from "./component/funding/FundingList";
-import Frindlist from "./component/member/Frindlist";
+import Friendlist from "./component/member/FriendList";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Routes>
             <Route path="/member/info" element={<Mypage_info />} />
             <Route path="/" element={<Signup />} />
-            <Route path="/member/frind" element={<Frindlist />} />
+            <Route path="/member/friend/list" element={<Friendlist />} />
             <Route path="/member/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/funding/join" element={<JoinFunding />} />
