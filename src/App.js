@@ -7,7 +7,8 @@ import Signup from "./component/member/Signup";
 import DevLogin from "./component/member/DevLogin";
 import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
-import HostFunding from "./component/funding/HostFunding";
+import MakeFunding from "./component/funding/MakeFunding";
+import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
 import FundingList from "./component/funding/FundingList";
 import Frindlist from "./component/member/Frindlist";
 
@@ -20,13 +21,17 @@ function App() {
         <container className="App-container">
           <Routes>
             <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<DevLogin />} />
             <Route path="/member/frind" element={<Frindlist />} />
             <Route path="/member/signup" element={<Signup />} />
-            <Route path="/login" element={<DevLogin />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/funding/join" element={<JoinFunding />} />
-            <Route path="/funding/host" element={<HostFunding />} />
+            <Route path="/funding/make" element={<MakeFunding />} />
+            <Route
+              path="/funding/inviteMember"
+              element={<MakeFundingInviteMember />}
+            />
             <Route path="/funding/list" element={<FundingList />} />
           </Routes>
         </container>
