@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MemberHeader from "./MemberHeader";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BootPath from "./../../BootPath";
@@ -29,12 +30,17 @@ const MyLogin = () => {
   };
   return (
     <>
-      <form method="post" action="">
-        <input type="text" name="email" onChange={handleChange} />
-        <Link className="btn" onClick={save}>
-          로그인
-        </Link>
-      </form>
+      <MemberHeader />
+      <div className="sub">
+        <div className="size">
+          <form method="post" action="">
+            <input type="text" name="email" onChange={handleChange} />
+            <Link className="btn" onClick={save}>
+              로그인
+            </Link>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
