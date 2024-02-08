@@ -10,7 +10,7 @@ function MemberHeader() {
         <Link className="navbarMenu" to={"/member/info"}>
           회원정보
         </Link>
-        <Link className="navbarMenu" to={"/member/login/naver"}>
+        <Link className="navbarMenu" to={"/member/signup"}>
           회원가입
         </Link>
         <Link className="navbarMenu" to={"/"}>

@@ -4,11 +4,14 @@ import Header from "./component/Header";
 import Mypage_info from "./component/member/Mypage_info";
 import Login from "./component/member/Login";
 import Signup from "./component/member/Signup";
+import DevLogin from "./component/member/DevLogin";
 import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
-import HostFunding from "./component/funding/HostFunding";
+import MakeFunding from "./component/funding/MakeFunding";
+import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
 import FundingList from "./component/funding/FundingList";
-import Frindlist from "./component/member/Frindlist";
+import FriendList from "./component/member/FriendList";
+import FriendAdd from "./component/member/FriendAdd";
 
 function App() {
   return (
@@ -18,13 +21,23 @@ function App() {
       <header className="App-header">
         <container className="App-container">
           <Routes>
-            <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/" element={<Signup />} />
-            <Route path="/member/frind" element={<Frindlist />} />
-            <Route path="/member/login" element={<Login />} />
+            <Route path="/" element={<DevLogin />} />
+
+            <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
+
+            <Route path="/member/info" element={<Mypage_info />} />
+            <Route path="/member/signup" element={<Signup />} />
+
+            <Route path="/member/friend/list" element={<FriendList />} />
+            <Route path="/member/friend/input" element={<FriendAdd />} />
+
             <Route path="/funding/join" element={<JoinFunding />} />
-            <Route path="/funding/host" element={<HostFunding />} />
+            <Route path="/funding/make" element={<MakeFunding />} />
+            <Route
+              path="/funding/inviteMember"
+              element={<MakeFundingInviteMember />}
+            />
             <Route path="/funding/list" element={<FundingList />} />
           </Routes>
         </container>
