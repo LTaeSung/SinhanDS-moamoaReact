@@ -2,6 +2,7 @@ import MemberHeader from "./MemberHeader";
 import React from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
+
 function Signup() {
   const { bootpath } = useContext(BootPath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디

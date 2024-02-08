@@ -30,7 +30,7 @@ function App() {
             <Route path="/member/signup" element={<Signup />} />
 
             <Route path="/member/friend/list" element={<FriendList />} />
-            <Route path="/member/friend/input" element={<FriendAdd />} />
+            <Route path="/member/friend/search" element={<FriendAdd />} />
 
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/make" element={<MakeFunding />} />
