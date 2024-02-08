@@ -4,6 +4,7 @@ import Header from "./component/Header";
 import Mypage_info from "./component/member/Mypage_info";
 import Login from "./component/member/Login";
 import Signup from "./component/member/Signup";
+import DevLogin from "./component/member/DevLogin";
 import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
 import HostFunding from "./component/funding/HostFunding";
@@ -19,9 +20,11 @@ function App() {
         <container className="App-container">
           <Routes>
             <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/" element={<Signup />} />
             <Route path="/member/friend/list" element={<Friendlist />} />
-            <Route path="/member/login" element={<Login />} />
+            <Route path="/" element={<DevLogin />} />
+            <Route path="/member/friend" element={<Friendlist />} />
+            <Route path="/member/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/host" element={<HostFunding />} />

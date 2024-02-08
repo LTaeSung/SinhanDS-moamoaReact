@@ -11,8 +11,13 @@ function Frindlist() {
 
   const getData = async () => {
     try {
+      const member_no = sessionStorage.getItem("no");
+      if (!member_no) {
+        console.log("사용자 번호가 없습니다.");
+        return;
+      }
       const response = await axios.get(
-        bootpath + "/member/friend/list?member_no=2"
+        ` ${bootpath}/member/friend/list?member_no=${member_no}`
       );
       setData(response.data);
       console.log(response.data);
