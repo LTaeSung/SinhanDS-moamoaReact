@@ -32,6 +32,7 @@ const Payment = () => {
       },
       async (rsp) => {
         if (rsp.success) {
+          //결제 취소까지 처리하려면 다시 받아와야할듯...
           await axios.post(
             "http://localhost:8090/point/point_history/chargeIamport"
           );
