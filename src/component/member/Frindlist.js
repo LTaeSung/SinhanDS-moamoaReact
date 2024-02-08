@@ -10,6 +10,7 @@ function Frindlist() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">친구목록</h3>
+          {/*테스트 서버*/}
         </div>
       </div>
     </>
