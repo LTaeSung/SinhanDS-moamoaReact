@@ -4,7 +4,7 @@ import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 
-function Friendlist() {
+function FriendAdd() {
   const { bootpath } = useContext(BootPath);
 
   const [data, setData] = useState(null);
@@ -53,4 +53,4 @@ function Friendlist() {
     </>
   );
 }
-export default Friendlist;
+export default FriendAdd;
