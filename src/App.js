@@ -10,7 +10,7 @@ import JoinFunding from "./component/funding/JoinFunding";
 import MakeFunding from "./component/funding/MakeFunding";
 import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
 import FundingList from "./component/funding/FundingList";
-import Frindlist from "./component/member/Frindlist";
+import Friendlist from "./component/member/FriendList";
 
 function App() {
   return (
@@ -22,7 +22,9 @@ function App() {
           <Routes>
             <Route path="/member/info" element={<Mypage_info />} />
             <Route path="/" element={<DevLogin />} />
-            <Route path="/member/frind" element={<Frindlist />} />
+            <Route path="/member/friend/list" element={<Friendlist />} />
+            <Route path="/" element={<DevLogin />} />
+            <Route path="/member/friend" element={<Friendlist />} />
             <Route path="/member/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
