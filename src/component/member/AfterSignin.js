@@ -11,6 +11,7 @@ const NaverAfter = () => {
   const callbackUrl = bootpath + "/member/login" + params.search;
 
   getApi(params, callbackUrl);
+
   return <></>;
 };
 
@@ -23,6 +24,9 @@ const getApi = (params, callbackUrl) => {
       console.log(res.data.email);
       sessionStorage.setItem("no", res.data.no);
       sessionStorage.setItem("email", res.data.email);
+      window.location.href = "/member/info";
+    } else {
+      window.location.href = "/";
     }
   });
 };
