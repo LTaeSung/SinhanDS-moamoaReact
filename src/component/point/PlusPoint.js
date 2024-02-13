@@ -1,7 +1,8 @@
-import MemberHeader from "./MemberHeader";
+import MemberHeader from "./../member/MemberHeader";
 import React from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
+import Payment from "./iamport";
 function PlusPoint() {
   const { bootpath } = useContext(BootPath);
   return (

@@ -5,6 +5,7 @@ import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import $ from "jquery";
+import Calender from "./Calender";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
@@ -15,6 +16,7 @@ function MakeFunding() {
       ...param,
       [e.target.name]: e.target.value,
     });
+    console.log(param);
   };
   const getApi = () => {
     console.log(param);
@@ -30,64 +32,13 @@ function MakeFunding() {
     getApi();
   };
 
-  // $(function () {
-  //   $("#endDate").datepicker({
-  //     dayNamesMin: ["월", "화", "수", "목", "금", "토", "일"],
-  //     dayNames: [
-  //       "월요일",
-  //       "화요일",
-  //       "수요일",
-  //       "목요일",
-  //       "금요일",
-  //       "토요일",
-  //       "일요일",
-  //     ],
-  //     monthNamesShort: [
-  //       "1",
-  //       "2",
-  //       "3",
-  //       "4",
-  //       "5",
-  //       "6",
-  //       "7",
-  //       "8",
-  //       "9",
-  //       "10",
-  //       "11",
-  //       "12",
-  //     ],
-  //     monthNames: [
-  //       "1월",
-  //       "2월",
-  //       "3월",
-  //       "4월",
-  //       "5월",
-  //       "6월",
-  //       "7월",
-  //       "8월",
-  //       "9월",
-  //       "10월",
-  //       "11월",
-  //       "12월",
-  //     ],
-  //     dateFormat: "yy-mm-dd",
-  //     minDate: "-90D",
-  //     maxDate: "+oD",
-  //   });
-  // });
   return (
     <>
       <FundingHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">펀드 생성</h3>
-          <input
-            class="aaa"
-            type="text"
-            id="endDate"
-            name="endDate"
-            placeholder="검색 끝 날짜"
-          />
+
           <div>
             펀딩명 <input type="text" name="title" onChange={handleChange} />
           </div>
@@ -104,12 +55,7 @@ function MakeFunding() {
           <div>사진</div>
           <div>
             마감일
-            <input
-              type="text"
-              name="funding_due_date"
-              //value="2024-06-09"
-              onChange={handleChange}
-            />
+            <Calender param={param} setParam={setParam} />
           </div>
           <div>
             결제 금액(매월)
