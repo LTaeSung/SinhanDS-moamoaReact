@@ -10,11 +10,11 @@ function MemberHeader() {
         <Link className="navbarMenu" to={"/member/info"}>
           회원정보
         </Link>
-        <Link className="navbarMenu" to={"/member/signup"}>
-          회원가입
+        <Link className="navbarMenu" to={"/member/friend/list"}>
+          친구 목록
         </Link>
-        <Link className="navbarMenu" to={"/"}>
-          로그인
+        <Link className="navbarMenu" to={"/member/friend/search"}>
+          친구 신청
         </Link>
       </div>
     </div>
