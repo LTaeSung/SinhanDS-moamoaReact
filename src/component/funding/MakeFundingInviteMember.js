@@ -53,6 +53,7 @@ function MakeFundingInviteMember({ state }) {
   const regist = (e) => {
     axios.post(bootpath + "/fund/regist", returnDate).then((res) => {
       console.log(res);
+      window.location.href = "/funding/AfterMakeFunding";
     });
   };
   return (
@@ -76,9 +77,7 @@ function MakeFundingInviteMember({ state }) {
             )}
           </div>
           <div>
-            <form method="post" action="">
-              <button onClick={regist}>초대하기</button>
-            </form>
+            <button onClick={regist}>초대하기</button>
           </div>
         </div>
       </div>
