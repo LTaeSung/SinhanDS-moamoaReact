@@ -5,24 +5,29 @@ import { useContext } from "react";
 import axios from "axios";
 
 function Friendlist() {
-  const [name, nameSearch] = useState("");
+  const { bootpath } = useContext(BootPath);
 
-  const handleInputChange = (event) => {
-    nameSearch(event.target.value);
-  };
+  const [data, setData] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const getData = async () => {
     try {
-      // Axios를 사용하여 입력값을 서버로 전송
-      const response = await axios.post(BootPath + "/member/friend/search", {
-        term: name,
-      });
-      console.log(response.data); // 서버에서 받은 응답을 출력하거나 처리
+      const member_no = sessionStorage.getItem("no");
+      if (!member_no) {
+        console.log("사용자 번호가 없습니다.");
+        return;
+      }
+      const response = await axios.get(
+        ` ${bootpath}/member/friend/list?member_no=${member_no}`
+      );
+      setData(response.data);
+      console.log(response.data);
     } catch (error) {
-      console.error("Error searching for friends:", error);
+      console.log(error);
     }
   };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -30,17 +35,21 @@ function Friendlist() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">친구목록</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={nameSearch}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Search</button>
-          </form>
+          {data ? (
+            <ul>
+              {data.map((Data) => (
+                <li key={Data.no}>
+                  친구{Data.no} , {Data.friend.email}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>데이터를 불러오는 중...</p>
+          )}
         </div>
       </div>
     </>
   );
 }
+
 export default Friendlist;
