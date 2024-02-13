@@ -1,16 +1,31 @@
 import MemberHeader from "./../member/MemberHeader";
-import React from "react";
+import React, { useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
-import Payment from "./iamport";
+import Iamport from "./iamport";
 function PlusPoint() {
+  const [plusPoint, setPlusPoint] = useState({
+    amount: "",
+  });
+
+  const onChangeAmount = (e) => {
+    setPlusPoint({ ...plusPoint, [e.target.name]: e.target.value });
+  };
+
   const { bootpath } = useContext(BootPath);
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">포인트 충전</h3>
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            placeholder="충전할 금액을 입력해주세요"
+            onChange={onChangeAmount}
+          />
+          <Iamport amount={plusPoint.amount} />
         </div>
       </div>
     </>
