@@ -1,43 +1,30 @@
 import FundingHeader from "./FundingHeader";
-import React, {useState, useEffect, useRef} from "react";
-import BootPath from "./../../BootPath";
-import { useContext } from "react";
-import axios, {Axios} from "axios";
-import FundingTr from "./FundingTr";
+import React, {useState, useEffect, useContext} from "react";
+import axios from "axios";
 import {Link} from "react-router-dom";
+import BootPathContext from "./../../BootPath";
+import bootPath from "./../../BootPath";
 
 
 function FundingList() {
-  const { bootpath } = useContext(BootPath);
-    const [data, setData] = useState(null);
-    const [totalElements, setTotalElements] = useState(0); // 총개수
-    const [param, setParam] = useState({
-        page: 1,
-    });
-    let searchType = useRef(null); // 검색타입
-    let searchWord = useRef(null); // 검색어
+  const  bootPath = useContext(BootPathContext);
+    const [data, setData] = useState([]);
+    const [totalElements, setTotalElement] = useState(0); // 총개수
   
     const getApi =()=>{
         axios
-            .get(BootPath+"/fund/list", {params: param})
+            .get(`${bootPath.bootpath}/fund/list`)
             .then((res) => {
-                setData(res.data.result.content);
-                setTotalElements(res.data.result.totalElements);
+                setData(res.data);
+                setTotalElement(res.data.length);
+            })
+            .catch((error) => {
+                console.log("진행중인 펀딩이 없습니다.", error);
             });
     };
     useEffect(() => {
         getApi();
-    }, [param]);
-
-    const search = (e) => {
-        e.preventDefault();
-        setParam({
-            ...param,
-            searchType: searchType.current.value,
-            searchWord: searchWord.current.value,
-        });
-        //getApi();
-    };
+    });
     
     
     return (
@@ -61,7 +48,6 @@ function FundingList() {
                     <thead>
                     <tr>
                         <th>사진</th>
-                        <th>번호</th>
                         <th>제목</th>
                         <th>상태</th>
                         <th>모금액</th>
@@ -69,21 +55,19 @@ function FundingList() {
                         <th>남은일자</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {data ? (
-                        data.map((row, i) => <FundingTr row={row} key={i} />)
-                    ) : (
-                        <tr>
-                            <td className="first" colSpan="5">
-                                등록된 글이 없습니다.
-                            </td>
-                        </tr>
-                    )}
-                    </tbody>
                 </table>
-
-
             </div>
+            {data.map((item) => (
+                <div key={item.no}>
+                    <p>{item.no}</p>
+                    <p>{item.photo}</p>
+                    <Link to={"/funding/list/{item.no}"}><p>{item.title}</p></Link>
+                    <p>{item.state}</p>
+                    <p>{item.goalamount}</p>
+                    <p>{item.startdate}</p>
+                    <p>{item.fundingduedate}</p>
+                </div>
+            ))}
         </div>
       </div>
     </>
