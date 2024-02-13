@@ -13,6 +13,9 @@ function MakeFundingInviteMember({ state }) {
   const [param, setParam] = useState({ ...location.state.param });
   const [member, setMember] = useState({});
 
+  const registedFile = location.state.file;
+  console.log("file");
+  console.log(registedFile);
   const [data, setData] = useState(null);
   let returnDate = { ...param, member_no: sessionStorage.getItem("no") };
   const getData = async () => {
@@ -37,20 +40,37 @@ function MakeFundingInviteMember({ state }) {
 
   let memberList = new Array();
 
-  function btnProcess() {
+  function addFriend() {
     memberList = new Array();
     let inputList = $.find("input");
     inputList.map((e, i) => {
-      // console.log($(e).attr("id"));
       if ($(e).is(":checked")) {
         memberList.push($(e).attr("id"));
       }
     });
-    // setParam({ ...param, memberList: memberList });
     returnDate = { ...returnDate, memberList: memberList };
   }
 
   const regist = (e) => {
+    const formData = new FormData();
+    formData.append("file", registedFile);
+    for (let k in returnDate) {
+      formData.append(k, returnDate[k]);
+    }
+    axios
+      .post(bootpath + "/fund/regist", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          charset: "utf-8",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        window.location.href = "/funding/AfterMakeFunding";
+      });
+  };
+
+  const inviteFriend = () => {
     axios.post(bootpath + "/fund/regist", returnDate).then((res) => {
       console.log(res);
       window.location.href = "/funding/AfterMakeFunding";
@@ -67,7 +87,14 @@ function MakeFundingInviteMember({ state }) {
               <ul>
                 {data.map((Data) => (
                   <li key={Data.no}>
-                    <input type="checkbox" id={Data.no} onChange={btnProcess} />{" "}
+                    <input
+                      type="checkbox"
+                      id={Data.friend.no}
+                      onChange={addFriend}
+                    />{" "}
+                    {Data.friend.name}
+                    <br />
+                    &nbsp;&nbsp;&nbsp;
                     {Data.friend.email}
                   </li>
                 ))}
