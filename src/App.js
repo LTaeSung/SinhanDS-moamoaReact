@@ -15,7 +15,6 @@ import FriendList from "./component/member/FriendList";
 import FriendAdd from "./component/member/FriendAdd";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
-import Mypage_info from "./component/member/Mypage_info";
 
 function App() {
   return (
