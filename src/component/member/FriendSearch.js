@@ -4,69 +4,56 @@ import BootPath from "../../BootPath";
 import MemberHeader from "./MemberHeader";
 
 function SearchMember() {
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
 
-  const getMember = () => {
+  const handleSearch = () => {
     axios
       .get(bootpath + "/member/friend/search", {
-        params: { name: name },
+        params: { member_no: member_no, email: email }, // member_no를 적절한 값으로 변경
       })
-      .then((res) => {
-        console.log(res.data);
-        setMemberList(res.data);
+      .then((response) => {
+        const data = response.data;
+        if (!data || data.length === 0) {
+          alert("친구가 등록되어있거나 정보가 없습니다.");
+        }
+        setMemberList(response.data);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error("Error searching members:", error);
+        setMemberList([]);
+        setError("오류가 발생했습니다. 잠시후 다시 시도 하십시오.");
       });
   };
 
-  const handleAddFriend = (friendNo) => {
-    axios
-      .get(
-        `${bootpath}/member/friend/input?member_no=${member_no}&friend_no=${friendNo}`
-      )
-      .then(() => {
-        alert("친구가 추가되었습니다.");
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log("친구 추가 중 오류 발생", error);
-      });
-  };
   return (
     <>
       <MemberHeader />
-
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">유저검색</h3>
+          <h3 className="sub_title">유저 검색</h3>
           <div>
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Search by name"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="email로 검색"
             />
-            <button onClick={getMember}>Search</button>
+            <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
             <div>
               <ul>
                 {memberList.map((member) => (
-                  <li key={member.no}>
-                    이름 : {member.name} , 멤버 번호: {member.no}
-                    <button
-                      id="Add-friend-btn"
-                      onClick={() => handleAddFriend(member.no)}
-                    >
-                      친구 등록
-                    </button>
-                  </li>
+                  <li key={member.id}>{member.email}</li>
                 ))}
               </ul>
             </div>
           </div>
-          --------------------------------- 작업 선
+          ----------------------------- 작업선
         </div>
       </div>
     </>
