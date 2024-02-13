@@ -13,6 +13,7 @@ import AfterMakeFunding from "./component/funding/AfterMakeFunding";
 import FundingList from "./component/funding/FundingList";
 import FriendList from "./component/member/FriendList";
 import FriendSearch from "./component/member/FriendSearch";
+import BoardList from "./component/booard/BoardList";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               element={<AfterMakeFunding />}
             />
             <Route path="/funding/list" element={<FundingList />} />
+            <Route path="/board/list" element={<BoardList />} />
           </Routes>
         </div>
       </header>

@@ -4,12 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import $ from "jquery";
 import Calender from "./Calender";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [param, setParam] = useState({});
+  const [file, setFile] = useState([]); //파일
   const handleChange = (e) => {
     setParam({
       ...param,
@@ -17,10 +19,16 @@ function MakeFunding() {
     });
     console.log(param);
   };
+  const handleChangeFile = (e) => {
+    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
+  };
+  useEffect(() => {
+    console.log(file);
+  }, [file]);
   const getApi = () => {
     console.log(param);
     axios.post(bootpath + "/fund/regist", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         alert("정상적으로 저장되었습니다.");
         navigate("/board/list");
@@ -51,7 +59,10 @@ function MakeFunding() {
               />
             </div>
           </div>
-          <div>사진</div>
+          <div>
+            사진
+            <input type="file" id="file" onChange={handleChangeFile}></input>
+          </div>
           <div>
             마감일
             <Calender param={param} setParam={setParam} />
@@ -79,7 +90,7 @@ function MakeFunding() {
             <Link
               className="btn"
               to="/funding/inviteMember"
-              state={{ param: param }}
+              state={{ param: param, file: file }}
             >
               맴버 초대
             </Link>
