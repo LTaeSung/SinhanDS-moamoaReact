@@ -18,7 +18,7 @@ function SearchMember() {
       .then((response) => {
         const data = response.data;
         if (!data || data.length === 0) {
-          alert("친구가 등록되어있거나 정보가 없습니다.");
+          alert("이미 친구로 등록되어있거나 정보가 없습니다.");
         }
         setMemberList(response.data);
         setError(null);
@@ -29,7 +29,19 @@ function SearchMember() {
         setError("오류가 발생했습니다. 잠시후 다시 시도 하십시오.");
       });
   };
-
+  const handleAddFriend = (friendNo) => {
+    axios
+      .get(
+        `${bootpath}/member/friend/input?member_no=${member_no}&friend_no=${friendNo}`
+      )
+      .then(() => {
+        alert("친구가 추가되었습니다.");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log("친구 추가 중 오류 발생", error);
+      });
+  };
   return (
     <>
       <MemberHeader />
@@ -48,15 +60,15 @@ function SearchMember() {
             <div>
               <ul>
                 {memberList.map((member) => (
-                   <li key={member.no}>
-                   이름 : {member.name} , 멤버 번호: {member.email}
-                   <button
-                     id="Add-friend-btn"
-                     onClick={() => handleAddFriend(member.no)}
-                   >
-                     친구 등록
-                   </button>
-                 </li>
+                  <li key={member.no}>
+                    이름 : {member.name} , 멤버 이메일: {member.email}
+                    <button
+                      id="Add-friend-btn"
+                      onClick={() => handleAddFriend(member.no)}
+                    >
+                      친구 등록
+                    </button>
+                  </li>
                 ))}
               </ul>
             </div>

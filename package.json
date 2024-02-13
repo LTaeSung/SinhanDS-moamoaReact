@@ -10,11 +10,11 @@
     "date-fns": "^3.3.1",
     "jquery": "^3.7.1",
     "react": "^18.2.0",
-<<<<<<< HEAD
+
     "react-bootstrap": "^2.10.1",
-=======
+
     "react-datepicker": "^6.1.0",
->>>>>>> e6b8f00710a72b8628a6f62ccf5a417d43ee23b0
+
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
