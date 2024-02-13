@@ -12,14 +12,12 @@ function PlusPoint() {
     setPlusPoint({ ...plusPoint, [e.target.name]: e.target.value });
   };
 
-  console.log(plusPoint.amount);
   const { bootpath } = useContext(BootPath);
   return (
     <>
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">포인트 충전</h3>
-
           <input
             id="amount"
             name="amount"
