@@ -12,6 +12,10 @@ import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember
 import FundingList from "./component/funding/FundingList";
 import FriendList from "./component/member/FriendList";
 import FriendAdd from "./component/member/FriendAdd";
+import AccountList from "./component/member/payment/AccountList";
+import AddAccountList from "./component/member/payment/AddAccountList";
+import CardList from "./component/member/payment/CardList";
+import AddCardList from "./component/member/payment/AddCardList";
 
 function App() {
   return (
@@ -31,6 +35,14 @@ function App() {
 
             <Route path="/member/friend/list" element={<FriendList />} />
             <Route path="/member/friend/search" element={<FriendAdd />} />
+
+            <Route path="/member/payment/account" element={<AccountList />} />
+            <Route
+              path="/member/payment/account/add"
+              element={<AddAccountList />}
+            />
+            <Route path="/member/payment/card" element={<CardList />} />
+            <Route path="/member/payment/card/add" element={<AddCardList />} />
 
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/make" element={<MakeFunding />} />
