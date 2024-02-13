@@ -16,7 +16,7 @@ function InvitedFunding() {
         return;
       }
       const response = await axios.get(
-        ` ${bootpath}/member/friend/list?member_no=${member_no}`
+        ` ${bootpath}/funding/member/invitedList?member_no=${member_no}`
       );
       if (response.data.length === 0) {
         setData(null);
