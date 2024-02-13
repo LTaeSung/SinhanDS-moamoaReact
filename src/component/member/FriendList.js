@@ -5,7 +5,6 @@ import { useContext } from "react";
 import axios from "axios";
 
 function Friendlist() {
-  const [friendList, setFriendList] = useState([]);
   const { bootpath } = useContext(BootPath);
 
   const [data, setData] = useState(null);
