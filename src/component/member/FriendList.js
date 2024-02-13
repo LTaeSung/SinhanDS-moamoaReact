@@ -4,25 +4,32 @@ import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 
-function Friendlist() {
+function FriendList() {
   const [name, nameSearch] = useState("");
-
+  const { bootpath } = useContext(BootPath);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const handleInputChange = (event) => {
     nameSearch(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // Axios를 사용하여 입력값을 서버로 전송
-      const response = await axios.post(BootPath + "/member/friend/search", {
-        term: name,
-      });
-      console.log(response.data); // 서버에서 받은 응답을 출력하거나 처리
-    } catch (error) {
-      console.error("Error searching for friends:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const memberNo = sessionStorage.getItem("memberNo"); // sessionStorage에서 멤버 번호 가져오기
+        const response = await axios.get(
+          bootpath + `member/friend/list?member_no=${memberNo}`
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching friend list:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -30,17 +37,21 @@ function Friendlist() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">친구목록</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={nameSearch}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Search</button>
-          </form>
+          <div>
+            {loading ? (
+              <p>데이터를 불러오는 중...</p>
+            ) : (
+              <ul>
+                {data &&
+                  data.map((item) => (
+                    <li key={item.no}>{item.friend.email}</li>
+                  ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </>
   );
 }
-export default Friendlist;
+export default FriendList;
