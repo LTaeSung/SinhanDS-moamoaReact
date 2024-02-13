@@ -21,7 +21,7 @@ function PlusPoint() {
   const getData = async () => {
     try {
       if (!member_no) {
-        console.log("사용자 번호가 없습니다.");
+        alert("사용자 정보에 오류가 있습니다. 다시 로그인 해주세요.");
         return;
       }
       const response = await axios.get(
@@ -39,9 +39,10 @@ function PlusPoint() {
 
   return (
     <>
+      <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">포인트 충전</h3>
+          <h3 className="sub_title">포인트 충전하기</h3>
           현재 보유 포인트 : {data} 원
           <input
             id="amount"

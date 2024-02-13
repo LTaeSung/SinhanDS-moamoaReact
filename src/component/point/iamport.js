@@ -52,6 +52,7 @@ const Iamport = (props) => {
             );
             if (result.data === "success") {
               alert("포인트 충전 성공");
+              //성공 시 회원정보 페이지로 돌아가던가 해줘야할듯
             }
           } catch (error) {
             const data = {
@@ -73,7 +74,7 @@ const Iamport = (props) => {
 
   return (
     <div>
-      <button onClick={requestPay}>결제하기</button>
+      <button onClick={requestPay}>충전하기</button>
     </div>
   );
 };
