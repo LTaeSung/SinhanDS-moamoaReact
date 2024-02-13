@@ -1,9 +1,13 @@
 import MemberHeader from "./../member/MemberHeader";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
+import axios from "axios";
 import Iamport from "./iamport";
+
 function PlusPoint() {
+  const { bootpath } = useContext(BootPath);
+
   const [plusPoint, setPlusPoint] = useState({
     amount: "",
   });
@@ -12,12 +16,33 @@ function PlusPoint() {
     setPlusPoint({ ...plusPoint, [e.target.name]: e.target.value });
   };
 
-  const { bootpath } = useContext(BootPath);
+  const [data, setData] = useState(null);
+  const member_no = sessionStorage.getItem("no");
+  const getData = async () => {
+    try {
+      if (!member_no) {
+        console.log("사용자 번호가 없습니다.");
+        return;
+      }
+      const response = await axios.get(
+        ` ${bootpath}/point/point_history/mypoint?member_no=${member_no}`
+      );
+      setData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">포인트 충전</h3>
+          현재 보유 포인트 : {data} 원
           <input
             id="amount"
             name="amount"
