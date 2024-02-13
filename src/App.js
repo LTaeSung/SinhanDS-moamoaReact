@@ -19,7 +19,7 @@ function App() {
       <h1>메인 페이지(root)</h1>
       <Header />
       <header className="App-header">
-        <container className="App-container">
+        <div className="App-container">
           <Routes>
             <Route path="/" element={<DevLogin />} />
 
@@ -40,7 +40,7 @@ function App() {
             />
             <Route path="/funding/list" element={<FundingList />} />
           </Routes>
-        </container>
+        </div>
       </header>
     </div>
   );
