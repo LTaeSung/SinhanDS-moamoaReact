@@ -2,9 +2,11 @@ import MemberHeader from "./MemberHeader";
 import React from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
-
+import RegistedImagePath from "../../registedImagePath";
+import CommonImagePath from "../../commonImagePath";
 function Signup() {
   const { bootpath } = useContext(BootPath);
+  const { commonImagePath } = useContext(CommonImagePath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디
   const REDIRECT_URI = "http://localhost:3000/login/after"; // Callback URL
   const STATE = "false";
@@ -18,7 +20,11 @@ function Signup() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">로그인</h3>
-          <button onClick={NaverLogin}>네이버 로그인</button>
+          <button onClick={NaverLogin}>
+            <div>
+              <img src={commonImagePath + "naver.png"} width="100" />
+            </div>
+          </button>
         </div>
       </div>
     </>
