@@ -42,3 +42,8 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react
+
+
+# 파일경로
+src/commonImagePath.js
+src/registedImagePath.js

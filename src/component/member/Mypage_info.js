@@ -2,6 +2,8 @@ import MemberHeader from "./MemberHeader";
 import React from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
+import PlusPoint from "../point/PlusPoint";
+import MinusPoint from "../point/MiusPoint";
 function Mypage_info() {
   const { bootpath } = useContext(BootPath);
   return (
@@ -12,6 +14,7 @@ function Mypage_info() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원정보</h3>
+          <MinusPoint />
         </div>
       </div>
     </>

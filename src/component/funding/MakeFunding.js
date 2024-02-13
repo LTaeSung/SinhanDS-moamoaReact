@@ -5,20 +5,30 @@ import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import $ from "jquery";
+import Calender from "./Calender";
+
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [param, setParam] = useState({});
+  const [file, setFile] = useState([]); //파일
   const handleChange = (e) => {
     setParam({
       ...param,
       [e.target.name]: e.target.value,
     });
+    console.log(param);
   };
+  const handleChangeFile = (e) => {
+    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
+  };
+  useEffect(() => {
+    console.log(file);
+  }, [file]);
   const getApi = () => {
     console.log(param);
     axios.post(bootpath + "/fund/regist", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         alert("정상적으로 저장되었습니다.");
         navigate("/board/list");
@@ -29,64 +39,13 @@ function MakeFunding() {
     getApi();
   };
 
-  // $(function () {
-  //   $("#endDate").datepicker({
-  //     dayNamesMin: ["월", "화", "수", "목", "금", "토", "일"],
-  //     dayNames: [
-  //       "월요일",
-  //       "화요일",
-  //       "수요일",
-  //       "목요일",
-  //       "금요일",
-  //       "토요일",
-  //       "일요일",
-  //     ],
-  //     monthNamesShort: [
-  //       "1",
-  //       "2",
-  //       "3",
-  //       "4",
-  //       "5",
-  //       "6",
-  //       "7",
-  //       "8",
-  //       "9",
-  //       "10",
-  //       "11",
-  //       "12",
-  //     ],
-  //     monthNames: [
-  //       "1월",
-  //       "2월",
-  //       "3월",
-  //       "4월",
-  //       "5월",
-  //       "6월",
-  //       "7월",
-  //       "8월",
-  //       "9월",
-  //       "10월",
-  //       "11월",
-  //       "12월",
-  //     ],
-  //     dateFormat: "yy-mm-dd",
-  //     minDate: "-90D",
-  //     maxDate: "+oD",
-  //   });
-  // });
   return (
     <>
       <FundingHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">펀드 생성</h3>
-          <input
-            class="aaa"
-            type="text"
-            id="endDate"
-            name="endDate"
-            placeholder="검색 끝 날짜"
-          />
+
           <div>
             펀딩명 <input type="text" name="title" onChange={handleChange} />
           </div>
@@ -100,15 +59,13 @@ function MakeFunding() {
               />
             </div>
           </div>
-          <div>사진</div>
+          <div>
+            사진
+            <input type="file" id="file" onChange={handleChangeFile}></input>
+          </div>
           <div>
             마감일
-            <input
-              type="text"
-              name="funding_due_date"
-              //value="2024-06-09"
-              onChange={handleChange}
-            />
+            <Calender param={param} setParam={setParam} />
           </div>
           <div>
             결제 금액(매월)
@@ -133,7 +90,7 @@ function MakeFunding() {
             <Link
               className="btn"
               to="/funding/inviteMember"
-              state={{ param: param }}
+              state={{ param: param, file: file }}
             >
               맴버 초대
             </Link>

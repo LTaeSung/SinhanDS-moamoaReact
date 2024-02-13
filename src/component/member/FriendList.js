@@ -3,44 +3,82 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Friendlist() {
-  const [name, nameSearch] = useState("");
+  const { bootpath } = useContext(BootPath);
 
-  const handleInputChange = (event) => {
-    nameSearch(event.target.value);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const [data, setData] = useState(null);
+  const member_no = sessionStorage.getItem("no");
+  const getData = async () => {
     try {
-      // Axios를 사용하여 입력값을 서버로 전송
-      const response = await axios.post(BootPath + "/member/friend/search", {
-        term: name,
-      });
-      console.log(response.data); // 서버에서 받은 응답을 출력하거나 처리
+      if (!member_no) {
+        console.log("사용자 번호가 없습니다.");
+        return;
+      }
+      const response = await axios.get(
+        ` ${bootpath}/member/friend/list?member_no=${member_no}`
+      );
+      if (response.data.length === 0) {
+        setData(null);
+      } else {
+        setData(response.data);
+      }
+      console.log(response.data.length);
     } catch (error) {
-      console.error("Error searching for friends:", error);
+      console.log(error);
     }
   };
+  useEffect(() => {
+    getData();
+  }, []);
 
+  const handleDeleteFriend = (friendNo) => {
+    // 친구 삭제 처리
+    axios
+      .get(
+        `${bootpath}/member/friend/delete?member_no=${member_no}&friend_no=${friendNo}`
+      )
+      .then(() => {
+        // 삭제에 성공한 경우, 친구 목록을 업데이트합니다.
+        alert("친구가 삭제되었습니다.");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("친구 삭제 중 오류 발생:", error);
+      });
+  };
   return (
     <>
       <MemberHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">친구목록</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={nameSearch}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Search</button>
-          </form>
+          {data ? (
+            <ul>
+              {data.map((Data) => (
+                <li key={Data.no}>
+                  친구{Data.no} , {Data.friend.email}
+                  <button
+                    id="delete-friend-btn"
+                    onClick={() => handleDeleteFriend(Data.friend.no)}
+                  >
+                    친구 삭제
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <>
+              {" "}
+              <div>친구가 없습니다 친구를 추가해보세요</div>
+              <Link to="/member/friend/search">친구 찾기</Link>
+            </>
+          )}
         </div>
       </div>
     </>
   );
 }
+
 export default Friendlist;
