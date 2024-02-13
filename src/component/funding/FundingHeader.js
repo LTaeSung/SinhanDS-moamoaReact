@@ -13,7 +13,7 @@ function FundingHeader() {
         <Link className="navbarMenu" to={"/funding/host"}>
           주최한 펀딩
         </Link>
-        <Link className="navbarMenu" to={"/funding/request"}>
+        <Link className="navbarMenu" to={"/funding/invited"}>
           초대받은 펀딩
         </Link>
       </div>

@@ -11,6 +11,7 @@ import MakeFunding from "./component/funding/MakeFunding";
 import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
 import AfterMakeFunding from "./component/funding/AfterMakeFunding";
 import FundingList from "./component/funding/FundingList";
+import InvitedFunding from "./component/funding/InvitedFunding";
 import FriendList from "./component/member/FriendList";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
@@ -41,6 +42,7 @@ function App() {
               element={<AfterMakeFunding />}
             />
             <Route path="/funding/list" element={<FundingList />} />
+            <Route path="/funding/invited" element={<InvitedFunding />} />
             <Route path="/board/list" element={<BoardList />} />
           </Routes>
         </div>

@@ -2,15 +2,19 @@ import "../App.css";
 import logo from "../logo.svg";
 import $ from "jquery";
 function Header() {
-  const goToLink = (e) => {
+  const logout = (e) => {
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("no");
+    goToLink(e);
+  };
+
+  const goToLink = (e) => {
     console.log(e.target);
     window.location.href = $(e.target).attr("target");
   };
   return (
     <div className="headerNav">
-      <button onClick={goToLink} target="/">
+      <button onClick={logout} target="/">
         <img src={logo} className="App-logo" alt="logo" />
       </button>
 
