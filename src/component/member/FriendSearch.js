@@ -8,8 +8,6 @@ function SearchMember() {
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
 
-  //let searchName = useRef(null);
-
   const getMember = () => {
     axios
       .get(bootpath + "/member/friend/search", {

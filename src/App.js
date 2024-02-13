@@ -11,7 +11,7 @@ import MakeFunding from "./component/funding/MakeFunding";
 import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
 import FundingList from "./component/funding/FundingList";
 import FriendList from "./component/member/FriendList";
-import FriendSearch from "./component/member/FriendSeach";
+import FriendSearch from "./component/member/FriendSearch";
 
 function App() {
   return (
