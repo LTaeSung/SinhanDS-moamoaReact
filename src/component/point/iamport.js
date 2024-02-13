@@ -37,25 +37,35 @@ const Iamport = (props) => {
         buyer_name: buyer_no,
       },
       async (rsp) => {
-        if (
-          rsp.success &&
-          rsp.status === "paid" &&
-          amount === rsp.paid_amount
-        ) {
+        if (rsp.success) {
           const data = {
             imp_uid: rsp.imp_uid, //아임포트에서 결제 승인해준 번호
             merchant_uid: rsp.merchant_uid, //우리가 위에서 보낸 결제 요청 번호
             paid_amount: rsp.paid_amount, //결제된 금액
             buyer_no: rsp.buyer_name, //회원번호(우리가 위에서 보낸 buyer_name과 동일함)
           };
-          await axios.post(
-            bootpath + "/point/point_history/chargeIamport",
-            null,
-            { params: data }
-          ); //서버단에서 뭔가 결과값을 받아와야 할듯(결제 성공, 실패)
-          alert("포인트 충전 성공");
+          try {
+            const result = await axios.post(
+              bootpath + "/point/point_history/chargeIamport",
+              null,
+              { params: data }
+            );
+            if (result.data === "success") {
+              alert("포인트 충전 성공");
+            }
+          } catch (error) {
+            const data = {
+              imp_uid: rsp.imp_uid, //아임포트에서 결제 승인해준 번호
+            };
+            await axios.post(
+              bootpath + "/point/point_history/cancleIamport",
+              null,
+              { params: data }
+            );
+            alert("포인트 충전 실패, 결제 취소 처리됨");
+          }
         } else {
-          alert("결제 오류 발생"); //서버단에서 데이터 저장 실패 시, 결제 취소 요청
+          alert("결제 도중 오류 발생");
         }
       }
     );
