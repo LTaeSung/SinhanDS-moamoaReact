@@ -48,7 +48,15 @@ function SearchMember() {
             <div>
               <ul>
                 {memberList.map((member) => (
-                  <li key={member.id}>{member.email}</li>
+                   <li key={member.no}>
+                   이름 : {member.name} , 멤버 번호: {member.email}
+                   <button
+                     id="Add-friend-btn"
+                     onClick={() => handleAddFriend(member.no)}
+                   >
+                     친구 등록
+                   </button>
+                 </li>
                 ))}
               </ul>
             </div>

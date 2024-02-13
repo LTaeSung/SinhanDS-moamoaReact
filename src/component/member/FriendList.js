@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Friendlist() {
   const { bootpath } = useContext(BootPath);
@@ -18,8 +19,12 @@ function Friendlist() {
       const response = await axios.get(
         ` ${bootpath}/member/friend/list?member_no=${member_no}`
       );
-      setData(response.data);
-      console.log(response.data);
+      if (response.data.length === 0) {
+        setData(null);
+      } else {
+        setData(response.data);
+      }
+      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +69,11 @@ function Friendlist() {
               ))}
             </ul>
           ) : (
-            <p>데이터를 불러오는 중...</p>
+            <>
+              {" "}
+              <div>친구가 없습니다 친구를 추가해보세요</div>
+              <Link to="/member/friend/search">친구 찾기</Link>
+            </>
           )}
         </div>
       </div>
