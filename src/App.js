@@ -9,6 +9,7 @@ import AfterSignin from "./component/member/AfterSignin";
 import JoinFunding from "./component/funding/JoinFunding";
 import MakeFunding from "./component/funding/MakeFunding";
 import MakeFundingInviteMember from "./component/funding/MakeFundingInviteMember";
+import AfterMakeFunding from "./component/funding/AfterMakeFunding";
 import FundingList from "./component/funding/FundingList";
 import FriendList from "./component/member/FriendList";
 import FriendAdd from "./component/member/FriendAdd";
@@ -22,21 +23,21 @@ function App() {
         <div className="App-container">
           <Routes>
             <Route path="/" element={<DevLogin />} />
-
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
-
             <Route path="/member/info" element={<Mypage_info />} />
             <Route path="/member/signup" element={<Signup />} />
-
             <Route path="/member/friend/list" element={<FriendList />} />
             <Route path="/member/friend/search" element={<FriendAdd />} />
-
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/make" element={<MakeFunding />} />
             <Route
               path="/funding/inviteMember"
               element={<MakeFundingInviteMember />}
+            />{" "}
+            <Route
+              path="/funding/AfterMakeFunding"
+              element={<AfterMakeFunding />}
             />
             <Route path="/funding/list" element={<FundingList />} />
           </Routes>
