@@ -1,18 +1,25 @@
 import FundingHeader from "./FundingHeader";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import BootPathContext from "./../../BootPath";
-import bootPath from "./../../BootPath";
 
 function FundingList() {
   const bootPath = useContext(BootPathContext);
   const [data, setData] = useState([]);
   const [totalElements, setTotalElement] = useState(0); // 총개수
-  const start_member_no = sessionStorage.getItem("no");
+  const navigate = useNavigate();
+  const [params, setParams] = useSearchParams();
+  const no = params.get("no");
+
   const getApi = () => {
     axios
-      .get(`${bootPath.bootpath}/fund/list?start_member_no=${start_member_no}`)
+      .get(`${bootPath.bootpath}/fund/list`)
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
@@ -21,9 +28,16 @@ function FundingList() {
         console.log("진행중인 펀딩이 없습니다.", error);
       });
   };
+
   useEffect(() => {
     getApi();
   }, []);
+
+  const goinfo = (e, no) => {
+    e.preventDefault();
+    navigate("/funding/info?no=" + no);
+    console.log(no);
+  };
 
   return (
     <>
@@ -59,7 +73,7 @@ function FundingList() {
             <div key={item.no}>
               <p>{item.no}</p>
               <p>{item.photo}</p>
-              <Link to={"/funding/list/{item.no}"}>
+              <Link to="#" onClick={(e) => goinfo(e, item.no)}>
                 <p>{item.title}</p>
               </Link>
               <p>{item.state}</p>
