@@ -5,6 +5,7 @@ function Header() {
   const logout = (e) => {
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("no");
+    sessionStorage.removeItem("name");
     goToLink(e);
   };
 

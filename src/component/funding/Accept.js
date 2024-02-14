@@ -4,9 +4,12 @@ import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-function Accept() {
+import $ from "jquery";
+function Accept({ state }) {
+  console.log(state);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
+
   const [payment, setPayment] = useState([]);
   useEffect(() => {
     const fetchPaymentList = async () => {
@@ -23,48 +26,60 @@ function Accept() {
     fetchPaymentList();
   }, []);
 
-  const [select, setSelect] = useState({
-    merchant_id: "",
-  });
+  const [select, setSelect] = useState({});
   const handleRadioButton = (e) => {
-    setSelect({ ...select, merchant_id: e.target.value });
+    setSelect({ payment_no: e.target.value });
+    console.log(select);
+  };
+
+  const submit = () => {
+    axios.post(bootpath + "/fund/accept", select, {}).then((res) => {
+      //   window.location.href = "/funding/AfterMakeFunding";
+    });
   };
   return (
     <>
       <FundingHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">펀드에 참여할 카드 선택</h3>
-          <>
-            {payment.filter((payment) => payment.paymenttype === 0).length >
-            0 ? (
-              <ul>
-                {payment
-                  .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
-                  .map((payment, i) => (
-                    <li key={i}>
-                      <input
-                        id={i}
-                        type="radio"
-                        value={payment.company + "_" + payment.account}
-                        checked={
-                          select.merchant_id ===
-                          payment.company + "_" + payment.account
-                        }
-                        onChange={handleRadioButton}
-                      />
-                      <p>은행명: {payment.company}</p>
-                      <p>계좌번호: {payment.account}</p>
-                    </li>
-                  ))}
-              </ul>
-            ) : (
-              <p>
-                등록된 계좌가 없습니다. 계좌를 추가해주세요.{" "}
-                <Link to="/member/payment/account/add">계좌 추가</Link>
-              </p>
-            )}
-          </>
+          <h3 className="sub_title">포인트 인출하기</h3>
+
+          <div>
+            <>
+              {payment.filter((payment) => payment.paymenttype === 1).length >
+              0 ? (
+                <>
+                  <ul>
+                    {payment
+                      .filter((payment) => payment.paymenttype === 1) // 카드만 필터
+                      .map((payment, i) => (
+                        <li key={i}>
+                          <input
+                            name="inputBox"
+                            id={i}
+                            type="radio"
+                            value={payment.no}
+                            onChange={handleRadioButton}
+                          />
+                          <p>카드사명: {payment.company}</p>
+                          <p>카드번호: {payment.account}</p>
+                        </li>
+                      ))}
+                  </ul>
+                  <div>
+                    <button className="btn" onClick={submit}>
+                      카드 선택
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <p>
+                  등록된 카드가 없습니다. 계좌를 추가해주세요.{" "}
+                  {/* <Link to="/member/payment/account/add">계좌 추가</Link> */}
+                </p>
+              )}
+            </>
+          </div>
         </div>
       </div>
     </>
