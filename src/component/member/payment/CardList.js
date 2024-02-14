@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Accountlist() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
-  const member_no = 4; //sessionStorage.getItem("no");
+  const member_no = sessionStorage.getItem("no");
 
   useEffect(() => {
     const fetchPaymentList = async () => {
@@ -64,7 +64,9 @@ function Accountlist() {
                 <Link to="/member/payment/card/add">카드 추가</Link>
               </>
             ) : (
-              <p>로그인 해주세요.</p>
+              <p>
+                <Link to="/">로그인 해주세요.</Link>
+              </p>
             )}
           </div>
         </div>
