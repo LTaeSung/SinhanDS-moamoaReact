@@ -60,7 +60,7 @@ function JoinFundingList() {
                 사진:
                 <img src={`${commonImagePath}${item.photo}`} width="100" />
                 <Link to={"/funding/list/{item.no}"}>
-                  <p>제목: {item.title}</p>
+                  <p>제목: {item.fund_title}</p>
                 </Link>
                 <p>상태:{item.state}</p>
                 <p>모금액:{item.goalamount}</p>
