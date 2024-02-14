@@ -83,9 +83,13 @@ function InvitedFunding() {
                     결제액 : 매월 {Data.monthlypaymentamount}원
                     <br />
                     <div>
-                      <button onClick={accept} id={Data.no}>
+                      <Link
+                        className="btn"
+                        to="/funding/accept"
+                        state={{ no: Data.no }}
+                      >
                         수락
-                      </button>{" "}
+                      </Link>
                       &nbsp;&nbsp;&nbsp;
                       <button onClick={refuse} id={Data.no}>
                         거절
