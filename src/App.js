@@ -23,6 +23,7 @@ import BoardList from "./component/booard/BoardList";
 import MinusPoint from "./component/point/MiusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
+import FundPointList from "./component/point/FundPointList";
 
 function App() {
   return (
@@ -61,7 +62,8 @@ function App() {
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/point/minus" element={<MinusPoint />} />
             <Route path="/point/plus" element={<PlusPoint />} />
-            <Route path="/point/list" element={<PointList />} />
+            <Route path="/point/pointlist" element={<PointList />} />
+            <Route path="/point/fundpointlist" element={<FundPointList />} />
           </Routes>
         </div>
       </header>
