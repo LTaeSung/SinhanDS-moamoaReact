@@ -16,12 +16,13 @@ function Friendlist() {
         return;
       }
       const response = await axios.get(
-        ` ${bootpath}/member/friend/list?member_no=${member_no}`
+        `${bootpath}/member/friend/list?member_no=${member_no}`
       );
       if (response.data.length === 0) {
         setData(null);
       } else {
         setData(response.data);
+        console.log(response.data);
       }
     } catch (error) {
       console.log(error);

@@ -2,6 +2,7 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
+
 import axios from "axios";
 
 function FundingInfo() {
@@ -34,9 +35,6 @@ function FundingInfo() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">펀딩 상세내역</h3>
-          <div>
-            <p>{data.title}</p>
-          </div>
         </div>
       </div>
     </>

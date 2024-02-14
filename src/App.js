@@ -17,11 +17,12 @@ import AccountList from "./component/member/payment/AccountList";
 import AddAccountList from "./component/member/payment/AddAccountList";
 import CardList from "./component/member/payment/CardList";
 import AddCardList from "./component/member/payment/AddCardList";
-
+import Accept from "./component/funding/Accept";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
 import QnaList from "./component/booard/QnaList";
+import QnaDetail from "./component/booard/QnaDetail";
 import MinusPoint from "./component/point/MiusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
@@ -73,9 +74,11 @@ function App() {
             />
             <Route path="/funding/list" element={<FundingList />} />
             <Route path="/funding/invited" element={<InvitedFunding />} />
+            <Route path="/funding/accept" element={<Accept />} />
             <Route path="/board/list" element={<BoardList />} />
-            <Route path="/board/list/:id" element={<BoardDetail />} />
+            <Route path="/board/detail" element={<BoardDetail />} />
             <Route path="/board/qna/list" element={<QnaList />} />
+            <Route path="/board/qna/detail" element={<QnaDetail />} />
             <Route path="/point/minus" element={<MinusPoint />} />
             <Route path="/point/plus" element={<PlusPoint />} />
             <Route path="/point/pointlist" element={<PointList />} />
