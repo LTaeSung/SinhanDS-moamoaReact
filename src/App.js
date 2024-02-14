@@ -30,6 +30,7 @@ import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
 
 import FundPointList from "./component/point/FundPointList";
+import RegularPayList from "./component/funding/RegularPayList";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
             <Route path="/point/plus" element={<PlusPoint />} />
             <Route path="/point/pointlist" element={<PointList />} />
             <Route path="/point/fundpointlist" element={<FundPointList />} />
+            <Route path="/funding/regularpay" element={<RegularPayList />} />
           </Routes>
         </div>
       </header>
