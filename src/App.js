@@ -26,6 +26,11 @@ import MinusPoint from "./component/point/MiusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
 
+import ModAccountList from "./component/member/payment/ModAccountList";
+import ModCardList from "./component/member/payment/ModCardList";
+
+import FundPointList from "./component/point/FundPointList";
+
 function App() {
   return (
     <div className="App-background">
@@ -47,6 +52,14 @@ function App() {
             />
             <Route path="/member/payment/card" element={<CardList />} />
             <Route path="/member/payment/card/add" element={<AddCardList />} />
+            <Route
+              path="/member/payment/account/modify/:no"
+              element={<ModAccountList />}
+            />
+            <Route
+              path="/member/payment/card/modify/:no"
+              element={<ModCardList />}
+            />
             <Route path="/member/friend/search" element={<FriendSearch />} />
             <Route path="/funding/join" element={<JoinFunding />} />
             <Route path="/funding/make" element={<MakeFunding />} />
@@ -65,7 +78,8 @@ function App() {
             <Route path="/board/qna/list" element={<QnaList />} />
             <Route path="/point/minus" element={<MinusPoint />} />
             <Route path="/point/plus" element={<PlusPoint />} />
-            <Route path="/point/list" element={<PointList />} />
+            <Route path="/point/pointlist" element={<PointList />} />
+            <Route path="/point/fundpointlist" element={<FundPointList />} />
           </Routes>
         </div>
       </header>
