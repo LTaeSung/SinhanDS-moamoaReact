@@ -12,7 +12,9 @@ function JoinFundingList() {
   const member_no = sessionStorage.getItem("no");
   const getApi = async () => {
     axios
-      .get(`${bootpath}/funding/member/join?member_no=${member_no}`)
+      .get(
+        `${bootpath}/funding/member/join?member_no=${member_no}&start_member_no=${member_no}`
+      )
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);

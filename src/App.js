@@ -62,7 +62,7 @@ function App() {
               element={<ModCardList />}
             />
             <Route path="/member/friend/search" element={<FriendSearch />} />
-            <Route path="/funding/join" element={<FundingJoinList />} />
+            <Route path="/funding/member/join" element={<FundingJoinList />} />
             <Route path="/funding/make" element={<MakeFunding />} />
             <Route
               path="/funding/inviteMember"
