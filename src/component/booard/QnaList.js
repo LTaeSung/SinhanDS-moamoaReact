@@ -8,20 +8,19 @@ function QnaList() {
   const [totalElement, setTotalElement] = useState(0);
   const [data, setData] = useState([]);
 
-  const getApi = () => {
-    axios
-      .get(`${bootPath.bootpath}/board/qna/list`)
-      .then((res) => {
-        setData(res.data);
-        setTotalElement(res.data.length);
-      })
-      .catch((error) => {
-        console.log("qna가 없습니다.", error);
-      });
-  };
-
   useEffect(() => {
-    getApi();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${bootPath.bootpath}/board/list`);
+        const filteredDate = response.data.filter((item) => item.boardtype);
+        setData(filteredDate);
+        setTotalElement(filteredDate.length);
+      } catch (error) {
+        console.log("error 남", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -31,15 +30,18 @@ function QnaList() {
         <div className="size">
           <h3 className="sub_title"> QNA </h3>
           <span>총 {totalElement} 건 </span>
-          <p>qna 작성하기</p>
-          <div>
-            <input type="text" name="writer" placeholder="writer"></input>
+          <div className="qna-list">
+            <ul>
+              {data.map((item) => (
+                <li key={item.no}>
+                  <Link to={`/board/qna/detail?no=${item.no}`}>
+                    {item.title}
+                  </Link>
+                  <p>{new Date(item.registdate).toLocaleDateString()}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div>
-            <textarea name="contents" placeholder="content"></textarea>
-          </div>
-          <button>저장하기</button>
-          <p>qna 목록</p>
         </div>
       </div>
     </>

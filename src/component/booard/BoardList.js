@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,20 +8,19 @@ function BoardList() {
   const [totalElement, setTotalElement] = useState(0);
   const [data, setData] = useState([]);
 
-  const getApi = () => {
-    axios
-      .get(`${bootPath.bootpath}/board/list`)
-      .then((res) => {
-        setData(res.data);
-        setTotalElement(res.data.length);
-      })
-      .catch((error) => {
-        console.log("공지사항이 없습니다.", error);
-      });
-  };
-
   useEffect(() => {
-    getApi();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${bootPath.bootpath}/board/list`);
+        const filteredDate = response.data.filter((item) => !item.boardtype);
+        setData(filteredDate);
+        setTotalElement(filteredDate.length);
+      } catch (error) {
+        console.log("error 발생", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -35,7 +34,7 @@ function BoardList() {
             <ul>
               {data.map((item) => (
                 <li key={item.no}>
-                  <Link to={`/board/list/${item.no}`}>{item.title}</Link>
+                  <Link to={`/board/detail?no=${item.no}`}>{item.title}</Link>
                   <p>{new Date(item.registdate).toLocaleDateString()}</p>
                 </li>
               ))}
