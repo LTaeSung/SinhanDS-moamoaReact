@@ -44,7 +44,7 @@ function CardList() {
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment) => (
-                        <li key={payment.id}>
+                        <li key={payment.no}>
                           <p>결제수단: 카드</p>
                           <p>은행명: {payment.company}</p>
                           <p>카드번호: {payment.account}</p>
@@ -55,6 +55,11 @@ function CardList() {
                               : null}
                           </p>
                           <p>CVC: {payment.cvc}</p>
+                          <Link
+                            to={`/member/payment/card/modify/${payment.no}`}
+                          >
+                            카드 수정
+                          </Link>
                         </li>
                       ))}
                   </ul>
