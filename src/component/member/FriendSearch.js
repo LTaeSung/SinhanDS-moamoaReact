@@ -34,9 +34,11 @@ function SearchMember() {
   const handleAddFriend = (member_no, memberList) => {
     const currentUserNo = sessionStorage.getItem("no");
     if (parseInt(currentUserNo) === memberList.no) {
+      console.log(parseInt(currentUserNo), memberList.no);
       alert("자기 자신을 친구 추가할 수 없습니다.");
       return;
     } else {
+      console.log(parseInt(currentUserNo), memberList.no);
       axios
         .get(
           `${bootpath}/member/friend/input?member_no=${currentUserNo}&friend_no=${memberList.no}`

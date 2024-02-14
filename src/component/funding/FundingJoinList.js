@@ -1,13 +1,14 @@
 import FundingHeader from "./FundingHeader";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import bootPath from "../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 function JoinFundingList() {
   const { bootpath } = useContext(bootPath);
   const { commonImagePath } = useContext(CommonImagePath);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   const [totalElements, setTotalElement] = useState(0); // 총개수
   const member_no = sessionStorage.getItem("no");
   const getApi = async () => {
@@ -27,6 +28,11 @@ function JoinFundingList() {
     getApi();
   }, []);
 
+  const goinfo = (e, no) => {
+    e.preventDefault();
+    navigate("/funding/info?no=" + no);
+    console.log(no);
+  };
   return (
     <>
       <FundingHeader />
@@ -59,8 +65,8 @@ function JoinFundingList() {
               <div key={item.no}>
                 사진:
                 <img src={`${commonImagePath}${item.photo}`} width="100" />
-                <Link to={"/funding/list/{item.no}"}>
-                  <p>제목: {item.title}</p>
+                <Link to="#" onClick={(e) => goinfo(e, item.no)}>
+                  <p>제목{item.title}</p>
                 </Link>
                 <p>상태:{item.state}</p>
                 <p>모금액:{item.goalamount}</p>
