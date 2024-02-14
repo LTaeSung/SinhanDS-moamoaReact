@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function AddAccountList() {
   const { bootpath } = useContext(BootPath);
-  const member_no = 4; //sessionStorage.getItem("no") || "";
+  const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
