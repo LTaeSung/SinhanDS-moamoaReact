@@ -15,6 +15,7 @@ import FriendList from "./component/member/FriendList";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
+import QnaList from "./component/booard/QnaList";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/funding/list" element={<FundingList />} />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/list/:id" element={<BoardDetail />} />
+            <Route path="/board/qna/list" element={<QnaList />} />
           </Routes>
         </div>
       </header>
