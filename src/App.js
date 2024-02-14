@@ -33,6 +33,7 @@ import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
 
 import FundPointList from "./component/point/FundPointList";
+import Beforesignup from "./component/member/BeforeSignup";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/member/info" element={<Mypage_info />} />
             <Route path="/member/signup" element={<Signup />} />
+            <Route path="/login/beforeSignup" element={<Beforesignup />} />
             <Route path="/member/friend/list" element={<FriendList />} />
             <Route path="/member/payment/account" element={<AccountList />} />
             <Route
@@ -64,7 +66,7 @@ function App() {
               element={<ModCardList />}
             />
             <Route path="/member/friend/search" element={<FriendSearch />} />
-            <Route path="/funding/join" element={<FundingJoinList />} />
+            <Route path="/funding/member/join" element={<FundingJoinList />} />
             <Route path="/funding/make" element={<MakeFunding />} />
             <Route
               path="/funding/inviteMember"
