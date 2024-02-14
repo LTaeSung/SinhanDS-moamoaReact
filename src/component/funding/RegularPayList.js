@@ -19,12 +19,29 @@ function RegularPayList() {
   useEffect(() => {
     getData();
   }, []);
+
+  const requestRegularPay = async () => {
+    try {
+      const result = await axios.get(
+        bootpath + "/point/funding_history/regularPayment"
+      );
+      if (result.data === "success") {
+        alert("일괄결제 성공");
+      } else {
+        alert("일괄결제 도중 문제가 발생했습니다.");
+      }
+    } catch (error) {
+      alert("일괄결제 도중 문제가 발생했습니다.");
+    }
+  };
+
   return (
     <>
       <MemberHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">오늘 결제 예정 목록</h3>
+          <button onClick={requestRegularPay}>일괄결제하기</button>
           <div>
             <ul>
               {data.map((data) => (
@@ -38,6 +55,7 @@ function RegularPayList() {
                   }
                 </li>
               ))}
+              <p>더 필요한거 있으면 원하는대로 꺼내오시면 됩니다</p>
             </ul>
           </div>
         </div>
