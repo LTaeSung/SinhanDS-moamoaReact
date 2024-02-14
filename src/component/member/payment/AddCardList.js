@@ -43,7 +43,7 @@ function AddCardList() {
 
       if (response.data.result === "success") {
         // Success인 경우, 카드 리스트 페이지로 이동
-        navigate("/member/payment/card");
+        navigate("/member/info");
       } else if (response.data.result === "exists") {
         // 동일 체크는 account로 한다.
         alert("이미 동일한 카드가 존재합니다.");
