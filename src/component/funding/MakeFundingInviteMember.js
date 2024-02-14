@@ -20,7 +20,7 @@ function MakeFundingInviteMember({ state }) {
   let returnDate = {
     ...param,
     member_no: sessionStorage.getItem("no"),
-    member_no: sessionStorage.getItem("name"),
+    member_name: sessionStorage.getItem("name"),
   };
   const getData = async () => {
     try {
