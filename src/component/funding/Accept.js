@@ -2,14 +2,15 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
-function Accept({ state }) {
-  console.log(state);
+function Accept({ no }) {
+  const location = useLocation();
+  console.log(location.state.no);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
-
+  const navigate = useNavigate();
   const [payment, setPayment] = useState([]);
   useEffect(() => {
     const fetchPaymentList = async () => {
@@ -26,15 +27,17 @@ function Accept({ state }) {
     fetchPaymentList();
   }, []);
 
-  const [select, setSelect] = useState({});
+  const [select, setSelect] = useState({ fundingMemberNo: location.state.no });
   const handleRadioButton = (e) => {
-    setSelect({ payment_no: e.target.value });
+    setSelect({ ...select, payment_no: e.target.value });
     console.log(select);
   };
 
   const submit = () => {
-    axios.post(bootpath + "/fund/accept", select, {}).then((res) => {
-      //   window.location.href = "/funding/AfterMakeFunding";
+    axios.post(bootpath + "/funding/member/accept", select, {}).then((res) => {
+      if (res.data === "success") {
+        navigate("/funding/afterAcceptFunding");
+      }
     });
   };
   return (
@@ -74,8 +77,8 @@ function Accept({ state }) {
                 </>
               ) : (
                 <p>
-                  등록된 카드가 없습니다. 계좌를 추가해주세요.{" "}
-                  {/* <Link to="/member/payment/account/add">계좌 추가</Link> */}
+                  등록된 카드가 없습니다. 카드를 추가해주세요.{" "}
+                  <Link to="/member/payment/card/add">카드 추가</Link>
                 </p>
               )}
             </>
