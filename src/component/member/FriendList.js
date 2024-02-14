@@ -30,7 +30,7 @@ function Friendlist() {
   };
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   const handleDeleteFriend = (friendNo) => {
     // 친구 삭제 처리

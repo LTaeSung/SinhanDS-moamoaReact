@@ -2,9 +2,9 @@ import FundingHeader from "./FundingHeader";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import bootPath from "./../../BootPath";
+import bootPath from "../../BootPath";
 import CommonImagePath from "../../commonImagePath";
-function FundingList() {
+function FundingHostList() {
   const { bootpath } = useContext(bootPath);
   const { commonImagePath } = useContext(CommonImagePath);
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ function FundingList() {
   const start_member_no = sessionStorage.getItem("no");
   const getApi = async () => {
     axios
-      .get(`${bootpath}/fund/list?start_member_no=${start_member_no}`)
+      .get(`${bootpath}/fund/host?start_member_no=${start_member_no}`)
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
@@ -42,7 +42,7 @@ function FundingList() {
               </span>
             </p>
             <table>
-              <caption>펀딩 목록</caption>
+              <caption>주최한 펀딩 목록</caption>
               <thead>
                 <tr>
                   <th>사진</th>
@@ -61,7 +61,7 @@ function FundingList() {
               <div key={item.no}>
                 사진:
                 <img src={`${commonImagePath}${item.photo}`} width="100" />
-                <Link to={"/funding/list/{item.no}"}>
+                <Link to={"/funding/host/{item.no}"}>
                   <p>제목: {item.title}</p>
                 </Link>
                 <p>상태:{item.state}</p>
@@ -79,4 +79,4 @@ function FundingList() {
   );
 }
 
-export default FundingList;
+export default FundingHostList;
