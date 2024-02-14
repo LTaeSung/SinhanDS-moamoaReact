@@ -31,7 +31,7 @@ function Friendlist() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   const handleDeleteFriend = (friendNo) => {
     // 친구 삭제 처리
@@ -58,7 +58,7 @@ function Friendlist() {
             <ul>
               {data.map((Data) => (
                 <li key={Data.no}>
-                  친구{Data.no} , {Data.friend.email}
+                  {Data.friend.name} , {Data.friend.email}
                   <button
                     id="delete-friend-btn"
                     onClick={() => handleDeleteFriend(Data.friend.no)}
