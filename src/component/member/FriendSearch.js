@@ -45,7 +45,7 @@ function SearchMember() {
         )
         .then(() => {
           alert("친구가 추가되었습니다.");
-          //window.location.reload();
+          window.location.reload();
         })
         .catch((error) => {
           console.log("친구 추가 중 오류 발생", error);

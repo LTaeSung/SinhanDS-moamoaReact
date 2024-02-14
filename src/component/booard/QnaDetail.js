@@ -94,7 +94,10 @@ function QnaDetail() {
               Regist Date: {new Date(board.registdate).toLocaleDateString()}
             </p>
           </div>
-
+          <div>
+            <button>qna 수정</button> <br />
+            <button>qna 삭제</button>
+          </div>
           <br />
           <h5>댓글 작성하기</h5>
           <div>

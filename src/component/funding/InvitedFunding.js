@@ -75,7 +75,7 @@ function InvitedFunding() {
                     <img src={registedImagePath + Data.photo} width="100" />
                   </div>
                   <div>
-                    {Data.startmembername}님이 {Data.fundtitle}에
+                    {Data.no} , {Data.startmembername}님이 {Data.fundtitle}에
                     초대하였습니다.
                     <br />
                     펀딩 기간 : ggg
