@@ -66,7 +66,7 @@ const Iamport = (props) => {
             alert("포인트 충전 실패, 결제 취소 처리됨");
           }
         } else {
-          alert("결제 도중 오류 발생");
+          alert("결제 오류");
         }
       }
     );

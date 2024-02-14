@@ -26,6 +26,7 @@ const MyLogin = () => {
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("email", res.data.email);
+        sessionStorage.setItem("name", res.data.name);
         window.location.href = "/member/info";
       }
     });
