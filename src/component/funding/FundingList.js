@@ -60,7 +60,7 @@ function FundingList() {
               {" "}
               <div key={item.no}>
                 사진:
-                <img src={`/${commonImagePath}${item.photo}`} width="100" />
+                <img src={`${commonImagePath}${item.photo}`} width="100" />
                 <Link to={"/funding/list/{item.no}"}>
                   <p>제목: {item.title}</p>
                 </Link>
