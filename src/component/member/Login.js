@@ -4,7 +4,7 @@ import BootPath from "../../BootPath";
 import { useContext } from "react";
 import RegistedImagePath from "../../registedImagePath";
 import CommonImagePath from "../../commonImagePath";
-function Signup() {
+function SignIn() {
   const { bootpath } = useContext(BootPath);
   const { commonImagePath } = useContext(CommonImagePath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디
@@ -31,4 +31,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignIn;
