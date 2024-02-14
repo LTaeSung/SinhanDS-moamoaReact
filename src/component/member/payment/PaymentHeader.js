@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../../App.css";
 import { Link } from "react-router-dom";
 import BootPath from "./../../../BootPath";
 import { useContext } from "react";
