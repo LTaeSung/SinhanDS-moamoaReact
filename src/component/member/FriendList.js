@@ -23,7 +23,6 @@ function Friendlist() {
       } else {
         setData(response.data);
       }
-      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }

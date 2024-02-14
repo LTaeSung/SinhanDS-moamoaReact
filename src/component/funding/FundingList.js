@@ -9,10 +9,10 @@ function FundingList() {
   const bootPath = useContext(BootPathContext);
   const [data, setData] = useState([]);
   const [totalElements, setTotalElement] = useState(0); // 총개수
-
+  const start_member_no = sessionStorage.getItem("no");
   const getApi = () => {
     axios
-      .get(`${bootPath.bootpath}/fund/list`)
+      .get(`${bootPath.bootpath}/fund/list?start_member_no=${start_member_no}`)
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);

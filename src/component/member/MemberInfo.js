@@ -20,16 +20,14 @@ function MemberInfo() {
         setData(null);
       } else {
         setData(response.data);
-        console.log(response.data);
       }
-      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   return (
     <>
