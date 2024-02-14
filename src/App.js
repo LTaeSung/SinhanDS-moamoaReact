@@ -17,7 +17,7 @@ import AccountList from "./component/member/payment/AccountList";
 import AddAccountList from "./component/member/payment/AddAccountList";
 import CardList from "./component/member/payment/CardList";
 import AddCardList from "./component/member/payment/AddCardList";
-
+import Accept from "./component/funding/Accept";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
@@ -60,6 +60,7 @@ function App() {
             />
             <Route path="/funding/list" element={<FundingList />} />
             <Route path="/funding/invited" element={<InvitedFunding />} />
+            <Route path="/funding/accept" element={<Accept />} />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/list/:id" element={<BoardDetail />} />
             <Route path="/board/qna/list" element={<QnaList />} />
