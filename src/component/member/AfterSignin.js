@@ -21,10 +21,9 @@ const getApi = (params, callbackUrl) => {
   axios.get(callbackUrl).then((res) => {
     console.log(res);
     if (res.data.result === "success") {
-      console.log(res.data.no);
-      console.log(res.data.email);
       sessionStorage.setItem("no", res.data.no);
       sessionStorage.setItem("email", res.data.email);
+      sessionStorage.setItem("name", res.data.name);
       window.location.href = "/member/info";
     } else {
       window.location.href = "/";

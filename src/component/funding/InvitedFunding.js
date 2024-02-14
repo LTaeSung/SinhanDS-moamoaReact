@@ -4,9 +4,11 @@ import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import RegistedImagePath from "../../registedImagePath";
 
 function InvitedFunding() {
   const { bootpath } = useContext(BootPath);
+  const { registedImagePath } = useContext(RegistedImagePath);
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const getData = async () => {
@@ -16,7 +18,7 @@ function InvitedFunding() {
         return;
       }
       const response = await axios.get(
-        ` ${bootpath}/funding/member/invitedList?member_no=${member_no}`
+        `${bootpath}/funding/member/invitedList?member_no=${member_no}`
       );
       if (response.data.length === 0) {
         setData(null);
@@ -31,6 +33,34 @@ function InvitedFunding() {
   useEffect(() => {
     getData();
   }, []);
+
+  const accept = async (e) => {
+    let param = {};
+    param = { no: e.target.id };
+    await axios.post(bootpath + "/funding/member/accept", param).then((res) => {
+      if (res.data === "success") {
+        window.alert("성공적으로 삭제되었습니다.");
+      } else {
+        console.log(res);
+        window.alert("삭제 실패.");
+      }
+    });
+    getData();
+  };
+  const refuse = async (e) => {
+    let param = {};
+    param = { no: e.target.id };
+    console.log(param);
+    await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
+      if (res.data === "success") {
+        window.alert("성공적으로 삭제되었습니다.");
+      } else {
+        console.log(res);
+        window.alert("삭제 실패.");
+      }
+    });
+    getData();
+  };
   return (
     <>
       <FundingHeader />
@@ -40,7 +70,31 @@ function InvitedFunding() {
           {data ? (
             <ul>
               {data.map((Data) => (
-                <li key={Data.no}>데이터들</li>
+                <li key={Data.no}>
+                  <div>
+                    <img src={registedImagePath + Data.photo} width="100" />
+                  </div>
+                  <div>
+                    {Data.startmembername}님이 {Data.fundtitle}에
+                    초대하였습니다.
+                    <br />
+                    펀딩 기간 : ggg
+                    <br />
+                    결제액 : 매월 {Data.monthlypaymentamount}원
+                    <br />
+                    <div>
+                      <button onClick={accept} id={Data.no}>
+                        수락
+                      </button>{" "}
+                      &nbsp;&nbsp;&nbsp;
+                      <button onClick={refuse} id={Data.no}>
+                        거절
+                      </button>
+                    </div>
+                    <br />
+                    <br />
+                  </div>
+                </li>
               ))}
             </ul>
           ) : (

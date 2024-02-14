@@ -25,8 +25,11 @@ import QnaList from "./component/booard/QnaList";
 import MinusPoint from "./component/point/MiusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
+
 import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
+
+import FundPointList from "./component/point/FundPointList";
 
 function App() {
   return (
@@ -75,7 +78,8 @@ function App() {
             <Route path="/board/qna/list" element={<QnaList />} />
             <Route path="/point/minus" element={<MinusPoint />} />
             <Route path="/point/plus" element={<PlusPoint />} />
-            <Route path="/point/list" element={<PointList />} />
+            <Route path="/point/pointlist" element={<PointList />} />
+            <Route path="/point/fundpointlist" element={<FundPointList />} />
           </Routes>
         </div>
       </header>
