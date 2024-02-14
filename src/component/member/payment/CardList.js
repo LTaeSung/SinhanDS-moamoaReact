@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function Accountlist() {
+function CardList() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
   const member_no = sessionStorage.getItem("no");
@@ -75,4 +75,4 @@ function Accountlist() {
   );
 }
 
-export default Accountlist;
+export default CardList;

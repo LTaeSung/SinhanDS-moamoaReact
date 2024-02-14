@@ -9,7 +9,6 @@ function SearchMember() {
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
-
   const handleSearch = () => {
     axios
       .get(bootpath + "/member/friend/search", {
@@ -20,6 +19,7 @@ function SearchMember() {
         if (!data || data.length === 0) {
           alert("이미 친구로 등록되어있거나 정보가 없습니다.");
         }
+        console.log(response.data);
         setMemberList(response.data);
         setError(null);
       })
@@ -29,10 +29,15 @@ function SearchMember() {
         setError("오류가 발생했습니다. 잠시후 다시 시도 하십시오.");
       });
   };
-  const handleAddFriend = (friendNo) => {
+
+  const handleAddFriend = (friendNo, member) => {
+    if (member.no === friendNo) {
+      alert("자기 자신을 친구 추가할 수 없습니다.");
+      return;
+    }
     axios
       .get(
-        `${bootpath}/member/friend/input?member_no=${member_no}&friend_no=${friendNo}`
+        `${bootpath}/member/friend/input?member_no=${member.no}&friend_no=${friendNo}`
       )
       .then(() => {
         alert("친구가 추가되었습니다.");
@@ -53,7 +58,7 @@ function SearchMember() {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="email로 검색"
+              placeholder="ID로 검색"
             />
             <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
@@ -64,7 +69,7 @@ function SearchMember() {
                     이름 : {member.name} , 멤버 이메일: {member.email}
                     <button
                       id="Add-friend-btn"
-                      onClick={() => handleAddFriend(member.no)}
+                      onClick={() => handleAddFriend(member.no, member)}
                     >
                       친구 등록
                     </button>

@@ -16,6 +16,10 @@ function FundingHeader() {
         <Link className="navbarMenu" to={"/funding/invited"}>
           초대받은 펀딩
         </Link>
+        <br />
+        <Link className="navbarMenu" to={"/funding/make"}>
+          펀드 만들기
+        </Link>
       </div>
     </div>
   );

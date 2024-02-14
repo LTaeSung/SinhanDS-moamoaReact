@@ -17,7 +17,11 @@ function MakeFundingInviteMember({ state }) {
   console.log("file");
   console.log(registedFile);
   const [data, setData] = useState(null);
-  let returnDate = { ...param, member_no: sessionStorage.getItem("no") };
+  let returnDate = {
+    ...param,
+    member_no: sessionStorage.getItem("no"),
+    member_name: sessionStorage.getItem("name"),
+  };
   const getData = async () => {
     try {
       const member_no = sessionStorage.getItem("no");
