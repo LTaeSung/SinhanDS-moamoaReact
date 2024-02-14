@@ -66,7 +66,7 @@ function SearchMember() {
               <ul>
                 {memberList.map((member) => (
                   <li key={member.no}>
-                    이름 : {member.name} , 멤버 이메일: {member.email}
+                    {member.name}, {member.email}
                     <button
                       id="Add-friend-btn"
                       onClick={() => handleAddFriend(member.no, member)}
