@@ -1,7 +1,6 @@
 import MemberHeader from "./MemberHeader";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import BootPath from "../../BootPath";
-import { useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -24,14 +23,13 @@ function Friendlist() {
       } else {
         setData(response.data);
       }
-      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   const handleDeleteFriend = (friendNo) => {
     // 친구 삭제 처리
@@ -58,7 +56,7 @@ function Friendlist() {
             <ul>
               {data.map((Data) => (
                 <li key={Data.no}>
-                  친구{Data.no} , {Data.friend.email}
+                  {Data.friend.name} , {Data.friend.email}
                   <button
                     id="delete-friend-btn"
                     onClick={() => handleDeleteFriend(Data.friend.no)}

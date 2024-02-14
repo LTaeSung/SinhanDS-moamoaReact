@@ -8,14 +8,6 @@ import Iamport from "./iamport";
 function PlusPoint() {
   const { bootpath } = useContext(BootPath);
 
-  const [plusPoint, setPlusPoint] = useState({
-    amount: "",
-  });
-
-  const onChangeAmount = (e) => {
-    setPlusPoint({ ...plusPoint, [e.target.name]: e.target.value });
-  };
-
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const getData = async () => {
@@ -36,6 +28,13 @@ function PlusPoint() {
   useEffect(() => {
     getData();
   }, []);
+
+  const [plusPoint, setPlusPoint] = useState({
+    amount: "",
+  });
+  const onChangeAmount = (e) => {
+    setPlusPoint({ ...plusPoint, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
