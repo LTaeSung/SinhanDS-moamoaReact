@@ -1,6 +1,6 @@
 import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
-import BootPath from "./../../BootPath";
+import BootPath from "../../BootPath";
 import { useContext } from "react";
 
 import axios from "axios";
@@ -16,9 +16,7 @@ function FundingInfo() {
         console.log("사용자 번호가 없습니다.");
         return;
       }
-      const response = await axios.get(
-        ` ${bootpath}/funding/list?no=${fund_no}`
-      );
+      const response = await axios.get(` ${bootpath}/funding/list/${fund_no}`);
       setData(response.data);
       console.log(response.data);
     } catch (error) {

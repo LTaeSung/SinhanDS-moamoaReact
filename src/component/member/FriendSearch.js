@@ -33,6 +33,8 @@ function SearchMember() {
   const handleAddFriend = (friendNo, member) => {
     if (member.no === friendNo) {
       alert("자기 자신을 친구 추가할 수 없습니다.");
+      console.log(member.no);
+      console.log(friendNo);
       return;
     }
     axios
