@@ -14,7 +14,6 @@ function Mypage_info() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원정보</h3>
-          <MinusPoint />
         </div>
       </div>
     </>
