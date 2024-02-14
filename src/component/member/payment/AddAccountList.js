@@ -43,7 +43,7 @@ function AddAccountList() {
 
       if (response.data.result === "success") {
         // Success인 경우, 계좌 리스트 페이지로 이동
-        navigate("/member/payment/account");
+        navigate("/member/info");
       } else if (response.data.result === "exists") {
         alert("이미 동일한 계좌가 존재합니다.");
       }
