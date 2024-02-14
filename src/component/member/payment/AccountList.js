@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function Accountlist() {
+function AccountList() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
   const member_no = sessionStorage.getItem("no");
@@ -40,10 +40,15 @@ function Accountlist() {
                     {payment
                       .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                       .map((payment) => (
-                        <li key={payment.id}>
+                        <li key={payment.no}>
                           <p>결제수단: 계좌</p>
                           <p>은행명: {payment.company}</p>
                           <p>계좌번호: {payment.account}</p>
+                          <Link
+                            to={`/member/payment/account/modify/${payment.no}`}
+                          >
+                            계좌 수정
+                          </Link>
                         </li>
                       ))}
                   </ul>
@@ -65,4 +70,4 @@ function Accountlist() {
   );
 }
 
-export default Accountlist;
+export default AccountList;
