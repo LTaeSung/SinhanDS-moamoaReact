@@ -16,7 +16,7 @@ function FundPointList() {
         return;
       }
       const response = await axios.get(
-        ` ${bootpath}/point/point_history/mypoint?member_no=${member_no}`
+        ` ${bootpath}/point/funding_history/mypointHistory?member_no=${member_no}`
       );
       setData(response.data);
       console.log(response.data);
@@ -34,6 +34,37 @@ function FundPointList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">펀드포인트 정보</h3>
+          <div>
+            {member_no ? (
+              <>
+                {
+                  <ul>
+                    {data.map((data) => (
+                      <li key={data.no}>
+                        {data.direction === false ? (
+                          <ul>
+                            <p>결제</p>
+                            <p>{data.transactiondate}</p>
+                            <p>펀딩번호 : {data.fundingno}</p>
+                            <p>금액 : {data.amount}</p>
+                          </ul>
+                        ) : (
+                          <ul>
+                            <p>환급</p>
+                            <p>{data.transactiondate}</p>
+                            <p>펀딩번호 : {data.fundingno}</p>
+                            <p>금액 : {data.amount}</p>
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                }
+              </>
+            ) : (
+              <p>login</p>
+            )}
+          </div>
         </div>
       </div>
     </>
