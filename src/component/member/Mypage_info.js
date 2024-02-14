@@ -4,6 +4,9 @@ import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import PlusPoint from "../point/PlusPoint";
 import MinusPoint from "../point/MiusPoint";
+import Accountlist from "./payment/AccountList";
+import Cardlist from "./payment/CardList";
+
 function Mypage_info() {
   const { bootpath } = useContext(BootPath);
   return (
@@ -14,7 +17,8 @@ function Mypage_info() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원정보</h3>
-          <MinusPoint />
+          <Accountlist />
+          <Cardlist />
         </div>
       </div>
     </>
