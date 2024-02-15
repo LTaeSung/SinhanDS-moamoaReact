@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
+import FundingMember from "./FundingMember";
 
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
@@ -47,6 +48,7 @@ function FundingInfo() {
       console.log(res);
     });
   };
+
   useEffect(() => {
     getInfo();
   }, []);
@@ -81,6 +83,7 @@ function FundingInfo() {
               </Link>
             </div>
             <p>참여자 목록</p>
+            <FundingMember />
             <div>목록</div>
             <p>펀딩 타입: {data.fundingtype}</p>
             <p>댓글: {data.comment}</p>

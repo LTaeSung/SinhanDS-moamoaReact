@@ -34,10 +34,10 @@ function BoardDetail() {
             <p>no: {board.no}</p>
             <p>Title: {board.title}</p>
             <p>Writer: {board.writer}</p>
-            <p>Contents: {board.contents}</p>
             <p>
               Regist Date: {new Date(board.registdate).toLocaleDateString()}
             </p>
+            <p>Contents: {board.contents}</p>
           </div>
         </div>
       </div>
