@@ -22,7 +22,7 @@ function Header() {
       <img
         src={"/img/header_bell.png"}
         onClick={goToLink}
-        target="/알람페이지"
+        target="/alarm"
         alt="bell"
       />
       <img
