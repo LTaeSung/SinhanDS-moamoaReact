@@ -26,7 +26,7 @@ function RegularPayList() {
         bootpath + "/point/funding_history/regularPayment"
       );
       if (result.data === "success") {
-        alert("일괄결제 성공");
+        alert("일괄결제 성공, 결제 실패자에 대해 개별 알림 발송");
       } else {
         alert("일괄결제 도중 문제가 발생했습니다.");
       }
