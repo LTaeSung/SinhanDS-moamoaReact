@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 
 function FundingMember() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
-  const [data, setData] = useState({});
-
-  let no = params.get("no");
-  const getInfo = () => {
-    axios.get(`${bootPath.bootpath}/fund/list/test`).then((res) => {
-      setData(res.data);
-      console.log(res);
-    });
+  const [data, setData] = useState([]);
+  let fund_no = params.get("no");
+  const getApi = async () => {
+    axios
+      .get(`${bootPath.bootpath}/funding/member/challenge/${fund_no}`)
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log("참여중인 인원이 없습니다.", error);
+      });
   };
 
   useEffect(() => {
-    getInfo();
+    getApi();
   }, []);
-
   return (
     <>
       <div className="sub">
-        <div className="size">
-          <div>
-            <p>제목: {data.title}</p>
-            <p>목표 금액: {data.goalamount} 원</p>
-          </div>
-        </div>
+        {data &&
+          data.map((item) => (
+            <div key={item.no}>
+              <p>{item.membername}</p>
+              <p>{item.giveup}</p>
+            </div>
+          ))}
       </div>
+      <br />
     </>
   );
 }
