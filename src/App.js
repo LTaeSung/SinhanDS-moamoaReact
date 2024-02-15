@@ -95,7 +95,7 @@ function App() {
             <Route path="/point/plus" element={<PlusPoint />} />
             <Route path="/point/pointlist" element={<PointList />} />
             <Route path="/point/fundpointlist" element={<FundPointList />} />
-            <Route path="/funding/regularpay" element={<RegularPayList />} />
+            <Route path="/admin/regularpay" element={<RegularPayList />} />
           </Routes>
         </div>
       </header>
