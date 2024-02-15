@@ -7,7 +7,7 @@ function FundingHeader() {
   return (
     <div>
       <div className="headerNav">
-        <Link className="navbarMenu" to={"/funding/join"}>
+        <Link className="navbarMenu" to={"/funding/member/join"}>
           참여한 펀딩
         </Link>
         <Link className="navbarMenu" to={"/funding/host"}>
