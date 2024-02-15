@@ -28,8 +28,7 @@ const getApi = (params, callbackUrl) => {
       sessionStorage.setItem("name", res.data.name);
       window.location.href = "/member/info";
     } else {
-      alert("회원정보가 존재하지않아 회원가입 페이지로 이동합니다.");
-      window.location.href = "/member/signup";
+      window.location.href = "/login/signup";
     }
   });
 };

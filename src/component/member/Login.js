@@ -19,7 +19,7 @@ function SignIn() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">로그인</h3>
+          <h3 className="sub_title">로그인/가입</h3>
           <button onClick={NaverLogin}>
             <div>
               <img src={commonImagePath + "naver.png"} width="100" />

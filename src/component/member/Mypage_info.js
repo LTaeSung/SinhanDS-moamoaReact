@@ -10,7 +10,7 @@ import CardList from "./payment/CardList";
 
 import Accountlist from "./payment/AccountList";
 import Cardlist from "./payment/CardList";
-import MemberInfo from "./MemberInfo";
+import MemberInfoTest from "./MemberInfoTest";
 
 function Mypage_info() {
   const { bootpath } = useContext(BootPath);
@@ -22,7 +22,7 @@ function Mypage_info() {
         <div className="size">
           <h3 className="sub_title">회원정보</h3>
 
-          <MemberInfo />
+          <MemberInfoTest />
           <Accountlist />
           <Cardlist />
         </div>
