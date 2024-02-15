@@ -13,6 +13,35 @@ function FundingInfo() {
   const [data, setData] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
+
+  const member_no = sessionStorage.getItem("no") || "";
+  const [formData, setFormData] = useState({
+    //post 전송할 데이터 필드. giveup 필드값을 바꾸기 위해 펀딩의 no와 현재 로그인한 member_no를 담음
+    fundingno: no,
+    memberno: member_no,
+  });
+
+  const GiveUp = async () => {
+    try {
+      const response = await axios.post(
+        `${bootPath.bootpath}/fund/giveup`,
+        formData
+      );
+
+      console.log("서버 응답:" + response.data);
+      console.log(response.data);
+      if (response.data.result === "success") {
+        // 삭제 Success인 경우, 중도포기 상태로 변경
+        console.log("중도포기됐음");
+        console.log("중도포기상태머임" + response.data.giveUp);
+      } else if (response.data.result === "fail") {
+        alert("중도포기 실패");
+      }
+    } catch (error) {
+      console.error("에러 발생:", error);
+    }
+  };
+
   const getInfo = () => {
     axios.get(`${bootPath.bootpath}/fund/host/${no}`).then((res) => {
       setData(res.data);
@@ -49,7 +78,7 @@ function FundingInfo() {
               <Link className="btn" to="/funding/make">
                 결제정보 수정
               </Link>
-              <Link className="btn" to="/funding/make">
+              <Link className="btn" onClick={GiveUp}>
                 중도포기
               </Link>
             </div>

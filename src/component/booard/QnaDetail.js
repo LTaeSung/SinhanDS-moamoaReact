@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
+import BoardHeader from "./BoardHeader";
 function QnaDetail() {
   const bootPath = useContext(BootPathContext);
   const [param, setParams] = useSearchParams();
   const [board, setBoard] = useState({});
   const [replies, setReplies] = useState([]);
   const [writer, setWriter] = useState("");
+  const [editing, setEditing] = useState(false);
   const [newReply, setNewReply] = useState({
     writer: "",
     contents: "",
@@ -39,6 +41,12 @@ function QnaDetail() {
           `${bootPath.bootpath}/board/detail?no=${param.get("no")}`
         );
         setBoard(response.data);
+
+        //댓글목록
+        const repliesResponse = await axios.get(
+          `${bootPath.bootpath}/board/reply/list?boardno=${param.get("no")}`
+        );
+        setReplies(repliesResponse.data.content);
       } catch (error) {
         console.log("에러 발생", error);
       }
@@ -46,17 +54,49 @@ function QnaDetail() {
     fetchData();
   }, [param]);
 
-  const InputChange = (e) => {
+  //qan수정
+  const qnaInputChange = (e) => {
     const { name, value } = e.target;
-    setNewReply((prev) => ({ ...prev, [name]: value }));
+    console.log(`name: ${name}, value: ${value}`);
+    setBoard((prev) => ({ ...prev, [name]: value }));
   };
 
-  //qan수정
+  const EditClick = () => {
+    setEditing(true);
+  };
 
+  const savaEdit = async () => {
+    console.log("Saving edit...", board);
+    try {
+      const response = await axios.put(
+        `${bootPath.bootpath}/board/update?no=${param.get("no")}`,
+        {
+          title: board.title,
+          contents: board.contents,
+        }
+      );
+      setEditing(false);
+
+      const updatedData = await axios.get(
+        `${bootPath.bootpath}/board/detail?no=${param.get("no")}`
+      );
+      setBoard(updatedData.data);
+    } catch (error) {
+      console.log("qna 수정하다가 오류가 났습니다.", error);
+    }
+  };
+
+  const navigate = useNavigate();
   //qna삭제
   const DeleteQna = async () => {
     try {
-      await axios.delete(`${bootPath.bootpath}/board/deleteQna?no=${board.no}`);
+      await axios.delete(
+        `${bootPath.bootpath}/board/delete?no=${param.get("no")}`
+      );
+
+      navigate(`/board/qna/list`);
+
+      console.log("QnA가 성공적으로 삭제되었습니다.");
     } catch (error) {
       console.error("QnA 삭제 중 에러가 발생했습니다.", error);
     }
@@ -88,7 +128,40 @@ function QnaDetail() {
   };
 
   //댓글수정
-  const EditReply = async (replyId) => {};
+  const InputChange = (e) => {
+    const { name, value } = e.target;
+    setNewReply((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const EditReply = async (replyId) => {
+    const replyIdx = replies.findIndex((reply) => reply.no === replyId);
+
+    const updatedReplies = [...replies];
+    updatedReplies[replyIdx] = {
+      ...updatedReplies[replyIdx],
+      editing: true,
+    };
+
+    setReplies(updatedReplies);
+  };
+
+  const SaveEditedReply = async (replyId, replyIdx) => {
+    try {
+      const updatedReplies = [...replies];
+      const editedReply = updatedReplies[replyIdx];
+
+      await axios.put(`${bootPath.bootpath}/board/reply/update?no=${replyId}`, {
+        contents: editedReply.contents,
+      });
+      updatedReplies[replyIdx] = {
+        ...updatedReplies[replyIdx],
+        editing: false,
+      };
+      setReplies(updatedReplies);
+    } catch (error) {
+      console.log("댓글 수정하는데 오류 남", error);
+    }
+  };
 
   //댓글삭제
   const DeleteReply = async (replyId) => {
@@ -110,22 +183,55 @@ function QnaDetail() {
 
   return (
     <>
-      {/* <BoardHeader /> */}
+      <BoardHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title"> QNA </h3>
           <div>
-            <h5>QNA 상세 페이지</h5>
-            <p>no: {board.no}</p>
-            <p>Title: {board.title}</p>
-            <p>Writer: {board.writer}</p>
-            <p>Contents: {board.contents}</p>
-            <p>
-              Regist Date: {new Date(board.registdate).toLocaleDateString()}
-            </p>
-          </div>
-          <div>
-            <button>qna 수정</button> <br />
+            <div>
+              {editing ? (
+                <>
+                  <h5>QNA 상세 페이지</h5>
+                  <p>no: {board.no}</p>
+                  <p>
+                    Title :
+                    <input
+                      type="text"
+                      value={board.title}
+                      onChange={qnaInputChange}
+                    />{" "}
+                  </p>
+                  <p>Writer: {board.writer}</p>
+                  <p>
+                    Contents:
+                    <textarea
+                      value={board.contents}
+                      onChange={qnaInputChange}
+                      name="contents"
+                    ></textarea>
+                  </p>
+                  <p>Writer: {board.writer}</p>
+                  <p>
+                    Regist Date:{" "}
+                    {new Date(board.registdate).toLocaleDateString()}
+                  </p>
+                  <button onClick={savaEdit}>저장하기</button>
+                </>
+              ) : (
+                <>
+                  <h5>QNA 상세 페이지</h5>
+                  <p>no: {board.no}</p>
+                  <p>Title: {board.title}</p>
+                  <p>Writer: {board.writer}</p>
+                  <p>Contents: {board.contents}</p>
+                  <p>
+                    Regist Date:{" "}
+                    {new Date(board.registdate).toLocaleDateString()}
+                  </p>
+                  <button onClick={EditClick}>qna 수정</button>
+                </>
+              )}
+            </div>
             <button onClick={DeleteQna}>qna 삭제</button>
           </div>
           <br />
@@ -143,13 +249,35 @@ function QnaDetail() {
           <br />
           <h5>댓글목록</h5>
           <ul>
-            {replies.map((reply) => (
+            {replies.map((reply, index) => (
               <li key={reply.no}>
                 {reply.writer} -
                 {new Date(board.registdate).toLocaleDateString()} <br />
-                {reply.contents}
-                <button onClick={() => EditReply(reply.no)}>수정</button>
-                <button onClick={() => DeleteReply(reply.no)}>삭제</button>
+                {reply.editing ? (
+                  <>
+                    <textarea
+                      value={reply.contents}
+                      onChange={(e) => {
+                        const updatedReplies = [...replies];
+                        updatedReplies[index] = {
+                          ...updatedReplies[index],
+                          contents: e.target.value,
+                        };
+
+                        setReplies(updatedReplies);
+                      }}
+                    ></textarea>
+                    <button onClick={() => SaveEditedReply(reply.no, index)}>
+                      저장
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {reply.contents}
+                    <button onClick={() => EditReply(reply.no)}>수정</button>
+                    <button onClick={() => DeleteReply(reply.no)}>삭제</button>
+                  </>
+                )}
               </li>
             ))}
           </ul>
