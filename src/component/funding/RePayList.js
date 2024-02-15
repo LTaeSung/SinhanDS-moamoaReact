@@ -9,9 +9,7 @@ function RePayList() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get(
-        ` ${bootpath}/point/funding_history/repayList`
-      );
+      const response = await axios.get(` ${bootpath}/admin/repayList`);
       setData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -24,9 +22,7 @@ function RePayList() {
 
   const requestRePay = async () => {
     try {
-      const result = await axios.get(
-        bootpath + "/point/funding_history/doRepay"
-      );
+      const result = await axios.get(bootpath + "/admin/doRepay");
       if (result.data === "success") {
         alert("일괄 재결제 성공, 결제 실패자에 대해 개별 알림 발송");
       } else {
