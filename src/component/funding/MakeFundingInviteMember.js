@@ -74,12 +74,6 @@ function MakeFundingInviteMember({ state }) {
       });
   };
 
-  const inviteFriend = () => {
-    axios.post(bootpath + "/fund/regist", returnDate).then((res) => {
-      console.log(res);
-      window.location.href = "/funding/AfterMakeFunding";
-    });
-  };
   return (
     <>
       <FundingHeader />

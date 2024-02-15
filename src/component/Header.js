@@ -22,13 +22,13 @@ function Header() {
       <img
         src={"/img/header_bell.png"}
         onClick={goToLink}
-        target="/알람페이지"
+        target="/alarm"
         alt="bell"
       />
       <img
         src={"/img/header_challenge.png"}
         onClick={goToLink}
-        target="/funding/join"
+        target="/funding/member/join"
         alt="challenge"
       />
       <img
