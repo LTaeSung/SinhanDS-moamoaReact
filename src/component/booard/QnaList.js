@@ -92,13 +92,6 @@ function QnaList() {
           <button onClick={SaveQna}>저장하기</button> <br />
           <br />
           <span>총 {totalElement} 건 </span>
-          <button
-            onClick={() => {
-              navigate("/board/qna/qnanew");
-            }}
-          >
-            qna 작성
-          </button>
           <div className="qna-list">
             <ul>
               {data.map((item) => (
