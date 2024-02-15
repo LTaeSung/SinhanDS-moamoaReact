@@ -3,7 +3,7 @@ import BootPath from "./../../BootPath";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
-function QnaList() {
+function BoardNew() {
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [totalElement, setTotalElement] = useState(0);
@@ -42,7 +42,7 @@ function QnaList() {
         title: newQna.title,
         contents: newQna.contents,
         writer: writer,
-        boardtype: true,
+        boardtype: false,
       });
       setData((prevData) => [...prevData, response.data]);
       setTotalElement((prevTotal) => prevTotal + 1);
@@ -58,9 +58,8 @@ function QnaList() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${bootpath}/board/list`);
-        const filteredDate = response.data.filter((item) => item.boardtype);
+        const filteredDate = response.data.filter((item) => !item.boardtype);
         setData(filteredDate);
-        setTotalElement(filteredDate.length);
       } catch (error) {
         console.log("error 남", error);
       }
@@ -74,7 +73,7 @@ function QnaList() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"> QNA </h3>
+          <h3 className="sub_title"> 공지사항 새 글 </h3>
           <p>{writer}</p>
           <input
             type="text"
@@ -91,23 +90,10 @@ function QnaList() {
           <br /> <br />
           <button onClick={SaveQna}>저장하기</button> <br />
           <br />
-          <span>총 {totalElement} 건 </span>
-          <div className="qna-list">
-            <ul>
-              {data.map((item) => (
-                <li key={item.no}>
-                  <Link to={`/board/qna/detail?no=${item.no}`}>
-                    {item.title}
-                  </Link>
-                  <p>{new Date(item.registdate).toLocaleDateString()}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default QnaList;
+export default BoardNew;

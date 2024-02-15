@@ -24,6 +24,7 @@ import AfterAcceptFunding from "./component/funding/AfterAcceptFunding";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
+import BoardNew from "./component/booard/BoardNew";
 import QnaList from "./component/booard/QnaList";
 import QnaDetail from "./component/booard/QnaDetail";
 import MinusPoint from "./component/point/MiusPoint";
@@ -92,6 +93,7 @@ function App() {
             />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
+            <Route path="/admin/boardnew" element={<BoardNew />} />
             <Route path="/board/qna/list" element={<QnaList />} />
             <Route path="/board/qna/detail" element={<QnaDetail />} />
             <Route path="/point/minus" element={<MinusPoint />} />
