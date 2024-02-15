@@ -37,6 +37,8 @@ import FundPointList from "./component/point/FundPointList";
 import RegularPayList from "./component/funding/RegularPayList";
 import Beforesignup from "./component/member/BeforeSignup";
 
+import AlarmList from "./component/alarm/AlarmList";
+
 function App() {
   return (
     <div className="App-background">
@@ -96,6 +98,7 @@ function App() {
             <Route path="/point/pointlist" element={<PointList />} />
             <Route path="/point/fundpointlist" element={<FundPointList />} />
             <Route path="/funding/regularpay" element={<RegularPayList />} />
+            <Route path="/alarm" element={<AlarmList />} />
           </Routes>
         </div>
       </header>

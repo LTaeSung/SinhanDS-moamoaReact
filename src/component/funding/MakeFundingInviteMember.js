@@ -70,7 +70,7 @@ function MakeFundingInviteMember({ state }) {
       })
       .then((res) => {
         console.log(res);
-        //window.location.href = "/funding/AfterMakeFunding";
+        window.location.href = "/funding/AfterMakeFunding";
       });
   };
 
