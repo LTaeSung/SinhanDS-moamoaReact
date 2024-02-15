@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import BoardHeader from "./BoardHeader";
 function BoardList() {
   const bootPath = useContext(BootPathContext);
   const [totalElement, setTotalElement] = useState(0);
@@ -25,7 +25,7 @@ function BoardList() {
 
   return (
     <>
-      {/* <BoardHeader /> */}
+      <BoardHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title"> 공지사항 </h3>
