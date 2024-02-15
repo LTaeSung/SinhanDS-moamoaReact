@@ -20,6 +20,7 @@ import AddAccountList from "./component/member/payment/AddAccountList";
 import CardList from "./component/member/payment/CardList";
 import AddCardList from "./component/member/payment/AddCardList";
 import Accept from "./component/funding/Accept";
+import AfterAcceptFunding from "./component/funding/AfterAcceptFunding";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
@@ -33,6 +34,7 @@ import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
 
 import FundPointList from "./component/point/FundPointList";
+import RegularPayList from "./component/funding/RegularPayList";
 import Beforesignup from "./component/member/BeforeSignup";
 
 function App() {
@@ -81,6 +83,10 @@ function App() {
             <Route path="/funding/info" element={<FundingInfo />} />
             <Route path="/funding/invited" element={<InvitedFunding />} />
             <Route path="/funding/accept" element={<Accept />} />
+            <Route
+              path="/funding/afterAcceptFunding"
+              element={<AfterAcceptFunding />}
+            />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
             <Route path="/board/qna/list" element={<QnaList />} />
@@ -89,6 +95,7 @@ function App() {
             <Route path="/point/plus" element={<PlusPoint />} />
             <Route path="/point/pointlist" element={<PointList />} />
             <Route path="/point/fundpointlist" element={<FundPointList />} />
+            <Route path="/funding/regularpay" element={<RegularPayList />} />
           </Routes>
         </div>
       </header>
