@@ -28,7 +28,7 @@ function Header() {
       <img
         src={"/img/header_challenge.png"}
         onClick={goToLink}
-        target="/funding/join"
+        target="/funding/member/join"
         alt="challenge"
       />
       <img
