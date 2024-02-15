@@ -36,6 +36,7 @@ import ModCardList from "./component/member/payment/ModCardList";
 
 import FundPointList from "./component/point/FundPointList";
 import RegularPayList from "./component/funding/RegularPayList";
+import RePayList from "./component/funding/RePayList";
 import Beforesignup from "./component/member/BeforeSignup";
 
 import AlarmList from "./component/alarm/AlarmList";
@@ -102,6 +103,7 @@ function App() {
             <Route path="/funding/regularpay" element={<RegularPayList />} />
             <Route path="/alarm" element={<AlarmList />} />
             <Route path="/admin/regularpay" element={<RegularPayList />} />
+            <Route path="/admin/repay" element={<RePayList />} />
           </Routes>
         </div>
       </header>

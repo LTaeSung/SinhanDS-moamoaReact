@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import BootPath from "./../../BootPath";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 function AlarmList() {
   const { bootpath } = useContext(BootPath);
@@ -33,8 +34,10 @@ function AlarmList() {
                 {data &&
                   data.map((e, i) => (
                     <li key={i}>
-                      {e.content}
-                      <br />
+                      <Link to={e.link}>
+                        {e.content}
+                        <br />
+                      </Link>
                       <button onClick={() => earseAlarm(e.no)}>
                         알림 지우기
                       </button>
