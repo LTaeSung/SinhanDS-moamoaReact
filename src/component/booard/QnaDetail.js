@@ -9,10 +9,28 @@ function QnaDetail() {
   const [param, setParams] = useSearchParams();
   const [board, setBoard] = useState({});
   const [replies, setReplies] = useState([]);
+  const [writer, setWriter] = useState("");
   const [newReply, setNewReply] = useState({
     writer: "",
     contents: "",
   });
+
+  useEffect(() => {
+    const name = sessionStorage.getItem("name");
+    setWriter(name || "");
+  }, []);
+
+  //로그인정보
+  const getApi = () => {
+    console.log(param);
+    axios.post(bootPath + "/member/devlogin", param).then((res) => {
+      console.log(res);
+      if (res.data.result === "success") {
+        sessionStorage.setItem("name", res.data.name);
+        setWriter(res.data.name);
+      }
+    });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,11 +51,24 @@ function QnaDetail() {
     setNewReply((prev) => ({ ...prev, [name]: value }));
   };
 
+  //qan수정
+
+  //qna삭제
+  const DeleteQna = async () => {
+    try {
+      await axios.delete(`${bootPath.bootpath}/board/deleteQna?no=${board.no}`);
+    } catch (error) {
+      console.error("QnA 삭제 중 에러가 발생했습니다.", error);
+    }
+  };
+
   //댓글저장
   const SaveReply = async () => {
     try {
       await axios.post(`${bootPath.bootpath}/board/reply/add`, {
         ...newReply,
+        contents: newReply.contents,
+        writer: writer,
         boardno: param.get("no"),
       });
 
@@ -83,7 +114,6 @@ function QnaDetail() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title"> QNA </h3>
-
           <div>
             <h5>QNA 상세 페이지</h5>
             <p>no: {board.no}</p>
@@ -96,19 +126,11 @@ function QnaDetail() {
           </div>
           <div>
             <button>qna 수정</button> <br />
-            <button>qna 삭제</button>
+            <button onClick={DeleteQna}>qna 삭제</button>
           </div>
           <br />
           <h5>댓글 작성하기</h5>
-          <div>
-            <input
-              type="text"
-              name="writer"
-              placeholder="writer"
-              value={newReply.writer}
-              onChange={InputChange}
-            ></input>
-          </div>
+          <div>{writer}</div>
           <div>
             <textarea
               name="contents"

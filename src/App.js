@@ -51,7 +51,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/member/signup" element={<Signup />} />
+            <Route path="/login/signup" element={<Signup />} />
             <Route path="/login/beforeSignup" element={<Beforesignup />} />
             <Route path="/member/friend/list" element={<FriendList />} />
             <Route path="/member/payment/account" element={<AccountList />} />

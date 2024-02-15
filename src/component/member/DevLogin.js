@@ -42,6 +42,9 @@ const MyLogin = () => {
               로그인
             </Link>
           </form>
+
+          <br />
+          <Link to={`/login`}>네이버로 로그인하기</Link>
         </div>
       </div>
     </>
