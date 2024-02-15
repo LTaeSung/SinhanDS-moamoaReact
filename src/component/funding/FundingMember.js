@@ -24,14 +24,17 @@ function FundingMember() {
   useEffect(() => {
     getApi();
   }, []);
+
   return (
     <>
       <div className="sub">
         {data &&
           data.map((item) => (
             <div key={item.no}>
-              <p>{item.membername}</p>
-              <p>{item.giveup}</p>
+              {item.giveup === true ? null : item.participationdate ===
+                null ? null : (
+                <p>{item.membername}</p>
+              )}
             </div>
           ))}
       </div>
