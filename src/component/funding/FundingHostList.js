@@ -38,11 +38,7 @@ function FundingHostList() {
       <div className="sub">
         <div className="size">
           <div>
-            <div style={{ textAlign: "right" }}>
-              <Link className="btn" to="/funding/make">
-                펀딩 등록하기
-              </Link>
-            </div>
+            <div style={{ textAlign: "right" }}></div>
             <p>
               <span>
                 <strong>총 {totalElements} 개 펀딩</strong>
