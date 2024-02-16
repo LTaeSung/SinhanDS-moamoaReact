@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import bootPath from "../../BootPath";
 import CommonImagePath from "../../commonImagePath";
+import $ from "jquery";
 function JoinFundingList() {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
@@ -18,9 +19,11 @@ function JoinFundingList() {
   useEffect(() => {
     getApi();
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
+  const goToFundInfo = (e) => {
+    console.log(e.target);
+    // window.location.href = "/funding/info?no=" + $(e.target).attr("value");
+  };
   return (
     <>
       <FundingHeader />
@@ -32,8 +35,26 @@ function JoinFundingList() {
               <>
                 <ul>
                   {data.map((Data) => (
-                    <li key={Data.no}>
-                      <div>ㄹㄹ</div>
+                    <li key={Data.fundingNo}>
+                      <Link
+                        to={
+                          "/funding/info?no=" +
+                          Data.fundingNo +
+                          "&stateMessage=" +
+                          Data.stateMessage
+                        }
+                      >
+                        <div>펀드명 : {Data.title}</div>
+                        <div>내가 낸 금액 : {Data.myPayAmount}</div>
+                        <div>전체 모인 금액: {Data.totalPayAmount}</div>
+                        <div>상태 : {Data.stateMessage}</div>
+                        <div>남은 일수 : {Data.dueDateLeft}</div>
+                        <div>상태 색 : {Data.color}</div>
+                      </Link>
+
+                      <br />
+                      <br />
+                      <br />
                     </li>
                   ))}
                 </ul>
