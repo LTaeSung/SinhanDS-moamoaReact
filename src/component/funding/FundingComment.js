@@ -6,10 +6,13 @@ import axios from "axios";
 function FundingComment() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
+  const [totalElement, setTotalElement] = useState(0);
   const [data, setData] = useState([]);
   const [param, setParam] = useState({});
   const [writer, setWriter] = useState("");
   const [no, setNo] = useState("");
+  const [newReply, setNewReply] = useState({ contents: "" });
+
   let funding_no = params.get("no");
 
   const getReplyApi = async () => {
@@ -17,6 +20,7 @@ function FundingComment() {
       .get(`${bootPath.bootpath}/funding/comment/list?fundingno=${funding_no}`)
       .then((res) => {
         setData(res.data);
+        setTotalElement(res.data.length);
         console.log(res.data);
       })
       .catch((error) => {
@@ -49,20 +53,51 @@ function FundingComment() {
     });
   };
 
+  //댓글등록
+  const input = (e) => {
+    setNewReply({ contents: e.target.value });
+  };
+
+  const commentSubmit = async () => {
+    try {
+      const response = await axios.post(
+        `${bootPath.bootpath}/funding/comment/add`,
+        {
+          name: writer,
+          contents: newReply.contents,
+          photo: "",
+          fundingno: funding_no,
+        }
+      );
+      setData((prevData) => [...prevData, response.data]);
+      setTotalElement((prevTotal) => prevTotal + 1);
+      setNewReply({ contents: "" });
+    } catch (error) {
+      console.log("에러발생", error);
+    }
+  };
+
   return (
     <>
-      <div>나 : {writer}</div>
-      <div className="sub">
-        <p>댓글목록</p>
-        {data &&
-          data.map((item) => (
-            <div key={item.no}>
-              {item.name}
-              {item.contents}
-            </div>
-          ))}
+      <div>{writer}</div>
+      <div>
+        <textarea
+          value={newReply.contents}
+          placeholder="댓글을 입력하세요."
+          onChange={input}
+        ></textarea>{" "}
+        <br />
+        <button onClick={commentSubmit}>댓글 저장</button>
       </div>
-      <br />
+      <p>--------댓글목록----------</p>
+      <p>총 댓글 수 : {totalElement} </p>
+      {data &&
+        data.map((item) => (
+          <div key={item.no}>
+            {item.name}
+            {item.contents}
+          </div>
+        ))}
     </>
   );
 }
