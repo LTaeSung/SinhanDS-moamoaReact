@@ -3,10 +3,10 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import bootPath from "../../BootPath";
-import CommonImagePath from "../../commonImagePath";
+import RegistedImagePath from "../../registedImagePath";
 function FundingHostList() {
   const { bootpath } = useContext(bootPath);
-  const { commonImagePath } = useContext(CommonImagePath);
+  const { registedImagePath } = useContext(RegistedImagePath);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const [totalElements, setTotalElement] = useState(0); // 총개수
@@ -64,7 +64,7 @@ function FundingHostList() {
               <div key={item.no}>
                 사진:
                 <img
-                  src={`${commonImagePath}${item.photo}`}
+                  src={`${registedImagePath}${item.photo}`}
                   width="100"
                   alt="펀딩 사진"
                 />
