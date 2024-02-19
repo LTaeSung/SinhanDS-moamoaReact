@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.headerNav {
+  height: auto;
+  background-color: #ffffff;
+  max-width: 400px;
+  display: flex;
+}
+
+.site_Icon_container {
+  width: 300px;
+}
+
+.icon_container {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.icon {
+  margin-right: 3px;
+}
