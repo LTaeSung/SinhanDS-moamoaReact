@@ -7,6 +7,7 @@ import axios from "axios";
 import $ from "jquery";
 function Accept({ no }) {
   const location = useLocation();
+  console.log("accept안의no: " + location.state.no);
   console.log("location.state.no" + location.state.no);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
@@ -28,6 +29,7 @@ function Accept({ no }) {
   }, []);
 
   const [select, setSelect] = useState({ fundingMemberNo: location.state.no });
+  console.log("typeof: " + typeof select.fundingMemberNo);
   const handleRadioButton = (e) => {
     setSelect({ ...select, payment_no: e.target.value });
     console.log(select);

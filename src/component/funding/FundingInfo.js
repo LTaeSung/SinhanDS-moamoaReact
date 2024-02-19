@@ -15,7 +15,7 @@ function FundingInfo() {
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
   let messageNo = params.get("messageNo");
-  let fundingMemberNo = params.get("fundingMemberNo");
+  let fundingMemberNo = Number(params.get("fundingMemberNo"));
   console.log("잘나오나: " + messageNo);
   // const [response, setResponse] = useState(1);
 

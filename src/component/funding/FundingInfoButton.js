@@ -8,6 +8,7 @@ import MessageNo6 from "./fundingInfoButtonList/MessageNo6";
 import MessageNo7 from "./fundingInfoButtonList/MessageNo7";
 
 const FundingInfoButton = ({ messageNo, fundingMemberNo }) => {
+  console.log(typeof fundingMemberNo);
   console.log(messageNo);
 
   return (
