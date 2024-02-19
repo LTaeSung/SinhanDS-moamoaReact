@@ -6,6 +6,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 import FundingMember from "./FundingMember";
+import FundingState from "./FundingState";
 
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
@@ -13,6 +14,7 @@ function FundingInfo() {
   const [data, setData] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
+
   const getInfo = () => {
     axios.get(`${bootPath.bootpath}/fund/host/${no}`).then((res) => {
       setData(res.data);
@@ -45,13 +47,8 @@ function FundingInfo() {
             <p>마감일: {data.fundingduedate}</p>
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
-            <div style={{ textAlign: "center" }}>
-              <Link className="btn" to="/funding/make">
-                결제정보 수정
-              </Link>
-              <Link className="btn" to="/funding/make">
-                중도포기
-              </Link>
+            <div>
+              <FundingState Json={{ key: "{data.state}" }} />
             </div>
             <p>참여자 목록</p>
             <FundingMember />
