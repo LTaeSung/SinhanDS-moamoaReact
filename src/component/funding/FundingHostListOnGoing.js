@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 
-const FundingJoinListEnd = ({ render, setRender }) => {
+const FundingHostListOnGoing = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
   const getApi = async () => {
     axios
-      .get(`${bootpath}/funding/member/join/end?member_no=${member_no}`)
+      .get(`${bootpath}/fund/host/ongoing?member_no=${member_no}`)
       .then((res) => {
         setData(res.data);
       });
@@ -38,8 +38,10 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                     <img src={registedImagePath + Data.photo} width="100" />
                     <div>펀드명 : {Data.title}</div>
                     <div>내가 낸 금액 : {Data.myPayAmount}</div>
-                    <div>내가 받은 금액: {Data.settlementAmount}</div>
-                    <div>메세지 : {Data.message}</div>
+                    <div>전체 모인 금액: {Data.totalPayAmount}</div>
+                    <div>상태 : {Data.stateMessage}</div>
+                    <div>남은 일수 : {Data.dueDateLeft}</div>
+                    <div>상태 색 : {Data.color}</div>
                   </Link>
 
                   <br />
@@ -57,4 +59,4 @@ const FundingJoinListEnd = ({ render, setRender }) => {
   );
 };
 
-export default FundingJoinListEnd;
+export default FundingHostListOnGoing;

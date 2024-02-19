@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 
-const FundingJoinListEnd = ({ render, setRender }) => {
+const FundingHostListEnd = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
   const getApi = async () => {
     axios
-      .get(`${bootpath}/funding/member/join/end?member_no=${member_no}`)
+      .get(`${bootpath}/fund/host/end?member_no=${member_no}`)
       .then((res) => {
         setData(res.data);
       });
@@ -57,4 +57,4 @@ const FundingJoinListEnd = ({ render, setRender }) => {
   );
 };
 
-export default FundingJoinListEnd;
+export default FundingHostListEnd;
