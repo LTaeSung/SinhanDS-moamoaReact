@@ -89,42 +89,44 @@ function CardList() {
               <>
                 {payment.filter((payment) => payment.paymenttype === 1).length >
                 0 ? (
-                  <ul className="rounded-square">
+                  <ul>
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment) => (
                         <li key={payment.no}>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td className="table_font">
-                                  은행명: {payment.company}
-                                </td>
-                                <td className="table_button">
-                                  <button className="card_modify">
-                                    <Link
-                                      to={`/member/payment/card/modify/${payment.no}`}
+                          <div className="rounded-square">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td className="table_font">
+                                    카드사: {payment.company}
+                                  </td>
+                                  <td>
+                                    <button className="card_modify">
+                                      <Link
+                                        to={`/member/payment/card/modify/${payment.no}`}
+                                      >
+                                        카드 수정
+                                      </Link>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="table_font_no">
+                                    카드 번호: {payment.account}
+                                  </td>
+                                  <td>
+                                    <button
+                                      className="card_delete"
+                                      onClick={() => CardNo(payment.no)}
                                     >
-                                      카드 수정
-                                    </Link>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className="table_font">
-                                  카드번호: {payment.account}
-                                </td>
-                                <td className="table_button">
-                                  <button
-                                    className="card_delete"
-                                    onClick={() => CardNo(payment.no)}
-                                  >
-                                    카드 삭제
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                                      카드 삭제
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </li>
                       ))}
                   </ul>
