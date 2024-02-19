@@ -37,7 +37,6 @@ const MessageNo1 = ({ obj }) => {
 
   return (
     <>
-      {" "}
       <Link className="btn" to={"/funding/modifycard?no=" + obj.fundingNo}>
         결제정보 수정
       </Link>
