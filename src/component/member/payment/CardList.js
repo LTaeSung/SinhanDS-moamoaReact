@@ -6,9 +6,11 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 import { Routes, Route } from "react-router-dom";
 import AddCardList from "./AddCardList";
 
+import "../../../CardList.css";
 function CardList() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
@@ -85,8 +87,8 @@ function CardList() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">내 카드</h3>
-          <div>
+          <h3 className="sub_title" />
+          <div class="card_container">
             {member_no ? (
               <>
                 {payment.filter((payment) => payment.paymenttype === 1).length >
@@ -96,34 +98,49 @@ function CardList() {
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment) => (
                         <li key={payment.no}>
-                          <p>결제수단: 카드</p>
-                          <p>은행명: {payment.company}</p>
-                          <p>카드번호: {payment.account}</p>
-                          <p>
-                            유효기간:
-                            {payment.validdate
-                              ? payment.validdate.substring(0, 10)
-                              : null}
-                          </p>
-                          <p>CVC: {payment.cvc}</p>
-                          <Link
-                            to={`/member/payment/card/modify/${payment.no}`}
-                          >
-                            카드 수정
-                          </Link>
-                          <Link
-                            className="btn"
-                            onClick={() => CardNo(payment.no)}
-                          >
-                            카드 삭제
-                          </Link>
+                          <div className="rounded-square">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td className="table_font">
+                                    카드사: {payment.company}
+                                  </td>
+                                  <td>
+                                    <button className="card_modify">
+                                      <Link
+                                        to={`/member/payment/card/modify/${payment.no}`}
+                                      >
+                                        카드 수정
+                                      </Link>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="table_font_no">
+                                    카드 번호: {payment.account}
+                                  </td>
+                                  <td>
+                                    <button
+                                      className="card_delete"
+                                      onClick={() => CardNo(payment.no)}
+                                    >
+                                      카드 삭제
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </li>
                       ))}
                   </ul>
                 ) : (
                   <p>카드가 없습니다.</p>
                 )}
-                <Link to={`/member/payment/card/add`}>카드 추가</Link>
+
+                <Link to={`/member/payment/card/add`}>
+                  <p className="card_add">+ 카드 추가</p>
+                </Link>
               </>
             ) : (
               <p>
@@ -131,6 +148,7 @@ function CardList() {
               </p>
             )}
           </div>
+          <hr />
         </div>
       </div>
     </>

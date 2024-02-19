@@ -73,7 +73,6 @@ function MemberInfo() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title" />
-
           <table>
             <tr>
               <td rowSpan="5">
@@ -125,6 +124,7 @@ function MemberInfo() {
               <Link to={"/point/PlusPoint"}>충전</Link>
             </button>
           </div>
+          <hr />
         </div>
       </div>
     </>

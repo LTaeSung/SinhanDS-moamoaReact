@@ -21,8 +21,8 @@ function Mypage_infocopy() {
       <div className="sub">
         <div className="size">
           <MemberInfo />
-          <Accountlist />
           <Cardlist />
+          <Accountlist />
         </div>
       </div>
     </>

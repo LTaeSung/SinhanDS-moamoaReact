@@ -1,24 +1,58 @@
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import "../../MemberHeader.css";
+
 function MemberHeader() {
   const { bootpath } = useContext(BootPath);
+
+  const active = {
+    color: "red",
+    fontWeight: 700,
+  };
+
   return (
     <div>
       <div className="headerNav">
-        <button className="Menu_button">
-          <Link to={"/member/info"}>회원 정보</Link>
-        </button>
+        <NavLink
+          className="navbarMenu"
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+          to={"/member/info"}
+        >
+          회원정보
+        </NavLink>
 
-        <button className="Menu_button">
-          <Link to={"/member/friend/list"}>친구 목록</Link>
-        </button>
+        <NavLink
+          className="navbarMenu"
+          to={"/member/friend/list"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
+          친구 목록
+        </NavLink>
 
-        <button className="Menu_button">
-          <Link to={"/member/friend/search"}>친구 신청</Link>
-        </button>
+        <NavLink
+          className="navbarMenu"
+          to={"/member/friend/search"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
+          친구 신청
+        </NavLink>
       </div>
     </div>
   );

@@ -47,7 +47,6 @@ import LeaveCheck from "./component/member/LeaveCheck";
 function App() {
   return (
     <div className="App-background">
-      <h1>메인 페이지(root)</h1>
       <Header />
       <header className="App-header">
         <div className="App-container">
