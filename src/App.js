@@ -42,6 +42,8 @@ import Beforesignup from "./component/member/BeforeSignup";
 
 import AlarmList from "./component/alarm/AlarmList";
 
+import LeaveCheck from "./component/member/LeaveCheck";
+
 function App() {
   return (
     <div className="App-background">
@@ -105,6 +107,7 @@ function App() {
             <Route path="/alarm" element={<AlarmList />} />
             <Route path="/admin/regularpay" element={<RegularPayList />} />
             <Route path="/admin/repay" element={<RePayList />} />
+            <Route path="/member/leavecheck" element={<LeaveCheck />} />
           </Routes>
         </div>
       </header>
