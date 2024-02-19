@@ -12,7 +12,7 @@ import Accountlist from "./payment/AccountList";
 import Cardlist from "./payment/CardList";
 import MemberInfo from "./MemberInfo";
 
-function Mypage_info() {
+function Mypage_infocopy() {
   const { bootpath } = useContext(BootPath);
   return (
     <>
@@ -20,15 +20,13 @@ function Mypage_info() {
 
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">회원정보</h3>
-
           <MemberInfo />
-          <Accountlist />
           <Cardlist />
+          <Accountlist />
         </div>
       </div>
     </>
   );
 }
 
-export default Mypage_info;
+export default Mypage_infocopy;

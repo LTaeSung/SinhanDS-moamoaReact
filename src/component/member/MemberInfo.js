@@ -6,17 +6,23 @@ import MinusPoint from "../point/MiusPoint";
 import PointList from "../point/PointList";
 import RegistedImagePath from "../../registedImagePath";
 import axios from "axios";
+import "../../MemberInfo.css";
 
 function MemberInfo() {
   const { bootpath } = useContext(BootPath);
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
-
   const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+
+  const handleImageClick = () => {
+    document.getElementById("fileInput").click();
+  };
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
+    setUploadedImageUrl(URL.createObjectURL(event.target.files[0])); // 업로드된 이미지 URL 설정
   };
 
   const handleSubmit = async (event) => {
@@ -66,44 +72,59 @@ function MemberInfo() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">회원정보</h3>
-
-          <div>
-            <form onSubmit={handleSubmit}>
-              사진변경
-              <input type="file" onChange={handleFileChange} />
-              <button type="submit">Upload</button>
-            </form>
-            {selectedFile && (
-              <div>
-                <img
-                  src={URL.createObjectURL(selectedFile)}
-                  width="100"
-                  alt="Selected"
+          <h3 className="sub_title" />
+          <table>
+            <tr>
+              <td rowSpan="5">
+                {data && (
+                  <div class="frame">
+                    <img
+                      className="image"
+                      onClick={handleImageClick}
+                      src={
+                        uploadedImageUrl || `${registedImagePath}${data.photo}`
+                      }
+                      width="100"
+                      alt="Selected"
+                    />
+                  </div>
+                )}
+                <input
+                  id="fileInput"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
                 />
-              </div>
-            )}
+                <br />
+                <button className="changeImage" onClick={handleSubmit}>
+                  프로필 사진 변경
+                </button>
+              </td>
+              <td className="infoId">
+                <p className="Id_color"> {data && data.email.split("@")[0]}</p>
+              </td>
+            </tr>
+            <tr>
+              <td className="infoName">{data && data.name}</td>
+            </tr>
+            <tr>
+              <td className="infoId">
+                보유 포인트: <p className="Id_color2">{data && data.point}</p>
+              </td>
+            </tr>
+          </table>
+          <div class="button_container">
+            <button className="list_button">
+              <Link to={"/point/PointList"}>내역</Link>
+            </button>
+            <button className="withdrawal_button">
+              <Link to={"/point/MiusPoint"}>인출</Link>
+            </button>
+            <button className="button_charge">
+              <Link to={"/point/PlusPoint"}>충전</Link>
+            </button>
           </div>
-
-          {data && (
-            <p>
-              <img
-                src={`${registedImagePath}${data.photo}`}
-                width="100"
-                alt="Selected"
-              />
-            </p>
-          )}
-
-          {data && <p>아이디: {data.email}</p>}
-          {data && <p>이름: {data.name}</p>}
-          {data && <p>보유포인트: {data.point}</p>}
-          {data && <p>네이버 소셜 로그인: {data.email}</p>}
-          <div>
-            <Link to={"/point/PointList"}>내역</Link>
-            <Link to={"/point/MiusPoint"}>인출</Link>
-            <Link to={"/point/PlusPoint"}>충전</Link>
-          </div>
+          <hr />
         </div>
       </div>
     </>
