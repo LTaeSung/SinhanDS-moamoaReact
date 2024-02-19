@@ -93,7 +93,7 @@ function FundingInfo() {
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
             <div style={{ textAlign: "center" }}>
-              <Link className="btn" to="/funding/make">
+              <Link className="btn" to="/funding/modifycard" state={{ no: no }}>
                 결제정보 수정
               </Link>
               <Link className="btn" onClick={GiveUp}>
