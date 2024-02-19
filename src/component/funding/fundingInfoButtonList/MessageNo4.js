@@ -23,10 +23,10 @@ const MessageNo4 = ({ obj }) => {
       console.log(response.data);
       if (response.data.result === "vote_success") {
         console.log("성공에 투표 완료" + response.data.giveUp);
-      } else if (response.data.result === "fail") {
-        alert("투표 안됨");
       } else if (response.data.result === "vote_success_end") {
         alert("내가 마지막으로 투표해서 정산 상태로 변함");
+      } else {
+        alert("투표 안됨");
       }
     } catch (error) {
       console.error("에러 발생:", error);
@@ -38,12 +38,12 @@ const MessageNo4 = ({ obj }) => {
 
       console.log("서버 응답:" + response.data.result);
       console.log(response.data);
-      if (response.data.result === "vote_success") {
-        console.log("성공에 투표 완료" + response.data.giveUp);
-      } else if (response.data.result === "fail") {
-        alert("투표 안됨");
-      } else if (response.data.result === "vote_success_end") {
+      if (response.data.result === "vote_fail") {
+        console.log("실패에 투표 완료" + response.data.giveUp);
+      } else if (response.data.result === "vote_fail_end") {
         alert("내가 마지막으로 투표해서 정산 상태로 변함");
+      } else {
+        alert("투표 안됨");
       }
     } catch (error) {
       console.error("에러 발생:", error);
