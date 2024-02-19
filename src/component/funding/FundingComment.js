@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { Prev } from "react-bootstrap/esm/PageItem";
 
 function FundingComment() {
   const bootPath = useContext(BootPathContext);
@@ -81,6 +80,13 @@ function FundingComment() {
   //댓글수정
   const editComment = async (commentId, updatedContents) => {
     try {
+      const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+      if (commentWriter !== writer) {
+        alert("작성자가 아닙니다.");
+        return;
+      }
+
       await axios.put(
         `${bootPath.bootpath}/funding/comment/update?no=${commentId}`,
         {
@@ -101,6 +107,13 @@ function FundingComment() {
   };
 
   const editClick = (commentId) => {
+    const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+    if (commentWriter !== writer) {
+      alert("작성자가 아닙니다.");
+      return;
+    }
+
     setEditingCommentId(commentId);
   };
 
@@ -120,6 +133,13 @@ function FundingComment() {
   //댓글삭제
   const deleteComment = async (commentId) => {
     try {
+      const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+      if (commentWriter !== writer) {
+        alert("작성자가 아닙니다.");
+        return;
+      }
+
       await axios.delete(
         `${bootPath.bootpath}/funding/comment/delete?no=${commentId}`
       );

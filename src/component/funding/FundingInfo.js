@@ -33,6 +33,7 @@ function FundingInfo() {
       .then((res) => {
         setState(res.data.myFundInfo);
       });
+    console.log("실행은되나2");
   };
   useEffect(() => {
     getInfo();
