@@ -34,19 +34,19 @@ function InvitedFunding() {
     getData();
   }, []);
 
-  const accept = async (e) => {
-    let param = {};
-    param = { no: e.target.id };
-    await axios.post(bootpath + "/funding/member/accept", param).then((res) => {
-      if (res.data === "success") {
-        window.alert("성공적으로 삭제되었습니다.");
-      } else {
-        console.log(res);
-        window.alert("삭제 실패.");
-      }
-    });
-    getData();
-  };
+  // const accept = async (e) => {
+  //   let param = {};
+  //   param = { no: e.target.id };
+  //   await axios.post(bootpath + "/funding/member/accept", param).then((res) => {
+  //     if (res.data === "success") {
+  //       window.alert("성공적으로 삭제되었습니다.");
+  //     } else {
+  //       console.log(res);
+  //       window.alert("삭제 실패.");
+  //     }
+  //   });
+  //   getData();
+  // };
   const refuse = async (e) => {
     let param = {};
     param = { no: e.target.id };
@@ -78,6 +78,8 @@ function InvitedFunding() {
                     {Data.no} , {Data.startmembername}님이 {Data.fundtitle}에
                     초대하였습니다.
                     <br />
+                    펀드번호 : {Data.fundingno}
+                    <br />
                     펀딩 기간 : ggg
                     <br />
                     결제액 : 매월 {Data.monthlypaymentamount}원
@@ -86,7 +88,10 @@ function InvitedFunding() {
                       <Link
                         className="btn"
                         to="/funding/accept"
-                        state={{ no: Data.no }}
+                        state={{
+                          fundingMemberNo: Data.no,
+                          fundingNo: Data.fundingno,
+                        }}
                       >
                         수락
                       </Link>

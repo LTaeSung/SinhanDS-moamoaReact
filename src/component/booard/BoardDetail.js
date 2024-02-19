@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
+import BoardHeader from "./BoardHeader";
 import { Link } from "react-router-dom";
 
 function BoardDetail() {
@@ -25,7 +26,7 @@ function BoardDetail() {
 
   return (
     <>
-      {/* <BoardHeader /> */}
+      <BoardHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title"> 공지사항 </h3>

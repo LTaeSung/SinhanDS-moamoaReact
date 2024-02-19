@@ -24,6 +24,7 @@ import AfterAcceptFunding from "./component/funding/AfterAcceptFunding";
 import FriendSearch from "./component/member/FriendSearch";
 import BoardList from "./component/booard/BoardList";
 import BoardDetail from "./component/booard/BoardDetail";
+import BoardNew from "./component/booard/BoardNew";
 import QnaList from "./component/booard/QnaList";
 import QnaDetail from "./component/booard/QnaDetail";
 import MinusPoint from "./component/point/MiusPoint";
@@ -32,9 +33,11 @@ import PointList from "./component/point/PointList";
 
 import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
+import ModifyCardToFund from "./component/funding/ModifyCardToFund";
 
 import FundPointList from "./component/point/FundPointList";
 import RegularPayList from "./component/funding/RegularPayList";
+import RePayList from "./component/funding/RePayList";
 import Beforesignup from "./component/member/BeforeSignup";
 
 import AlarmList from "./component/alarm/AlarmList";
@@ -42,7 +45,6 @@ import AlarmList from "./component/alarm/AlarmList";
 function App() {
   return (
     <div className="App-background">
-      <h1>메인 페이지(root)</h1>
       <Header />
       <header className="App-header">
         <div className="App-container">
@@ -69,6 +71,7 @@ function App() {
               path="/member/payment/card/modify/:no"
               element={<ModCardList />}
             />
+            <Route path="/funding/modifycard" element={<ModifyCardToFund />} />
             <Route path="/member/friend/search" element={<FriendSearch />} />
             <Route path="/funding/member/join" element={<FundingJoinList />} />
             <Route path="/funding/make" element={<MakeFunding />} />
@@ -91,6 +94,7 @@ function App() {
             />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
+            <Route path="/admin/boardnew" element={<BoardNew />} />
             <Route path="/board/qna/list" element={<QnaList />} />
             <Route path="/board/qna/detail" element={<QnaDetail />} />
             <Route path="/point/minus" element={<MinusPoint />} />
@@ -100,6 +104,7 @@ function App() {
             <Route path="/funding/regularpay" element={<RegularPayList />} />
             <Route path="/alarm" element={<AlarmList />} />
             <Route path="/admin/regularpay" element={<RegularPayList />} />
+            <Route path="/admin/repay" element={<RePayList />} />
           </Routes>
         </div>
       </header>

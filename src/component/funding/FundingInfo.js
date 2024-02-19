@@ -2,30 +2,47 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 import FundingMember from "./FundingMember";
-import FundingState from "./FundingState";
-
+import FundingComment from "./FundingComment";
+import FundingInfoButton from "./FundingInfoButton";
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState({});
+  const [state, setState] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
 
+  const member_no = sessionStorage.getItem("no") || "";
+
   const getInfo = () => {
-    axios.get(`${bootPath.bootpath}/fund/host/${no}`).then((res) => {
-      setData(res.data);
-      console.log(res);
+    axios.get(`${bootPath.bootpath}/fund/info?no=${no}`).then((res) => {
+      setData(res.data.fundEntity);
     });
   };
 
+  const getMessageState = () => {
+    console.log("실행은되나");
+    axios
+      .get(
+        `${bootPath.bootpath}/funding/member/info?no=${no}&member_no=${member_no}`
+      )
+      .then((res) => {
+        setState(res.data.myFundInfo);
+      });
+  };
   useEffect(() => {
     getInfo();
+    getMessageState();
   }, []);
 
+  useEffect(() => {
+    console.log("상태");
+    console.log(state);
+  }, [state]);
   return (
     <>
       <FundingHeader />
@@ -47,14 +64,15 @@ function FundingInfo() {
             <p>마감일: {data.fundingduedate}</p>
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
-            <div>
-              <FundingState Json={{ key: "{data.state}" }} />
+            <div style={{ textAlign: "center" }}>
+              <FundingInfoButton obj={{ ...state }} />
             </div>
             <p>참여자 목록</p>
             <FundingMember />
             <div>목록</div>
             <p>펀딩 타입: {data.fundingtype}</p>
-            <p>댓글: {data.comment}</p>
+            <p>댓글</p>
+            <FundingComment />
           </div>
         </div>
       </div>
