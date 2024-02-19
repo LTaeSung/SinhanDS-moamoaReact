@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BootPath from "./../../../BootPath";
+import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
