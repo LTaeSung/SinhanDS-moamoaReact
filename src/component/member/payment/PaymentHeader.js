@@ -12,7 +12,7 @@ function PaymentHeader() {
           to={"/member/info/card"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -24,7 +24,7 @@ function PaymentHeader() {
           to={"/member/info/account"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}

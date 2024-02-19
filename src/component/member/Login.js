@@ -18,7 +18,9 @@ function SignIn() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">로그인</h3>
+          <h3 className="sub_title" style={{ textAlign: "center" }}>
+            로그인
+          </h3>
           <hr className="line"></hr>
           <div className="naver_button_container">
             <div onClick={NaverLogin} className="login_btn">

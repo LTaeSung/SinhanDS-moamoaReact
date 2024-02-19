@@ -12,7 +12,7 @@ function BoardHeader() {
           to={"/board/list"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -24,7 +24,7 @@ function BoardHeader() {
           to={"/board/qna/list"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}

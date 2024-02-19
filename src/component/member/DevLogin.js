@@ -40,6 +40,7 @@ const MyLogin = () => {
             <Link className="btn" onClick={save}>
               로그인
             </Link>
+            <hr className="line"></hr>
           </form>
           <br />
           <Link className="login_btn" to={`/login`}>

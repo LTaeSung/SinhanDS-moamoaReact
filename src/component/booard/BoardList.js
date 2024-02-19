@@ -3,6 +3,7 @@ import BootPathContext from "./../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
+import "./boardlist.css";
 function BoardList() {
   const bootPath = useContext(BootPathContext);
   const [totalElement, setTotalElement] = useState(0);
@@ -28,14 +29,25 @@ function BoardList() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"> 공지사항 </h3>
-          <span>총 {totalElement} 건 </span>
+          <div className="slect">
+            <span className="span_title">공지사항</span>
+            <span>총 {totalElement} 건 </span>
+            <select>
+              <option value="0">전체</option>
+              <option value="1">진행중</option>
+              <option value="2">완료</option>
+            </select>
+          </div>
           <div className="notices">
             <ul>
               {data.map((item) => (
                 <li key={item.no}>
-                  <Link to={`/board/detail?no=${item.no}`}>{item.title}</Link>
-                  <p>{new Date(item.registdate).toLocaleDateString()}</p>
+                  <Link to={`/board/detail?no=${item.no}`}>
+                    <div>{item.title}</div>
+                    <p>
+                      안내 | {new Date(item.registdate).toLocaleDateString()}
+                    </p>
+                  </Link>
                 </li>
               ))}
             </ul>
