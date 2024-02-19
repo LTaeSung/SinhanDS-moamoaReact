@@ -35,15 +35,40 @@ const MyLogin = () => {
     <>
       <div className="sub">
         <div className="size">
-          <form method="post" action="">
+          <form method="post" action="" style={{ textAlign: "center" }}>
             <input type="text" name="email" onChange={handleChange} />
             <Link className="btn" onClick={save}>
               로그인
             </Link>
           </form>
-
           <br />
-          <Link to={`/login`}>네이버로 로그인하기</Link>
+          <Link className="login_btn" to={`/login`}>
+            N 네이버로 로그인하기
+          </Link>
+          <br />
+          <Link
+            className="login_btn"
+            style={{ backgroundColor: "#FEE500", border: "2px solid #FEE500" }}
+            to={`/login`}
+          >
+            K 카카오로 로그인하기
+          </Link>
+          <br />
+          <Link
+            className="login_btn"
+            to={`/login`}
+            style={{ backgroundColor: "#1877F2", border: "2px solid #1877F2" }}
+          >
+            f 페이스북으로 로그인하기
+          </Link>
+          <br />
+          <Link
+            className="login_btn"
+            to={`/login`}
+            style={{ backgroundColor: "#EB4335", border: "2px solid #EB4335" }}
+          >
+            G 구글로 로그인하기
+          </Link>
         </div>
       </div>
     </>

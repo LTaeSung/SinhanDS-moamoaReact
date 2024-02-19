@@ -21,12 +21,9 @@ function SignIn() {
           <h3 className="sub_title">로그인</h3>
           <hr className="line"></hr>
           <div className="naver_button_container">
-            <img
-              onClick={NaverLogin}
-              className="naver_button"
-              src={commonImagePath + "naver_login.png"}
-              alt="네이버 로그인"
-            />
+            <div onClick={NaverLogin} className="login_btn">
+              N 네이버로 로그인하기
+            </div>
           </div>
         </div>
       </div>
