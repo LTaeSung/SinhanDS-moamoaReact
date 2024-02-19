@@ -7,13 +7,16 @@ import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 import FundingMember from "./FundingMember";
 import FundingComment from "./FundingComment";
-
+import FundingInfoButton from "./FundingInfoButton";
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
+  let messageNo = params.get("messageNo");
+  let fundingMemberNo = params.get("fundingMemberNo");
+  console.log("잘나오나: " + messageNo);
   // const [response, setResponse] = useState(1);
 
   const member_no = sessionStorage.getItem("no") || "";
@@ -56,18 +59,7 @@ function FundingInfo() {
     });
   };
 
-  // 혹시 모르니까 지우지 말기
-  // const checkGiveup = async () => {
-  //   const checkResponse = await axios.post(
-  //     `${bootPath.bootpath}/fund/checkgiveup`,
-  //     formData
-  //   );
-  //   console.log("받아온 기브업" + checkResponse.data.checkgiveup);
-  //   sessionStorage.setItem("checkgiveup", checkResponse.data.checkgiveup);
-  // };
-
   useEffect(() => {
-    // checkGiveup();
     getInfo();
   }, []);
 
@@ -93,6 +85,10 @@ function FundingInfo() {
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
             <div style={{ textAlign: "center" }}>
+              <FundingInfoButton
+                messageNo={messageNo}
+                fundingMemberNo={fundingMemberNo}
+              />
               <Link className="btn" to="/funding/make">
                 결제정보 수정
               </Link>

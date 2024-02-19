@@ -32,7 +32,11 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
                       "/funding/info?no=" +
                       Data.fundingNo +
                       "&stateMessage=" +
-                      Data.stateMessage
+                      Data.stateMessage +
+                      "&messageNo=" +
+                      Data.messageNo +
+                      "fundingMemberNo=" +
+                      Data.fundingMemberNo
                     }
                   >
                     <img src={registedImagePath + Data.photo} width="100" />
@@ -42,6 +46,7 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
                     <div>상태 : {Data.stateMessage}</div>
                     <div>남은 일수 : {Data.dueDateLeft}</div>
                     <div>상태 색 : {Data.color}</div>
+                    <div>메세지 상태 : {Data.messageNo}</div>
                   </Link>
 
                   <br />

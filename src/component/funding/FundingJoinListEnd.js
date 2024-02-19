@@ -32,7 +32,11 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                       "/funding/info?no=" +
                       Data.fundingNo +
                       "&stateMessage=" +
-                      Data.stateMessage
+                      Data.stateMessage +
+                      "&messageNo=" +
+                      Data.messageNo +
+                      "&fundingMemberNo=" +
+                      Data.fundingMemberNo
                     }
                   >
                     <img src={registedImagePath + Data.photo} width="100" />
