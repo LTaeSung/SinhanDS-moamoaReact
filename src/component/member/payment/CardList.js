@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import "../../../CardList.css";
 function CardList() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
@@ -83,44 +83,55 @@ function CardList() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">내 카드</h3>
-          <div>
+          <h3 className="sub_title" />
+          <div class="card_container">
             {member_no ? (
               <>
                 {payment.filter((payment) => payment.paymenttype === 1).length >
                 0 ? (
-                  <ul>
+                  <ul className="rounded-square">
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment) => (
                         <li key={payment.no}>
-                          <p>결제수단: 카드</p>
-                          <p>은행명: {payment.company}</p>
-                          <p>카드번호: {payment.account}</p>
-                          <p>
-                            유효기간:
-                            {payment.validdate
-                              ? payment.validdate.substring(0, 10)
-                              : null}
-                          </p>
-                          <p>CVC: {payment.cvc}</p>
-                          <Link
-                            to={`/member/payment/card/modify/${payment.no}`}
-                          >
-                            카드 수정
-                          </Link>
-                          <Link
-                            className="btn"
-                            onClick={() => CardNo(payment.no)}
-                          >
-                            카드 삭제
-                          </Link>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="table_font">
+                                  은행명: {payment.company}
+                                </td>
+                                <td className="table_button">
+                                  <button className="card_modify">
+                                    <Link
+                                      to={`/member/payment/card/modify/${payment.no}`}
+                                    >
+                                      카드 수정
+                                    </Link>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="table_font">
+                                  카드번호: {payment.account}
+                                </td>
+                                <td className="table_button">
+                                  <button
+                                    className="card_delete"
+                                    onClick={() => CardNo(payment.no)}
+                                  >
+                                    카드 삭제
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </li>
                       ))}
                   </ul>
                 ) : (
                   <p>카드가 없습니다.</p>
                 )}
+
                 <Link to={`/member/payment/card/add`}>카드 추가</Link>
               </>
             ) : (
