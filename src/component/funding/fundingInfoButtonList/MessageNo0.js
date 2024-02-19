@@ -5,15 +5,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const MessageNo0 = ({ fundingMemberNo }) => {
-  console.log(typeof fundingMemberNo);
-  console.log("MessageNO0");
-  console.log("fundingMemberNo: " + fundingMemberNo);
   const { bootpath } = useContext(BootPath);
-  console.log(fundingMemberNo);
   const refuse = async (e) => {
     let param = {};
     param = { no: e.target.id };
-    console.log(param);
     await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
       if (res.data === "success") {
         window.alert("성공적으로 삭제되었습니다.");
