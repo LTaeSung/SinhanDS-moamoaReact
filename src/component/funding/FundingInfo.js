@@ -40,7 +40,7 @@ function FundingInfo() {
   }, []);
 
   useEffect(() => {
-    console.log("상태");
+    console.log("상태3");
     console.log(state);
   }, [state]);
   return (

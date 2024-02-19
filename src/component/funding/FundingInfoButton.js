@@ -7,7 +7,7 @@ import MessageNo6 from "./fundingInfoButtonList/MessageNo6";
 import MessageNo7 from "./fundingInfoButtonList/MessageNo7";
 
 const FundingInfoButton = ({ obj, fundNo, messageNo, fundingMemberNo }) => {
-  console.log(obj.messageNo);
+  console.log("메시지no" + obj.messageNo);
   return (
     <>
       <div>{obj.messageNo === 0 ? <MessageNo0 obj={{ ...obj }} /> : null}</div>

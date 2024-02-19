@@ -7,10 +7,14 @@ import { Link } from "react-router-dom";
 const MessageNo1 = ({ obj }) => {
   console.log("obj: ");
   console.log(obj);
+  console.log("펀드에노");
+  console.log(obj.fundingNo);
+  const member_no = sessionStorage.getItem("no") || "";
   const { bootpath } = useContext(BootPath);
   const [formData, setFormData] = useState({
     //post 전송할 데이터 필드. giveup 필드값을 바꾸기 위해 펀딩의 no와 현재 로그인한 member_no를 담음
-    fundingNo: obj.fundNo,
+    fundingNo: obj.fundingNo,
+    memberno: member_no,
   });
   const GiveUp = async () => {
     try {
