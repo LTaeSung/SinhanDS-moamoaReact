@@ -9,7 +9,7 @@ function RegularPayList() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get(` ${bootpath}/fund/regularPaymentList`);
+      const response = await axios.get(` ${bootpath}/admin/regularPaymentList`);
       setData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -22,9 +22,7 @@ function RegularPayList() {
 
   const requestRegularPay = async () => {
     try {
-      const result = await axios.get(
-        bootpath + "/point/funding_history/regularPayment"
-      );
+      const result = await axios.get(bootpath + "/admin/regularPayment");
       if (result.data === "success") {
         alert("일괄결제 성공, 결제 실패자에 대해 개별 알림 발송");
       } else {

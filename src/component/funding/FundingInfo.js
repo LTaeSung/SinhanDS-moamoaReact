@@ -6,6 +6,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 import FundingMember from "./FundingMember";
+import FundingComment from "./FundingComment";
 
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
@@ -103,7 +104,8 @@ function FundingInfo() {
             <FundingMember />
             <div>목록</div>
             <p>펀딩 타입: {data.fundingtype}</p>
-            <p>댓글: {data.comment}</p>
+            <p>댓글</p>
+            <FundingComment />
           </div>
         </div>
       </div>
