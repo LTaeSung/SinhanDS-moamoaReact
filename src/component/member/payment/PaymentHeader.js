@@ -1,5 +1,5 @@
 import "../../../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../../BootPath";
 import { useContext } from "react";
 function PaymentHeader() {
@@ -7,12 +7,30 @@ function PaymentHeader() {
   return (
     <div>
       <div className="headerNav">
-        <Link className="navbarMenu" to={"/member/info/card"}>
+        <NavLink
+          className="navbarMenu"
+          to={"/member/info/card"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           카드등록
-        </Link>
-        <Link className="navbarMenu" to={"/member/info/account"}>
+        </NavLink>
+        <NavLink
+          className="navbarMenu"
+          to={"/member/info/account"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           계좌등록
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

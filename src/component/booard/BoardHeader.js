@@ -1,5 +1,5 @@
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 function BoardHeader() {
@@ -7,12 +7,30 @@ function BoardHeader() {
   return (
     <div>
       <div className="headerNav">
-        <Link className="navbarMenu" to={"/board/list"}>
+        <NavLink
+          className="navbarMenu"
+          to={"/board/list"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           공지사항
-        </Link>
-        <Link className="navbarMenu" to={"/board/qna/list"}>
+        </NavLink>
+        <NavLink
+          className="navbarMenu"
+          to={"/board/qna/list"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           Q&A
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

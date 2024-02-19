@@ -33,7 +33,6 @@ const MyLogin = () => {
   };
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
           <form method="post" action="">
