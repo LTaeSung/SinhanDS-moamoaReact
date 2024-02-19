@@ -1,5 +1,5 @@
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 function FundingHeader() {
@@ -7,15 +7,42 @@ function FundingHeader() {
   return (
     <div>
       <div className="headerNav">
-        <Link className="navbarMenu" to={"/funding/member/join"}>
+        <NavLink
+          className="navbarMenu"
+          to={"/funding/member/join"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           참여한 펀딩
-        </Link>
-        <Link className="navbarMenu" to={"/funding/host"}>
+        </NavLink>
+        <NavLink
+          className="navbarMenu"
+          to={"/funding/host"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           주최한 펀딩
-        </Link>
-        <Link className="navbarMenu" to={"/funding/invited"}>
+        </NavLink>
+        <NavLink
+          className="navbarMenu"
+          to={"/funding/invited"}
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : {},
+              fontWeight: isActive ? 700 : {},
+            };
+          }}
+        >
           초대받은 펀딩
-        </Link>
+        </NavLink>
         <br />
       </div>
     </div>
