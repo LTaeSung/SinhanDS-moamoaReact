@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import AddCardList from "./AddCardList";
 
 function CardList() {
   const { bootpath } = useContext(BootPath);

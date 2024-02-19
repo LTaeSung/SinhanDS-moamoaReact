@@ -24,6 +24,7 @@ function AddCardList() {
     cvc: "",
   });
 
+  //입력폼 값을 바꿀 때마다 formdata에 저장
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -44,8 +45,8 @@ function AddCardList() {
       console.log("서버 응답:", response.data);
 
       if (response.data.result === "success") {
-        // Success인 경우, 카드 리스트 페이지로 이동
-        navigate(`${address}`);
+        // 카드 추가가 성공하면 바로 전으로 돌아가자. 여러 케이스에 다 적용가능함(새로고침된 상태라 추가한 카드가 보임)
+        navigate(-1);
       } else if (response.data.result === "exists") {
         // 동일 체크는 account로 한다.
         alert("이미 동일한 카드가 존재합니다.");
