@@ -1,24 +1,5 @@
 @charset "utf-8";
 
-.sub {
-  width: 100%;
-  position: relative;
-  margin-top: 80px;
-}
-
-.sub .size {
-  width: 100%;
-  max-width: 1200px;
-  min-height: 1200px;
-  margin: 0 auto;
-}
-
-.sub .sub_title {
-  text-align: center;
-  font-size: 32px;
-  margin: 0 0 15px 0;
-}
-
 /* 게시판 */
 .board_write {
   border-top: 2px solid #221f1f;

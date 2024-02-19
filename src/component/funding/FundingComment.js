@@ -12,6 +12,7 @@ function FundingComment() {
   const [writer, setWriter] = useState("");
   const [no, setNo] = useState("");
   const [newReply, setNewReply] = useState({ contents: "" });
+  const [editingCommentId, setEditingCommentId] = useState(null);
 
   let funding_no = params.get("no");
 
@@ -76,6 +77,84 @@ function FundingComment() {
       console.log("에러발생", error);
     }
   };
+  //댓글수정
+  const editComment = async (commentId, updatedContents) => {
+    try {
+      const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+      if (commentWriter !== writer) {
+        alert("작성자가 아닙니다.");
+        return;
+      }
+
+      await axios.put(
+        `${bootPath.bootpath}/funding/comment/update?no=${commentId}`,
+        {
+          contents: updatedContents,
+        }
+      );
+
+      const updatedComments = data.map((comment) =>
+        comment.no === commentId
+          ? { ...comment, contents: updatedContents }
+          : comment
+      );
+      setData(updatedComments);
+      setEditingCommentId(null);
+    } catch (error) {
+      console.log("댓글 수정 중 에러가 발생했습니다.", error);
+    }
+  };
+
+  const editClick = (commentId) => {
+    const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+    if (commentWriter !== writer) {
+      alert("작성자가 아닙니다.");
+      return;
+    }
+
+    setEditingCommentId(commentId);
+  };
+
+  const saveEditedComment = (commentId) => {
+    const updatedContents = newReply.contents;
+
+    if (updatedContents.trim() === "") {
+      setNewReply({
+        contents: data.find((item) => item.no === commentId).contents,
+      });
+      return;
+    }
+
+    editComment(commentId, updatedContents);
+  };
+
+  //댓글삭제
+  const deleteComment = async (commentId) => {
+    try {
+      const commentWriter = data.find((item) => item.no === commentId)?.name;
+
+      if (commentWriter !== writer) {
+        alert("작성자가 아닙니다.");
+        return;
+      }
+
+      await axios.delete(
+        `${bootPath.bootpath}/funding/comment/delete?no=${commentId}`
+      );
+
+      const resultComments = data.filter((item) => item.no !== commentId);
+      setData(resultComments);
+      setTotalElement((prevTotal) => prevTotal - 1);
+    } catch (error) {
+      console.log("댓글 삭제 중 에러가 발생했습니다.", error);
+    }
+  };
+
+  const deleteClick = (commentId) => {
+    deleteComment(commentId);
+  };
 
   return (
     <>
@@ -94,8 +173,23 @@ function FundingComment() {
       {data &&
         data.map((item) => (
           <div key={item.no}>
-            {item.name}
-            {item.contents}
+            {item.name}{" "}
+            {editingCommentId === item.no ? (
+              <>
+                <textarea value={newReply.contents} onChange={input}></textarea>{" "}
+                <button onClick={() => saveEditedComment(item.no)}>
+                  수정 저장
+                </button>
+              </>
+            ) : (
+              <>
+                {item.contents}
+                <button onClick={() => editClick(item.no)}>
+                  댓글 수정
+                </button>{" "}
+              </>
+            )}
+            <button onClick={() => deleteClick(item.no)}>댓글 삭제</button>
           </div>
         ))}
     </>

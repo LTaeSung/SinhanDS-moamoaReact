@@ -20,6 +20,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 .App-background {
   background-color: #e0e0e0;
 }
@@ -70,8 +71,8 @@
   background-color: #ffffff;
   border-style: solid;
   border-color: black;
+
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -84,15 +85,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* board */
