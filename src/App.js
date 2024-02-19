@@ -63,10 +63,7 @@ function App() {
               element={<AddAccountList />}
             />
             <Route path="/member/payment/card" element={<CardList />} />
-            <Route
-              path="/member/payment/card/add/:address"
-              element={<AddCardList />}
-            />
+            <Route path="/member/payment/card/add" element={<AddCardList />} />
             <Route
               path="/member/payment/account/modify/:no"
               element={<ModAccountList />}

@@ -121,9 +121,7 @@ function CardList() {
                 ) : (
                   <p>카드가 없습니다.</p>
                 )}
-                <Link to={`/member/payment/card/add/${location.pathname}`}>
-                  카드 추가
-                </Link>
+                <Link to={`/member/payment/card/add`}>카드 추가</Link>
               </>
             ) : (
               <p>

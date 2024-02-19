@@ -4,7 +4,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const MessageNo0 = ({ fundingMemberNo }) => {
+const MessageNo0 = ({ obj }) => {
   const { bootpath } = useContext(BootPath);
   const refuse = async (e) => {
     let param = {};
@@ -25,11 +25,14 @@ const MessageNo0 = ({ fundingMemberNo }) => {
       <Link
         className="btn"
         to="/funding/accept"
-        state={{ no: fundingMemberNo }}
+        state={{
+          fundingMemberNo: obj.fundingMemberNo,
+          fundingNo: obj.fundingNo,
+        }}
       >
         수락
       </Link>
-      <button className="btn" onClick={refuse} id={fundingMemberNo}>
+      <button className="btn" onClick={refuse} id={obj.fundingMemberNo}>
         거절
       </button>
     </>

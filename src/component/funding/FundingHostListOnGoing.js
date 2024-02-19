@@ -27,18 +27,7 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
             <ul>
               {data.map((Data) => (
                 <li key={Data.fundingNo}>
-                  <Link
-                    to={
-                      "/funding/info?no=" +
-                      Data.fundingNo +
-                      "&stateMessage=" +
-                      Data.stateMessage +
-                      "&messageNo=" +
-                      Data.messageNo +
-                      "fundingMemberNo=" +
-                      Data.fundingMemberNo
-                    }
-                  >
+                  <Link to={"/funding/info?no=" + Data.fundingNo}>
                     <img src={registedImagePath + Data.photo} width="100" />
                     <div>펀드명 : {Data.title}</div>
                     <div>내가 낸 금액 : {Data.myPayAmount}</div>

@@ -2,7 +2,7 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import CommonImagePath from "../../commonImagePath";
 import FundingMember from "./FundingMember";
@@ -12,57 +12,37 @@ function FundingInfo() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState({});
+  const [state, setState] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
-  let messageNo = params.get("messageNo");
-  let fundingMemberNo = Number(params.get("fundingMemberNo"));
-  console.log("잘나오나: " + messageNo);
-  // const [response, setResponse] = useState(1);
 
   const member_no = sessionStorage.getItem("no") || "";
-  const [formData, setFormData] = useState({
-    //post 전송할 데이터 필드. giveup 필드값을 바꾸기 위해 펀딩의 no와 현재 로그인한 member_no를 담음
-    fundingno: no,
-    memberno: member_no,
-  });
-
-  const GiveUp = async () => {
-    try {
-      const response = await axios.post(
-        `${bootPath.bootpath}/fund/giveup`,
-        formData
-      );
-
-      console.log("서버 응답:" + response.data.result);
-      console.log(response.data);
-      if (response.data.result === "giveup_success") {
-        // giveup_success인 경우, 중도포기 완료된 것임. DB체크해보기
-        console.log("중도포기됐음");
-        console.log("중도포기상태머임" + response.data.giveUp);
-        // sessionStorage.setItem("checkgiveup", response.data.giveUp);
-      } else if (response.data.result === "fail") {
-        alert("중도포기 실패");
-        // setResponse(4);
-      } else if (response.data.result === "one_person_fund_finished") {
-        alert("나 혼자인데 중도포기 눌러서 이 펀딩은 정산상태로 바뀌었다.");
-        // setResponse(3);
-      }
-    } catch (error) {
-      console.error("에러 발생:", error);
-    }
-  };
 
   const getInfo = () => {
-    axios.get(`${bootPath.bootpath}/fund/host/${no}`).then((res) => {
-      setData(res.data);
-      console.log(res);
+    axios.get(`${bootPath.bootpath}/fund/info?no=${no}`).then((res) => {
+      setData(res.data.fundEntity);
     });
   };
 
+  const getMessageState = () => {
+    console.log("실행은되나");
+    axios
+      .get(
+        `${bootPath.bootpath}/funding/member/info?no=${no}&member_no=${member_no}`
+      )
+      .then((res) => {
+        setState(res.data.myFundInfo);
+      });
+  };
   useEffect(() => {
     getInfo();
+    getMessageState();
   }, []);
 
+  useEffect(() => {
+    console.log("상태");
+    console.log(state);
+  }, [state]);
   return (
     <>
       <FundingHeader />
@@ -85,16 +65,7 @@ function FundingInfo() {
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
             <div style={{ textAlign: "center" }}>
-              <FundingInfoButton
-                messageNo={messageNo}
-                fundingMemberNo={fundingMemberNo}
-              />
-              <Link className="btn" to="/funding/modifycard" state={{ no: no }}>
-                결제정보 수정
-              </Link>
-              <Link className="btn" onClick={GiveUp}>
-                중도포기
-              </Link>
+              <FundingInfoButton obj={{ ...state }} />
             </div>
             <p>참여자 목록</p>
             <FundingMember />
