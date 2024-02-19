@@ -89,7 +89,7 @@ function FundingInfo() {
                 messageNo={messageNo}
                 fundingMemberNo={fundingMemberNo}
               />
-              <Link className="btn" to="/funding/make">
+              <Link className="btn" to="/funding/modifycard" state={{ no: no }}>
                 결제정보 수정
               </Link>
               <Link className="btn" onClick={GiveUp}>
