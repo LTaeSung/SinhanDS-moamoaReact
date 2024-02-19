@@ -2,8 +2,8 @@ import MemberHeader from "./MemberHeader";
 import React from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
-import RegistedImagePath from "../../registedImagePath";
 import CommonImagePath from "../../commonImagePath";
+import "../../Login.css";
 function SignIn() {
   const { bootpath } = useContext(BootPath);
   const { commonImagePath } = useContext(CommonImagePath);
@@ -16,15 +16,18 @@ function SignIn() {
   };
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">로그인/가입</h3>
-          <button onClick={NaverLogin}>
-            <div>
-              <img src={commonImagePath + "naver.png"} width="100" />
-            </div>
-          </button>
+          <h3 className="sub_title">로그인</h3>
+          <hr className="line"></hr>
+          <div className="naver_button_container">
+            <img
+              onClick={NaverLogin}
+              className="naver_button"
+              src={commonImagePath + "naver_login.png"}
+              alt="네이버 로그인"
+            />
+          </div>
         </div>
       </div>
     </>

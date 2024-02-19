@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.card_container {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.table_font {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.table_button {
+  padding-left: 150px;
+  padding-top: 7px;
+}
+.rounded-square {
+  width: 370px;
+  height: 80px;
+  margin-left: 5px;
+  border: 2px solid #000; /* 테두리 두께와 색상을 지정합니다. */
+  border-radius: 7px; /* 테두리의 둥근 정도를 조절합니다. */
+}
+
+.card_modify {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #fd0;
+  color: #000000;
+  background-color: #fd0;
+  font-weight: 700;
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+}
+
+.card_delete {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+}
+
+.card_add {
+  font-weight: 700;
+  color: #9ca3af;
+  font-size: 30px;
+  text-align: center;
+}

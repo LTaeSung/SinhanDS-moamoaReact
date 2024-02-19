@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-//import { Prev } from "react-bootstrap/esm/PageItem";
 
 function FundingComment() {
   const bootPath = useContext(BootPathContext);
@@ -13,6 +12,7 @@ function FundingComment() {
   const [writer, setWriter] = useState("");
   const [no, setNo] = useState("");
   const [newReply, setNewReply] = useState({ contents: "" });
+  const [modReply, setModReply] = useState({ contents: "" });
   const [editingCommentId, setEditingCommentId] = useState(null);
 
   let funding_no = params.get("no");
@@ -59,6 +59,9 @@ function FundingComment() {
   const input = (e) => {
     setNewReply({ contents: e.target.value });
   };
+  const inputMod = (e) => {
+    setModReply({ contents: e.target.value });
+  };
 
   const commentSubmit = async () => {
     try {
@@ -78,6 +81,7 @@ function FundingComment() {
       console.log("에러발생", error);
     }
   };
+
   //댓글수정
   const editComment = async (commentId, updatedContents) => {
     try {
@@ -114,21 +118,29 @@ function FundingComment() {
       alert("작성자가 아닙니다.");
       return;
     }
+    const originalContents = data.find(
+      (item) => item.no === commentId
+    )?.contents;
+
+    setModReply({
+      contents: originalContents || "",
+    });
 
     setEditingCommentId(commentId);
   };
 
   const saveEditedComment = (commentId) => {
-    const updatedContents = newReply.contents;
+    const updatedContents = modReply.contents;
 
     if (updatedContents.trim() === "") {
-      setNewReply({
+      setModReply({
         contents: data.find((item) => item.no === commentId).contents,
       });
       return;
     }
 
     editComment(commentId, updatedContents);
+    //setNewReply({ contents: "" });
   };
 
   //댓글삭제
@@ -177,7 +189,10 @@ function FundingComment() {
             {item.name}{" "}
             {editingCommentId === item.no ? (
               <>
-                <textarea value={newReply.contents} onChange={input}></textarea>{" "}
+                <textarea
+                  value={modReply.contents}
+                  onChange={inputMod}
+                ></textarea>{" "}
                 <button onClick={() => saveEditedComment(item.no)}>
                   수정 저장
                 </button>

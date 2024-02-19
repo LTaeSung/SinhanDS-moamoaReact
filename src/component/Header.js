@@ -1,6 +1,6 @@
 import "../App.css";
-import logo from "../logo.svg";
 import $ from "jquery";
+import "./Header.css";
 function Header() {
   const logout = (e) => {
     sessionStorage.removeItem("email");
@@ -15,28 +15,30 @@ function Header() {
   };
   return (
     <div className="headerNav">
-      <button onClick={logout} target="/">
-        <img src={logo} className="App-logo" alt="logo" />
-      </button>
-
-      <img
-        src={"/img/header_bell.png"}
-        onClick={goToLink}
-        target="/alarm"
-        alt="bell"
-      />
-      <img
-        src={"/img/header_challenge.png"}
-        onClick={goToLink}
-        target="/funding/member/join"
-        alt="challenge"
-      />
-      <img
-        src={"/img/header_Profile.png"}
-        onClick={goToLink}
-        target="/member/info"
-        alt="profile"
-      />
+      <div className="site_Icon_container">사이트 로고 올리면 될 듯</div>
+      <div className="icon_container">
+        <img
+          className="icon"
+          src={"/img/header_bell.png"}
+          onClick={goToLink}
+          target="/alarm"
+          alt="bell"
+        />
+        <img
+          className="icon"
+          src={"/img/header_challenge.png"}
+          onClick={goToLink}
+          target="/funding/member/join"
+          alt="challenge"
+        />
+        <img
+          className="icon"
+          src={"/img/header_Profile.png"}
+          onClick={goToLink}
+          target="/member/info"
+          alt="profile"
+        />
+      </div>
     </div>
   );
 }
