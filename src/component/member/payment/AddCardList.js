@@ -6,11 +6,13 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import MemberHeader from "../MemberHeader";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function AddCardList() {
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
+  const { address } = useParams();
 
   const [formData, setFormData] = useState({
     //전송할 데이터 필드
@@ -43,7 +45,7 @@ function AddCardList() {
 
       if (response.data.result === "success") {
         // Success인 경우, 카드 리스트 페이지로 이동
-        navigate("/member/info");
+        navigate(`${address}`);
       } else if (response.data.result === "exists") {
         // 동일 체크는 account로 한다.
         alert("이미 동일한 카드가 존재합니다.");

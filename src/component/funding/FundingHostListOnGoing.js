@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 
-const FundingJoinListOnGoing = ({ render, setRender }) => {
+const FundingHostListOnGoing = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
   const getApi = async () => {
     axios
-      .get(`${bootpath}/funding/member/join/ongoing?member_no=${member_no}`)
+      .get(`${bootpath}/fund/host/ongoing?member_no=${member_no}`)
       .then((res) => {
         setData(res.data);
       });
@@ -27,18 +27,7 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
             <ul>
               {data.map((Data) => (
                 <li key={Data.fundingNo}>
-                  <Link
-                    to={
-                      "/funding/info?no=" +
-                      Data.fundingNo +
-                      "&stateMessage=" +
-                      Data.stateMessage +
-                      "&messageNo=" +
-                      Data.messageNo +
-                      "&fundingMemberNo=" +
-                      Data.fundingMemberNo
-                    }
-                  >
+                  <Link to={"/funding/info?no=" + Data.fundingNo}>
                     <img src={registedImagePath + Data.photo} width="100" />
                     <div>펀드명 : {Data.title}</div>
                     <div>내가 낸 금액 : {Data.myPayAmount}</div>
@@ -64,4 +53,4 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
   );
 };
 
-export default FundingJoinListOnGoing;
+export default FundingHostListOnGoing;

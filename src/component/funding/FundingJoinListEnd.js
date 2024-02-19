@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 
-const FundingJoinListOnGoing = ({ render, setRender }) => {
+const FundingJoinListEnd = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
@@ -32,7 +32,11 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                       "/funding/info?no=" +
                       Data.fundingNo +
                       "&stateMessage=" +
-                      Data.stateMessage
+                      Data.stateMessage +
+                      "&messageNo=" +
+                      Data.messageNo +
+                      "&fundingMemberNo=" +
+                      Data.fundingMemberNo
                     }
                   >
                     <img src={registedImagePath + Data.photo} width="100" />
@@ -57,4 +61,4 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
   );
 };
 
-export default FundingJoinListOnGoing;
+export default FundingJoinListEnd;

@@ -6,12 +6,25 @@ import { useContext } from "react";
 import axios from "axios";
 import $ from "jquery";
 import Calender from "./Calender";
+import AddCardToFund from "./AddCardToFund";
+import { useLocation } from "react-router-dom";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [param, setParam] = useState({});
   const [file, setFile] = useState([]); //파일
+  const [selectedCard, setSelectedCard] = useState(null);
+  const location = useLocation();
+
+  const handleSelectCard = (paymentNo) => {
+    setSelectedCard(paymentNo);
+    setParam({
+      ...param,
+      payment_no: paymentNo,
+    });
+  };
+
   const handleChange = (e) => {
     setParam({
       ...param,
@@ -86,6 +99,7 @@ function MakeFunding() {
             />
             일
           </div>
+          <AddCardToFund onSelectCard={handleSelectCard} />
           <div className="btnSet" style={{ textAlign: "right" }}>
             <Link
               className="btn"

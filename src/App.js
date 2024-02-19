@@ -33,6 +33,7 @@ import PointList from "./component/point/PointList";
 
 import ModAccountList from "./component/member/payment/ModAccountList";
 import ModCardList from "./component/member/payment/ModCardList";
+import ModifyCardToFund from "./component/funding/ModifyCardToFund";
 
 import FundPointList from "./component/point/FundPointList";
 import RegularPayList from "./component/funding/RegularPayList";
@@ -71,6 +72,7 @@ function App() {
               path="/member/payment/card/modify/:no"
               element={<ModCardList />}
             />
+            <Route path="/funding/modifycard" element={<ModifyCardToFund />} />
             <Route path="/member/friend/search" element={<FriendSearch />} />
             <Route path="/funding/member/join" element={<FundingJoinList />} />
             <Route path="/funding/make" element={<MakeFunding />} />
