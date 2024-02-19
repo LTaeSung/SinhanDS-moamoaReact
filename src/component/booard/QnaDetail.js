@@ -60,7 +60,7 @@ function QnaDetail() {
   //qan수정
   const qnaInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`name: ${name}, value: ${value}`);
+
     setBoard((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -73,7 +73,6 @@ function QnaDetail() {
   };
 
   const savaEdit = async () => {
-    console.log("Saving edit...", board);
     try {
       const response = await axios.put(
         `${bootPath.bootpath}/board/update?no=${param.get("no")}`,

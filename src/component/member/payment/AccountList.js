@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../../../AccountList.css";
 
 function AccountList() {
   const { bootpath } = useContext(BootPath);
@@ -78,18 +79,17 @@ function AccountList() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">내 계좌</h3>
-          <div>
+          <h3 className="sub_title" />
+          <div class="card_container">
             {member_no ? (
               <>
                 {payment.filter((payment) => payment.paymenttype === 0).length >
                 0 ? (
-                  <ul>
+                  <ul className="rounded-square">
                     {payment
                       .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                       .map((payment) => (
                         <li key={payment.no}>
-                          <p>결제수단: 계좌</p>
                           <p>은행명: {payment.company}</p>
                           <p>계좌번호: {payment.account}</p>
                           <Link
