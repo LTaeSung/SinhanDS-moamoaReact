@@ -12,6 +12,7 @@ function CardList() {
   const [payment, setPayment] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [formData, setFormData] = useState({
     //전송할 데이터, 여기에서는 선택한 no만 전송해서 삭제요청. no는 payment테이블의 no임
@@ -120,7 +121,9 @@ function CardList() {
                 ) : (
                   <p>카드가 없습니다.</p>
                 )}
-                <Link to="/member/payment/card/add">카드 추가</Link>
+                <Link to={`/member/payment/card/add/${location.pathname}`}>
+                  카드 추가
+                </Link>
               </>
             ) : (
               <p>

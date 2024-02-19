@@ -7,7 +7,7 @@ import axios from "axios";
 import $ from "jquery";
 function Accept({ no }) {
   const location = useLocation();
-  console.log(location.state.no);
+  console.log("location.state.no" + location.state.no);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();

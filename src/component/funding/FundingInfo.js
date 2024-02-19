@@ -13,6 +13,7 @@ function FundingInfo() {
   const [data, setData] = useState({});
   const { commonImagePath } = useContext(CommonImagePath);
   let no = params.get("no");
+  // const [response, setResponse] = useState(1);
 
   const member_no = sessionStorage.getItem("no") || "";
   const [formData, setFormData] = useState({
@@ -28,14 +29,19 @@ function FundingInfo() {
         formData
       );
 
-      console.log("서버 응답:" + response.data);
+      console.log("서버 응답:" + response.data.result);
       console.log(response.data);
-      if (response.data.result === "success") {
-        // 삭제 Success인 경우, 중도포기 상태로 변경
+      if (response.data.result === "giveup_success") {
+        // giveup_success인 경우, 중도포기 완료된 것임. DB체크해보기
         console.log("중도포기됐음");
         console.log("중도포기상태머임" + response.data.giveUp);
+        // sessionStorage.setItem("checkgiveup", response.data.giveUp);
       } else if (response.data.result === "fail") {
         alert("중도포기 실패");
+        // setResponse(4);
+      } else if (response.data.result === "one_person_fund_finished") {
+        alert("나 혼자인데 중도포기 눌러서 이 펀딩은 정산상태로 바뀌었다.");
+        // setResponse(3);
       }
     } catch (error) {
       console.error("에러 발생:", error);
@@ -49,7 +55,18 @@ function FundingInfo() {
     });
   };
 
+  // 혹시 모르니까 지우지 말기
+  // const checkGiveup = async () => {
+  //   const checkResponse = await axios.post(
+  //     `${bootPath.bootpath}/fund/checkgiveup`,
+  //     formData
+  //   );
+  //   console.log("받아온 기브업" + checkResponse.data.checkgiveup);
+  //   sessionStorage.setItem("checkgiveup", checkResponse.data.checkgiveup);
+  // };
+
   useEffect(() => {
+    // checkGiveup();
     getInfo();
   }, []);
 
