@@ -132,7 +132,9 @@ function CardList() {
                   <p>카드가 없습니다.</p>
                 )}
 
-                <Link to={`/member/payment/card/add`}>카드 추가</Link>
+                <Link to={`/member/payment/card/add`}>
+                  <p className="card_add">+ 카드 추가</p>
+                </Link>
               </>
             ) : (
               <p>
@@ -140,6 +142,7 @@ function CardList() {
               </p>
             )}
           </div>
+          <hr />
         </div>
       </div>
     </>
