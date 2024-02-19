@@ -8,6 +8,7 @@ import BoardHeader from "./BoardHeader";
 function QnaDetail() {
   const bootPath = useContext(BootPathContext);
   const [param, setParams] = useSearchParams();
+  const [no, setNo] = useState("");
   const [board, setBoard] = useState({});
   const [replies, setReplies] = useState([]);
   const [writer, setWriter] = useState("");
@@ -28,8 +29,10 @@ function QnaDetail() {
     axios.post(bootPath + "/member/devlogin", param).then((res) => {
       console.log(res);
       if (res.data.result === "success") {
+        sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
         setWriter(res.data.name);
+        setNo(res.data.no);
       }
     });
   };
@@ -62,7 +65,11 @@ function QnaDetail() {
   };
 
   const EditClick = () => {
-    setEditing(true);
+    if (writer === board.writer) {
+      setEditing(true);
+    } else {
+      alert("작성자가 아닙니다.");
+    }
   };
 
   const savaEdit = async () => {
@@ -89,16 +96,20 @@ function QnaDetail() {
   const navigate = useNavigate();
   //qna삭제
   const DeleteQna = async () => {
-    try {
-      await axios.delete(
-        `${bootPath.bootpath}/board/delete?no=${param.get("no")}`
-      );
+    if (writer === board.writer) {
+      try {
+        await axios.delete(
+          `${bootPath.bootpath}/board/delete?no=${param.get("no")}`
+        );
 
-      navigate(`/board/qna/list`);
+        navigate(`/board/qna/list`);
 
-      console.log("QnA가 성공적으로 삭제되었습니다.");
-    } catch (error) {
-      console.error("QnA 삭제 중 에러가 발생했습니다.", error);
+        console.log("QnA가 성공적으로 삭제되었습니다.");
+      } catch (error) {
+        console.error("QnA 삭제 중 에러가 발생했습니다.", error);
+      }
+    } else {
+      alert("작성자가 아닙니다.");
     }
   };
 
@@ -136,13 +147,17 @@ function QnaDetail() {
   const EditReply = async (replyId) => {
     const replyIdx = replies.findIndex((reply) => reply.no === replyId);
 
-    const updatedReplies = [...replies];
-    updatedReplies[replyIdx] = {
-      ...updatedReplies[replyIdx],
-      editing: true,
-    };
+    if (writer === replies[replyIdx].writer) {
+      const updatedReplies = [...replies];
+      updatedReplies[replyIdx] = {
+        ...updatedReplies[replyIdx],
+        editing: true,
+      };
 
-    setReplies(updatedReplies);
+      setReplies(updatedReplies);
+    } else {
+      alert("작성자가 아닙니다.");
+    }
   };
 
   const SaveEditedReply = async (replyId, replyIdx) => {
@@ -165,19 +180,24 @@ function QnaDetail() {
 
   //댓글삭제
   const DeleteReply = async (replyId) => {
-    try {
-      await axios.delete(`${bootPath.bootpath}/board/reply/delete`, {
-        params: {
-          no: replyId,
-        },
-      });
+    const replyIdx = replies.findIndex((reply) => reply.no === replyId);
+    if (writer === replies[replyIdx].writer) {
+      try {
+        await axios.delete(`${bootPath.bootpath}/board/reply/delete`, {
+          params: {
+            no: replyId,
+          },
+        });
 
-      const repliesResponse = await axios.get(
-        `${bootPath.bootpath}/board/reply/list?boardno=${param.get("no")}`
-      );
-      setReplies(repliesResponse.data.content);
-    } catch (error) {
-      console.error("에러", error);
+        const repliesResponse = await axios.get(
+          `${bootPath.bootpath}/board/reply/list?boardno=${param.get("no")}`
+        );
+        setReplies(repliesResponse.data.content);
+      } catch (error) {
+        console.error("에러", error);
+      }
+    } else {
+      alert("작성자가 아닙니다.");
     }
   };
 
