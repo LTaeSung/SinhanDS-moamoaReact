@@ -4,6 +4,7 @@ import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import Iamport from "./iamport";
+import "./PlusPoint.css";
 
 function PlusPoint() {
   const { bootpath } = useContext(BootPath);
@@ -41,16 +42,27 @@ function PlusPoint() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container"></div>
           <h3 className="sub_title">포인트 충전하기</h3>
-          현재 보유 포인트 : {data} 원
+          <div className="space_container"></div>
+
+          <div className="cash_container">
+            <p className="cash_font">현재 보유 포인트 :</p>
+            <p className="cash_color">{data}</p>
+          </div>
+
           <input
+            className="input_amount"
             id="amount"
             name="amount"
             type="number"
             placeholder="충전할 금액을 입력해주세요"
             onChange={onChangeAmount}
           />
-          <Iamport amount={plusPoint.amount} />
+          <div className="add_container"></div>
+          <button className="add_money">
+            <Iamport amount={plusPoint.amount} />
+          </button>
         </div>
       </div>
     </>
