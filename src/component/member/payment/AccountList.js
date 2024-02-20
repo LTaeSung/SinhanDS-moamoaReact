@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "../../../AccountList.css";
+import "./AccountList.css";
 
 function AccountList() {
   const { bootpath } = useContext(BootPath);

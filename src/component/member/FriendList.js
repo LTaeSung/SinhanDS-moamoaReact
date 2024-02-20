@@ -4,7 +4,7 @@ import BootPath from "../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
-import "../../FriendList.css";
+import "./FriendList.css";
 function Friendlist() {
   const { bootpath } = useContext(BootPath);
   const { registedImagePath } = useContext(RegistedImagePath);

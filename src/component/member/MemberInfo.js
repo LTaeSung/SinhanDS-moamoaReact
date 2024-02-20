@@ -6,7 +6,7 @@ import MinusPoint from "../point/MinusPoint";
 import PointList from "../point/PointList";
 import RegistedImagePath from "../../registedImagePath";
 import axios from "axios";
-import "../../MemberInfo.css";
+import "./MemberInfo.css";
 
 function MemberInfo() {
   const { bootpath } = useContext(BootPath);
@@ -73,6 +73,7 @@ function MemberInfo() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title" />
+          <div className="space_container"></div>
           <table>
             <tr>
               <td rowSpan="5">
