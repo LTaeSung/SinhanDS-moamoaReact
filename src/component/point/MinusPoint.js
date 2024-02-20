@@ -85,6 +85,29 @@ function MinusPoint() {
     }
   };
 
+  const bankList = [
+    "없음",
+    "신한",
+    "농협",
+    "국민",
+    "우리",
+    "뭐시기",
+    "저시기",
+    "이거",
+    "나중에",
+    "채워야함",
+    "근데",
+    "지금은",
+    "귀찮아서",
+    "테스트",
+    "용으로",
+    "그냥",
+    "만들어",
+    "둔거니까",
+    "적당히",
+    "무시해요",
+  ];
+
   return (
     <>
       <MemberHeader />
@@ -119,7 +142,7 @@ function MinusPoint() {
                           }
                           onChange={handleRadioButton}
                         />
-                        <p>은행명: {payment.company}</p>
+                        <p>은행명: {bankList[payment.company]}</p>
                         <p>계좌번호: {payment.account}</p>
                       </li>
                     ))}
