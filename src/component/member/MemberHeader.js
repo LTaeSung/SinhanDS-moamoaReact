@@ -19,7 +19,7 @@ function MemberHeader() {
           className="navbarMenu"
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -33,7 +33,7 @@ function MemberHeader() {
           to={"/member/friend/list"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -46,7 +46,7 @@ function MemberHeader() {
           to={"/member/friend/search"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}

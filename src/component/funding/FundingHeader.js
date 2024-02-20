@@ -12,7 +12,7 @@ function FundingHeader() {
           to={"/funding/member/join"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -24,7 +24,7 @@ function FundingHeader() {
           to={"/funding/host"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
@@ -36,7 +36,7 @@ function FundingHeader() {
           to={"/funding/invited"}
           style={({ isActive }) => {
             return {
-              color: isActive ? "red" : {},
+              color: isActive ? "#ff4742" : {},
               fontWeight: isActive ? 700 : {},
             };
           }}
