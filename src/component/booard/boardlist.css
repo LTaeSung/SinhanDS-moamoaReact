@@ -72,6 +72,19 @@ button {
 #writer {
   margin-left: 10px;
 }
+#new_qna {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  width: 300px;
+  height: 30px;
+}
 
 /* qna detail */
 
