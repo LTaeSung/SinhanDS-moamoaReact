@@ -78,6 +78,11 @@ function MakeFunding() {
     }
   };
 
+  const dayOptions = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28,
+  ];
+
   return (
     <>
       <FundingHeader />
@@ -117,12 +122,17 @@ function MakeFunding() {
           </div>
           <div>
             결제 날짜(매월)
-            <input
-              type="text"
-              name="monthly_payment_date"
-              //value="1"
+            <select
               onChange={handleChange}
-            />
+              //type="text"
+              name="monthly_payment_date"
+            >
+              {dayOptions.map((option, idx) => (
+                <option key={idx + 1} value={idx + 1}>
+                  {idx + 1}
+                </option>
+              ))}
+            </select>
             일
           </div>
           <AddCardToFund onSelectCard={handleSelectCard} />
