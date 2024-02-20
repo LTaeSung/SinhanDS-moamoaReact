@@ -3,6 +3,7 @@ import MemberHeader from "./MemberHeader";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BootPath from "./../../BootPath";
+import "./Login.css";
 
 import { useContext } from "react";
 const MyLogin = () => {
@@ -17,6 +18,10 @@ const MyLogin = () => {
     });
   };
   const save = () => {
+    if (document.querySelector("input").value == "") {
+      alert("이메일을 입력해 주세요");
+    }
+
     getApi();
   };
   const getApi = () => {

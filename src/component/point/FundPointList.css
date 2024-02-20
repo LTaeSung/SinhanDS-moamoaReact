@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+.space_container {
+  height: 30px;
+}
+
+.selectBox_container {
+  width: 260px;
+  margin-left: 210px;
+}
+
+.option {
+  font-size: 5px;
+}
+
+.fontDate_container {
+  width: 375px;
+  display: flex;
+}
+
+.font {
+  width: 200px;
+  font-size: 25px;
+  font-weight: 600;
+
+  margin-left: 35px;
+}
+
+.date {
+  font-size: 15px;
+  font-weight: 600;
+  color: gray;
+  margin-left: 20px;
+  margin-top: 7px;
+}
+
+.noAmount_container {
+  width: 375px;
+  display: flex;
+}
+
+.no {
+  width: 350px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.amount {
+  width: 200px;
+  color: red;
+  font-size: 20px;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}

@@ -36,7 +36,12 @@ function Accept({ fundingMemberNo, fundingNo }) {
     console.log(select);
   };
 
-  const submit = () => {
+  const submit = (e) => {
+    if (!("payment_no" in select) || select.payment_no === "") {
+      alert("정기 결제에 등록할 카드를 선택해주세요.");
+      return;
+    }
+    console.log("카드 선택됨" + select.payment_no);
     axios.post(bootpath + "/funding/member/accept", select, {}).then((res) => {
       if (res.data === "success") {
         // navigate("/funding/afterAcceptFunding");

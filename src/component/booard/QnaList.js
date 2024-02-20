@@ -104,7 +104,7 @@ function QnaList() {
               <option value="2">완료</option>
             </select>
           </div>
-          <div className="문의하기">
+          <div className="hide">
             <span id="writer">{writer}</span>
             <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
               Q&A 쓰기

@@ -59,10 +59,8 @@ function PlusPoint() {
             placeholder="충전할 금액을 입력해주세요"
             onChange={onChangeAmount}
           />
-          <div className="add_container"></div>
-          <button className="add_money">
-            <Iamport amount={plusPoint.amount} />
-          </button>
+
+          <Iamport amount={plusPoint.amount} />
         </div>
       </div>
     </>
