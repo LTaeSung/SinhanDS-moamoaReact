@@ -2,10 +2,13 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import BootPath from "../../BootPath";
 import MemberHeader from "./MemberHeader";
+import RegistedImagePath from "../../registedImagePath";
+import "./FriendSearch.css";
 
 function SearchMember() {
   const [email, setEmail] = useState("");
   const { bootpath } = useContext(BootPath);
+  const { registedImagePath } = useContext(RegistedImagePath);
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
@@ -57,33 +60,54 @@ function SearchMember() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">유저 검색</h3>
+          <h3 className="sub_title" />
+          <div className="space_container"></div>
+          <input
+            type="text"
+            className="user_search"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="ID로 검색"
+          />
+          <button className="search_button" onClick={handleSearch}>
+            Search
+          </button>
+          {error && <p>{error}</p>}
           <div>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="ID로 검색"
-            />
-            <button onClick={handleSearch}>Search</button>
-            {error && <p>{error}</p>}
-            <div>
-              <ul>
-                {memberList.map((member) => (
-                  <li key={member.no}>
-                    {member.name}, {member.email}
+            <ul>
+              <div className="search_space_container"></div>
+              {memberList.map((member) => (
+                <li key={member.no}>
+                  <div className="user_searched_container">
+                    <div className="photo_range">
+                      <div className="user_frame">
+                        <img
+                          className="user_image"
+                          src={
+                            member.photo ||
+                            `${registedImagePath}header_Profile.png`
+                          }
+                          alt="프로필 사진"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="nameEmail">
+                      {member.name} {member.email}
+                    </div>
+
                     <button
+                      className="friend_Add"
                       id="Add-friend-btn"
                       onClick={() => handleAddFriend(member_no, member)}
                     >
                       친구 등록
                     </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-          ----------------------------- 작업선
         </div>
       </div>
     </>

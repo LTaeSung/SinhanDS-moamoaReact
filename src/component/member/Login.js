@@ -3,7 +3,7 @@ import React from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import CommonImagePath from "../../commonImagePath";
-import "../../Login.css";
+import "./Login.css";
 function SignIn() {
   const { bootpath } = useContext(BootPath);
   const { commonImagePath } = useContext(CommonImagePath);

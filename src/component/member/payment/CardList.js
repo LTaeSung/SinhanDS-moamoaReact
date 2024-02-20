@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import AddCardList from "./AddCardList";
 
-import "../../../CardList.css";
+import "./CardList.css";
 function CardList() {
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
