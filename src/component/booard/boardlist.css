@@ -162,7 +162,7 @@ button {
   text-align: center;
 }
 .re_btn_area {
-  text-align: right;
+  text-align: center;
   margin-right: 5px;
 }
 .slect_detail {
@@ -179,4 +179,5 @@ button {
   margin-top: 13px;
   font-weight: 700;
   color: #ff4742;
+  width: 70px;
 }

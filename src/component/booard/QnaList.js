@@ -14,6 +14,7 @@ function QnaList() {
   const [writer, setWriter] = useState("");
   const [no, setNo] = useState("");
   const [newQna, setNewQna] = useState({ title: "", contents: "" });
+  const [showNewQna, setShowNewQna] = useState(false);
   const writerInput = useRef();
   const contentInput = useRef();
 
@@ -63,6 +64,7 @@ function QnaList() {
       setTotalElement((prevTotal) => prevTotal + 1);
 
       setNewQna({ title: "", contents: "" });
+      setShowNewQna(false);
     } catch (error) {
       console.log("에러 발생", error);
     }
@@ -74,6 +76,10 @@ function QnaList() {
       try {
         const response = await axios.get(`${bootpath}/board/list`);
         const filteredDate = response.data.filter((item) => item.boardtype);
+        filteredDate.sort(
+          (a, b) => new Date(b.registdate) - new Date(a.registdate)
+        );
+
         setData(filteredDate);
         setTotalElement(filteredDate.length);
       } catch (error) {
@@ -100,35 +106,38 @@ function QnaList() {
           </div>
           <div className="문의하기">
             <span id="writer">{writer}</span>
-            <button id="new_qna">새 글쓰기</button>
+            <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
+              Q&A 쓰기
+            </button>
             <br />
-            <div className="toggle_qna">
-              <input
-                type="text"
-                ref={writerInput}
-                value={newQna.title}
-                placeholder="제목"
-                onChange={(e) =>
-                  setNewQna({ ...newQna, title: e.target.value })
-                }
-              />{" "}
-              <br />
-              <textarea
-                value={newQna.contents}
-                ref={contentInput}
-                placeholder="내용은 255자 이하로 작성해 주세요"
-                onChange={(e) =>
-                  setNewQna({ ...newQna, contents: e.target.value })
-                }
-              ></textarea>{" "}
-            </div>
-            <div className="btn-space">
-              <button className="btn" onClick={SaveQna}>
-                저장하기
-              </button>{" "}
-            </div>
+            {showNewQna && (
+              <div className="toggle_qna">
+                <input
+                  type="text"
+                  ref={writerInput}
+                  value={newQna.title}
+                  placeholder="제목"
+                  onChange={(e) =>
+                    setNewQna({ ...newQna, title: e.target.value })
+                  }
+                />{" "}
+                <br />
+                <textarea
+                  value={newQna.contents}
+                  ref={contentInput}
+                  placeholder="내용은 255자 이하로 작성해 주세요"
+                  onChange={(e) =>
+                    setNewQna({ ...newQna, contents: e.target.value })
+                  }
+                ></textarea>{" "}
+                <div className="btn-space">
+                  <button className="btn" onClick={SaveQna}>
+                    저장하기
+                  </button>{" "}
+                </div>
+              </div>
+            )}
           </div>
-          <br />
           <br />
           <div className="qna-list">
             <ul>
