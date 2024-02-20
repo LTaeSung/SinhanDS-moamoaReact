@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import BootPath from "../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import "../../FriendList.css";
 function Friendlist() {
   const { bootpath } = useContext(BootPath);
 
