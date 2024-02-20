@@ -94,7 +94,7 @@ function QnaList() {
             </select>
           </div>
           <div className="문의하기">
-            <span>작성자: {writer}</span>
+            <span id="writer">{writer}</span>
             <br />
             <input
               type="text"
@@ -110,6 +110,8 @@ function QnaList() {
                 setNewQna({ ...newQna, contents: e.target.value })
               }
             ></textarea>{" "}
+          </div>
+          <div className="btn-space">
             <button className="btn" onClick={SaveQna}>
               작성하기
             </button>{" "}

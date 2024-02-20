@@ -2,6 +2,8 @@ import "../../App.css";
 import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
+import "./boardlist.css";
+
 function BoardHeader() {
   const { bootpath } = useContext(BootPath);
   return (
