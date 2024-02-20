@@ -20,7 +20,10 @@ function AddCardList() {
     paymenttype: 1, //카드인경우 type이 1
     company: "",
     account: "",
+    validdate_month: "",
+    validdate_year: "",
     validdate: "",
+    // validdate: formData.validdate_month + " / " + formData.validdate_year,
     cvc: "",
   });
 
@@ -35,6 +38,10 @@ function AddCardList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData.validdate);
+    formData.validdate =
+      formData.validdate_month + " / " + formData.validdate_year;
+    console.log(formData.validdate);
 
     try {
       const response = await axios.post(
@@ -93,8 +100,14 @@ function AddCardList() {
             유효기간:{" "}
             <input
               type="text"
-              name="validdate"
-              value={formData.validdate}
+              name="validdate_month"
+              value={formData.validdate_month}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="validdate_year"
+              value={formData.validdate_year}
               onChange={handleInputChange}
             />
             <br />
