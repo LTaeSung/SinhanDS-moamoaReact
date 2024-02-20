@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import BootPath from "../../BootPath";
 import React, { useEffect, useState, useContext } from "react";
 import PlusPoint from "../point/PlusPoint";
-import MinusPoint from "../point/MiusPoint";
+import MinusPoint from "../point/MinusPoint";
 import PointList from "../point/PointList";
 import RegistedImagePath from "../../registedImagePath";
 import axios from "axios";
-import "../../MemberInfo.css";
+import "./MemberInfo.css";
 
 function MemberInfo() {
   const { bootpath } = useContext(BootPath);
@@ -73,13 +73,14 @@ function MemberInfo() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title" />
+          <div className="space_container"></div>
           <table>
             <tr>
               <td rowSpan="5">
                 {data && (
-                  <div class="frame">
+                  <div class="info_frame">
                     <img
-                      className="image"
+                      className="info_image"
                       onClick={handleImageClick}
                       src={
                         uploadedImageUrl || `${registedImagePath}${data.photo}`
@@ -115,13 +116,13 @@ function MemberInfo() {
           </table>
           <div class="button_container">
             <button className="list_button">
-              <Link to={"/point/PointList"}>내역</Link>
+              <Link to={"/point/pointlist"}>내역</Link>
             </button>
             <button className="withdrawal_button">
-              <Link to={"/point/MiusPoint"}>인출</Link>
+              <Link to={"/point/minus"}>인출</Link>
             </button>
             <button className="button_charge">
-              <Link to={"/point/PlusPoint"}>충전</Link>
+              <Link to={"/point/plus"}>충전</Link>
             </button>
           </div>
           <hr />

@@ -1,6 +1,6 @@
-import MemberHeader from "./../member/MemberHeader";
+import MemberHeader from "../member/MemberHeader";
 import React, { useEffect, useState } from "react";
-import BootPath from "./../../BootPath";
+import BootPath from "../../BootPath";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";

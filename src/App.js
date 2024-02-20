@@ -27,7 +27,7 @@ import BoardDetail from "./component/booard/BoardDetail";
 import BoardNew from "./component/booard/BoardNew";
 import QnaList from "./component/booard/QnaList";
 import QnaDetail from "./component/booard/QnaDetail";
-import MinusPoint from "./component/point/MiusPoint";
+import MinusPoint from "./component/point/MinusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
 
@@ -36,13 +36,17 @@ import ModCardList from "./component/member/payment/ModCardList";
 import ModifyCardToFund from "./component/funding/ModifyCardToFund";
 
 import FundPointList from "./component/point/FundPointList";
-import RegularPayList from "./component/funding/RegularPayList";
-import RePayList from "./component/funding/RePayList";
 import Beforesignup from "./component/member/BeforeSignup";
+import RegularPayList from "./component/funding/admin/RegularPayList";
+import RePayList from "./component/funding/admin/RePayList";
+import DontAcceptRefuseInWeekMemberList from "./component/funding/admin/DontAcceptRefuseList";
 
 import AlarmList from "./component/alarm/AlarmList";
 
 import LeaveCheck from "./component/member/LeaveCheck";
+import FundingDueList from "./component/funding/admin/FundingDueList";
+import VoteDueList from "./component/funding/admin/VoteDueList";
+import SettlementDueList from "./component/funding/admin/SettlementDueList";
 
 function App() {
   return (
@@ -105,9 +109,16 @@ function App() {
             <Route path="/point/fundpointlist" element={<FundPointList />} />
             <Route path="/funding/regularpay" element={<RegularPayList />} />
             <Route path="/alarm" element={<AlarmList />} />
+            <Route path="/member/leavecheck" element={<LeaveCheck />} />
+            <Route
+              path="/admin/setStatus1"
+              element={<DontAcceptRefuseInWeekMemberList />}
+            />
+            <Route path="/admin/setStatus2" element={<FundingDueList />} />
+            <Route path="/admin/setStatus3" element={<VoteDueList />} />
+            <Route path="/admin/setStatus4" element={<SettlementDueList />} />
             <Route path="/admin/regularpay" element={<RegularPayList />} />
             <Route path="/admin/repay" element={<RePayList />} />
-            <Route path="/member/leavecheck" element={<LeaveCheck />} />
           </Routes>
         </div>
       </header>

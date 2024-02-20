@@ -2,7 +2,7 @@ import "../../App.css";
 import { Link, NavLink } from "react-router-dom";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
-import "../../MemberHeader.css";
+import "./MemberHeader.css";
 
 function MemberHeader() {
   const { bootpath } = useContext(BootPath);

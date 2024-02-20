@@ -3,7 +3,7 @@ import React from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import PlusPoint from "../point/PlusPoint";
-import MinusPoint from "../point/MiusPoint";
+import MinusPoint from "../point/MinusPoint";
 
 import AccountList from "./payment/AccountList";
 import CardList from "./payment/CardList";
