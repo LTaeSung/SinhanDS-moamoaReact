@@ -62,16 +62,18 @@ function SearchMember() {
         <div className="size">
           <h3 className="sub_title" />
           <div className="space_container"></div>
-          <input
-            type="text"
-            className="user_search"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="ID로 검색"
-          />
-          <button className="search_button" onClick={handleSearch}>
-            Search
-          </button>
+          <div>
+            <input
+              type="text"
+              className="user_search"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="ID로 검색"
+            />
+            <button className="search_button" onClick={handleSearch}>
+              Search
+            </button>
+          </div>
           {error && <p>{error}</p>}
           <div>
             <ul>
