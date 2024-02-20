@@ -5,6 +5,8 @@ import BootPathContext from "./../../BootPath";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
+import "./boardlist.css";
+
 function QnaDetail() {
   const bootPath = useContext(BootPathContext);
   const [param, setParams] = useSearchParams();
@@ -205,76 +207,85 @@ function QnaDetail() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"> QNA </h3>
+          <div className="slect_detail">
+            <h3 className="span_title_detail"> QNA </h3>
+          </div>
           <div>
             <div>
               {editing ? (
                 <>
-                  <h5>QNA 상세 페이지</h5>
-                  <p>no: {board.no}</p>
-                  <p>
-                    Title :
+                  <span id="qna_writer">{board.writer}</span>
+                  <p id="qna_time">
+                    {new Date(board.registdate).toLocaleDateString()}
+                  </p>
+                  <span>
                     <input
+                      id="qna_edit_title"
                       type="text"
                       value={board.title}
                       onChange={qnaInputChange}
                     />{" "}
-                  </p>
-                  <p>Writer: {board.writer}</p>
+                  </span>
                   <p>
-                    Contents:
                     <textarea
+                      id="qna_content"
                       value={board.contents}
                       onChange={qnaInputChange}
                       name="contents"
                     ></textarea>
                   </p>
-                  <p>Writer: {board.writer}</p>
-                  <p>
-                    Regist Date:{" "}
-                    {new Date(board.registdate).toLocaleDateString()}
-                  </p>
-                  <button onClick={savaEdit}>저장하기</button>
+                  <button className="qna_detail_btn" onClick={savaEdit}>
+                    저장하기
+                  </button>
                 </>
               ) : (
                 <>
-                  <h5>QNA 상세 페이지</h5>
-                  <p>no: {board.no}</p>
-                  <p>Title: {board.title}</p>
-                  <p>Writer: {board.writer}</p>
-                  <p>Contents: {board.contents}</p>
-                  <p>
-                    Regist Date:{" "}
+                  <p id="qna_writer">{board.writer}</p>
+                  <p id="qna_time">
                     {new Date(board.registdate).toLocaleDateString()}
                   </p>
-                  <button onClick={EditClick}>qna 수정</button>
+                  <span id="qna_title">{board.title}</span>
+                  <div className="qna_content_area">
+                    <p id="qna_content">{board.contents}</p>
+                  </div>
+
+                  <button className="qna_detail_btn" onClick={EditClick}>
+                    수정하기
+                  </button>
                 </>
               )}
             </div>
-            <button onClick={DeleteQna}>qna 삭제</button>
+            <button className="qna_detail_btn" onClick={DeleteQna}>
+              삭제하기{" "}
+            </button>
           </div>
           <br />
-          <h5>댓글 작성하기</h5>
-          <div>{writer}</div>
+          <h5>댓글</h5>
+          <span id="qna_writer">{writer}</span>
           <div>
             <textarea
+              id="qna_reply_content"
               name="contents"
-              placeholder="content"
+              placeholder="댓글을 입력해주세요."
               value={newReply.contents}
               onChange={InputChange}
             ></textarea>
           </div>
-          <button onClick={SaveReply}>저장하기</button>
-          <br />
+          <div className="re_btn_area">
+            <button id="qna_reply_btn" onClick={SaveReply}>
+              저장하기
+            </button>
+          </div>
           <h5>댓글목록</h5>
           <ul>
             {replies.map((reply, index) => (
               <li key={reply.no}>
-                {reply.writer} -
-                {new Date(board.registdate).toLocaleDateString()} <br />
+                {reply.writer} {new Date(board.registdate).toLocaleDateString()}{" "}
+                <br />
                 {reply.editing ? (
                   <>
                     <textarea
+                      id="qna_reply_content"
                       value={reply.contents}
                       onChange={(e) => {
                         const updatedReplies = [...replies];
@@ -285,15 +296,18 @@ function QnaDetail() {
 
                         setReplies(updatedReplies);
                       }}
-                    ></textarea>
+                    ></textarea>{" "}
+                    <br />
                     <button onClick={() => SaveEditedReply(reply.no, index)}>
                       저장
                     </button>
                   </>
                 ) : (
                   <>
-                    {reply.contents}
-                    <button onClick={() => EditReply(reply.no)}>수정</button>
+                    {reply.contents} <br />
+                    <button onClick={() => EditReply(reply.no)}>
+                      수정
+                    </button>{" "}
                     <button onClick={() => DeleteReply(reply.no)}>삭제</button>
                   </>
                 )}
