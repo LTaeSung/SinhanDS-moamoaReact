@@ -60,7 +60,7 @@ function QnaList() {
         writer: writer,
         boardtype: true,
       });
-      setData((prevData) => [...prevData, response.data]);
+      setData((prevData) => [response.data, ...prevData]);
       setTotalElement((prevTotal) => prevTotal + 1);
 
       setNewQna({ title: "", contents: "" });
