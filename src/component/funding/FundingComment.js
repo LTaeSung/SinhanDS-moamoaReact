@@ -193,19 +193,15 @@ function FundingComment() {
                   value={modReply.contents}
                   onChange={inputMod}
                 ></textarea>{" "}
-                <button onClick={() => saveEditedComment(item.no)}>
-                  수정 저장
-                </button>
+                <button onClick={() => saveEditedComment(item.no)}>저장</button>
               </>
             ) : (
               <>
-                {item.contents}
-                <button onClick={() => editClick(item.no)}>
-                  댓글 수정
-                </button>{" "}
+                {item.contents}{" "}
+                <button onClick={() => editClick(item.no)}>수정</button>{" "}
               </>
             )}
-            <button onClick={() => deleteClick(item.no)}>댓글 삭제</button>
+            <button onClick={() => deleteClick(item.no)}>삭제</button>
           </div>
         ))}
     </>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import { Link } from "react-router-dom";
@@ -19,6 +19,8 @@ function QnaDetail() {
     writer: "",
     contents: "",
   });
+  const writerInput = useRef();
+  const contentInput = useRef();
 
   useEffect(() => {
     const name = sessionStorage.getItem("name");
@@ -75,6 +77,17 @@ function QnaDetail() {
   };
 
   const savaEdit = async () => {
+    if (board.writer.length < 1) {
+      writerInput.current.focus();
+      //focus
+      return;
+    }
+    if (board.contents.length < 2) {
+      contentInput.current.focus();
+      //focus
+      return;
+    }
+
     try {
       const response = await axios.put(
         `${bootPath.bootpath}/board/update?no=${param.get("no")}`,
@@ -141,7 +154,7 @@ function QnaDetail() {
 
   //댓글수정
   const InputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target.value;
     setNewReply((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -221,6 +234,7 @@ function QnaDetail() {
                   <span>
                     <input
                       id="qna_edit_title"
+                      ref={writerInput}
                       type="text"
                       value={board.title}
                       onChange={qnaInputChange}
@@ -229,6 +243,7 @@ function QnaDetail() {
                   <p>
                     <textarea
                       id="qna_content"
+                      ref={contentInput}
                       value={board.contents}
                       onChange={qnaInputChange}
                       name="contents"
