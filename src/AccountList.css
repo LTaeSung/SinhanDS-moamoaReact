@@ -33,6 +33,7 @@
   background-color: #ffffff;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
   width: 80px;
   height: 30px;
   margin-bottom: 3px;
@@ -47,6 +48,7 @@
   background-color: #ff4742;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
   width: 80px;
   height: 30px;
 }

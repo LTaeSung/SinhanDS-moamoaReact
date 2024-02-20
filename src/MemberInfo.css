@@ -54,6 +54,7 @@
   background-color: #ffffff;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
   width: 45px;
   height: 30px;
   margin-right: 10px;
@@ -68,6 +69,7 @@
   background-color: #ffffff;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
   width: 45px;
   height: 30px;
   margin-right: 10px;
@@ -82,12 +84,13 @@
   background-color: #ff4742;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
   width: 45px;
   height: 30px;
 }
 
 /* 프로필 사진 액자 */
-.frame {
+.info_frame {
   display: inline-block;
   border: 2px solid #ccc;
   padding: 10px;
@@ -96,7 +99,7 @@
   margin-top: 10px;
 }
 
-.image {
+.info_image {
   display: block;
   width: 100px;
   height: 100px;
