@@ -3,10 +3,11 @@ import React, { useEffect, useState, useContext } from "react";
 import BootPath from "../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import RegistedImagePath from "../../registedImagePath";
+import "../../FriendList.css";
 function Friendlist() {
   const { bootpath } = useContext(BootPath);
-
+  const { registedImagePath } = useContext(RegistedImagePath);
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const getData = async () => {
@@ -52,18 +53,35 @@ function Friendlist() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">친구목록</h3>
+          <h3 className="sub_title" />
+          <div className="space_container"></div>
           {data ? (
             <ul>
               {data.map((Data) => (
                 <li key={Data.no}>
-                  {Data.friend.name} , {Data.friend.email}
-                  <button
-                    id="delete-friend-btn"
-                    onClick={() => handleDeleteFriend(Data.friend.no)}
-                  >
-                    친구 삭제
-                  </button>
+                  <div className="friend_list_container">
+                    <div className="photo_range">
+                      <div className="friend_frame">
+                        <img
+                          className="friend_image"
+                          src={
+                            Data.friend.photo ||
+                            `${registedImagePath}header_Profile.png`
+                          }
+                          alt="프로필 사진"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="name_font">{Data.friend.name}</div>
+                    <button
+                      className="friend_delete"
+                      id="delete-friend-btn"
+                      onClick={() => handleDeleteFriend(Data.friend.no)}
+                    >
+                      친구 삭제
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>

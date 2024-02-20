@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+.space_container {
+  height: 30px;
+}
+
+.friend_list_container {
+  display: flex;
+  width: 380px;
+  height: 60px;
+}
+/* 친삭 버튼 */
+.friend_delete {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
+.photo_range {
+  width: 100px;
+  margin-left: 25px;
+}
+
+/* 프로필 사진 액자 */
+.friend_frame {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 200px;
+}
+
+.friend_image {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+.name_font {
+  width: 120px;
+  font-size: 25px;
+  font-weight: 500;
+  padding-top: 7px;
+  padding-left: 7px;
+}

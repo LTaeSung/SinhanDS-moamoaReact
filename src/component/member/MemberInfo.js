@@ -77,9 +77,9 @@ function MemberInfo() {
             <tr>
               <td rowSpan="5">
                 {data && (
-                  <div class="frame">
+                  <div class="info_frame">
                     <img
-                      className="image"
+                      className="info_image"
                       onClick={handleImageClick}
                       src={
                         uploadedImageUrl || `${registedImagePath}${data.photo}`
