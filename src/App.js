@@ -27,7 +27,7 @@ import BoardDetail from "./component/booard/BoardDetail";
 import BoardNew from "./component/booard/BoardNew";
 import QnaList from "./component/booard/QnaList";
 import QnaDetail from "./component/booard/QnaDetail";
-import MinusPoint from "./component/point/MiusPoint";
+import MinusPoint from "./component/point/MinusPoint";
 import PlusPoint from "./component/point/PlusPoint";
 import PointList from "./component/point/PointList";
 
