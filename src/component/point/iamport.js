@@ -74,7 +74,9 @@ const Iamport = (props) => {
 
   return (
     <div>
-      <button onClick={requestPay}>충전하기</button>
+      <button className="add_money" onClick={requestPay}>
+        충전하기
+      </button>
     </div>
   );
 };

@@ -93,7 +93,7 @@ function QnaList() {
               <option value="2">완료</option>
             </select>
           </div>
-          <div className="문의하기">
+          <div className="hide">
             <span id="writer">{writer}</span>
             <br />
             <input
