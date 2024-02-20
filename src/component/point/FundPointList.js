@@ -1,10 +1,17 @@
 import MemberHeader from "../member/MemberHeader";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./FundPointList.css";
 
 function FundPointList() {
+  const navigate = useNavigate();
+  const handleSelectChange = (event) => {
+    const selectedValue = event.target.value;
+    navigate(selectedValue); // 선택된 값으로 페이지를 업데이트
+  };
   const { bootpath } = useContext(BootPath);
 
   const [data, setData] = useState([]);
@@ -33,7 +40,17 @@ function FundPointList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container"></div>
           <h3 className="sub_title">펀드포인트 정보</h3>
+          <div className="selectBox_container">
+            <select className="option" onChange={handleSelectChange}>
+              <option value="/point/Fundpointlist">
+                펀드 포인트 거래 내역
+              </option>
+              <option value="/point/pointlist">포인트 내역</option>
+            </select>
+          </div>
+          <div className="space_container"></div>
           <div>
             {member_no ? (
               <>
@@ -43,17 +60,39 @@ function FundPointList() {
                       <li key={data.no}>
                         {data.direction === false ? (
                           <ul>
-                            <p>결제</p>
-                            <p>{data.transactiondate}</p>
-                            <p>펀딩번호 : {data.fundingno}</p>
-                            <p>금액 : {data.amount}</p>
+                            <div className="fontDate_container">
+                              <div className="font">결제</div>
+
+                              <p className="date">
+                                {data.transactiondate.split("T")[0]}
+                              </p>
+                            </div>
+
+                            <div className="noAmount_container">
+                              <p className="no">
+                                펀딩 번호 :
+                                <a
+                                  href={`http://localhost:3000/funding/info?no=${data.fundingno}`}
+                                >
+                                  {data.fundingno}
+                                </a>
+                              </p>
+                              <p className="amount">{data.amount}원</p>
+                            </div>
                           </ul>
                         ) : (
                           <ul>
-                            <p>환급</p>
-                            <p>{data.transactiondate}</p>
-                            <p>펀딩번호 : {data.fundingno}</p>
-                            <p>금액 : {data.amount}</p>
+                            <div className="fontDate_container">
+                              <div className="font">환급</div>
+                              <p className="date">
+                                {data.transactiondate.split("T")[0]}
+                              </p>
+                            </div>
+
+                            <div className="noAmount_container">
+                              <p className="no">펀딩 번호 : {data.fundingno}</p>
+                              <p className="amount">{data.amount}원</p>
+                            </div>
                           </ul>
                         )}
                       </li>
