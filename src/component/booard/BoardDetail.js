@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import BoardHeader from "./BoardHeader";
-import { Link } from "react-router-dom";
+import "./boardlist.css";
 
 function BoardDetail() {
   const bootPath = useContext(BootPathContext);
@@ -29,16 +29,18 @@ function BoardDetail() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"> 공지사항 </h3>
+          <div className="slect">
+            <h3 className="span_title"> 공지사항 </h3>
+          </div>
+          <br />
           <div>
-            <h5>게시글 상세 페이지</h5>
-            <p>no: {board.no}</p>
-            <p>Title: {board.title}</p>
-            <p>Writer: {board.writer}</p>
-            <p>
-              Regist Date: {new Date(board.registdate).toLocaleDateString()}
+            <span id="board_detail_no">{board.no}</span>
+            <span id="board_detail_title">{board.title}</span> <br />
+            <p id="board_detail_writer">{board.writer}</p>
+            <p id="board_detail_date">
+              {new Date(board.registdate).toLocaleDateString()}
             </p>
-            <p>Contents: {board.contents}</p>
+            <p id="board_detail_content">{board.contents}</p>
           </div>
         </div>
       </div>

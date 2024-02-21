@@ -181,3 +181,26 @@ button {
   color: #ff4742;
   width: 70px;
 }
+
+/* board  detail */
+
+#board_detail_no {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#board_detail_title {
+  margin-top: 10px;
+}
+#board_detail_writer {
+  font-size: 15px;
+  text-align: right;
+}
+#board_detail_date {
+  text-align: right;
+  font-size: 15px;
+}
+#board_detail_content {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
