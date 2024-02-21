@@ -70,11 +70,10 @@ function FundPointList() {
 
                             <div className="noAmount_container">
                               <p className="no">
-                                펀딩 번호 :
                                 <a
                                   href={`http://localhost:3000/funding/info?no=${data.fundingno}`}
                                 >
-                                  {data.fundingno}
+                                  해당 펀딩으로 이동하기
                                 </a>
                               </p>
                               <p className="amount">{data.amount}원</p>
@@ -90,7 +89,13 @@ function FundPointList() {
                             </div>
 
                             <div className="noAmount_container">
-                              <p className="no">펀딩 번호 : {data.fundingno}</p>
+                              <p className="no">
+                                <a
+                                  href={`http://localhost:3000/funding/info?no=${data.fundingno}`}
+                                >
+                                  해당 펀딩으로 이동하기
+                                </a>
+                              </p>
                               <p className="amount">{data.amount}원</p>
                             </div>
                           </ul>

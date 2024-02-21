@@ -22,6 +22,11 @@ const Iamport = (props) => {
   }, []);
 
   const requestPay = (props) => {
+    if (amount <= 0) {
+      alert("0원 이하의 금액을 충전할 할 수 없습니다.");
+      return;
+    }
+
     const { IMP } = window;
     IMP.init("imp40688663");
 

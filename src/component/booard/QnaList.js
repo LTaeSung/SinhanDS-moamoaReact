@@ -54,13 +54,13 @@ function QnaList() {
 
     //내용 비어있는지 체크
     if (!("title" in newQna) || newQna.title.replaceAll(" ", "") === "") {
-      alert("제목은 필수 입력 사항입니다.");
+      alert("제목을 입력해 주세요.");
       return;
     } else if (
       !("contents" in newQna) ||
       newQna.contents.replaceAll(" ", "") === ""
     ) {
-      alert("댓글 내용은 비워둘 수 없습니다.");
+      alert("내용을 입력해 주세요.");
       return;
     }
 
@@ -110,11 +110,6 @@ function QnaList() {
           <div className="slect">
             <span className="span_title">Q&A</span>
             <span>총 {totalElement} 건 </span>
-            <select>
-              <option value="0">전체</option>
-              <option value="1">진행중</option>
-              <option value="2">완료</option>
-            </select>
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>
