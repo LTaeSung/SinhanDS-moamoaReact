@@ -183,7 +183,7 @@ function MakeFunding() {
                       id="info_image"
                       onClick={handleImageClick}
                       src={uploadedImageUrl || `${registedImagePath}`}
-                      width="100"
+                      width=""
                       alt="대표사진을 첨부해 주세요"
                     />
                   </div>
