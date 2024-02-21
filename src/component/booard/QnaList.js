@@ -113,6 +113,7 @@ function QnaList() {
             {showNewQna && (
               <div className="toggle_qna">
                 <input
+                  className="inputtext"
                   type="text"
                   ref={writerInput}
                   value={newQna.title}

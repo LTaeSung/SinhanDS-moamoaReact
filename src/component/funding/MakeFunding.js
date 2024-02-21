@@ -8,6 +8,7 @@ import $ from "jquery";
 import Calender from "./Calender";
 import AddCardToFund from "./AddCardToFund";
 import { useLocation } from "react-router-dom";
+import "./makefunding.css";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
@@ -91,49 +92,53 @@ function MakeFunding() {
           <h3 className="sub_title">펀드 생성</h3>
 
           <div>
-            펀딩명 <input type="text" name="title" onChange={handleChange} />
+            <input
+              id={"main_title"}
+              type="text"
+              placeholder="챌린지 제목"
+              name="title"
+              onChange={handleChange}
+            />
           </div>
           <div>
-            설명
             <div>
               <textarea
+                id={"textarea"}
                 name="description"
                 maxLength="255"
+                placeholder="설명은 255자 이하로 작성해 주세요"
                 onChange={handleChange}
               />
             </div>
           </div>
-          <div>
-            사진
+          <div className="imgetag">
+            <p id={"title_tag"}>사진</p>
             <input type="file" id="file" onChange={handleChangeFile}></input>
           </div>
-          <div>
-            마감일
-            <Calender param={param} setParam={setParam} />
+          <div className="finish_date">
+            <p id={"title_tag"}>마감일</p>
+            <Calender className="calender" param={param} setParam={setParam} />
           </div>
-          <div>
-            결제 금액(매월)
+          <div className={"payamount"}>
+            <p id={"title_tag"}>결제 금액(매월)</p>
             <input
+              id={"payinput"}
               type="number"
               name="monthly_payment_amount"
               onChange={handleChange}
             />
-            원
+            <p id={"title_tag_back"}>원</p>
           </div>
-          <div>
-            결제 날짜(매월)
-            <select
-              onChange={handleChange}
-              //type="text"
+          <div className={"paydate"}>
+            <p id={"title_tag"}>결제 날짜(매월)</p>
+            <input
+              id={"dateinput"}
+              type="text"
               name="monthly_payment_date"
-            >
-              {dayOptions.map((option, idx) => (
-                <option key={idx + 1} value={idx + 1}>
-                  {idx + 1}
-                </option>
-              ))}
-            </select>
-            일
+              //value="1"
+              onChange={handleChange}
+            />
+            <p id={"title_tag_back"}>일</p>
           </div>
           <AddCardToFund onSelectCard={handleSelectCard} />
           <div className="btnSet" style={{ textAlign: "right" }}>
