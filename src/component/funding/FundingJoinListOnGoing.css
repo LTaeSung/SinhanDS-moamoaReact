@@ -6,18 +6,14 @@
   display: flex;
 }
 
-.image_container {
-  width: 90px;
-}
-
-#joined_funding_image {
-  width: 87px;
-  height: 100px;
-}
-
 .fund_info {
   width: 300px;
   font-size: 10px;
+}
+
+#joined_funding_image {
+  width: 80px;
+  height: 82px;
 }
 
 .fund_title {
@@ -34,12 +30,12 @@
 
 .fund_amount {
   width: 290px;
-  height: 10px;
+  height: px;
   margin-bottom: 20px;
 }
+
 .all_amount {
   color: black;
-
   font-size: 10px;
 }
 

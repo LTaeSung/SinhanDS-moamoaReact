@@ -105,7 +105,8 @@ function SearchMember() {
                       </div>
 
                       <div className="nameEmail">
-                        {member.name} {member.email}
+                        {member.name} <br />
+                        {member.email.split("@")[0]}
                       </div>
 
                       <button
