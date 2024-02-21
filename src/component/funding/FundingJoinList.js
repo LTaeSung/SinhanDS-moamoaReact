@@ -4,7 +4,8 @@ import bootPath from "../../BootPath";
 import FundingJoinListOnGoing from "./FundingJoinListOnGoing";
 import FundingJoinListEnd from "./FundingJoinListEnd";
 import { Link } from "react-router-dom";
-import "./fundinglist.css";
+import "./FundingJoinList.css";
+
 function JoinFundingList() {
   const { bootpath } = useContext(bootPath);
 
@@ -19,12 +20,18 @@ function JoinFundingList() {
       <FundingHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container"></div>
           <h3 className="sub_title">참여한 펀딩 리스트</h3>
-          <div className="select">
-            <Link className="btn" id="make_funding_btn" to={"/funding/make"}>
-              펀딩 만들기
-            </Link>
-            <div>
+          <div className="space_container"></div>
+
+          <div className="select_container">
+            <div className="fund_div">
+              <Link id="make_funding_btn" to={"/funding/make"}>
+                <button className="create_fund">펀딩 만들기</button>
+              </Link>
+            </div>
+
+            <div className="search_status">
               <select id="option" onChange={handleSelect} value={select}>
                 <option value="0">진행중</option>
                 <option value="1">완료</option>

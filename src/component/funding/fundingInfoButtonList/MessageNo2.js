@@ -35,9 +35,9 @@ const MessageNo2 = ({ obj }) => {
   return (
     <>
       {" "}
-      {/* <Link className="btn" to={"/funding/modifycard?no=" + obj.fundingNo}>
+      <Link className="btn" to={"/funding/modifycard?no=" + obj.fundingNo}>
         결제정보 수정
-      </Link> */}
+      </Link>
       <Link className="btn" onClick={GiveUp}>
         중도포기
       </Link>

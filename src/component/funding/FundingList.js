@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
+import "./FundingList.css";
 
 function FundingList() {
   const bootPath = useContext(BootPathContext);
