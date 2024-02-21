@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { da, id } from "date-fns/locale";
+import { useNavigate } from "react-router-dom";
 function MinusPoint() {
   const { bootpath } = useContext(BootPath);
 
@@ -15,6 +16,7 @@ function MinusPoint() {
     setMinusPoint({ ...minusPoint, [e.target.name]: e.target.value });
   };
 
+  const navigate = useNavigate();
   const [point, setPoint] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const getPoint = async () => {
@@ -76,7 +78,7 @@ function MinusPoint() {
       );
       if (result.data === "success") {
         alert("포인트 인출 성공");
-        //성공 시 회원정보 페이지로 돌아가던가 해줘야할듯
+        navigate("/member/info");
       }
     } catch (error) {
       alert(
