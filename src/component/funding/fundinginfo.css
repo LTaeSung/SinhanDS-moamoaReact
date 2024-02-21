@@ -1,0 +1,57 @@
+.infolist {
+  margin-left: 20px;
+}
+
+/* 펀딩제목 */
+#fundinginfo_title {
+  font-size: 22px;
+}
+
+#fundinginfo_ {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* 모인금액 */
+
+.listline {
+  float: left;
+  font-size: 12px;
+}
+#fundinginfo_collectedpoint {
+  font-size: 12px;
+  margin-top: 3px;
+  height: 40px;
+}
+
+#collectedpoint {
+  color: red;
+  font-size: 22px;
+  font-weight: 700;
+  float: left;
+  margin-left: 20px;
+}
+
+/* 나머지 항목(공유) */
+#fundimg_title_tag {
+  float: left;
+  font-weight: 700;
+  font-size: 12px;
+}
+#funding_title_tag_back {
+  margin-right: 60px;
+  font-size: 22px;
+  float: left;
+}
+#red {
+  color: red;
+  font-weight: 700;
+}
+
+#fundinginfo_monthlypaymentamount {
+  margin-top: 19px;
+}
+#fundinginfo_completeinterest {
+  margin-top: 38px;
+  font-size: 12px;
+}

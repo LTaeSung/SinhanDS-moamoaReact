@@ -308,9 +308,11 @@ function QnaDetail() {
                 </>
               )}
             </div>
-            <button className="qna_detail_btn" onClick={DeleteQna}>
-              삭제하기{" "}
-            </button>
+            <div className="delete_area">
+              <button className="qna_delete_btn" onClick={DeleteQna}>
+                삭제하기{" "}
+              </button>
+            </div>
           </div>
           <br />
           <h5>댓글</h5>
@@ -326,7 +328,7 @@ function QnaDetail() {
           </div>
           <div className="re_btn_area">
             <button id="qna_reply_btn" onClick={SaveReply}>
-              저장하기
+              댓글 저장하기
             </button>
           </div>
           <h5>댓글목록</h5>
@@ -351,17 +353,28 @@ function QnaDetail() {
                       }}
                     ></textarea>{" "}
                     <br />
-                    <button onClick={() => SaveEditedReply(reply.no, index)}>
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => SaveEditedReply(reply.no, index)}
+                    >
                       저장
                     </button>
                   </>
                 ) : (
                   <>
                     {reply.contents} <br />
-                    <button onClick={() => EditReply(reply.no)}>
-                      수정
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => EditReply(reply.no)}
+                    >
+                      수정 &nbsp; |
                     </button>{" "}
-                    <button onClick={() => DeleteReply(reply.no)}>삭제</button>
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => DeleteReply(reply.no)}
+                    >
+                      삭제
+                    </button>
                   </>
                 )}
               </li>

@@ -18,7 +18,8 @@
 
 .fund_title {
   height: 20px;
-  font-size: 20px;
+  width: 350px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -42,4 +43,7 @@
 .day_left {
   font-size: 10px;
   float: right;
+  margin-right: 20px;
+  width: 50px;
+  margin-top: 65px;
 }
