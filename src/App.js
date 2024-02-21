@@ -75,7 +75,7 @@ function App() {
             <Route path="/" element={<DevLogin />} />
             <Route path="/login/dev" element={<DevLogin />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/login/after" element={checkLogin(AfterSignin)} />
+            <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/member/info" element={checkLogin(Mypage_info)} />
             <Route path="/login/signup" element={checkLogin(Signup)} />
             <Route
