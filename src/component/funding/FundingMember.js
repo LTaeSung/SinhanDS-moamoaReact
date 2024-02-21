@@ -33,7 +33,12 @@ function FundingMember() {
             <div key={item.no}>
               {item.giveup === true ? null : item.participationdate ===
                 null ? null : (
-                <p>{item.membername}</p>
+                <>
+                  <p>{item.membername}</p>
+                  {item.settlementamount != null ? (
+                    <p>{item.settlementamount}원</p>
+                  ) : null}
+                </>
               )}
             </div>
           ))}
