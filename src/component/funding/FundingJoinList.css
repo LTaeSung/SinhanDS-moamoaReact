@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* 이태성 */
+.select {
+  border-top: 1px solid red;
+  height: 45px;
+  text-align: right;
+}
+
+#option {
+  border: white;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: white;
+}
+
+#make_funding_btn {
+  margin-top: 10px;
+  width: 50px;
+  color: black;
+}
+
+/* 신정훈 */
+.space_container {
+  height: 30px;
+}
+
+.select_container {
+  width: 400px;
+  display: flex;
+}
+
+.fund_div {
+  width: 300px;
+  margin-left: 220px;
+}
+
+.create_fund {
+  display: inline-block;
+  outline: 0;
+  border-radius: 4px;
+  border: 2px solid #ff4742;
+  color: #ff4742;
+  background-color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  width: 100px;
+}
+
+.search_status {
+  width: 100px;
+}

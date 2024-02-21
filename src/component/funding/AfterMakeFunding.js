@@ -14,7 +14,7 @@ function afterMakeFunding() {
           수락하지 않거나 거절한 멤버를 제외하고 챌린지가 진행됩니다.
         </div>
         <Link to="/funding/host">
-          <p> 개최한 펀딩 보기</p>
+          <p> 내가 주최한 펀딩 보기</p>
         </Link>
       </div>
     </>
