@@ -73,7 +73,24 @@ function QnaDetail() {
     }
   };
 
-  const savaEdit = async () => {
+  const savaEdit = async (e) => {
+    //제목, 내용 비어있는지 체크
+    if ("title" in board && "contents" in board) {
+      if (board.title.replace(" ", "") === "") {
+        alert("제목은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      } else if (board.contents.replace(" ", "") === "") {
+        alert("내용은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("제목, 내용은 필수 입력 사항입니다.");
+      e.preventDefault();
+      return;
+    }
+
     if (board.writer.length < 1) {
       titleInput.current.focus();
       //focus
@@ -126,7 +143,20 @@ function QnaDetail() {
   };
 
   //댓글저장
-  const SaveReply = async () => {
+  const SaveReply = async (e) => {
+    //댓글 내용 비어있는지 체크
+    if ("contents" in newReply) {
+      if (newReply.contents.replace(" ", "") === "") {
+        alert("댓글 내용은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("댓글 내용은 필수 입력 사항입니다.");
+      e.preventDefault();
+      return;
+    }
+
     try {
       await axios.post(`${bootPath.bootpath}/board/reply/add`, {
         ...newReply,
@@ -176,6 +206,17 @@ function QnaDetail() {
     try {
       const updatedReplies = [...replies];
       const editedReply = updatedReplies[replyIdx];
+
+      //댓글 내용 비어있는지 체크
+      if ("contents" in editedReply) {
+        if (editedReply.contents.replace(" ", "") === "") {
+          alert("댓글 내용은 비워둘 수 없습니다.");
+          return;
+        }
+      } else {
+        alert("댓글 내용은 필수 입력 사항입니다.");
+        return;
+      }
 
       await axios.put(`${bootPath.bootpath}/board/reply/update?no=${replyId}`, {
         contents: editedReply.contents,

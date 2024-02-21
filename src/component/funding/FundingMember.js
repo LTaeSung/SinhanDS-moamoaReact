@@ -36,7 +36,7 @@ function FundingMember() {
                 <>
                   <p>{item.membername}</p>
                   {item.settlementamount != null ? (
-                    <p>{item.settlementamount}원</p>
+                    <p>정산금: {item.settlementamount}원</p>
                   ) : null}
                 </>
               )}
