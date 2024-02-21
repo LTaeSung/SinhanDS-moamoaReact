@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,8 +15,6 @@ function QnaList() {
   const [no, setNo] = useState("");
   const [newQna, setNewQna] = useState({ title: "", contents: "" });
   const [showNewQna, setShowNewQna] = useState(false);
-  const writerInput = useRef();
-  const contentInput = useRef();
 
   useEffect(() => {
     const name = sessionStorage.getItem("name");
@@ -40,27 +38,11 @@ function QnaList() {
   };
 
   //qna등록
-  const SaveQna = async () => {
-    // if (newQna.title.length < 1) {
-    //   writerInput.current.focus();
-    //   //focus
-    //   return;
-    // }
-    // if (newQna.contents.length < 2) {
-    //   contentInput.current.focus();
-    //   //focus
-    //   return;
-    // }
+  const SaveQna = async (e) => {
+    e.preventDefault();
 
-    //내용 비어있는지 체크
-    if (!("title" in newQna) || newQna.title.replaceAll(" ", "") === "") {
-      alert("제목을 입력해 주세요.");
-      return;
-    } else if (
-      !("contents" in newQna) ||
-      newQna.contents.replaceAll(" ", "") === ""
-    ) {
-      alert("내용을 입력해 주세요.");
+    if (!newQna.title.trim() || !newQna.contents.trim()) {
+      alert("제목과 내용을 입력해주세요.");
       return;
     }
 
@@ -110,6 +92,11 @@ function QnaList() {
           <div className="slect">
             <span className="span_title">Q&A</span>
             <span>총 {totalElement} 건 </span>
+            <select>
+              <option value="0">전체</option>
+              <option value="1">진행중</option>
+              <option value="2">완료</option>
+            </select>
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>
@@ -121,7 +108,6 @@ function QnaList() {
               <div className="toggle_qna">
                 <input
                   type="text"
-                  ref={writerInput}
                   value={newQna.title}
                   placeholder="제목"
                   onChange={(e) =>
@@ -131,7 +117,6 @@ function QnaList() {
                 <br />
                 <textarea
                   value={newQna.contents}
-                  ref={contentInput}
                   placeholder="내용은 255자 이하로 작성해 주세요"
                   onChange={(e) =>
                     setNewQna({ ...newQna, contents: e.target.value })
