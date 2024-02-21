@@ -15,12 +15,13 @@
 .size {
   width: 100%;
 }
-
 .span_title {
   font-size: 15px;
-  margin-right: 180px;
+  text-align: left;
   font-weight: 700;
+  margin-top: 12px;
   color: #ff4742;
+  margin-right: 270px;
 }
 
 span {
@@ -52,11 +53,14 @@ input {
   margin-left: 8px;
   margin-bottom: 2px;
 }
-
-textarea {
+#qna_text {
+  min-width: 360px;
+  margin-left: 8px;
+}
+#qna_textarea {
   margin-left: 8px;
   min-width: 360px;
-  min-height: 200px;
+  min-height: 100px;
 }
 
 button {
@@ -229,14 +233,6 @@ button {
   font-size: 15px;
   margin-top: 10px;
   margin-left: 10px;
-}
-.span_title1 {
-  font-size: 15px;
-  text-align: left;
-  font-weight: 700;
-  margin-top: 12px;
-  margin-left: 12px;
-  color: #ff4742;
 }
 
 /* board new */

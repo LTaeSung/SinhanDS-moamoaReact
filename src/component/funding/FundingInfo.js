@@ -15,6 +15,7 @@ function FundingInfo() {
   const [data, setData] = useState({});
   const [state, setState] = useState({});
   const { registedImagePath } = useContext(RegistedImagePath);
+  const [showComment, setShowComment] = useState(false);
   let no = params.get("no");
 
   const member_no = sessionStorage.getItem("no") || "";
@@ -52,6 +53,7 @@ function FundingInfo() {
           <div className="infolist">
             <img src={registedImagePath + data.photo} width="100" />
             <p id="fundinginfo_title"> {data.title}</p>
+            <br></br>
             <div id="fundinginfo_collectedpoint">
               <div className="listline" id="fundimg_title_tag">
                 모인 금액:{" "}
@@ -85,17 +87,34 @@ function FundingInfo() {
             </p>
             <p id="fundinginfo_">시작일: {data.startdate}</p>
             <p id="fundinginfo_">마감일: {data.fundingduedate}</p>
-            <p id="fundinginfo_">챌린지 소개:</p>
-            <p> {data.description}</p>
+            <br></br>
+            <p id="fundinginfo_description">챌린지 소개:</p>
+            <p id="fundinginfo_"> {data.description}</p>
+            <br></br>
             <div style={{ textAlign: "center" }}>
               <FundingInfoButton obj={{ ...state, ...data }} />
             </div>
-            <p>참여자 목록</p>
+            <br></br>
+            <p id="fundinginfo_description">참여자 목록 </p>
             <FundingMember />
-            <div>목록</div>
-            <p>펀딩 타입: {data.fundingtype}</p>
-            <p>댓글</p>
-            <FundingComment />
+            <br></br>
+            <hr id="hr"></hr>
+            <div className="">
+              <p totalElement={data.totalElement}>총 댓글 수 : </p>
+            </div>
+
+            <button
+              className="comment"
+              onClick={() => setShowComment((prev) => !prev)}
+            >
+              댓글 보기
+            </button>
+            {showComment && (
+              <div>
+                <p>펀딩 타입: {data.fundingtype}</p>
+                <FundingComment totalElement={data.totalElement} />
+              </div>
+            )}
           </div>
         </div>
       </div>
