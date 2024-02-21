@@ -60,7 +60,7 @@ function MinusPoint() {
     setSelect({ ...select, merchant_id: e.target.value });
   };
 
-  const requestPayBack = async () => {
+  const requestPayBack = async (e) => {
     const data = {
       member_no: member_no,
       amount: minusPoint.amount,
@@ -68,6 +68,11 @@ function MinusPoint() {
     };
     if (minusPoint.amount > point) {
       alert("보유 포인트보다 많은 금액을 인출할 수 없습니다.");
+      e.preventDefault();
+      return;
+    } else if (minusPoint.amount <= 0) {
+      alert("0원 이하의 값을 입력할 수 없습니다.");
+      e.preventDefault();
       return;
     }
     try {
