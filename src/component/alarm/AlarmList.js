@@ -34,10 +34,6 @@ function AlarmList() {
           <div className="slect">
             <span className="span_title">내 알림</span>
             <span>총 {totalElement} 건 </span>
-            <select>
-              <option value="0">전체</option>
-              <option value="1">확인됨</option>
-            </select>
           </div>
           <div>
             {data.length > 0 ? (

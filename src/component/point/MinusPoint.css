@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+.sub_title {
+  text-align: center;
+  font-size: 25px;
+}
+
+.space_container {
+  height: 20px;
+}
+
+.cash_container {
+  width: 400px;
+  display: flex;
+}
+
+.cash_font {
+  width: 200px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.cash_color {
+  width: 150px;
+  color: red;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input_amount {
+  min-width: 322px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  margin-left: 22px;
+}
+
+.acc_container {
+  width: 400px;
+  display: flex;
+}
+
+.acc_info {
+  width: 140px;
+  margin-left: 15px;
+}
+
+.radio_button {
+  width: 100px;
+}
+
+.min_money {
+  display: inline-block;
+  outline: 0;
+  border-radius: 4px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  width: 350px;
+  height: 35px;
+  margin-left: 20px;
+  margin-bottom: 7px;
+}

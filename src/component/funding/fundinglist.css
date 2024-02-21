@@ -1,0 +1,18 @@
+.select {
+  border-top: 1px solid red;
+  height: 45px;
+  text-align: right;
+}
+
+#option {
+  border: white;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: white;
+}
+
+#make_funding_btn {
+  margin-top: 10px;
+  width: 50px;
+  color: black;
+}

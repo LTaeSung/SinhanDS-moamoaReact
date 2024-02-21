@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
 import "./boardlist.css";
+
 function BoardList() {
   const bootPath = useContext(BootPathContext);
   const [totalElement, setTotalElement] = useState(0);
@@ -14,6 +15,9 @@ function BoardList() {
       try {
         const response = await axios.get(`${bootPath.bootpath}/board/list`);
         const filteredDate = response.data.filter((item) => !item.boardtype);
+        filteredDate.sort(
+          (a, b) => new Date(b.registdate) - new Date(a.registdate)
+        );
         setData(filteredDate);
         setTotalElement(filteredDate.length);
       } catch (error) {
@@ -32,12 +36,8 @@ function BoardList() {
           <div className="slect">
             <span className="span_title">공지사항</span>
             <span>총 {totalElement} 건 </span>
-            <select>
-              <option value="0">전체</option>
-              <option value="1">진행중</option>
-              <option value="2">완료</option>
-            </select>
           </div>
+          <br />
           <div className="notices">
             <ul>
               {data.map((item) => (
