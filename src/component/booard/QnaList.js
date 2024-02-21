@@ -53,11 +53,14 @@ function QnaList() {
     // }
 
     //내용 비어있는지 체크
-    if ("contents" in newQna || newQna.contents.replaceAll(" ", "") === "") {
-      alert("댓글 내용은 비워둘 수 없습니다.");
-      return;
-    } else if ("title" in newQna || newQna.title.replaceAll(" ", "") === "") {
+    if (!("title" in newQna) || newQna.title.replaceAll(" ", "") === "") {
       alert("제목은 필수 입력 사항입니다.");
+      return;
+    } else if (
+      !("contents" in newQna) ||
+      newQna.contents.replaceAll(" ", "") === ""
+    ) {
+      alert("댓글 내용은 비워둘 수 없습니다.");
       return;
     }
 
