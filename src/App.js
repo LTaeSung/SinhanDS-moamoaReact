@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Header from "./component/Header";
 import Mypage_info from "./component/member/Mypage_info";
@@ -49,6 +49,23 @@ import VoteDueList from "./component/funding/admin/VoteDueList";
 import SettlementDueList from "./component/funding/admin/SettlementDueList";
 
 function App() {
+  const checkLogin = (Component) => {
+    if (sessionStorage.getItem("no") != null) {
+      return <Component />;
+    } else {
+      return <Navigate to="/login/dev" />;
+    }
+  };
+  const checkDevLogin = (Component) => {
+    if (
+      sessionStorage.getItem("no") != null &&
+      sessionStorage.getItem("no") === "0"
+    ) {
+      return <Component />;
+    } else {
+      return <Navigate to="/login/dev" />;
+    }
+  };
   return (
     <div className="App-background">
       <Header />
@@ -56,69 +73,112 @@ function App() {
         <div className="App-container">
           <Routes>
             <Route path="/" element={<DevLogin />} />
+            <Route path="/login/dev" element={<DevLogin />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/login/after" element={<AfterSignin />} />
-            <Route path="/member/info" element={<Mypage_info />} />
-            <Route path="/login/signup" element={<Signup />} />
-            <Route path="/login/beforeSignup" element={<Beforesignup />} />
-            <Route path="/member/friend/list" element={<FriendList />} />
-            <Route path="/member/payment/account" element={<AccountList />} />
+            <Route path="/login/after" element={checkLogin(AfterSignin)} />
+            <Route path="/member/info" element={checkLogin(Mypage_info)} />
+            <Route path="/login/signup" element={checkLogin(Signup)} />
+            <Route
+              path="/login/beforeSignup"
+              element={checkLogin(Beforesignup)}
+            />
+            <Route
+              path="/member/friend/list"
+              element={checkLogin(FriendList)}
+            />
+            <Route
+              path="/member/payment/account"
+              element={checkLogin(AccountList)}
+            />
             <Route
               path="/member/payment/account/add"
-              element={<AddAccountList />}
+              element={checkLogin(AddAccountList)}
             />
-            <Route path="/member/payment/card" element={<CardList />} />
-            <Route path="/member/payment/card/add" element={<AddCardList />} />
+            <Route path="/member/payment/card" element={checkLogin(CardList)} />
+            <Route
+              path="/member/payment/card/add"
+              element={checkLogin(AddCardList)}
+            />
             <Route
               path="/member/payment/account/modify/:no"
-              element={<ModAccountList />}
+              element={checkLogin(ModAccountList)}
             />
             <Route
               path="/member/payment/card/modify/:no"
-              element={<ModCardList />}
+              element={checkLogin(ModCardList)}
             />
-            <Route path="/funding/modifycard" element={<ModifyCardToFund />} />
-            <Route path="/member/friend/search" element={<FriendSearch />} />
-            <Route path="/funding/member/join" element={<FundingJoinList />} />
-            <Route path="/funding/make" element={<MakeFunding />} />
+            <Route
+              path="/funding/modifycard"
+              element={checkLogin(ModifyCardToFund)}
+            />
+            <Route
+              path="/member/friend/search"
+              element={checkLogin(FriendSearch)}
+            />
+            <Route
+              path="/funding/member/join"
+              element={checkLogin(FundingJoinList)}
+            />
+            <Route path="/funding/make" element={checkLogin(MakeFunding)} />
             <Route
               path="/funding/inviteMember"
-              element={<MakeFundingInviteMember />}
-            />{" "}
+              element={checkLogin(MakeFundingInviteMember)}
+            />
             <Route
               path="/funding/AfterMakeFunding"
-              element={<AfterMakeFunding />}
+              element={checkLogin(AfterMakeFunding)}
             />
-            <Route path="/funding/host" element={<FundingHostList />} />
-            <Route path="/funding/list" element={<FundingList />} />
-            <Route path="/funding/info" element={<FundingInfo />} />
-            <Route path="/funding/invited" element={<InvitedFunding />} />
-            <Route path="/funding/accept" element={<Accept />} />
+            <Route path="/funding/host" element={checkLogin(FundingHostList)} />
+            <Route path="/funding/list" element={checkLogin(FundingList)} />
+            <Route path="/funding/info" element={checkLogin(FundingInfo)} />
+            <Route
+              path="/funding/invited"
+              element={checkLogin(InvitedFunding)}
+            />
+            <Route path="/funding/accept" element={checkLogin(Accept)} />
             <Route
               path="/funding/afterAcceptFunding"
-              element={<AfterAcceptFunding />}
+              element={checkLogin(AfterAcceptFunding)}
             />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
             <Route path="/admin/boardnew" element={<BoardNew />} />
             <Route path="/board/qna/list" element={<QnaList />} />
             <Route path="/board/qna/detail" element={<QnaDetail />} />
-            <Route path="/point/minus" element={<MinusPoint />} />
-            <Route path="/point/plus" element={<PlusPoint />} />
-            <Route path="/point/pointlist" element={<PointList />} />
-            <Route path="/point/fundpointlist" element={<FundPointList />} />
-            <Route path="/funding/regularpay" element={<RegularPayList />} />
-            <Route path="/alarm" element={<AlarmList />} />
-            <Route path="/member/leavecheck" element={<LeaveCheck />} />
+            <Route path="/point/minus" element={checkLogin(MinusPoint)} />
+            <Route path="/point/plus" element={checkLogin(PlusPoint)} />
+            <Route path="/point/pointlist" element={checkLogin(PointList)} />
+            <Route
+              path="/point/fundpointlist"
+              element={checkLogin(FundPointList)}
+            />
+            <Route
+              path="/funding/regularpay"
+              element={checkLogin(RegularPayList)}
+            />
+            <Route path="/alarm" element={checkLogin(AlarmList)} />
+            <Route path="/member/leavecheck" element={checkLogin(LeaveCheck)} />
             <Route
               path="/admin/setStatus1"
-              element={<DontAcceptRefuseInWeekMemberList />}
+              element={checkDevLogin(DontAcceptRefuseInWeekMemberList)}
             />
-            <Route path="/admin/setStatus2" element={<FundingDueList />} />
-            <Route path="/admin/setStatus3" element={<VoteDueList />} />
-            <Route path="/admin/setStatus4" element={<SettlementDueList />} />
-            <Route path="/admin/regularpay" element={<RegularPayList />} />
-            <Route path="/admin/repay" element={<RePayList />} />
+            <Route
+              path="/admin/setStatus2"
+              element={checkDevLogin(FundingDueList)}
+            />
+            <Route
+              path="/admin/setStatus3"
+              element={checkDevLogin(VoteDueList)}
+            />
+            <Route
+              path="/admin/setStatus4"
+              element={checkDevLogin(SettlementDueList)}
+            />
+            <Route
+              path="/admin/regularpay"
+              element={checkDevLogin(RegularPayList)}
+            />
+            <Route path="/admin/repay" element={checkDevLogin(RePayList)} />
           </Routes>
         </div>
       </header>
