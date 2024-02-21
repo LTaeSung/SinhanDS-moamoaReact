@@ -1,28 +1,37 @@
 #main_title {
   width: 360px;
+  margin-left: 20px;
+}
+
+#select {
+  margin-left: 170px;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: white;
+  border: white;
+  margin-bottom: 15px;
 }
 
 /*이미지 태그*/
 /* 프로필 사진 액자 */
-.info_frame {
+#info_frame {
   display: inline-block;
   border: 2px solid #ccc;
-  padding: 10px;
-  border-radius: 200px;
-  margin-left: 20px;
-  margin-top: 10px;
+  border-radius: 5px;
+  width: 340px;
+  margin-top: 8px;
+  margin-left: 8px;
 }
 
-.info_image {
+#info_image {
   display: block;
-  width: 100px;
-  height: 100px;
   object-fit: cover;
-  border-radius: 200px;
+  border-radius: 2px;
+  text-align: center;
+  margin-left: 120px;
 }
 
-.changeImage {
-  margin-left: 37px;
+#changeImage {
   color: gray;
 }
 
@@ -33,7 +42,7 @@
 }
 
 #textarea {
-  margin-left: 8px;
+  margin-left: 20px;
   min-width: 360px;
   min-height: 100px;
 }
