@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
 
 function InvitedFunding() {
@@ -11,6 +11,7 @@ function InvitedFunding() {
   const { registedImagePath } = useContext(RegistedImagePath);
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
+  const navigate = useNavigate();
   const getData = async () => {
     try {
       if (!member_no) {
@@ -53,7 +54,8 @@ function InvitedFunding() {
     console.log(param);
     await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
       if (res.data === "success") {
-        window.alert("성공적으로 삭제되었습니다.");
+        window.alert("초대를 거절했습니다.");
+        navigate(0);
       } else {
         console.log(res);
         window.alert("삭제 실패.");
@@ -80,7 +82,7 @@ function InvitedFunding() {
                     <br />
                     펀드번호 : {Data.fundingno}
                     <br />
-                    펀딩 기간 : ggg
+                    초대 수락 기한 : {Data.inviteddate}
                     <br />
                     결제액 : 매월 {Data.monthlypaymentamount}원
                     <br />

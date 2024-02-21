@@ -22,10 +22,10 @@ const MessageNo2 = ({ obj }) => {
       if (response.data.result === "giveup_success") {
         // giveup_success인 경우, 중도포기 완료된 것임. DB체크해보기
         alert("중도포기 됐습니다.");
-        navigate(-2);
+        window.location.href = "/funding/info?no=" + obj.fundingNo;
       } else if (response.data.result === "giveup_fail") {
         alert("중도포기 실패");
-        navigate(-2);
+        window.location.href = "/funding/info?no=" + obj.fundingNo;
       }
     } catch (error) {
       console.error("에러 발생:", error);

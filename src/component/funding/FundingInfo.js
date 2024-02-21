@@ -64,7 +64,7 @@ function FundingInfo() {
             <p>챌린지 소개:</p>
             <p> {data.description}</p>
             <div style={{ textAlign: "center" }}>
-              <FundingInfoButton obj={{ ...state }} />
+              <FundingInfoButton obj={{ ...state, ...data }} />
             </div>
             <p>참여자 목록</p>
             <FundingMember />
