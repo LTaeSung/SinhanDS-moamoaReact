@@ -71,6 +71,9 @@ function MinusPoint() {
     if (minusPoint.amount > point) {
       alert("보유 포인트보다 많은 금액을 인출할 수 없습니다.");
       return;
+    } else if (minusPoint.amount <= 0) {
+      alert("0원 이하의 값을 입력할 수 없습니다.");
+      return;
     }
     try {
       const result = await axios.post(

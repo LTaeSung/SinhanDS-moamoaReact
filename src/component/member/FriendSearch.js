@@ -15,6 +15,11 @@ function SearchMember() {
   const [data, setData] = useState(null);
 
   const handleSearch = () => {
+    if (email === null || email.replaceAll(" ", "") === "") {
+      alert("검색할 수 없는 값입니다.");
+      return;
+    }
+
     axios
       .get(bootpath + "/member/friend/search", {
         params: { member_no: member_no, email: email },

@@ -26,6 +26,9 @@
 #info_image {
   display: block;
   object-fit: cover;
+  border-radius: 2px;
+  text-align: center;
+  margin-left: 120px;
 }
 
 #changeImage {
