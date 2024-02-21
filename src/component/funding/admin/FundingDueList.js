@@ -38,7 +38,7 @@ function FundingDueList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">결제마감일 지난 멤버 목록</h3>
+          <h3 className="sub_title">결제마감일 지난 펀딩 목록</h3>
           <button onClick={requestRefuse}>펀딩 투표 상태로 전환하기</button>
           <div>
             <ul>
