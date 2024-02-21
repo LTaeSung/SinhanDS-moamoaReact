@@ -97,14 +97,7 @@ function AccountList() {
                                   <td className="table_font">
                                     은행명: {payment.company}
                                   </td>
-                                </tr>
-
-                                <tr>
-                                  <td className="table_font_no">
-                                    계좌번호: {payment.account}
-                                  </td>
-
-                                  <td>
+                                  <td rowSpan={2}>
                                     <button className="account_delete">
                                       <Link
                                         onClick={() => AccountNo(payment.no)}
@@ -112,6 +105,12 @@ function AccountList() {
                                         계좌 삭제
                                       </Link>
                                     </button>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td className="table_font_no">
+                                    계좌번호: {payment.account}
                                   </td>
                                 </tr>
                               </tbody>
