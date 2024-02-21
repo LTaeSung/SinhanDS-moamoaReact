@@ -24,7 +24,7 @@ const MessageNo4 = ({ obj }) => {
       if (response.data.result === "vote_success") {
         console.log("성공에 투표 완료" + response.data.giveUp);
       } else if (response.data.result === "vote_success_end") {
-        alert("내가 마지막으로 투표해서 정산 상태로 변함");
+        alert("내가 마지막으로 투표해서 정산상태로 변함");
       } else {
         alert("투표 안됨");
       }
