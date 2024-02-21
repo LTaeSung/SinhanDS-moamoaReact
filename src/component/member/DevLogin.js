@@ -6,6 +6,7 @@ import BootPath from "./../../BootPath";
 import "./Login.css";
 
 import { useContext } from "react";
+import Login from "./Login";
 const MyLogin = () => {
   const { bootpath } = useContext(BootPath);
 
@@ -48,33 +49,7 @@ const MyLogin = () => {
             <hr className="line"></hr>
           </form>
           <br />
-          <Link className="login_btn" to={`/login`}>
-            N 네이버로 로그인하기
-          </Link>
-          <br />
-          <Link
-            className="login_btn"
-            style={{ backgroundColor: "#FEE500", border: "2px solid #FEE500" }}
-            to={`/login`}
-          >
-            K 카카오로 로그인하기
-          </Link>
-          <br />
-          <Link
-            className="login_btn"
-            to={`/login`}
-            style={{ backgroundColor: "#1877F2", border: "2px solid #1877F2" }}
-          >
-            f 페이스북으로 로그인하기
-          </Link>
-          <br />
-          <Link
-            className="login_btn"
-            to={`/login`}
-            style={{ backgroundColor: "#EB4335", border: "2px solid #EB4335" }}
-          >
-            G 구글로 로그인하기
-          </Link>
+          <Login />
         </div>
       </div>
     </>

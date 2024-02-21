@@ -25,7 +25,6 @@ function FundingInfo() {
   };
 
   const getMessageState = () => {
-    console.log("실행은되나");
     axios
       .get(
         `${bootPath.bootpath}/funding/member/info?no=${no}&member_no=${member_no}`
@@ -33,7 +32,6 @@ function FundingInfo() {
       .then((res) => {
         setState(res.data.myFundInfo);
       });
-    console.log("실행은되나2");
   };
   useEffect(() => {
     getInfo();

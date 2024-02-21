@@ -12,6 +12,9 @@ import Accountlist from "./payment/AccountList";
 import Cardlist from "./payment/CardList";
 import MemberInfo from "./MemberInfo";
 
+import { Link } from "react-router-dom";
+import "./Mypage_info.css";
+
 function Mypage_infocopy() {
   const { bootpath } = useContext(BootPath);
   return (
@@ -23,6 +26,11 @@ function Mypage_infocopy() {
           <MemberInfo />
           <Cardlist />
           <Accountlist />
+        </div>
+        <div>
+          <button className="user_leave">
+            <Link to={`/member/leavecheck`}>회원 탈퇴</Link>
+          </button>
         </div>
       </div>
     </>

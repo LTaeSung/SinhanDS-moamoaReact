@@ -19,7 +19,20 @@ function LeaveCheck() {
   const goLeave = async () => {
     const response = await axios.post(`${bootpath}/member/leave`, formData);
 
-    console.log("서버 응답:", response.data.result);
+    if (response.data.result === "leave_fail") {
+      alert("진행 중인 챌린지가 없어야 탈퇴가 가능합니다.");
+      navigate("/funding/member/join");
+    }
+
+    if (response.data.result === "leave_finish") {
+      alert("회원탈퇴가 완료되었습니다.");
+      navigate("/");
+    }
+
+    if (response.data.result === "exist_point") {
+      alert("인출할 포인트가 남아있습니다.");
+      navigate("/point/minus");
+    }
   };
 
   const goBack = () => {
