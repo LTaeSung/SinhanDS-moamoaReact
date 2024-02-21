@@ -35,7 +35,24 @@ function BoardNew() {
   };
 
   //qna등록
-  const SaveQna = async () => {
+  const SaveQna = async (e) => {
+    //제목, 내용 비어있는지 체크
+    if ("title" in newQna && "contents" in newQna) {
+      if (newQna.title.replaceAll(" ", "") === "") {
+        alert("제목은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      } else if (newQna.contents.replaceAll(" ", "") === "") {
+        alert("내용은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("제목, 내용은 필수 입력 사항입니다.");
+      e.preventDefault();
+      return;
+    }
+
     try {
       const response = await axios.post(`${bootpath}/board/add`, {
         memberno: no,

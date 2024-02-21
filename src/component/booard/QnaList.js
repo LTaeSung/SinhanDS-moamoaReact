@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import BootPath from "./../../BootPath";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +14,9 @@ function QnaList() {
   const [writer, setWriter] = useState("");
   const [no, setNo] = useState("");
   const [newQna, setNewQna] = useState({ title: "", contents: "" });
+  const [showNewQna, setShowNewQna] = useState(false);
+  const writerInput = useRef();
+  const contentInput = useRef();
 
   useEffect(() => {
     const name = sessionStorage.getItem("name");
@@ -38,13 +41,28 @@ function QnaList() {
 
   //qna등록
   const SaveQna = async () => {
-    if (
-      document.querySelector("input").value == "" &&
-      document.querySelector("textarea").value == ""
+    // if (newQna.title.length < 1) {
+    //   writerInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+    // if (newQna.contents.length < 2) {
+    //   contentInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+
+    //내용 비어있는지 체크
+    if (!("title" in newQna) || newQna.title.replaceAll(" ", "") === "") {
+      alert("제목은 필수 입력 사항입니다.");
+      return;
+    } else if (
+      !("contents" in newQna) ||
+      newQna.contents.replaceAll(" ", "") === ""
     ) {
-      alert("제목 또는 내용을 입력해 주세요");
+      alert("댓글 내용은 비워둘 수 없습니다.");
+      return;
     }
-    console.log();
 
     try {
       const response = await axios.post(`${bootpath}/board/add`, {
@@ -54,10 +72,11 @@ function QnaList() {
         writer: writer,
         boardtype: true,
       });
-      setData((prevData) => [...prevData, response.data]);
+      setData((prevData) => [response.data, ...prevData]);
       setTotalElement((prevTotal) => prevTotal + 1);
 
       setNewQna({ title: "", contents: "" });
+      setShowNewQna(false);
     } catch (error) {
       console.log("에러 발생", error);
     }
@@ -69,6 +88,10 @@ function QnaList() {
       try {
         const response = await axios.get(`${bootpath}/board/list`);
         const filteredDate = response.data.filter((item) => item.boardtype);
+        filteredDate.sort(
+          (a, b) => new Date(b.registdate) - new Date(a.registdate)
+        );
+
         setData(filteredDate);
         setTotalElement(filteredDate.length);
       } catch (error) {
@@ -95,28 +118,38 @@ function QnaList() {
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>
+            <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
+              Q&A 쓰기
+            </button>
             <br />
-            <input
-              type="text"
-              value={newQna.title}
-              placeholder="제목"
-              onChange={(e) => setNewQna({ ...newQna, title: e.target.value })}
-            />{" "}
-            <br />
-            <textarea
-              value={newQna.contents}
-              placeholder="내용은 255자 이하로 작성해 주세요"
-              onChange={(e) =>
-                setNewQna({ ...newQna, contents: e.target.value })
-              }
-            ></textarea>{" "}
+            {showNewQna && (
+              <div className="toggle_qna">
+                <input
+                  type="text"
+                  ref={writerInput}
+                  value={newQna.title}
+                  placeholder="제목"
+                  onChange={(e) =>
+                    setNewQna({ ...newQna, title: e.target.value })
+                  }
+                />{" "}
+                <br />
+                <textarea
+                  value={newQna.contents}
+                  ref={contentInput}
+                  placeholder="내용은 255자 이하로 작성해 주세요"
+                  onChange={(e) =>
+                    setNewQna({ ...newQna, contents: e.target.value })
+                  }
+                ></textarea>{" "}
+                <div className="btn-space">
+                  <button className="btn" onClick={SaveQna}>
+                    저장하기
+                  </button>{" "}
+                </div>
+              </div>
+            )}
           </div>
-          <div className="btn-space">
-            <button className="btn" onClick={SaveQna}>
-              작성하기
-            </button>{" "}
-          </div>
-          <br />
           <br />
           <div className="qna-list">
             <ul>
@@ -124,7 +157,10 @@ function QnaList() {
                 <li key={item.no}>
                   <Link to={`/board/qna/detail?no=${item.no}`}>
                     <div>{item.title}</div>
-                    <p>{new Date(item.registdate).toLocaleDateString()}</p>
+                    <span>{item.writer}</span>
+                    <span>
+                      {new Date(item.registdate).toLocaleDateString()}
+                    </span>
                   </Link>
                 </li>
               ))}

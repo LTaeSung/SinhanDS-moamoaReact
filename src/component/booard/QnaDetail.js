@@ -2,8 +2,6 @@ import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
 import "./boardlist.css";
 
@@ -16,10 +14,10 @@ function QnaDetail() {
   const [writer, setWriter] = useState("");
   const [editing, setEditing] = useState(false);
   const [newReply, setNewReply] = useState({
-    writer: "",
+    title: "",
     contents: "",
   });
-  const writerInput = useRef();
+  const titleInput = useRef();
   const contentInput = useRef();
 
   useEffect(() => {
@@ -61,10 +59,9 @@ function QnaDetail() {
     fetchData();
   }, [param]);
 
-  //qan수정
+  //qna수정
   const qnaInputChange = (e) => {
     const { name, value } = e.target;
-
     setBoard((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -76,18 +73,35 @@ function QnaDetail() {
     }
   };
 
-  const savaEdit = async () => {
-    if (board.writer.length < 1) {
-      writerInput.current.focus();
-      //focus
-      return;
-    }
-    if (board.contents.length < 2) {
-      contentInput.current.focus();
-      //focus
+  const savaEdit = async (e) => {
+    //제목, 내용 비어있는지 체크
+    if ("title" in board && "contents" in board) {
+      if (board.title.replaceAll(" ", "") === "") {
+        alert("제목은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      } else if (board.contents.replaceAll(" ", "") === "") {
+        alert("내용은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("제목, 내용은 필수 입력 사항입니다.");
+      e.preventDefault();
       return;
     }
 
+    // if (board.writer.length < 1) {
+    //   titleInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+    // if (board.contents.length < 3) {
+    //   contentInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+    console.log("Saving edit...", board);
     try {
       const response = await axios.put(
         `${bootPath.bootpath}/board/update?no=${param.get("no")}`,
@@ -97,11 +111,12 @@ function QnaDetail() {
         }
       );
       setEditing(false);
-
+      console.log("Saving edit...", board);
       const updatedData = await axios.get(
         `${bootPath.bootpath}/board/detail?no=${param.get("no")}`
       );
       setBoard(updatedData.data);
+      console.log("Saving edit...", board);
     } catch (error) {
       console.log("qna 수정하다가 오류가 났습니다.", error);
     }
@@ -128,7 +143,20 @@ function QnaDetail() {
   };
 
   //댓글저장
-  const SaveReply = async () => {
+  const SaveReply = async (e) => {
+    //댓글 내용 비어있는지 체크
+    if ("contents" in newReply) {
+      if (newReply.contents.replaceAll(" ", "") === "") {
+        alert("댓글 내용은 비워둘 수 없습니다.");
+        e.preventDefault();
+        return;
+      }
+    } else {
+      alert("댓글 내용은 비워둘 수 없습니다.");
+      e.preventDefault();
+      return;
+    }
+
     try {
       await axios.post(`${bootPath.bootpath}/board/reply/add`, {
         ...newReply,
@@ -154,7 +182,7 @@ function QnaDetail() {
 
   //댓글수정
   const InputChange = (e) => {
-    const { name, value } = e.target.value;
+    const { name, value } = e.target;
     setNewReply((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -178,6 +206,19 @@ function QnaDetail() {
     try {
       const updatedReplies = [...replies];
       const editedReply = updatedReplies[replyIdx];
+
+      console.log("확인" + editedReply.contents + "확인");
+
+      //댓글 내용 비어있는지 체크
+      if ("contents" in editedReply) {
+        if (editedReply.contents.replaceAll(" ", "") === "") {
+          alert("댓글 내용은 비워둘 수 없습니다.");
+          return;
+        }
+      } else {
+        alert("댓글 내용은 필수 입력 사항입니다.");
+        return;
+      }
 
       await axios.put(`${bootPath.bootpath}/board/reply/update?no=${replyId}`, {
         contents: editedReply.contents,
@@ -221,7 +262,7 @@ function QnaDetail() {
       <div className="sub">
         <div className="size">
           <div className="slect_detail">
-            <h3 className="span_title_detail"> QNA </h3>
+            <h3 className="span_title_detail"> Q&A </h3>
           </div>
           <div>
             <div>
@@ -233,10 +274,11 @@ function QnaDetail() {
                   </p>
                   <span>
                     <input
-                      id="qna_edit_title"
-                      ref={writerInput}
                       type="text"
+                      id="qna_edit_title"
+                      ref={titleInput}
                       value={board.title}
+                      name="title"
                       onChange={qnaInputChange}
                     />{" "}
                   </span>
@@ -259,7 +301,7 @@ function QnaDetail() {
                   <p id="qna_time">
                     {new Date(board.registdate).toLocaleDateString()}
                   </p>
-                  <span id="qna_title">{board.title}</span>
+                  <p id="qna_title">{board.title}</p>
                   <div className="qna_content_area">
                     <p id="qna_content">{board.contents}</p>
                   </div>

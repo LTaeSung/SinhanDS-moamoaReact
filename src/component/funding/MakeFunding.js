@@ -63,12 +63,19 @@ function MakeFunding() {
       if (param.title.replace(" ", "") === "") {
         alert("제목은 비워둘 수 없습니다.");
         e.preventDefault();
-      } else if (param.monthly_payment_amount < 1) {
-        alert("매월 결제 금액은 1원 이상이어야 합니다.");
+        return;
+      } else if (param.monthly_payment_amount < 5000) {
+        alert("매월 결제 금액은 5000원 이상이어야 합니다.");
         e.preventDefault();
+        return;
+      } else if (param.monthly_payment_date === "===") {
+        alert("매월 결제일은 1일에서 28일까지만 선택 가능합니다.");
+        e.preventDefault();
+        return;
       } else if (!("payment_no" in param) || param.payment_no === "") {
         alert("정기 결제 될 카드를 선택해주세요.");
         e.preventDefault();
+        return;
       }
       console.log("check");
     } else {
@@ -79,8 +86,35 @@ function MakeFunding() {
   };
 
   const dayOptions = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28,
+    "---",
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
   ];
 
   return (
@@ -128,8 +162,8 @@ function MakeFunding() {
               name="monthly_payment_date"
             >
               {dayOptions.map((option, idx) => (
-                <option key={idx + 1} value={idx + 1}>
-                  {idx + 1}
+                <option key={idx} value={idx}>
+                  {option}
                 </option>
               ))}
             </select>

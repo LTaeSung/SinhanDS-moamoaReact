@@ -64,6 +64,15 @@ function FundingComment() {
   };
 
   const commentSubmit = async () => {
+    //빈값 체크
+    if (
+      !("contents" in newReply) ||
+      newReply.contents.replaceAll(" ", "") === ""
+    ) {
+      alert("댓글 내용은 비워둘 수 없습니다.");
+      return;
+    }
+
     try {
       const response = await axios.post(
         `${bootPath.bootpath}/funding/comment/add`,
@@ -89,6 +98,15 @@ function FundingComment() {
 
       if (commentWriter !== writer) {
         alert("작성자가 아닙니다.");
+        return;
+      }
+
+      //빈값 체크
+      if (
+        "contents" in updatedContents ||
+        updatedContents.contents.replaceAll(" ", "") === ""
+      ) {
+        alert("댓글 내용은 비워둘 수 없습니다.");
         return;
       }
 

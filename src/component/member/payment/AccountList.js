@@ -97,15 +97,6 @@ function AccountList() {
                                   <td className="table_font">
                                     은행명: {payment.company}
                                   </td>
-                                  <td>
-                                    <button className="account_modify">
-                                      <Link
-                                        to={`/member/payment/account/modify/${payment.no}`}
-                                      >
-                                        계좌 수정
-                                      </Link>
-                                    </button>
-                                  </td>
                                 </tr>
 
                                 <tr>
