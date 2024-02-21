@@ -34,8 +34,11 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                       <div className="image_container">
                         <img
                           id="joined_funding_image"
-                          src={registedImagePath + `challenge.jpg`}
-                          width="100"
+                          src={
+                            Data.photo
+                              ? registedImagePath + Data.photo
+                              : registedImagePath + "challenge.jpg"
+                          }
                           alt=""
                         />
                       </div>
