@@ -45,7 +45,9 @@ function Accept({ fundingMemberNo, fundingNo }) {
     axios.post(bootpath + "/funding/member/accept", select, {}).then((res) => {
       if (res.data === "success") {
         // navigate("/funding/afterAcceptFunding");
+
         navigate("/funding/info?no=" + location.state.fundingNo);
+        navigate(0);
       }
     });
   };
