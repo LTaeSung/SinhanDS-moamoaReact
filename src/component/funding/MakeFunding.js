@@ -59,6 +59,9 @@ function MakeFunding() {
   };
 
   const handleChangeFile = (event) => {
+    if (event.target.files[0] == null) {
+      return;
+    }
     setSelectedFile(event.target.files[0]);
     setUploadedImageUrl(URL.createObjectURL(event.target.files[0])); // 업로드된 이미지 URL 설정
     console.log(event.target.files[0]);

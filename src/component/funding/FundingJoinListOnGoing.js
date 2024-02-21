@@ -3,12 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
+import "./FundingJoinListOnGoing.css";
 
 const FundingJoinListOnGoing = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
+
   const getApi = async () => {
     axios
       .get(`${bootpath}/funding/member/join/ongoing?member_no=${member_no}`)
@@ -28,19 +30,45 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
               {data.map((Data) => (
                 <li key={Data.fundingNo}>
                   <Link to={"/funding/info?no=" + Data.fundingNo}>
-                    <img src={registedImagePath + Data.photo} width="100" />
-                    <div>펀드명 : {Data.title}</div>
-                    <div>내가 낸 금액 : {Data.myPayAmount}</div>
-                    <div>전체 모인 금액: {Data.totalPayAmount}</div>
-                    <div>상태 : {Data.stateMessage}</div>
-                    <div>남은 일수 : {Data.dueDateLeft}</div>
-                    <div>상태 색 : {Data.color}</div>
-                    <div>메세지 상태 : {Data.messageNo}</div>
-                  </Link>
+                    <div className="list_container">
+                      <div className="image_container">
+                        <img
+                          id="joined_funding_image"
+                          src={registedImagePath + `challenge.jpg`}
+                          width="100"
+                          alt=""
+                        />
+                      </div>
+                      <div className="fund_info">
+                        <div className="fund_title">{Data.title}</div>
+                        <br />
 
-                  <br />
-                  <br />
-                  <br />
+                        <div
+                          className="fund_status"
+                          style={{ color: Data.color }}
+                        >
+                          {Data.stateMessage}
+
+                          <div className="fund_amount">
+                            <span className="all_amount">
+                              총 금액:{Data.totalPayAmount}
+                            </span>
+                            <span className="day_left">
+                              {Data.dueDateLeft}일 남음
+                            </span>
+                            <div
+                              className="status_bar_start"
+                              style={{
+                                width: "270px", // 너비
+                                height: "4px", // 높이
+                                backgroundColor: Data.color, // 배경색
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>
