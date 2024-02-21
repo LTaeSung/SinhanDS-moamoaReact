@@ -76,11 +76,11 @@ function QnaDetail() {
   const savaEdit = async (e) => {
     //제목, 내용 비어있는지 체크
     if ("title" in board && "contents" in board) {
-      if (board.title.replace(" ", "") === "") {
+      if (board.title.replaceAll(" ", "") === "") {
         alert("제목은 비워둘 수 없습니다.");
         e.preventDefault();
         return;
-      } else if (board.contents.replace(" ", "") === "") {
+      } else if (board.contents.replaceAll(" ", "") === "") {
         alert("내용은 비워둘 수 없습니다.");
         e.preventDefault();
         return;
@@ -91,16 +91,16 @@ function QnaDetail() {
       return;
     }
 
-    if (board.writer.length < 1) {
-      titleInput.current.focus();
-      //focus
-      return;
-    }
-    if (board.contents.length < 3) {
-      contentInput.current.focus();
-      //focus
-      return;
-    }
+    // if (board.writer.length < 1) {
+    //   titleInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+    // if (board.contents.length < 3) {
+    //   contentInput.current.focus();
+    //   //focus
+    //   return;
+    // }
     console.log("Saving edit...", board);
     try {
       const response = await axios.put(
@@ -146,13 +146,13 @@ function QnaDetail() {
   const SaveReply = async (e) => {
     //댓글 내용 비어있는지 체크
     if ("contents" in newReply) {
-      if (newReply.contents.replace(" ", "") === "") {
+      if (newReply.contents.replaceAll(" ", "") === "") {
         alert("댓글 내용은 비워둘 수 없습니다.");
         e.preventDefault();
         return;
       }
     } else {
-      alert("댓글 내용은 필수 입력 사항입니다.");
+      alert("댓글 내용은 비워둘 수 없습니다.");
       e.preventDefault();
       return;
     }
@@ -207,9 +207,11 @@ function QnaDetail() {
       const updatedReplies = [...replies];
       const editedReply = updatedReplies[replyIdx];
 
+      console.log("확인" + editedReply.contents + "확인");
+
       //댓글 내용 비어있는지 체크
       if ("contents" in editedReply) {
-        if (editedReply.contents.replace(" ", "") === "") {
+        if (editedReply.contents.replaceAll(" ", "") === "") {
           alert("댓글 내용은 비워둘 수 없습니다.");
           return;
         }

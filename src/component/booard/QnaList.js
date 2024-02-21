@@ -41,14 +41,23 @@ function QnaList() {
 
   //qna등록
   const SaveQna = async () => {
-    if (newQna.title.length < 1) {
-      writerInput.current.focus();
-      //focus
+    // if (newQna.title.length < 1) {
+    //   writerInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+    // if (newQna.contents.length < 2) {
+    //   contentInput.current.focus();
+    //   //focus
+    //   return;
+    // }
+
+    //내용 비어있는지 체크
+    if ("contents" in newQna || newQna.contents.replaceAll(" ", "") === "") {
+      alert("댓글 내용은 비워둘 수 없습니다.");
       return;
-    }
-    if (newQna.contents.length < 2) {
-      contentInput.current.focus();
-      //focus
+    } else if ("title" in newQna || newQna.title.replaceAll(" ", "") === "") {
+      alert("제목은 필수 입력 사항입니다.");
       return;
     }
 
