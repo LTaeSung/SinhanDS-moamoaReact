@@ -13,17 +13,21 @@ function AddCardList() {
   const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
   const { address } = useParams();
+  const bankList = ["카드사 선택", "신한", "농협", "국민", "우리", "뭐시기"];
 
   const [formData, setFormData] = useState({
     //전송할 데이터 필드
     memberno: member_no,
     paymenttype: 1, //카드인경우 type이 1
     company: "",
+    account1: "",
+    account2: "",
+    account3: "",
+    account4: "",
     account: "",
     validdate_month: "",
     validdate_year: "",
     validdate: "",
-    // validdate: formData.validdate_month + " / " + formData.validdate_year,
     cvc: "",
   });
 
@@ -38,10 +42,51 @@ function AddCardList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData.validdate);
     formData.validdate =
       formData.validdate_month + " / " + formData.validdate_year;
-    console.log(formData.validdate);
+    formData.account =
+      formData.account1 +
+      "-" +
+      formData.account2 +
+      "-" +
+      formData.account3 +
+      "-" +
+      formData.account4;
+
+    console.log(formData);
+
+    if (
+      !("company" in formData) ||
+      formData.company === "0" ||
+      formData.company === null ||
+      formData.company === ""
+    ) {
+      alert("카드사를 선택해주세요.");
+      e.preventDefault();
+      return;
+    } else if (
+      formData.account1.length !== 4 ||
+      formData.account2.length !== 4 ||
+      formData.account3.length !== 4 ||
+      formData.account4.length !== 4
+    ) {
+      alert("카드 번호를 양식에 맞춰 입력해주세요.");
+      e.preventDefault();
+      return;
+    } else if (
+      formData.validdate_month.length !== 2 ||
+      formData.validdate_year.length !== 2
+    ) {
+      alert("유효 기간을 양식에 맞춰 입력해주세요.");
+      e.preventDefault();
+      return;
+    } else if (formData.cvc.length !== 3) {
+      alert(
+        "cvc번호를 양식에 맞춰 입력해주세요(cvc는 카드 뒷면에 적힌 번호 맨 뒤 세자리입니다.)"
+      );
+      e.preventDefault();
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -81,31 +126,63 @@ function AddCardList() {
               value={formData.paymenttype || ""}
             />
             <br /> */}
-            카드사명:{" "}
-            <input
+            {/*<input
               type="number"
               name="company"
               value={formData.company}
               onChange={handleInputChange}
-            />
+            />*/}
+            <div>
+              카드사명
+              <select onChange={handleInputChange} name="company">
+                {bankList.map((option, idx) => (
+                  <option key={idx} value={idx}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
             <br />
-            카드번호:{" "}
-            <input
-              type="text"
-              name="account"
-              value={formData.account}
-              onChange={handleInputChange}
-            />
+            <div>
+              카드번호:{" "}
+              <input
+                type="number"
+                name="account1"
+                value={formData.account1}
+                onChange={handleInputChange}
+              />
+              -
+              <input
+                type="number"
+                name="account2"
+                value={formData.account2}
+                onChange={handleInputChange}
+              />
+              -
+              <input
+                type="number"
+                name="account3"
+                value={formData.account3}
+                onChange={handleInputChange}
+              />
+              -
+              <input
+                type="number"
+                name="account4"
+                value={formData.account4}
+                onChange={handleInputChange}
+              />
+            </div>
             <br />
             유효기간:{" "}
             <input
-              type="text"
+              type="number"
               name="validdate_month"
               value={formData.validdate_month}
               onChange={handleInputChange}
             />
             <input
-              type="text"
+              type="number"
               name="validdate_year"
               value={formData.validdate_year}
               onChange={handleInputChange}

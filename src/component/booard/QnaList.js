@@ -110,11 +110,6 @@ function QnaList() {
           <div className="slect">
             <span className="span_title">Q&A</span>
             <span>총 {totalElement} 건 </span>
-            <select>
-              <option value="0">전체</option>
-              <option value="1">진행중</option>
-              <option value="2">완료</option>
-            </select>
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>

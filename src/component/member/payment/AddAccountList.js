@@ -11,6 +11,7 @@ function AddAccountList() {
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
+  const bankList = ["은행 선택", "신한", "농협", "국민", "우리", "뭐시기"];
 
   const [formData, setFormData] = useState({
     //전송할 데이터 필드
@@ -32,6 +33,21 @@ function AddAccountList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (
+      !("company" in formData) ||
+      formData.company === "0" ||
+      formData.company === null ||
+      formData.company === ""
+    ) {
+      alert("카드사를 선택해주세요.");
+      e.preventDefault();
+      return;
+    } else if (formData.account.length < 10 || formData.account.length > 14) {
+      alert("계좌번호를 형식에 맞체 입력해주세요.");
+      e.preventDefault();
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -69,18 +85,28 @@ function AddAccountList() {
               name="paymenttype"
               value={formData.paymenttype || ""}
             />
-            <br /> */}
+            <br />
             은행명:{" "}
             <input
               type="number"
               name="company"
               value={formData.company}
               onChange={handleInputChange}
-            />
+            /> */}
+            <div>
+              은행명
+              <select onChange={handleInputChange} name="company">
+                {bankList.map((option, idx) => (
+                  <option key={idx} value={idx}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
             <br />
-            계좌번호:{" "}
+            계좌번호('-'는 제외하고 숫자만 입력):{" "}
             <input
-              type="text"
+              type="number"
               name="account"
               value={formData.account}
               onChange={handleInputChange}

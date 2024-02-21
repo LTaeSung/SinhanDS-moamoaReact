@@ -2,10 +2,12 @@ import MemberHeader from "../member/MemberHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { da, id } from "date-fns/locale";
-import { useNavigate } from "react-router-dom";
+
+import "./MinusPoint.css";
+
 function MinusPoint() {
   const { bootpath } = useContext(BootPath);
 
@@ -115,16 +117,24 @@ function MinusPoint() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container"></div>
           <h3 className="sub_title">포인트 인출하기</h3>
-          현재 보유 포인트 : {point} 원
+          <div className="space_container"></div>
+
+          <div className="cash_container">
+            <p className="cash_font">현재 보유 포인트 :</p>
+            <p className="cash_color">{point}</p>
+          </div>
+
           <input
+            className="input_amount"
             id="amount"
             name="amount"
             type="number"
             placeholder="인출할 금액을 입력해주세요"
             onChange={onChangeAmount}
           />
-          <button onClick={requestPayBack}>인출하기</button>
+
           <div>
             <>
               {payment.filter((payment) => payment.paymenttype === 0).length >
@@ -134,18 +144,25 @@ function MinusPoint() {
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
                       <li key={i}>
-                        <input
-                          id={i}
-                          type="radio"
-                          value={payment.company + "_" + payment.account}
-                          checked={
-                            select.merchant_id ===
-                            payment.company + "_" + payment.account
-                          }
-                          onChange={handleRadioButton}
-                        />
-                        <p>은행명: {bankList[payment.company]}</p>
-                        <p>계좌번호: {payment.account}</p>
+                        <div className="acc_container">
+                          <div className="acc_info">
+                            <p>은행명: {bankList[payment.company]}</p>
+                            <p>계좌번호: {payment.account}</p>
+                          </div>
+
+                          <div className="radio_button">
+                            <input
+                              id={i}
+                              type="radio"
+                              value={payment.company + "_" + payment.account}
+                              checked={
+                                select.merchant_id ===
+                                payment.company + "_" + payment.account
+                              }
+                              onChange={handleRadioButton}
+                            />
+                          </div>
+                        </div>
                       </li>
                     ))}
                 </ul>
@@ -157,6 +174,9 @@ function MinusPoint() {
               )}
             </>
           </div>
+          <button className="min_money" onClick={requestPayBack}>
+            인출하기
+          </button>
         </div>
       </div>
     </>
