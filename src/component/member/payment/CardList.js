@@ -105,15 +105,6 @@ function CardList() {
                                   <td className="table_font">
                                     카드사: {payment.company}
                                   </td>
-                                  <td>
-                                    <button className="card_modify">
-                                      <Link
-                                        to={`/member/payment/card/modify/${payment.no}`}
-                                      >
-                                        카드 수정
-                                      </Link>
-                                    </button>
-                                  </td>
                                 </tr>
                                 <tr>
                                   <td className="table_font_no">
