@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+.space_container {
+  height: 30px;
+}
+.line {
+  border: none;
+  border-top: 2px solid #ccc;
+  width: 370px;
+  margin-left: 12px;
+}
+
+.Menu_button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  width: 130px;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #3a4149;
+  background: #e7ebee;
+  line-height: 1.15;
+  font-size: 15px;
+}
+
+.infoId {
+  font-weight: 700;
+}
+
+.Id_color {
+  color: red;
+  font-size: 25px;
+}
+
+.Id_color2 {
+  color: red;
+  font-size: 25px;
+  margin-left: 120px;
+}
+
+.infoName {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.button_container {
+  margin-left: 230px;
+}
+.list_button {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: black;
+  background-color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  width: 45px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.withdrawal_button {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid gray;
+  color: gray;
+  background-color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  width: 45px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.button_charge {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  width: 45px;
+  height: 30px;
+}
+
+/* 프로필 사진 액자 */
+.info_frame {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 200px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.info_image {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+.changeImage {
+  margin-left: 37px;
+  color: gray;
+}

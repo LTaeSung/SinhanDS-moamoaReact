@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+.space_container {
+  height: 30px;
+}
+
+.search_space_container {
+  height: 10px;
+}
+
+/* 검색 할때 */
+.search_container {
+  width: 380px;
+}
+
+.input_space {
+  width: 100px;
+}
+
+.user_search {
+  min-width: 295px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search_button {
+  display: inline-block;
+  outline: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  width: 80px;
+  height: 32px;
+  margin-bottom: 2px;
+}
+
+/* 검색된 데이터 */
+
+.user_searched_container {
+  display: flex;
+  width: 380px;
+  height: 60px;
+}
+
+.photo_range {
+  width: 70px;
+  margin-left: 25px;
+}
+
+/* 프로필 사진 액자 */
+.user_frame {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 200px;
+}
+
+.user_image {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+.nameEmail {
+  width: 170px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+/* 친구 등록 */
+.friend_Add {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+
+  margin-top: 12px;
+  margin-left: 15px;
+}
