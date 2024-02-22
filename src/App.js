@@ -48,6 +48,8 @@ import FundingDueList from "./component/funding/admin/FundingDueList";
 import VoteDueList from "./component/funding/admin/VoteDueList";
 import SettlementDueList from "./component/funding/admin/SettlementDueList";
 import Main from "./component/Main";
+import GiveupStatistics from "./component/funding/admin/GiveupStatistics";
+import SuccessFailStatistics from "./component/funding/admin/SuccessFailStatistics";
 
 function App() {
   const checkLogin = (Component) => {
@@ -181,6 +183,11 @@ function App() {
               element={checkDevLogin(RegularPayList)}
             />
             <Route path="/admin/repay" element={checkDevLogin(RePayList)} />
+            <Route path="/statistics/giveup" element={<GiveupStatistics />} />
+            <Route
+              path="/statistics/successfail"
+              element={<SuccessFailStatistics />}
+            />
           </Routes>
         </div>
       </header>
