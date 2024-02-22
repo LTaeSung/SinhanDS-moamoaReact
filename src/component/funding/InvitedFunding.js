@@ -124,6 +124,7 @@ function InvitedFunding() {
                       </div>
                     </div>
                   </div>
+                  <hr id="final_line"></hr>{" "}
                 </li>
               ))}
             </ul>
