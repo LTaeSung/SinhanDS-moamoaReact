@@ -77,63 +77,56 @@ function AccountList() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title" />
-          <div class="account_container">
-            {member_no ? (
-              <>
-                {payment.filter((payment) => payment.paymenttype === 0).length >
-                0 ? (
-                  <ul>
-                    {payment
-                      .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
-                      .map((payment) => (
-                        <li key={payment.no}>
-                          <div className="rounded-square">
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td className="table_font">
-                                    은행명: {payment.company}
-                                  </td>
-                                  <td rowSpan={2}>
-                                    <button className="account_delete">
-                                      <Link
-                                        onClick={() => AccountNo(payment.no)}
-                                      >
-                                        계좌 삭제
-                                      </Link>
-                                    </button>
-                                  </td>
-                                </tr>
+      <div class="account_container">
+        {member_no ? (
+          <>
+            {payment.filter((payment) => payment.paymenttype === 0).length >
+            0 ? (
+              <ul>
+                {payment
+                  .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
+                  .map((payment) => (
+                    <li key={payment.no}>
+                      <div className="rounded-square">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="table_font">
+                                은행명: {payment.company}
+                              </td>
+                              <td rowSpan={2}>
+                                <button className="account_delete">
+                                  <Link onClick={() => AccountNo(payment.no)}>
+                                    계좌 삭제
+                                  </Link>
+                                </button>
+                              </td>
+                            </tr>
 
-                                <tr>
-                                  <td className="table_font_no">
-                                    계좌번호: {payment.account}
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </li>
-                      ))}
-                  </ul>
-                ) : (
-                  <p>계좌가 없습니다.</p>
-                )}
-                <Link to="/member/payment/account/add">
-                  <p className="account_add">+ 계좌 추가</p>
-                </Link>
-              </>
+                            <tr>
+                              <td className="table_font_no">
+                                계좌번호: {payment.account}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
             ) : (
-              <p>
-                {" "}
-                <Link to="/">로그인 해주세요.</Link>
-              </p>
+              <p>계좌가 없습니다.</p>
             )}
-          </div>
-        </div>
+            <Link to="/member/payment/account/add">
+              <p className="account_add">+ 계좌 추가</p>
+            </Link>
+          </>
+        ) : (
+          <p>
+            {" "}
+            <Link to="/">로그인 해주세요.</Link>
+          </p>
+        )}
       </div>
     </>
   );

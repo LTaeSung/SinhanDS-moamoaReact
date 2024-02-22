@@ -80,73 +80,68 @@ function MemberInfo() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title" />
-          <div className="space_container"></div>
-          <table>
-            <tr>
-              <td rowSpan="5">
-                {data && (
-                  <div className="info_frame">
-                    <img
-                      className="info_image"
-                      onClick={handleImageClick}
-                      src={
-                        data.photo
-                          ? `${registedImagePath}${data.photo}`
-                          : uploadedImageUrl ||
-                            `${commonImagePath}header_Profile.png`
-                      }
-                      width="100"
-                      alt=""
-                    />
-                  </div>
-                )}
-                <input
-                  id="fileInput"
-                  type="file"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
+      <div className="space_container"></div>
+      <table>
+        <tr>
+          <td rowSpan="5">
+            {data && (
+              <div className="info_frame">
+                <img
+                  className="info_image"
+                  onClick={handleImageClick}
+                  src={
+                    data.photo
+                      ? `${registedImagePath}${data.photo}`
+                      : uploadedImageUrl ||
+                        `${commonImagePath}header_Profile.png`
+                  }
+                  width="100"
+                  alt=""
                 />
-                <br />{" "}
-                {postImg === "edit" ? (
-                  <button className="changeImage" onClick={handleImageClick}>
-                    프로필 사진 변경
-                  </button>
-                ) : (
-                  <button className="changeImage" onClick={handleSubmit}>
-                    프로필 사진 등록
-                  </button>
-                )}
-              </td>
-              <td className="infoId">
-                <p className="Id_color"> {data && data.email.split("@")[0]}</p>
-              </td>
-            </tr>
-            <tr>
-              <td className="infoName">{data && data.name}</td>
-            </tr>
-            <tr>
-              <td className="infoId">
-                보유 포인트: <p className="Id_color2">{data && data.point}</p>
-              </td>
-            </tr>
-          </table>
-          <div class="button_container">
-            <button className="list_button">
-              <Link to={"/point/pointlist"}>내역</Link>
-            </button>
-            <button className="withdrawal_button">
-              <Link to={"/point/minus"}>인출</Link>
-            </button>
-            <button className="button_charge">
-              <Link to={"/point/plus"}>충전</Link>
-            </button>
-          </div>
-          <hr />
-        </div>
+              </div>
+            )}
+            <input
+              id="fileInput"
+              type="file"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+            <br />{" "}
+            {postImg === "edit" ? (
+              <button className="changeImage" onClick={handleImageClick}>
+                프로필 사진 변경
+              </button>
+            ) : (
+              <button className="changeImage" onClick={handleSubmit}>
+                프로필 사진 등록
+              </button>
+            )}
+          </td>
+          <td className="infoId">
+            <p className="Id_color"> {data && data.email.split("@")[0]}</p>
+          </td>
+        </tr>
+        <tr>
+          <td className="infoName">{data && data.name}</td>
+        </tr>
+        <tr>
+          <td className="infoId">
+            보유 포인트: <p className="Id_color2">{data && data.point}</p>
+          </td>
+        </tr>
+      </table>
+      <div class="button_container">
+        <button className="list_button">
+          <Link to={"/point/pointlist"}>내역</Link>
+        </button>
+        <button className="withdrawal_button">
+          <Link to={"/point/minus"}>인출</Link>
+        </button>
+        <button className="button_charge">
+          <Link to={"/point/plus"}>충전</Link>
+        </button>
       </div>
+      <hr />
     </>
   );
 }
