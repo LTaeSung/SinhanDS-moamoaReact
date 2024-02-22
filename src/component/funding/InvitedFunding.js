@@ -1,6 +1,7 @@
 import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
+import Formatter from "./../../Formatter";
 import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +13,17 @@ function InvitedFunding() {
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
+  const formatter = Formatter;
+  // const formatter = new Intl.DateTimeFormat("ko-KR", {
+  //   year: "numeric",
+  //   month: "2-digit",
+  //   day: "2-digit",
+  //   hour: "numeric",
+  //   minute: "numeric",
+  //   second: "numeric",
+  //   timeZone: "Asia/Seoul", // 시간대 설정
+  // });
+
   const getData = async () => {
     try {
       if (!member_no) {
@@ -85,7 +97,7 @@ function InvitedFunding() {
                     <br />
                     펀딩마감기한 :{" "}
                     {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
-                    {Data.fundingDueDate}
+                    {formatter.format(new Date(Data.fundingDueDate))}
                     <br />
                     결제액 : 매월 {Data.monthlyPaymentAmmount}원
                     <br />

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
+import Formatter from "./../../Formatter";
 import RegistedImagePath from "../../registedImagePath";
 import FundingMember from "./FundingMember";
 import FundingComment from "./FundingComment";
@@ -16,6 +17,7 @@ function FundingInfo() {
   const [state, setState] = useState({});
   const { registedImagePath } = useContext(RegistedImagePath);
   const [showComment, setShowComment] = useState(false);
+  const formatter = Formatter;
 
   let no = params.get("no");
 
