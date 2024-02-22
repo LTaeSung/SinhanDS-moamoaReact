@@ -82,7 +82,7 @@ function InvitedFunding() {
                     <br />
                     펀드번호 : {Data.fundingno}
                     <br />
-                    펀딩 기간 : ggg
+                    초대 수락 기한 : {Data.inviteddate}
                     <br />
                     결제액 : 매월 {Data.monthlypaymentamount}원
                     <br />

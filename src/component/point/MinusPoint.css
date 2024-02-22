@@ -53,12 +53,14 @@
 }
 
 .acc_info {
-  width: 140px;
-  margin-left: 15px;
+  width: 200px;
+  margin-left: 20px;
 }
 
 .radio_button {
-  width: 100px;
+  width: 80px;
+  margin-left: 110px;
+  margin-bottom: 10px;
 }
 
 .min_money {

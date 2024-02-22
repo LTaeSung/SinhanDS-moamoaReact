@@ -3,6 +3,7 @@ import BootPath from "./../../BootPath";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import BoardHeader from "./BoardHeader";
+
 function BoardNew() {
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
@@ -36,20 +37,10 @@ function BoardNew() {
 
   //qna등록
   const SaveQna = async (e) => {
-    //제목, 내용 비어있는지 체크
-    if ("title" in newQna && "contents" in newQna) {
-      if (newQna.title.replaceAll(" ", "") === "") {
-        alert("제목은 비워둘 수 없습니다.");
-        e.preventDefault();
-        return;
-      } else if (newQna.contents.replaceAll(" ", "") === "") {
-        alert("내용은 비워둘 수 없습니다.");
-        e.preventDefault();
-        return;
-      }
-    } else {
-      alert("제목, 내용은 필수 입력 사항입니다.");
-      e.preventDefault();
+    e.preventDefault();
+
+    if (!newQna.title.trim() || !newQna.contents.trim()) {
+      alert("제목과 내용을 입력해주세요.");
       return;
     }
 
@@ -61,10 +52,14 @@ function BoardNew() {
         writer: writer,
         boardtype: false,
       });
-      setData((prevData) => [...prevData, response.data]);
+      setData((prevData) => [response.data, ...prevData]);
       setTotalElement((prevTotal) => prevTotal + 1);
 
       setNewQna({ title: "", contents: "" });
+      const confirmation = window.confirm("공지사항이 등록되었습니다.");
+      if (confirmation) {
+        navigate("/board/list");
+      }
     } catch (error) {
       console.log("에러 발생", error);
     }
@@ -76,6 +71,9 @@ function BoardNew() {
       try {
         const response = await axios.get(`${bootpath}/board/list`);
         const filteredDate = response.data.filter((item) => !item.boardtype);
+        filteredDate.sort(
+          (a, b) => new Date(b.registdate) - new Date(a.registdate)
+        );
         setData(filteredDate);
       } catch (error) {
         console.log("error 남", error);
@@ -91,7 +89,7 @@ function BoardNew() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title"> 공지사항 새 글 </h3>
-          <p>{writer}</p>
+          <p id="boardnew_writer">{writer}</p>
           <input
             type="text"
             value={newQna.title}
@@ -104,8 +102,11 @@ function BoardNew() {
             placeholder="내용"
             onChange={(e) => setNewQna({ ...newQna, contents: e.target.value })}
           ></textarea>{" "}
-          <br /> <br />
-          <button onClick={SaveQna}>저장하기</button> <br />
+          <br />
+          <button className="qna_detail_btn" onClick={SaveQna}>
+            저장하기
+          </button>{" "}
+          <br />
           <br />
         </div>
       </div>

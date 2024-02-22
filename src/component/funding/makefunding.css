@@ -6,10 +6,10 @@
 #select {
   margin-left: 170px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 12px;
   background-color: white;
   border: white;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 /*이미지 태그*/
@@ -28,7 +28,8 @@
   object-fit: cover;
   border-radius: 2px;
   text-align: center;
-  margin-left: 120px;
+  margin-left: 100px;
+  width: 120px;
 }
 
 #changeImage {

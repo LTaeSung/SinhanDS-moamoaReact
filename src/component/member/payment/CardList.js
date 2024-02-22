@@ -105,18 +105,18 @@ function CardList() {
                                   <td className="table_font">
                                     카드사: {payment.company}
                                   </td>
-                                </tr>
-                                <tr>
-                                  <td className="table_font_no">
-                                    카드 번호: {payment.account}
-                                  </td>
-                                  <td>
+                                  <td rowSpan={2}>
                                     <button
                                       className="card_delete"
                                       onClick={() => CardNo(payment.no)}
                                     >
                                       카드 삭제
                                     </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="table_font_no">
+                                    카드 번호: {payment.account}
                                   </td>
                                 </tr>
                               </tbody>
