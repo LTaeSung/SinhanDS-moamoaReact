@@ -13,7 +13,6 @@ function SearchMember() {
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
   const { commonImagePath } = useContext(CommonImagePath);
 
   const handleSearch = () => {
@@ -32,7 +31,6 @@ function SearchMember() {
           alert("이미 친구로 등록되어있거나 정보가 없습니다.");
           setMemberList([]);
         } else {
-          console.log(response.data);
           setMemberList(response.data);
           setError(null);
         }
@@ -47,11 +45,9 @@ function SearchMember() {
   const handleAddFriend = (member_no, memberList) => {
     const currentUserNo = sessionStorage.getItem("no");
     if (parseInt(currentUserNo) === memberList.no) {
-      console.log(parseInt(currentUserNo), memberList.no);
       alert("자기 자신을 친구 추가할 수 없습니다.");
       return;
     } else {
-      console.log(parseInt(currentUserNo), memberList.no);
       axios
         .get(
           `${bootpath}/member/friend/input?member_no=${currentUserNo}&friend_no=${memberList.no}`

@@ -10,7 +10,6 @@ function Header() {
   };
 
   const goToLink = (e) => {
-    console.log(e.target);
     window.location.href = $(e.target).attr("target");
   };
   return (

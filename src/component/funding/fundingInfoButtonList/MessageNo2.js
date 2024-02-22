@@ -17,8 +17,6 @@ const MessageNo2 = ({ obj }) => {
     try {
       const response = await axios.post(bootpath + "/fund/giveup", formData);
 
-      console.log("서버 응답:" + response.data.result);
-      console.log(response.data);
       if (response.data.result === "giveup_success") {
         // giveup_success인 경우, 중도포기 완료된 것임. DB체크해보기
         alert("중도포기 됐습니다.");

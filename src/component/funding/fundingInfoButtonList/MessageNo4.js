@@ -6,7 +6,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const MessageNo4 = ({ obj }) => {
-  console.log(obj);
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -21,10 +20,7 @@ const MessageNo4 = ({ obj }) => {
         formData
       );
 
-      console.log("서버 응답:" + response.data.result);
-      console.log(response.data);
       if (response.data.result === "vote_success") {
-        console.log("성공에 투표 완료" + response.data.giveUp);
         alert("성공에 투표 완료. 다른 분들의 투표를 기다려주세요");
         window.location.href = "/funding/info?no=" + obj.fundingNo;
       } else if (response.data.result === "vote_success_end") {
@@ -41,10 +37,7 @@ const MessageNo4 = ({ obj }) => {
     try {
       const response = await axios.post(bootpath + "/fund/voteFail", formData);
 
-      console.log("서버 응답:" + response.data.result);
-      console.log(response.data);
       if (response.data.result === "vote_fail") {
-        console.log("실패에 투표 완료" + response.data.giveUp);
         alert("실패에 투표 완료. 다른 분들의 투표를 기다려주세요");
         window.location.href = "/funding/info?no=" + obj.fundingNo;
       } else if (response.data.result === "vote_fail_end") {

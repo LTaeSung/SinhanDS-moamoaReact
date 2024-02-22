@@ -58,8 +58,6 @@ function ModAccountList() {
         formData
       );
 
-      console.log("서버 응답:", response.data);
-
       if (response.data.result === "success") {
         alert("계좌정보 수정 성공");
         // Success인 경우, 계좌 리스트 페이지로 이동

@@ -44,17 +44,12 @@ function MakeFunding() {
       ...param,
       [e.target.name]: e.target.value,
     });
-    console.log(param);
   };
   const handleChangeFile = (e) => {
-    console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
-  useEffect(() => {
-    console.log(file);
-  }, [file]);
+  useEffect(() => {}, [file]);
   const getApi = () => {
-    console.log(param);
     axios.post(bootpath + "/fund/regist", param).then((res) => {
       if (res.data.result === "success") {
         alert("정상적으로 저장되었습니다.");
@@ -67,8 +62,6 @@ function MakeFunding() {
   };
 
   const emptyCheck = (e) => {
-    console.log("empty check");
-    console.log(param);
     if (
       "title" in param &&
       "monthly_payment_amount" in param &&
@@ -84,7 +77,6 @@ function MakeFunding() {
         alert("정기 결제 될 카드를 선택해주세요.");
         e.preventDefault();
       }
-      console.log("check");
     } else {
       alert("펀딩의 제목, 매월 결제금액, 매월 결제일은 필수 입력 사항입니다.");
       e.preventDefault();

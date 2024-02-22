@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
 import BoardHeader from "./BoardHeader";
 import "./boardlist.css";
@@ -27,9 +27,7 @@ function QnaDetail() {
 
   //로그인정보
   const getApi = () => {
-    console.log(param);
     axios.post(bootPath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
@@ -118,7 +116,6 @@ function QnaDetail() {
         );
 
         navigate(`/board/qna/list`);
-        console.log("QnA가 성공적으로 삭제되었습니다.");
       } catch (error) {
         console.error("QnA 삭제 중 에러가 발생했습니다.", error);
       }
@@ -246,8 +243,8 @@ function QnaDetail() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <div className="slect_detail">
-            <h3 className="span_title_detail"> 자유게시판 </h3>
+          <div className="slect">
+            <h3 className="span_title"> 자유게시판 </h3>
           </div>
           <div>
             <div>

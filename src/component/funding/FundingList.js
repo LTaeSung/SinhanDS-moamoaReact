@@ -31,7 +31,6 @@ function FundingList() {
   const goinfo = (e, no) => {
     e.preventDefault();
     navigate("/funding/info?no=" + no);
-    console.log(no);
   };
 
   return (

@@ -14,7 +14,6 @@ function FundingMember() {
       .get(`${bootPath.bootpath}/funding/member/challenge/${fund_no}`)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("참여중인 인원이 없습니다.", error);

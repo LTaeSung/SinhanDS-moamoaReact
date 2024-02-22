@@ -11,7 +11,6 @@ function RePayList() {
     try {
       const response = await axios.get(` ${bootpath}/admin/repayList`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

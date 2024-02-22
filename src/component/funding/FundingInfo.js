@@ -4,6 +4,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
+import Formatter_notime from "./../../Formatter_notime";
 import RegistedImagePath from "../../registedImagePath";
 import FundingMember from "./FundingMember";
 import FundingComment from "./FundingComment";
@@ -16,6 +17,7 @@ function FundingInfo() {
   const [state, setState] = useState({});
   const { registedImagePath } = useContext(RegistedImagePath);
   const [showComment, setShowComment] = useState(false);
+  const formatter = Formatter_notime;
 
   let no = params.get("no");
 
@@ -42,10 +44,13 @@ function FundingInfo() {
   }, []);
 
   useEffect(() => {
-    console.log("상태3");
     console.log(state);
   }, [state]);
-  console.log(data);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <FundingHeader />
@@ -86,7 +91,15 @@ function FundingInfo() {
             </div>
             <p id="fundinginfo_completeinterest"></p>
             <p id="fundinginfo_">
-              기간: {data.startdate} ~{data.fundingduedate}
+              기간:
+              {data.startdate == null
+                ? null
+                : formatter.format(new Date(data.startdate))}
+              ~
+              {data.fundingduedate == null
+                ? null
+                : formatter.format(new Date(data.fundingduedate))}
+              {/* {data.startdate} ~{data.fundingduedate} */}
             </p>
             <br></br>
             <p id="fundinginfo_description">챌린지 소개:</p>

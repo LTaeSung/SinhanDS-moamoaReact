@@ -19,10 +19,7 @@ const MessageNo6 = ({ obj }) => {
         formData
       );
 
-      console.log("서버 응답:" + response.data.result);
-      console.log(response.data);
       if (response.data.result === "settlememt_success") {
-        console.log("정산 완료" + response.data.giveUp);
         alert("정산이 완료되었습니다.");
         window.location.href = "/funding/info?no=" + obj.fundingNo;
       } else if (response.data.result === "settlement_success_end") {
