@@ -15,7 +15,6 @@ function Main() {
     try {
       const response = await axios.get(` ${bootpath}/admin/getMainTotal`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

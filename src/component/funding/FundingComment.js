@@ -24,7 +24,6 @@ function FundingComment() {
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("funding_no값이 없습니다. ", error);
@@ -44,9 +43,7 @@ function FundingComment() {
 
   //로그인정보
   const getApi = () => {
-    console.log(param);
     axios.post(bootPath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
@@ -186,10 +183,20 @@ function FundingComment() {
       {data &&
         data.map((item) => (
           <div id="reply" key={item.no}>
-            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
-            <p id="reply" style={{ float: "left" }}>
-              {item.name} :
-            </p>
+            {item.name === writer ? (
+              <>
+                <p id="me" style={{ float: "right" }}>
+                  :-
+                </p>{" "}
+              </>
+            ) : (
+              <>
+                <p id="reply" style={{ float: "left" }}>
+                  {item.name} :
+                </p>
+              </>
+            )}
+
             {editingCommentId === item.no ? (
               <>
                 <textarea
@@ -203,23 +210,25 @@ function FundingComment() {
                   저장
                 </button>
               </>
+            ) : item.name !== writer ? (
+              <>{item.contents} </>
             ) : (
               <>
-                {item.contents}{" "}
                 <button
                   className="comment_minbtn"
                   onClick={() => editClick(item.no)}
                 >
                   수정
                 </button>{" "}
+                <button
+                  className="comment_minbtn"
+                  onClick={() => deleteClick(item.no)}
+                >
+                  | 삭제
+                </button>
+                <p id="mycoment">{item.contents}</p>
               </>
             )}
-            <button
-              className="comment_minbtn"
-              onClick={() => deleteClick(item.no)}
-            >
-              삭제
-            </button>
           </div>
         ))}
 

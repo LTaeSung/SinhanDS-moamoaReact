@@ -1,7 +1,6 @@
 import BootPath from "./../../../BootPath";
 import { useContext } from "react";
 const MessageNo7 = ({ obj }) => {
-  const { bootpath } = useContext(BootPath);
   return (
     <>
       {" "}

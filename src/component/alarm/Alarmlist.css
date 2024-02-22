@@ -13,11 +13,17 @@
   border-bottom-color: #ff4742;
 }
 
+#alarm_span_title {
+  color: #ff4742;
+  margin-left: 15px;
+  margin-right: 240px;
+  font-size: 20px;
+}
+
 #title {
   font-size: 15px;
   font-weight: 700;
 }
-
 #alarmtitle {
-  margin-top: 15px;
+  text-align: center;
 }

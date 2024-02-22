@@ -1,5 +1,5 @@
 import "../App.css";
-import logo from "../logo.svg";
+import logo from "../moamoalogo.png";
 import $ from "jquery";
 function Header() {
   const logout = (e) => {
@@ -10,7 +10,6 @@ function Header() {
   };
 
   const goToLink = (e) => {
-    console.log(e.target);
     window.location.href = $(e.target).attr("target");
   };
   return (

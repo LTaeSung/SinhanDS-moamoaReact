@@ -1,6 +1,7 @@
 import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
+import Formatter from "./../../Formatter";
 import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,6 +16,9 @@ function InvitedFunding() {
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
+
+  const formatter = Formatter;
+
   const { commonImagePath } = useContext(CommonImagePath);
 
   const getData = async () => {
@@ -32,7 +36,6 @@ function InvitedFunding() {
       } else {
         setData(response.data);
       }
-      console.log(response.data.length);
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +60,6 @@ function InvitedFunding() {
   const refuse = async (e) => {
     let param = {};
     param = { no: e.target.id };
-    console.log(param);
     await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
       if (res.data === "success") {
         window.alert("초대를 거절했습니다.");
@@ -88,7 +90,7 @@ function InvitedFunding() {
                         src={
                           Data.photo
                             ? registedImagePath + Data.photo
-                            : registedImagePath + "challenge.jpg"
+                            : commonImagePath + "challenge.jpg"
                         }
                         alt=""
                       />
@@ -102,7 +104,7 @@ function InvitedFunding() {
                       <p>
                         펀딩마감기한 :{" "}
                         {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
-                        {Data.fundingDueDate}
+                        {formatter.format(new Date(Data.fundingDueDate))}
                       </p>
                       <p> 결제액 : 매월 {Data.monthlyPaymentAmmount}원</p>
 

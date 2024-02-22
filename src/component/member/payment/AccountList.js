@@ -38,30 +38,23 @@ function AccountList() {
   useEffect(() => {
     if (formData.no !== 0) {
       // formData.no가 0이 아닌 경우에만 AccountDel을 호출
-      console.log(formData.no);
       AccountDel();
     }
   }, [formData.no]);
 
   const AccountNo = (no) => {
-    console.log("어카운트까진 넘어온 " + no);
     setFormData({
       ...formData,
       no: no,
     });
-    console.log(formData); // 여기선 아직 no가 0인 상태
   };
 
   const AccountDel = async () => {
-    console.log(formData); // 여기선 no가 잘 찍힘
-
     try {
       const response = await axios.post(
         `${bootpath}/member/payment/delete`,
         formData
       );
-
-      console.log("서버 응답:", response.data);
 
       if (response.data.result === "del_success") {
         alert("계좌정보 삭제 성공");
@@ -77,63 +70,56 @@ function AccountList() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title" />
-          <div class="account_container">
-            {member_no ? (
-              <>
-                {payment.filter((payment) => payment.paymenttype === 0).length >
-                0 ? (
-                  <ul>
-                    {payment
-                      .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
-                      .map((payment) => (
-                        <li key={payment.no}>
-                          <div className="rounded-square">
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td className="table_font">
-                                    은행명: {payment.company}
-                                  </td>
-                                  <td rowSpan={2}>
-                                    <button className="account_delete">
-                                      <Link
-                                        onClick={() => AccountNo(payment.no)}
-                                      >
-                                        계좌 삭제
-                                      </Link>
-                                    </button>
-                                  </td>
-                                </tr>
+      <div class="account_container">
+        {member_no ? (
+          <>
+            {payment.filter((payment) => payment.paymenttype === 0).length >
+            0 ? (
+              <ul>
+                {payment
+                  .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
+                  .map((payment) => (
+                    <li key={payment.no}>
+                      <div className="rounded-square">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="table_font">
+                                은행명: {payment.company}
+                              </td>
+                              <td rowSpan={2}>
+                                <button className="account_delete">
+                                  <Link onClick={() => AccountNo(payment.no)}>
+                                    계좌 삭제
+                                  </Link>
+                                </button>
+                              </td>
+                            </tr>
 
-                                <tr>
-                                  <td className="table_font_no">
-                                    계좌번호: {payment.account}
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </li>
-                      ))}
-                  </ul>
-                ) : (
-                  <p>계좌가 없습니다.</p>
-                )}
-                <Link to="/member/payment/account/add">
-                  <p className="account_add">+ 계좌 추가</p>
-                </Link>
-              </>
+                            <tr>
+                              <td className="table_font_no">
+                                계좌번호: {payment.account}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
             ) : (
-              <p>
-                {" "}
-                <Link to="/">로그인 해주세요.</Link>
-              </p>
+              <p>계좌가 없습니다.</p>
             )}
-          </div>
-        </div>
+            <Link to="/member/payment/account/add">
+              <p className="account_add">+ 계좌 추가</p>
+            </Link>
+          </>
+        ) : (
+          <p>
+            {" "}
+            <Link to="/">로그인 해주세요.</Link>
+          </p>
+        )}
       </div>
     </>
   );

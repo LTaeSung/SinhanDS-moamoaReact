@@ -11,7 +11,6 @@ function SettlementDueList() {
     try {
       const response = await axios.get(` ${bootpath}/admin/SettlementDueList`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

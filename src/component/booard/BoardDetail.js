@@ -30,7 +30,7 @@ function BoardDetail() {
       <div className="sub">
         <div className="size">
           <div className="slect">
-            <p className="span_title1"> 공지사항 </p>
+            <p className="span_title"> 공지사항 </p>
           </div>
           <div>
             <span id="board_detail_title">{board.title}</span> <br />
