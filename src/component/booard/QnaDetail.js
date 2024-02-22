@@ -243,8 +243,8 @@ function QnaDetail() {
       <BoardHeader />
       <div className="sub">
         <div className="size">
-          <div className="slect_detail">
-            <h3 className="span_title_detail"> 자유게시판 </h3>
+          <div className="slect">
+            <h3 className="span_title"> 자유게시판 </h3>
           </div>
           <div>
             <div>
