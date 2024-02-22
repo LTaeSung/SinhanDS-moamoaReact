@@ -50,6 +50,9 @@ import SettlementDueList from "./component/funding/admin/SettlementDueList";
 import Main from "./component/Main";
 import GiveupStatistics from "./component/funding/admin/GiveupStatistics";
 import SuccessFailStatistics from "./component/funding/admin/SuccessFailStatistics";
+import StatisticsMain from "./component/funding/admin/StatisticsMain";
+import DefaultStatistics from "./component/funding/admin/DefaultStatistics";
+import PersonalStatistics from "./component/funding/admin/PersonalStatistics";
 
 function App() {
   const checkLogin = (Component) => {
@@ -187,6 +190,12 @@ function App() {
             <Route
               path="/statistics/successfail"
               element={<SuccessFailStatistics />}
+            />
+            <Route path="/statistics/default" element={<DefaultStatistics />} />
+            <Route path="/statistics/main" element={<StatisticsMain />} />
+            <Route
+              path="/statistics/personal"
+              element={<PersonalStatistics />}
             />
           </Routes>
         </div>

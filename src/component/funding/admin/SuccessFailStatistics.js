@@ -40,13 +40,16 @@ function SuccessFailStatistics() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title">성공실패율</h3>
-          <div className="chartArea">
-            <Doughnut data={chartdata} />
-          </div>
-        </div>
+      <h5>
+        성공율 :{" "}
+        {Math.round((data.success / (data.success + data.fail)) * 10000) / 100}%
+      </h5>
+      <h5>
+        실패율 :{" "}
+        {Math.round((data.fail / (data.success + data.fail)) * 10000) / 100}%
+      </h5>
+      <div className="chartArea">
+        <Doughnut data={chartdata} />
       </div>
     </>
   );
