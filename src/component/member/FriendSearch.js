@@ -80,6 +80,9 @@ function SearchMember() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ID로 검색"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSearch();
+              }}
             />
             <button className="search_button" onClick={handleSearch}>
               Search

@@ -88,7 +88,7 @@ function InvitedFunding() {
                         src={
                           Data.photo
                             ? registedImagePath + Data.photo
-                            : registedImagePath + "challenge.jpg"
+                            : commonImagePath + "challenge.jpg"
                         }
                         alt=""
                       />

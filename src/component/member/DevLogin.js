@@ -47,13 +47,18 @@ const MyLogin = () => {
     <>
       <div className="sub">
         <div className="size">
-          <form method="post" action="" style={{ textAlign: "center" }}>
-            <input type="text" name="email" onChange={handleChange} />
-            <Link className="btn" onClick={save}>
-              로그인
-            </Link>
-            <hr className="line"></hr>
-          </form>
+          <input
+            type="text"
+            name="email"
+            onChange={handleChange}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") save();
+            }}
+          />
+          <Link className="btn" onClick={save}>
+            로그인
+          </Link>
+          <hr className="line"></hr>
           <br />
           <Login />
         </div>
