@@ -8,7 +8,6 @@ import { useContext } from "react";
 const Beforesignup = () => {
   const { bootpath } = useContext(BootPath);
   const params = useLocation();
-  console.log("파람" + params.search);
   //params.search에 스프링부트로 보내줄 code가 들어있음
   //이거 내일15일에 member/signup 컨트롤러에 만들어서 처리할거
   const callbackUrl = bootpath + "/member/signup" + params.search;
@@ -19,10 +18,8 @@ const Beforesignup = () => {
 };
 
 const getApi = (params, callbackUrl) => {
-  console.log("콜백주소" + callbackUrl);
   //스프링부트의 /member/signup에 code 파라미터를 담아서 get 요청? -> 회원가입, 즉 추가가 됐으면 success가져오면 되고, 추가가 안되면 fail을 받아오면 될것
   axios.get(callbackUrl).then((res) => {
-    console.log(res);
     if (res.data.result === "success") {
       // 회원가입 성공 알림
       alert("회원가입이 완료되었습니다. 로그인해주세요.");

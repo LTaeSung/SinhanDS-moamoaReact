@@ -54,8 +54,6 @@ function AddCardList() {
       "-" +
       formData.account4;
 
-    console.log(formData);
-
     if (
       !("company" in formData) ||
       formData.company === "0" ||
@@ -94,8 +92,6 @@ function AddCardList() {
         `${bootpath}/member/payment/add`,
         formData
       );
-
-      console.log("서버 응답:", response.data);
 
       if (response.data.result === "success") {
         // 카드 추가가 성공하면 바로 전으로 돌아가자. 여러 케이스에 다 적용가능함(새로고침된 상태라 추가한 카드가 보임)

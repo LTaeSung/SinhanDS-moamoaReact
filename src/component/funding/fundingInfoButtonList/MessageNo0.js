@@ -10,9 +10,6 @@ const MessageNo0 = ({ obj }) => {
     let param = {};
     param = { no: e.target.id };
 
-    console.log("이펀딩no");
-    console.log(obj.fundingNo);
-
     await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
       if (res.data === "success") {
         window.alert("성공적으로 삭제되었습니다.");

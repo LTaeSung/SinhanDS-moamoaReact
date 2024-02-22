@@ -26,7 +26,6 @@ function PointList() {
         ` ${bootpath}/point/point_history/mypointHistory?member_no=${member_no}`
       );
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

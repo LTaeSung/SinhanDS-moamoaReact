@@ -46,30 +46,23 @@ function CardList() {
   useEffect(() => {
     if (formData.no !== 0) {
       // formData.no가 0이 아닌 경우에만 CardDel을 호출
-      console.log(formData.no);
       CardDel();
     }
   }, [formData.no]);
 
   const CardNo = (no) => {
-    console.log("어카운트까진 넘어온 " + no);
     setFormData({
       ...formData,
       no: no,
     });
-    console.log(formData); // 여기선 아직 no가 0인 상태
   };
 
   const CardDel = async () => {
-    console.log(formData); // 여기선 no가 잘 찍힘
-
     try {
       const response = await axios.post(
         `${bootpath}/member/payment/delete`,
         formData
       );
-
-      console.log("서버 응답:", response.data);
 
       if (response.data.result === "del_success") {
         alert("카드정보 삭제 성공");
@@ -85,63 +78,58 @@ function CardList() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title" />
-          <div class="card_container">
-            {member_no ? (
-              <>
-                {payment.filter((payment) => payment.paymenttype === 1).length >
-                0 ? (
-                  <ul>
-                    {payment
-                      .filter((payment) => payment.paymenttype === 1) // 카드만 필터
-                      .map((payment) => (
-                        <li key={payment.no}>
-                          <div className="rounded-square">
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <td className="table_font">
-                                    카드사: {payment.company}
-                                  </td>
-                                  <td rowSpan={2}>
-                                    <button
-                                      className="card_delete"
-                                      onClick={() => CardNo(payment.no)}
-                                    >
-                                      카드 삭제
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td className="table_font_no">
-                                    카드 번호: {payment.account}
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </li>
-                      ))}
-                  </ul>
-                ) : (
-                  <p>카드가 없습니다.</p>
-                )}
-
-                <Link to={`/member/payment/card/add`}>
-                  <p className="card_add">+ 카드 추가</p>
-                </Link>
-              </>
+      <div class="card_container">
+        {member_no ? (
+          <>
+            {payment.filter((payment) => payment.paymenttype === 1).length >
+            0 ? (
+              <ul>
+                {payment
+                  .filter((payment) => payment.paymenttype === 1) // 카드만 필터
+                  .map((payment) => (
+                    <li key={payment.no}>
+                      <div className="rounded-square">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="table_font">
+                                카드사: {payment.company}
+                              </td>
+                              <td rowSpan={2}>
+                                <button
+                                  className="card_delete"
+                                  onClick={() => CardNo(payment.no)}
+                                >
+                                  카드 삭제
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="table_font_no">
+                                카드 번호: {payment.account}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
             ) : (
-              <p>
-                <Link to="/">로그인 해주세요.</Link>
-              </p>
+              <p>카드가 없습니다.</p>
             )}
-          </div>
-          <hr />
-        </div>
+
+            <Link to={`/member/payment/card/add`}>
+              <p className="card_add">+ 카드 추가</p>
+            </Link>
+          </>
+        ) : (
+          <p>
+            <Link to="/">로그인 해주세요.</Link>
+          </p>
+        )}
       </div>
+      <hr />
     </>
   );
 }

@@ -27,7 +27,6 @@ function Friendlist() {
         setData(null);
       } else {
         setData(response.data);
-        console.log(response.data);
       }
     } catch (error) {
       console.log(error);

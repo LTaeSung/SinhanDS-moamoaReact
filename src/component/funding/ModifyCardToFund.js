@@ -14,15 +14,11 @@ function ModifyCardToFund() {
   const location = useLocation();
   const [params, setParams] = useSearchParams();
   let no = params.get("no");
-  console.log("no" + no);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
   const [payment, setPayment] = useState([]);
   useEffect(() => {
-    //여기의 no는 fundingInfo(펀딩상세)에서 state로 넘겨준 펀딩의 no
-    console.log("로그인한 멤버 no:" + member_no);
-
     const fetchPaymentList = async () => {
       try {
         const response = await axios.get(
@@ -43,7 +39,6 @@ function ModifyCardToFund() {
   });
   const handleRadioButton = (e) => {
     setSelect({ ...select, payment_no: e.target.value });
-    console.log(select);
   };
 
   const submit = () => {

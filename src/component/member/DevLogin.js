@@ -10,7 +10,6 @@ const MyLogin = () => {
   const { bootpath } = useContext(BootPath);
 
   const [param, setParam] = useState({});
-  console.log(sessionStorage.getItem("email"));
   const handleChange = (e) => {
     setParam({
       ...param,
@@ -25,9 +24,7 @@ const MyLogin = () => {
     getApi();
   };
   const getApi = () => {
-    console.log(param);
     axios.post(bootpath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("email", res.data.email);
