@@ -282,11 +282,14 @@ function QnaDetail() {
                 </>
               ) : (
                 <>
+                  <div className="qna_title_area">
+                    <p id="qna_title">{board.title}</p>
+                  </div>
                   <p id="qna_writer">{board.writer}</p>
                   <p id="qna_time">
                     {new Date(board.registdate).toLocaleDateString()}
                   </p>
-                  <p id="qna_title">{board.title}</p>
+
                   <div className="qna_content_area">
                     <p id="qna_content">{board.contents}</p>
                   </div>
@@ -323,9 +326,8 @@ function QnaDetail() {
           <h5>댓글목록</h5>
           <ul>
             {replies.map((reply, index) => (
-              <li key={reply.no}>
-                {reply.writer} {new Date(board.registdate).toLocaleDateString()}{" "}
-                <br />
+              <li id="replylist_li" key={reply.no}>
+                {reply.writer}{" "}
                 {reply.editing ? (
                   <>
                     <textarea

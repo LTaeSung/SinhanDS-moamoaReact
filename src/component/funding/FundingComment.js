@@ -84,7 +84,7 @@ function FundingComment() {
       );
       setData((prevData) => [...prevData, response.data]);
       setTotalElement((prevTotal) => prevTotal + 1);
-      //setNewReply({ contents: "" });
+      setNewReply({ contents: "" });
     } catch (error) {
       console.log("에러발생", error);
     }
