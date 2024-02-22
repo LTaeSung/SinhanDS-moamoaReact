@@ -32,7 +32,7 @@ function JoinFundingList() {
             </div>
 
             <div className="search_status">
-              <select id="option" onChange={handleSelect} value={select}>
+              <select id="option_join" onChange={handleSelect} value={select}>
                 <option value="0">진행중</option>
                 <option value="1">완료</option>
               </select>
