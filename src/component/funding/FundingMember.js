@@ -26,23 +26,21 @@ function FundingMember() {
 
   return (
     <>
-      <div className="sub">
-        {data &&
-          data.map((item) => (
-            <div key={item.no}>
-              {item.giveup === true ? null : item.participationdate ===
-                null ? null : (
-                <>
-                  <p id="member">{item.membername}</p>
-                  {item.settlementamount != null ? (
-                    <p id="member_pay">정산금: {item.settlementamount}원</p>
-                  ) : null}
-                </>
-              )}
-              <br></br>
-            </div>
-          ))}
-      </div>
+      {data &&
+        data.map((item) => (
+          <div key={item.no}>
+            {item.giveup === true ? null : item.participationdate ===
+              null ? null : (
+              <>
+                <p id="member">{item.membername}</p>
+                {item.settlementamount != null ? (
+                  <p id="member_pay">정산금: {item.settlementamount}원</p>
+                ) : null}
+              </>
+            )}
+            <br></br>
+          </div>
+        ))}
       <br />
     </>
   );
