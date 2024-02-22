@@ -194,7 +194,6 @@ const FundingComment = (props) => {
       {data &&
         data.map((item) => (
           <div id="reply" key={item.no}>
-            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
             <p style={{ float: "left" }}>{item.name} </p>
             {editingCommentId === item.no ? (
               <>
