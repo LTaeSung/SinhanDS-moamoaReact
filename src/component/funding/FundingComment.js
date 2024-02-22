@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import "./FundingComment.css";
 
 function FundingComment() {
   const bootPath = useContext(BootPathContext);
@@ -189,37 +190,57 @@ function FundingComment() {
 
   return (
     <>
-      <div>{writer}</div>
+      <div id="fcomment_writer">{writer}</div>
       <div>
         <textarea
+          className="fcomment_contents"
           value={newReply.contents}
           placeholder="댓글을 입력하세요."
           onChange={input}
         ></textarea>{" "}
         <br />
-        <button onClick={commentSubmit}>댓글 저장</button>
+        <div className="fcomment_sava_area">
+          <button id="fcomment_save_btn" onClick={commentSubmit}>
+            댓글 저장
+          </button>
+        </div>
       </div>
-      <p>--------댓글목록----------</p>
-      <p>총 댓글 수 : {totalElement} </p>
+      <div id="fcomment_re_list">
+        <p>------------------------------------------------</p>
+      </div>
+
+      <p id="fcomment_count">총 댓글 수 : {totalElement} 개</p>
       {data &&
         data.map((item) => (
-          <div key={item.no}>
-            {item.name}{" "}
+          <div className="fcomment_reply" key={item.no}>
+            <div className="fcomment_re_writer">{item.name} </div>
             {editingCommentId === item.no ? (
               <>
                 <textarea
+                  className="fcomment_contents"
                   value={modReply.contents}
                   onChange={inputMod}
                 ></textarea>{" "}
-                <button onClick={() => saveEditedComment(item.no)}>저장</button>
+                <br />
+                <button
+                  id="fcomment_re_btn"
+                  onClick={() => saveEditedComment(item.no)}
+                >
+                  저장
+                </button>
               </>
             ) : (
               <>
-                {item.contents}{" "}
-                <button onClick={() => editClick(item.no)}>수정</button>{" "}
+                {item.contents}
+                <br />
+                <button id="fcomment_re_btn" onClick={() => editClick(item.no)}>
+                  수정
+                </button>{" "}
               </>
             )}
-            <button onClick={() => deleteClick(item.no)}>삭제</button>
+            <button id="fcomment_re_btn" onClick={() => deleteClick(item.no)}>
+              삭제
+            </button>
           </div>
         ))}
     </>
