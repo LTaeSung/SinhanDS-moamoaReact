@@ -1,0 +1,54 @@
+#fcomment_writer {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.fcomment_contents {
+  margin-left: 13px;
+  min-width: 340px;
+  min-height: 50px;
+  border: 0;
+}
+.fcomment_sava_area {
+  text-align: center;
+  margin-right: 5px;
+}
+#fcomment_save_btn {
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+}
+#fcomment_re_list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#fcomment_re_list p {
+  font-size: 20px;
+}
+#fcomment_count {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.fcomment_reply {
+  border-radius: 5px;
+  border: 3px solid white;
+  border-bottom-color: #d1d5db;
+  font-size: 20px;
+  margin: 3px 8px;
+}
+.fcomment_re_writer {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#fcomment_re_btn {
+  color: gray;
+  margin-left: 10px;
+}
