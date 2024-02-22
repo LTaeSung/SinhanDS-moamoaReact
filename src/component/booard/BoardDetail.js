@@ -36,7 +36,8 @@ function BoardDetail() {
             <span id="board_detail_title">{board.title}</span> <br />
             <p id="board_detail_writer">{board.writer}</p>
             <p id="board_detail_date">
-              {new Date(board.registdate).toLocaleDateString()}
+              {new Date(board.registdate).toLocaleDateString()}{" "}
+              {new Date(board.registdate).toLocaleTimeString()}
             </p>
             <p id="board_detail_content">{board.contents}</p>
           </div>

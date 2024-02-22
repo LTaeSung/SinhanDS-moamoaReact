@@ -250,6 +250,7 @@ function QnaDetail() {
             <div>
               {editing ? (
                 <>
+                  {/* qna 수정화면 */}
                   <div className="qna_title_area">
                     <span>
                       <input
@@ -263,7 +264,8 @@ function QnaDetail() {
                     </span>
                     <span id="qna_writer">{board.writer}</span>
                     <span id="qna_time">
-                      | {new Date(board.registdate).toLocaleDateString()} 작성
+                      | {new Date(board.registdate).toLocaleDateString()}{" "}
+                      {new Date(board.registdate).toLocaleTimeString()} 작성
                     </span>
                   </div>
                   <div className="qna_content_area">
@@ -285,11 +287,13 @@ function QnaDetail() {
                 </>
               ) : (
                 <>
+                  {/* qna 상세 */}
                   <div className="qna_title_area">
                     <p id="qna_title">{board.title}</p>
                     <span id="qna_writer">{board.writer}</span>
                     <span id="qna_time">
-                      | {new Date(board.registdate).toLocaleDateString()} 작성
+                      | {new Date(board.registdate).toLocaleDateString()}{" "}
+                      {new Date(board.registdate).toLocaleTimeString()} 작성
                     </span>
                   </div>
                   <div className="qna_content_area">

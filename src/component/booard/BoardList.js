@@ -44,7 +44,8 @@ function BoardList() {
                   <Link to={`/board/detail?no=${item.no}`}>
                     <div>{item.title}</div>
                     <p>
-                      안내 | {new Date(item.registdate).toLocaleDateString()}
+                      안내 | {new Date(item.registdate).toLocaleDateString()}{" "}
+                      {new Date(item.registdate).toLocaleTimeString()}
                     </p>
                   </Link>
                 </li>
