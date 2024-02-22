@@ -111,7 +111,6 @@ function FundingInfo() {
             <br></br>
             <p id="fundinginfo_description">참여자 목록 </p>
             <FundingMember />
-            <br></br>
             <hr id="hr"></hr>
 
             <button
