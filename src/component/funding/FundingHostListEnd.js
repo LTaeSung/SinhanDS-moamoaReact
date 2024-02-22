@@ -27,7 +27,7 @@ const FundingHostListEnd = ({ render, setRender }) => {
           <>
             <ul>
               {data.map((Data) => (
-                <li key={Data.fundingNo}>
+                <li key={Data.fundingNo} className="liWithUnderBar">
                   <Link
                     to={
                       "/funding/info?no=" +

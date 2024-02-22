@@ -28,7 +28,7 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
           <>
             <ul>
               {data.map((Data) => (
-                <li key={Data.fundingNo}>
+                <li key={Data.fundingNo} className="liWithUnderBar">
                   <Link to={"/funding/info?no=" + Data.fundingNo}>
                     <div className="list_container_join_ongoing">
                       <div className="image_container_join_ongoing">

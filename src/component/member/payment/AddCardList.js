@@ -7,26 +7,27 @@ import axios from "axios";
 import MemberHeader from "../MemberHeader";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import "./AddCardList.css";
 
 function AddCardList() {
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
   const { address } = useParams();
-  const bankList = ["카드사 선택", "신한", "농협", "국민", "우리", "뭐시기"];
+  const bankList = ["선택", "신한", "농협", "국민", "우리", "뭐시기"];
 
   const [formData, setFormData] = useState({
     //전송할 데이터 필드
     memberno: member_no,
     paymenttype: 1, //카드인경우 type이 1
     company: "",
-    account1: "",
-    account2: "",
-    account3: "",
-    account4: "",
+    account1: "0000",
+    account2: "0000",
+    account3: "0000",
+    account4: "0000",
     account: "",
-    validdate_month: "",
-    validdate_year: "",
+    validdate_month: "01",
+    validdate_year: "24",
     validdate: "",
     cvc: "",
   });
@@ -113,7 +114,7 @@ function AddCardList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">카드 추가</h3>
+          <h3 className="sub_title">신용카드 등록</h3> <br />
           <form onSubmit={handleSubmit}>
             {/* <input
               type="hidden"
@@ -132,8 +133,8 @@ function AddCardList() {
               value={formData.company}
               onChange={handleInputChange}
             />*/}
-            <div>
-              카드사명
+            <div id="addcard_title">
+              카드사 / 카드번호 <br />
               <select onChange={handleInputChange} name="company">
                 {bankList.map((option, idx) => (
                   <option key={idx} value={idx}>
@@ -141,62 +142,71 @@ function AddCardList() {
                   </option>
                 ))}
               </select>
-            </div>
-            <br />
-            <div>
-              카드번호:{" "}
               <input
                 type="number"
                 name="account1"
+                id="addcard_num"
                 value={formData.account1}
                 onChange={handleInputChange}
-              />
+              />{" "}
               -
               <input
                 type="number"
                 name="account2"
+                id="addcard_num"
                 value={formData.account2}
                 onChange={handleInputChange}
-              />
+              />{" "}
               -
               <input
                 type="number"
                 name="account3"
+                id="addcard_num"
                 value={formData.account3}
                 onChange={handleInputChange}
-              />
+              />{" "}
               -
               <input
                 type="number"
                 name="account4"
+                id="addcard_num"
                 value={formData.account4}
                 onChange={handleInputChange}
               />
             </div>
             <br />
-            유효기간:{" "}
+            <p id="addcard_limitdate">카드 유효기간</p>
             <input
               type="number"
               name="validdate_month"
+              id="addcard_limitnum"
               value={formData.validdate_month}
               onChange={handleInputChange}
             />
             <input
               type="number"
               name="validdate_year"
+              id="addcard_limitnum"
               value={formData.validdate_year}
               onChange={handleInputChange}
             />
             <br />
-            CVC:{" "}
+            <br />
+            <p id="addcard_cvc">CVC</p>
             <input
               type="number"
               name="cvc"
+              id="addcard_input"
               value={formData.cvc}
               onChange={handleInputChange}
             />
             <br />
-            <button type="submit">카드 추가</button>
+            <br />
+            <div className="btn_area">
+              <button id="addcard_btn" type="submit">
+                카드 추가
+              </button>
+            </div>
           </form>
         </div>
       </div>
