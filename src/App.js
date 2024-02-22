@@ -47,6 +47,7 @@ import LeaveCheck from "./component/member/LeaveCheck";
 import FundingDueList from "./component/funding/admin/FundingDueList";
 import VoteDueList from "./component/funding/admin/VoteDueList";
 import SettlementDueList from "./component/funding/admin/SettlementDueList";
+import Main from "./component/Main";
 
 function App() {
   const checkLogin = (Component) => {
@@ -73,6 +74,7 @@ function App() {
         <div className="App-container">
           <Routes>
             <Route path="/" element={<DevLogin />} />
+            <Route path="/main" element={<Main />} />
             <Route path="/login/dev" element={<DevLogin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
