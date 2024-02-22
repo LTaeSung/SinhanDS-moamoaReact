@@ -13,13 +13,12 @@ function BoardList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${bootPath.bootpath}/board/list`);
-        const filteredDate = response.data.filter((item) => !item.boardtype);
-        filteredDate.sort(
-          (a, b) => new Date(b.registdate) - new Date(a.registdate)
+        const response = await axios.get(
+          `${bootPath.bootpath}/board/list/notice`
         );
-        setData(filteredDate);
-        setTotalElement(filteredDate.length);
+
+        setData(response.data);
+        setTotalElement(response.data.length);
       } catch (error) {
         console.log("error 발생", error);
       }

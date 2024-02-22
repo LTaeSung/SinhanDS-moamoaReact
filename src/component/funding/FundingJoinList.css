@@ -24,6 +24,10 @@
   height: 30px;
 }
 
+.sub_title_join_funding {
+  text-align: center;
+}
+
 .select_container {
   width: 400px;
   display: flex;

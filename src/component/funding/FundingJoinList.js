@@ -21,7 +21,7 @@ function JoinFundingList() {
       <div className="sub">
         <div className="size">
           <div className="space_container"></div>
-          <h3 className="sub_title">참여한 펀딩 리스트</h3>
+          <h3 className="sub_title_join_funding">참여한 펀딩 리스트</h3>
           <div className="space_container"></div>
 
           <div className="select_container">

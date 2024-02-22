@@ -36,10 +36,10 @@ const FundingHostListEnd = ({ render, setRender }) => {
                       Data.stateMessage
                     }
                   >
-                    <div className="list_container">
-                      <div className="image_container">
+                    <div className="list_container_host_end">
+                      <div className="image_container_host_end">
                         <img
-                          id="hosted_funding_image"
+                          id="hosted_funding_image_host_end"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
@@ -49,11 +49,11 @@ const FundingHostListEnd = ({ render, setRender }) => {
                         />
                       </div>
 
-                      <div className="fund_info">
-                        <div className="fund_title">{Data.title}</div>
+                      <div className="fund_info_host_end">
+                        <div className="fund_title_host_end">{Data.title}</div>
                         <br />
 
-                        <div className="fund_amount">
+                        <div className="fund_amount_host_end">
                           <p>{Data.settlementAmount}</p>
                           <p>{Data.myPayAmount}</p>
                           <p>{Data.message}</p>
@@ -74,7 +74,26 @@ const FundingHostListEnd = ({ render, setRender }) => {
             </ul>
           </>
         ) : (
-          <>참여한 펀딩이 없어요!</>
+          <>
+            <div className="space_container_invited"></div>
+            <div>
+              <img
+                className="no_fund_search"
+                src={`${registedImagePath}no_money.png`}
+                alt=""
+                width={100}
+              />
+              <div className="space_container_invited"></div>
+              <div className="no_fund_text">
+                주최했던 펀드가 없습니다.
+                <br /> 펀드를 새로 만들어보세요!
+              </div>
+            </div>
+            <Link id="go_make_fund" to="/funding/make">
+              펀드 만들기
+            </Link>
+            <div className="space_container_invited2"></div>
+          </>
         )}
       </div>
     </>
