@@ -91,17 +91,6 @@ function QnaDetail() {
       return;
     }
 
-    // if (board.writer.length < 1) {
-    //   titleInput.current.focus();
-    //   //focus
-    //   return;
-    // }
-    // if (board.contents.length < 3) {
-    //   contentInput.current.focus();
-    //   //focus
-    //   return;
-    // }
-
     try {
       const response = await axios.put(
         `${bootPath.bootpath}/board/update?no=${param.get("no")}`,

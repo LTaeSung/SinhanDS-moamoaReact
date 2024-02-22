@@ -127,7 +127,7 @@ function QnaList() {
           <div className="qna-list">
             <ul>
               {data.map((item) => (
-                <li key={item.no}>
+                <li key={item.no} className="liWithUnderBar">
                   <Link to={`/board/qna/detail?no=${item.no}`}>
                     <div>{item.title}</div>
                     <span>{item.writer}</span>
