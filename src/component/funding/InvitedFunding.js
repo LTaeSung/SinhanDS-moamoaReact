@@ -71,7 +71,7 @@ function InvitedFunding() {
       <div className="sub">
         <div className="size">
           <div className="space_container_invited"></div>
-          <h3 className="sub_title">초대받은 펀딩 리스트</h3>
+          <h3 className="sub_title_invited">초대받은 펀딩 리스트</h3>
           <div className="space_container_invited"></div>
           {data ? (
             <ul>

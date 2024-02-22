@@ -8,6 +8,10 @@
   height: 15px;
 }
 
+.sub_title_invited {
+  text-align: center;
+}
+
 .list_container_invited {
   width: 400px;
   height: 100px;
