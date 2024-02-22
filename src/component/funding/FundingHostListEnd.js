@@ -74,7 +74,26 @@ const FundingHostListEnd = ({ render, setRender }) => {
             </ul>
           </>
         ) : (
-          <>참여한 펀딩이 없어요!</>
+          <>
+            <div className="space_container_invited"></div>
+            <div>
+              <img
+                className="no_fund_search"
+                src={`${registedImagePath}no_money.png`}
+                alt=""
+                width={100}
+              />
+              <div className="space_container_invited"></div>
+              <div className="no_fund_text">
+                주최했던 펀드가 없습니다.
+                <br /> 펀드를 새로 만들어보세요!
+              </div>
+            </div>
+            <Link id="go_make_fund" to="/funding/make">
+              펀드 만들기
+            </Link>
+            <div className="space_container_invited2"></div>
+          </>
         )}
       </div>
     </>

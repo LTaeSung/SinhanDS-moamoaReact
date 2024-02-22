@@ -1,29 +1,33 @@
 @charset "utf-8";
 
-.space_container {
+.space_container_invited {
   height: 30px;
 }
 
-.list_container {
+.space_container_invited2 {
+  height: 15px;
+}
+
+.list_container_invited {
   width: 400px;
   height: 100px;
   display: flex;
 }
 
-.image_container {
+.image_container_invited {
   width: 90px;
 }
-.fund_info {
+.fund_info_invited {
   width: 300px;
   font-size: 10px;
 }
 
-#invited_funding_image {
+#invited_funding_image_invited {
   width: 80px;
   height: 82px;
 }
 
-.fund_title {
+.fund_title_invited {
   height: 15px;
   width: 280px;
   font-size: 15px;
@@ -31,24 +35,24 @@
   margin-bottom: 10px;
 }
 
-.fund_status {
+.fund_status_invited {
   height: 15px;
   font-weight: 600;
   font-size: 10px;
 }
 
-.fund_amount {
+.fund_amount_invited {
   width: 290px;
   height: 15px;
   margin-bottom: 20px;
 }
 
-.all_amount {
+.all_amount_invited {
   color: black;
   font-size: 10px;
 }
 
-.day_left {
+.day_left_invited {
   font-size: 10px;
   float: right;
   margin-right: 20px;
@@ -56,7 +60,7 @@
   margin-top: 60px;
 }
 
-.invite_agree {
+.invite_agree_invited {
   display: inline-block;
   outline: 0;
   border-radius: 5px;
@@ -68,11 +72,9 @@
   font-size: 15px;
   width: 200px;
   height: 25px;
-
-  margin-top: 10px;
 }
 
-.invite_refuse {
+.invite_refuse_invited {
   display: inline-block;
   outline: 0;
   border-radius: 5px;
@@ -84,8 +86,33 @@
   font-size: 15px;
   width: 80px;
   height: 25px;
-  margin-top: 10px;
 }
 
-.liner {
+.no_fund_search {
+  width: 100;
+  height: 100px;
+  margin-left: 150px;
+}
+
+.no_fund_text {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+#go_make_fund {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  width: 350px;
+  height: 30px;
+
+  margin-top: 15px;
+  margin-left: 20px;
 }

@@ -70,17 +70,17 @@ function InvitedFunding() {
       <FundingHeader />
       <div className="sub">
         <div className="size">
-          <div className="space_container"></div>
+          <div className="space_container_invited"></div>
           <h3 className="sub_title">초대받은 펀딩 리스트</h3>
-          <div className="space_container"></div>
+          <div className="space_container_invited"></div>
           {data ? (
             <ul>
               {data.map((Data) => (
                 <li key={Data.fundingMemberNo}>
-                  <div className="list_container">
-                    <div className="image_container">
+                  <div className="list_container_invited">
+                    <div className="image_container_invited">
                       <img
-                        id="invited_funding_image"
+                        id="invited_funding_image_invited"
                         src={
                           Data.photo
                             ? registedImagePath + Data.photo
@@ -89,8 +89,8 @@ function InvitedFunding() {
                         alt=""
                       />
                     </div>
-                    <div className="fund_info">
-                      <div className="fund_title">
+                    <div className="fund_info_invited">
+                      <div className="fund_title_invited">
                         {Data.startMemberName}님이 {Data.fundTitle}에
                         초대하였습니다.
                       </div>
@@ -110,11 +110,11 @@ function InvitedFunding() {
                             fundingNo: Data.fundingNo,
                           }}
                         >
-                          <button className="invite_agree">수락</button>
+                          <button className="invite_agree_invited">수락</button>
                         </Link>
                         &nbsp;
                         <button
-                          className="invite_refuse"
+                          className="invite_refuse_invited"
                           onClick={refuse}
                           id={Data.fundingMemberNo}
                         >
@@ -129,12 +129,23 @@ function InvitedFunding() {
             </ul>
           ) : (
             <>
-              {" "}
               <div>
-                초대받은 펀드가 없습니다
-                <br /> 펀드를 새로 만들어보세요!
+                <img
+                  className="no_fund_search"
+                  src={`${registedImagePath}no_mail.png`}
+                  alt=""
+                  width={100}
+                />
+                <div className="space_container_invited"></div>
+                <div className="no_fund_text">
+                  초대받은 펀드가 없습니다
+                  <br /> 펀드를 새로 만들어보세요!
+                </div>
               </div>
-              <Link to="/funding/make">펀드 만들기</Link>
+              <Link id="go_make_fund" to="/funding/make">
+                펀드 만들기
+              </Link>
+              <div className="space_container_invited2"></div>
             </>
           )}
         </div>
