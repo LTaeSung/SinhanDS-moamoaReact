@@ -1,4 +1,4 @@
-import MemberHeader from "../../member/MemberHeader";
+import AdminHeader from "./AdminHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
@@ -35,7 +35,7 @@ function SettlementDueList() {
 
   return (
     <>
-      <MemberHeader />
+      <AdminHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">정산마감일 지난 펀딩 목록</h3>
