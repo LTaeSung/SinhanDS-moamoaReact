@@ -25,19 +25,25 @@ const MessageNo0 = ({ obj }) => {
   };
   return (
     <>
-      <Link
-        className="btn"
-        to="/funding/accept"
-        state={{
-          fundingMemberNo: obj.fundingMemberNo,
-          fundingNo: obj.fundingNo,
-        }}
-      >
-        수락
-      </Link>
-      <button className="btn" onClick={refuse} id={obj.fundingMemberNo}>
-        거절
-      </button>
+      <div>
+        <Link
+          id="state_btn_left"
+          to="/funding/accept"
+          state={{
+            fundingMemberNo: obj.fundingMemberNo,
+            fundingNo: obj.fundingNo,
+          }}
+        >
+          수락
+        </Link>
+        <button
+          className="state_btn_right"
+          onClick={refuse}
+          id={obj.fundingMemberNo}
+        >
+          거절
+        </button>
+      </div>
     </>
   );
 };
