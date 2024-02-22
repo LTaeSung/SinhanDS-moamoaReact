@@ -253,61 +253,63 @@ function QnaDetail() {
             <div>
               {editing ? (
                 <>
-                  <span id="qna_writer">{board.writer}</span>
-                  <p id="qna_time">
-                    {new Date(board.registdate).toLocaleDateString()}
-                  </p>
-                  <span>
-                    <input
-                      type="text"
-                      id="qna_edit_title"
-                      ref={titleInput}
-                      value={board.title}
-                      name="title"
-                      onChange={qnaInputChange}
-                    />{" "}
-                  </span>
-                  <p>
-                    <textarea
-                      id="qna_content"
-                      ref={contentInput}
-                      value={board.contents}
-                      onChange={qnaInputChange}
-                      name="contents"
-                    ></textarea>
-                  </p>
-                  <button className="qna_detail_btn" onClick={savaEdit}>
-                    저장하기
-                  </button>
+                  <div className="qna_title_area">
+                    <span>
+                      <input
+                        type="text"
+                        id="qna_edit_title"
+                        ref={titleInput}
+                        value={board.title}
+                        name="title"
+                        onChange={qnaInputChange}
+                      />{" "}
+                    </span>
+                    <span id="qna_writer">{board.writer}</span>
+                    <span id="qna_time">
+                      | {new Date(board.registdate).toLocaleDateString()} 작성
+                    </span>
+                  </div>
+                  <div className="qna_content_area">
+                    <p>
+                      <textarea
+                        id="qna_content"
+                        ref={contentInput}
+                        value={board.contents}
+                        onChange={qnaInputChange}
+                        name="contents"
+                      ></textarea>
+                    </p>
+                  </div>
+                  <div className="delete_area">
+                    <button className="qna_detail_btn" onClick={savaEdit}>
+                      저장하기
+                    </button>
+                  </div>
                 </>
               ) : (
                 <>
                   <div className="qna_title_area">
                     <p id="qna_title">{board.title}</p>
+                    <span id="qna_writer">{board.writer}</span>
+                    <span id="qna_time">
+                      | {new Date(board.registdate).toLocaleDateString()} 작성
+                    </span>
                   </div>
-                  <p id="qna_writer">{board.writer}</p>
-                  <p id="qna_time">
-                    {new Date(board.registdate).toLocaleDateString()}
-                  </p>
-
                   <div className="qna_content_area">
                     <p id="qna_content">{board.contents}</p>
                   </div>
-
-                  <button className="qna_detail_btn" onClick={EditClick}>
-                    수정하기
-                  </button>
+                  <div className="delete_area">
+                    <button className="qna_detail_btn" onClick={EditClick}>
+                      수정하기
+                    </button>{" "}
+                    <button className="qna_delete_btn" onClick={DeleteQna}>
+                      삭제하기{" "}
+                    </button>
+                  </div>
                 </>
               )}
             </div>
-            <div className="delete_area">
-              <button className="qna_delete_btn" onClick={DeleteQna}>
-                삭제하기{" "}
-              </button>
-            </div>
           </div>
-          <br />
-          <h5>댓글</h5>
           <span id="qna_writer">{writer}</span>
           <div>
             <textarea
@@ -323,11 +325,11 @@ function QnaDetail() {
               댓글 저장하기
             </button>
           </div>
-          <h5>댓글목록</h5>
+          <div id="replylist_line"></div>
           <ul>
             {replies.map((reply, index) => (
               <li id="replylist_li" key={reply.no}>
-                {reply.writer}{" "}
+                {reply.writer} :{" "}
                 {reply.editing ? (
                   <>
                     <textarea
