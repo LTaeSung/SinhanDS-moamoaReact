@@ -1,0 +1,108 @@
+.infolist {
+  margin-left: 20px;
+}
+
+/* 펀딩제목 */
+#fundinginfo_title {
+  font-size: 22px;
+}
+
+#fundinginfo_ {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* 모인금액 */
+
+.listline {
+  float: left;
+  font-size: 12px;
+  margin-right: 4px;
+}
+#fundinginfo_collectedpoint {
+  font-size: 12px;
+  margin-top: 3px;
+  height: 40px;
+}
+
+#collectedpoint {
+  color: #ff4742;
+  font-size: 22px;
+  font-weight: 700;
+  float: left;
+  margin-left: 20px;
+}
+
+/* 나머지 항목(공유) */
+#fundimg_title_tag {
+  float: left;
+  font-weight: 700;
+  font-size: 16px;
+}
+#funding_title_tag_back {
+  margin-right: 60px;
+  font-size: 22px;
+  float: left;
+}
+#red {
+  color: #ff4742;
+  font-weight: 700;
+}
+/* 겹치기 방지 */
+#fundinginfo_monthlypaymentamount {
+  margin-top: 19px;
+}
+#fundinginfo_completeinterest {
+  margin-top: 38px;
+  font-size: 12px;
+}
+
+/* 챌린지소개 */
+#fundinginfo_description {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#comment_textarea {
+  width: 360px;
+}
+
+.comment {
+  display: inline-block;
+  outline: 0;
+  border-radius: 4px;
+  border: 2px solid #ff4742;
+  color: #ff4742;
+  background-color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  width: 360px;
+  height: 32px;
+}
+
+.comment_minbtn {
+  display: inline-block;
+  outline: 0;
+  border-radius: 4px;
+  border: 1px solid #ff4742;
+  color: #ff4742;
+  background-color: #fff;
+  text-align: center;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+#hr {
+  width: 350px;
+  text-align: center;
+  margin-right: 25px;
+}
+#writer {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#reply {
+  font-size: 12px;
+}

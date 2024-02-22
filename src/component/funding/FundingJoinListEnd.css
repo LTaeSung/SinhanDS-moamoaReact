@@ -5,22 +5,18 @@
   display: flex;
 }
 
-.image_container {
-  width: 90px;
-}
-
-#joined_funding_image {
-  width: 87px;
-  height: 100px;
-}
-
 .fund_info {
   width: 300px;
   font-size: 10px;
 }
 
+#joined_funding_image {
+  width: 80px;
+  height: 82px;
+}
+
 .fund_title {
-  height: 20px;
+  height: 15px;
   font-size: 20px;
   font-weight: 600;
 }

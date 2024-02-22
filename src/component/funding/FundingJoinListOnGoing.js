@@ -34,12 +34,19 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                       <div className="image_container">
                         <img
                           id="joined_funding_image"
-                          src={registedImagePath + `challenge.jpg`}
-                          width="100"
+                          src={
+                            Data.photo
+                              ? registedImagePath + Data.photo
+                              : registedImagePath + "challenge.jpg"
+                          }
                           alt=""
                         />
                       </div>
                       <div className="fund_info">
+                        <span className="day_left">
+                          {Data.dueDateLeft}일 남음
+                        </span>
+
                         <div className="fund_title">{Data.title}</div>
                         <br />
 
@@ -53,9 +60,7 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                             <span className="all_amount">
                               총 금액:{Data.totalPayAmount}
                             </span>
-                            <span className="day_left">
-                              {Data.dueDateLeft}일 남음
-                            </span>
+
                             <div
                               className="status_bar_start"
                               style={{

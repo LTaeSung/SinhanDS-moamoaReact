@@ -2,9 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
-import "./FundingComment.css";
 
-function FundingComment() {
+const FundingComment = (props) => {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [totalElement, setTotalElement] = useState(0);
@@ -24,6 +23,7 @@ function FundingComment() {
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
+        props.totalElement(data);
         console.log(res.data);
       })
       .catch((error) => {
@@ -245,6 +245,6 @@ function FundingComment() {
       </div>
     </>
   );
-}
+};
 
 export default FundingComment;

@@ -12,6 +12,8 @@ function Accept({ fundingMemberNo, fundingNo }) {
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
   const [payment, setPayment] = useState([]);
+  const bankList = ["없음", "신한", "농협", "국민", "우리"];
+
   useEffect(() => {
     const fetchPaymentList = async () => {
       try {
@@ -75,7 +77,7 @@ function Accept({ fundingMemberNo, fundingNo }) {
                             value={payment.no}
                             onChange={handleRadioButton}
                           />
-                          <p>카드사명: {payment.company}</p>
+                          <p>카드사명: {bankList[payment.company]}</p>
                           <p>카드번호: {payment.account}</p>
                         </li>
                       ))}

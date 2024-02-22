@@ -22,7 +22,7 @@ function SettlementDueList() {
 
   const requestRefuse = async () => {
     try {
-      const result = await axios.get(bootpath + "/admin/setFundStatus2To3");
+      const result = await axios.get(bootpath + "/admin/setFundStatus3To4");
       if (result.data === "success") {
         alert("정산 마감된 펀딩 완료 상태로 전환 성공");
       } else {

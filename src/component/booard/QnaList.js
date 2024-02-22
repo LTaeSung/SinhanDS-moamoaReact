@@ -92,11 +92,6 @@ function QnaList() {
           <div className="slect">
             <span className="span_title">Q&A</span>
             <span>총 {totalElement} 건 </span>
-            <select>
-              <option value="0">전체</option>
-              <option value="1">진행중</option>
-              <option value="2">완료</option>
-            </select>
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>
@@ -107,6 +102,7 @@ function QnaList() {
             {showNewQna && (
               <div className="toggle_qna">
                 <input
+                  id="qna_text"
                   type="text"
                   value={newQna.title}
                   placeholder="제목"
@@ -116,6 +112,7 @@ function QnaList() {
                 />{" "}
                 <br />
                 <textarea
+                  id="qna_textarea"
                   value={newQna.contents}
                   placeholder="내용은 255자 이하로 작성해 주세요"
                   onChange={(e) =>

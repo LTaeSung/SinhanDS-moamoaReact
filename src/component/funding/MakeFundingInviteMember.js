@@ -102,7 +102,13 @@ function MakeFundingInviteMember({ state }) {
             )}
           </div>
           <div>
-            <button onClick={regist}>초대하기</button>
+            <button
+              className={"btn"}
+              style={{ marginLeft: "35px" }}
+              onClick={regist}
+            >
+              초대하기
+            </button>
           </div>
         </div>
       </div>
