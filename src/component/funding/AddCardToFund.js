@@ -36,6 +36,8 @@ function AddCardToFund({ onSelectCard }) {
     onSelectCard(selectedPaymentNo);
   };
 
+  const bankList = ["없음", "신한", "농협", "국민", "우리"];
+
   // const submit = () => {
   //   axios.post(bootpath + "/funding/addcard", select, {}).then((res) => {
   //     if (res.data === "success") {
@@ -59,7 +61,7 @@ function AddCardToFund({ onSelectCard }) {
                         name="inputBox"
                         id={i}
                         type="radio"
-                        value={payment.no}
+                        value={bankList[payment.no]}
                         onChange={handleRadioButton}
                       />
                       <p>카드사명: {payment.company}</p>
