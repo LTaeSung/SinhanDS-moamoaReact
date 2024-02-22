@@ -65,8 +65,9 @@ function Friendlist() {
                         <img
                           className="friend_image"
                           src={
-                            Data.friend.photo ||
-                            `${registedImagePath}header_Profile.png`
+                            Data.friend.photo != null
+                              ? `${registedImagePath}${Data.friend.photo}`
+                              : `${registedImagePath}header_Profile.png`
                           }
                           alt="프로필 사진"
                         />

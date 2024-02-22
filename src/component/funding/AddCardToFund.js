@@ -61,10 +61,10 @@ function AddCardToFund({ onSelectCard }) {
                         name="inputBox"
                         id={i}
                         type="radio"
-                        value={bankList[payment.no]}
+                        value={payment.no}
                         onChange={handleRadioButton}
                       />
-                      <p>카드사명: {payment.company}</p>
+                      <p>카드사명: {bankList[payment.company]}</p>
                       <p>카드번호: {payment.account}</p>
                     </li>
                   ))}

@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
+import CommonImagePath from "../../commonImagePath";
+
 import "./FundingJoinListOnGoing.css";
 
 const FundingJoinListOnGoing = ({ render, setRender }) => {
@@ -10,6 +12,7 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
+  const { commonImagePath } = useContext(CommonImagePath);
 
   const getApi = async () => {
     axios
@@ -37,7 +40,7 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
-                              : registedImagePath + "challenge.jpg"
+                              : commonImagePath + "challenge.jpg"
                           }
                           alt=""
                         />
