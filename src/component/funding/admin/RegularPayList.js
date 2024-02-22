@@ -11,7 +11,6 @@ function RegularPayList() {
     try {
       const response = await axios.get(` ${bootpath}/admin/regularPaymentList`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

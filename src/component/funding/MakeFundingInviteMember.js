@@ -14,8 +14,6 @@ function MakeFundingInviteMember({ state }) {
   const [member, setMember] = useState({});
 
   const registedFile = location.state.file;
-  console.log("file");
-  console.log(registedFile);
   const [data, setData] = useState(null);
   let returnDate = {
     ...param,
@@ -69,7 +67,6 @@ function MakeFundingInviteMember({ state }) {
         },
       })
       .then((res) => {
-        console.log(res);
         window.location.href = "/funding/AfterMakeFunding";
       });
   };

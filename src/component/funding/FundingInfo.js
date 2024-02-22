@@ -41,11 +41,7 @@ function FundingInfo() {
     getMessageState();
   }, []);
 
-  useEffect(() => {
-    console.log("상태3");
-    console.log(state);
-  }, [state]);
-  console.log(data);
+  useEffect(() => {}, [state]);
   return (
     <>
       <FundingHeader />

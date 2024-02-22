@@ -10,7 +10,6 @@ const MyLogin = () => {
   const { bootpath } = useContext(BootPath);
 
   const [param, setParam] = useState({});
-  console.log(sessionStorage.getItem("email"));
   const handleChange = (e) => {
     setParam({
       ...param,

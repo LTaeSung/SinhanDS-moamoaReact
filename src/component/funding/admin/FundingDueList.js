@@ -11,7 +11,6 @@ function FundingDueList() {
     try {
       const response = await axios.get(` ${bootpath}/admin/FundingDueList`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

@@ -38,30 +38,23 @@ function AccountList() {
   useEffect(() => {
     if (formData.no !== 0) {
       // formData.no가 0이 아닌 경우에만 AccountDel을 호출
-      console.log(formData.no);
       AccountDel();
     }
   }, [formData.no]);
 
   const AccountNo = (no) => {
-    console.log("어카운트까진 넘어온 " + no);
     setFormData({
       ...formData,
       no: no,
     });
-    console.log(formData); // 여기선 아직 no가 0인 상태
   };
 
   const AccountDel = async () => {
-    console.log(formData); // 여기선 no가 잘 찍힘
-
     try {
       const response = await axios.post(
         `${bootpath}/member/payment/delete`,
         formData
       );
-
-      console.log("서버 응답:", response.data);
 
       if (response.data.result === "del_success") {
         alert("계좌정보 삭제 성공");

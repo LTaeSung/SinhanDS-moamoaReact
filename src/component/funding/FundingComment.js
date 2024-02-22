@@ -24,7 +24,6 @@ function FundingComment() {
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("funding_no값이 없습니다. ", error);
@@ -44,9 +43,7 @@ function FundingComment() {
 
   //로그인정보
   const getApi = () => {
-    console.log(param);
     axios.post(bootPath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
