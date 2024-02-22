@@ -2,11 +2,14 @@ import MemberHeader from "../member/MemberHeader";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BootPath from "../../BootPath";
+import ReactPath from "../../ReactPath";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import axios from "axios";
 import "./FundPointList.css";
 
 function FundPointList() {
+  const { reactpath } = useContext(ReactPath);
   const navigate = useNavigate();
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -70,12 +73,12 @@ function FundPointList() {
 
                             <div className="noAmount_container">
                               <p className="no">
-                                펀딩 번호 :
-                                <a
-                                  href={`http://localhost:3000/funding/info?no=${data.fundingno}`}
+                                {" "}
+                                <Link
+                                  to={`${reactpath}/funding/info?no=${data.fundingno}`}
                                 >
-                                  {data.fundingno}
-                                </a>
+                                  펀딩 상세보기로 이동
+                                </Link>
                               </p>
                               <p className="amount">{data.amount}원</p>
                             </div>
@@ -83,14 +86,20 @@ function FundPointList() {
                         ) : (
                           <ul>
                             <div className="fontDate_container">
-                              <div className="font">환급</div>
+                              <div className="font">정산</div>
                               <p className="date">
                                 {data.transactiondate.split("T")[0]}
                               </p>
                             </div>
 
                             <div className="noAmount_container">
-                              <p className="no">펀딩 번호 : {data.fundingno}</p>
+                              <p className="no">
+                                <Link
+                                  to={`${reactpath}/funding/info?no=${data.fundingno}`}
+                                >
+                                  펀딩 상세보기로 이동
+                                </Link>
+                              </p>
                               <p className="amount">{data.amount}원</p>
                             </div>
                           </ul>

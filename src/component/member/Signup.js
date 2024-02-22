@@ -1,14 +1,16 @@
 import MemberHeader from "./MemberHeader";
 import React, { useState } from "react";
 import BootPath from "../../BootPath";
+import ReactPath from "../../ReactPath";
 import { useContext } from "react";
 import RegistedImagePath from "../../registedImagePath";
 import CommonImagePath from "../../commonImagePath";
 function Signup() {
   const { bootpath } = useContext(BootPath);
+  const { reactpath } = useContext(ReactPath);
   const { commonImagePath } = useContext(CommonImagePath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디
-  const REDIRECT_URI = "http://localhost:3000/login/beforeSignup"; // Callback URL
+  const REDIRECT_URI = reactpath + "/login/beforeSignup"; // Callback URL
   const STATE = "false";
   const [isChecked, setIsChecked] = useState(false);
 
