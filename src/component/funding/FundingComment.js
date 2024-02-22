@@ -3,7 +3,7 @@ import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
-function FundingComment() {
+const FundingComment = (props) => {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [totalElement, setTotalElement] = useState(0);
@@ -23,6 +23,7 @@ function FundingComment() {
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
+        props.totalElement(data);
         console.log(res.data);
       })
       .catch((error) => {
@@ -189,41 +190,61 @@ function FundingComment() {
 
   return (
     <>
-      <div>{writer}</div>
-      <div>
-        <textarea
-          value={newReply.contents}
-          placeholder="댓글을 입력하세요."
-          onChange={input}
-        ></textarea>{" "}
-        <br />
-        <button onClick={commentSubmit}>댓글 저장</button>
-      </div>
-      <p>--------댓글목록----------</p>
       <p>총 댓글 수 : {totalElement} </p>
       {data &&
         data.map((item) => (
-          <div key={item.no}>
-            {item.name}{" "}
+          <div id="reply" key={item.no}>
+            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
+            <p style={{ float: "right" }}>{item.name} </p>
             {editingCommentId === item.no ? (
               <>
                 <textarea
                   value={modReply.contents}
                   onChange={inputMod}
                 ></textarea>{" "}
-                <button onClick={() => saveEditedComment(item.no)}>저장</button>
+                <button
+                  className="btn"
+                  onClick={() => saveEditedComment(item.no)}
+                >
+                  저장
+                </button>
               </>
             ) : (
               <>
                 {item.contents}{" "}
-                <button onClick={() => editClick(item.no)}>수정</button>{" "}
+                <button
+                  className="comment_minbtn"
+                  onClick={() => editClick(item.no)}
+                >
+                  수정
+                </button>{" "}
               </>
             )}
-            <button onClick={() => deleteClick(item.no)}>삭제</button>
+            <button
+              className="comment_minbtn"
+              onClick={() => deleteClick(item.no)}
+            >
+              삭제
+            </button>
           </div>
         ))}
+
+      <hr id="hr" />
+      <div id="writer">{writer}</div>
+      <div>
+        <textarea
+          id="comment_textarea"
+          value={newReply.contents}
+          placeholder="댓글을 입력하세요."
+          onChange={input}
+        ></textarea>{" "}
+        <br />
+        <button className="comment" onClick={commentSubmit}>
+          댓글 저장
+        </button>
+      </div>
     </>
   );
-}
+};
 
 export default FundingComment;

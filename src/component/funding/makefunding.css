@@ -1,0 +1,108 @@
+#main_title {
+  width: 360px;
+  margin-left: 20px;
+}
+
+#select {
+  margin-left: 170px;
+  font-weight: 700;
+  font-size: 12px;
+  background-color: white;
+  border: white;
+  margin-bottom: 10px;
+}
+
+/*이미지 태그*/
+/* 프로필 사진 액자 */
+#info_frame {
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 340px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+#info_image {
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+  text-align: center;
+  margin-left: 100px;
+  width: 120px;
+}
+
+#changeImage {
+  color: gray;
+}
+
+.imgetag {
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+#textarea {
+  margin-left: 20px;
+  min-width: 360px;
+  min-height: 100px;
+}
+
+#title_tag {
+  padding-top: 9px;
+  margin-left: 8px;
+  float: left;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+#title_tag_back {
+  padding-top: 9px;
+  margin-right: 60px;
+  float: right;
+  font-weight: 700;
+  font-size: 12px;
+}
+input[type="file"] {
+  vertical-align: middle;
+  height: 22px;
+  width: 80%;
+  margin-right: 6px;
+}
+
+/*마감일 태그*/
+.finish_date {
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+/*결제금액 태그*/
+.payamount {
+  margin-top: 8px;
+  width: 100%;
+}
+
+#payinput {
+  vertical-align: middle;
+  height: 32px;
+  width: 203px;
+}
+
+/*결제 날짜 태그*/
+
+.paydate {
+  margin-top: 8px;
+  width: 100%;
+}
+#dateinput {
+  vertical-align: middle;
+  height: 36px;
+  width: 215px;
+}
+
+/*------------------------*/
+.btn {
+  text-align: center;
+  width: 80%;
+  margin-right: 20px;
+}

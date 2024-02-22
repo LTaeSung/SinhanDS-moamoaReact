@@ -4,16 +4,18 @@ import { useContext } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
-import CommonImagePath from "../../commonImagePath";
+import RegistedImagePath from "../../registedImagePath";
 import FundingMember from "./FundingMember";
 import FundingComment from "./FundingComment";
 import FundingInfoButton from "./FundingInfoButton";
+import "./fundinginfo.css";
 function FundingInfo() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState({});
   const [state, setState] = useState({});
-  const { commonImagePath } = useContext(CommonImagePath);
+  const { registedImagePath } = useContext(RegistedImagePath);
+  const [showComment, setShowComment] = useState(false);
   let no = params.get("no");
 
   const member_no = sessionStorage.getItem("no") || "";
@@ -48,30 +50,71 @@ function FundingInfo() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">펀딩 상세내역</h3>
-          <div>
-            사진:
-            <img src={`${commonImagePath}${data.photo}`} width="100" />
-            <p>제목: {data.title}</p>
-            <p>목표 금액: {data.goalamount} 원</p>
-            <p>모인 금액: {data.collectedpoint} 원</p>
-            <p>주최자: {data.startmembername}</p>
-            <p>현재 참여자: {data.candidate} 명</p>
-            <p>매달결제일: {data.monthlypaymentdate} 일</p>
-            <p>매달 결제 금액: {data.monthlypaymentamount} 원</p>
-            <p>성공 여부: {data.completeinterest}</p>
-            <p>시작일: {data.startdate}</p>
-            <p>마감일: {data.fundingduedate}</p>
-            <p>챌린지 소개:</p>
-            <p> {data.description}</p>
-            <div style={{ textAlign: "center" }}>
-              <FundingInfoButton obj={{ ...state }} />
+          <div className="infolist">
+            <img src={registedImagePath + data.photo} width="100" />
+            <p id="fundinginfo_title"> {data.title}</p>
+            <br></br>
+            <div id="fundinginfo_collectedpoint">
+              <div className="listline" id="fundimg_title_tag">
+                모인 금액:{" "}
+              </div>{" "}
+              <div className="listline" id="collectedpoint">
+                {data.collectedpoint}
+              </div>{" "}
+              <div className="listline" id="funding_title_tag_back">
+                원
+              </div>
             </div>
-            <p>참여자 목록</p>
+            <div id="fundinginfo_">주최자: {data.startmembername}</div>
+            <p id="fundinginfo_">현재 참여자: {data.candidate} 명</p>
+
+            <div id="fundinginfo_monthlypaymentdate">
+              <p className="listline">매달결제일:</p>{" "}
+              <p className="listline" id="red">
+                {data.monthlypaymentdate}
+              </p>{" "}
+              <p className="listline">일</p>
+            </div>
+            <div id="fundinginfo_monthlypaymentamount">
+              <p className="listline">매달 결제 금액:</p>{" "}
+              <p className="listline" id="red">
+                {data.monthlypaymentamount}
+              </p>{" "}
+              <p className="listline">원</p>
+            </div>
+            <p id="fundinginfo_completeinterest">
+              성공 여부: {data.completeinterest}
+            </p>
+            <p id="fundinginfo_">시작일: {data.startdate}</p>
+            <p id="fundinginfo_">마감일: {data.fundingduedate}</p>
+            <br></br>
+            <p id="fundinginfo_description">챌린지 소개:</p>
+            <p id="fundinginfo_"> {data.description}</p>
+            <br></br>
+            <div style={{ textAlign: "center" }}>
+              <FundingInfoButton obj={{ ...state, ...data }} />
+            </div>
+            <br></br>
+            <p id="fundinginfo_description">참여자 목록 </p>
             <FundingMember />
-            <div>목록</div>
-            <p>펀딩 타입: {data.fundingtype}</p>
-            <p>댓글</p>
-            <FundingComment />
+            <br></br>
+            <hr id="hr"></hr>
+            <div className="">
+              <p totalElement={data.totalElement}>총 댓글 수 : </p>
+            </div>
+
+            <button
+              className="comment"
+              onClick={() => setShowComment((prev) => !prev)}
+            >
+              댓글 보기
+            </button>
+            {showComment && (
+              <div>
+                <p>펀딩 타입: {data.fundingtype}</p>
+                <FundingComment totalElement={data.totalElement} />
+              </div>
+            )}
           </div>
         </div>
       </div>

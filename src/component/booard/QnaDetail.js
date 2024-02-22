@@ -77,16 +77,16 @@ function QnaDetail() {
     //제목, 내용 비어있는지 체크
     if ("title" in board && "contents" in board) {
       if (board.title.replaceAll(" ", "") === "") {
-        alert("제목은 비워둘 수 없습니다.");
+        alert("제목을 입력해 주세요.");
         e.preventDefault();
         return;
       } else if (board.contents.replaceAll(" ", "") === "") {
-        alert("내용은 비워둘 수 없습니다.");
+        alert("내용을 입력해 주세요.");
         e.preventDefault();
         return;
       }
     } else {
-      alert("제목, 내용은 필수 입력 사항입니다.");
+      alert("제목과 내용을 입력해 주세요.");
       e.preventDefault();
       return;
     }
@@ -101,7 +101,7 @@ function QnaDetail() {
     //   //focus
     //   return;
     // }
-    console.log("Saving edit...", board);
+
     try {
       const response = await axios.put(
         `${bootPath.bootpath}/board/update?no=${param.get("no")}`,
@@ -111,15 +111,12 @@ function QnaDetail() {
         }
       );
       setEditing(false);
-      console.log("Saving edit...", board);
+
       const updatedData = await axios.get(
         `${bootPath.bootpath}/board/detail?no=${param.get("no")}`
       );
       setBoard(updatedData.data);
-      console.log("Saving edit...", board);
-    } catch (error) {
-      console.log("qna 수정하다가 오류가 났습니다.", error);
-    }
+    } catch (error) {}
   };
 
   const navigate = useNavigate();
@@ -132,7 +129,6 @@ function QnaDetail() {
         );
 
         navigate(`/board/qna/list`);
-
         console.log("QnA가 성공적으로 삭제되었습니다.");
       } catch (error) {
         console.error("QnA 삭제 중 에러가 발생했습니다.", error);
@@ -147,12 +143,12 @@ function QnaDetail() {
     //댓글 내용 비어있는지 체크
     if ("contents" in newReply) {
       if (newReply.contents.replaceAll(" ", "") === "") {
-        alert("댓글 내용은 비워둘 수 없습니다.");
+        alert("댓글을 입력해 주세요.");
         e.preventDefault();
         return;
       }
     } else {
-      alert("댓글 내용은 비워둘 수 없습니다.");
+      alert("댓글을 입력해 주세요.");
       e.preventDefault();
       return;
     }
@@ -212,11 +208,11 @@ function QnaDetail() {
       //댓글 내용 비어있는지 체크
       if ("contents" in editedReply) {
         if (editedReply.contents.replaceAll(" ", "") === "") {
-          alert("댓글 내용은 비워둘 수 없습니다.");
+          alert("댓글을 입력해 주세요.");
           return;
         }
       } else {
-        alert("댓글 내용은 필수 입력 사항입니다.");
+        alert("댓글 내용을 입력해 주세요.");
         return;
       }
 
@@ -312,9 +308,11 @@ function QnaDetail() {
                 </>
               )}
             </div>
-            <button className="qna_detail_btn" onClick={DeleteQna}>
-              삭제하기{" "}
-            </button>
+            <div className="delete_area">
+              <button className="qna_delete_btn" onClick={DeleteQna}>
+                삭제하기{" "}
+              </button>
+            </div>
           </div>
           <br />
           <h5>댓글</h5>
@@ -323,14 +321,14 @@ function QnaDetail() {
             <textarea
               id="qna_reply_content"
               name="contents"
-              placeholder="댓글을 입력해주세요."
+              placeholder="댓글을 작성해주세요."
               value={newReply.contents}
               onChange={InputChange}
             ></textarea>
           </div>
           <div className="re_btn_area">
             <button id="qna_reply_btn" onClick={SaveReply}>
-              저장하기
+              댓글 저장하기
             </button>
           </div>
           <h5>댓글목록</h5>
@@ -355,17 +353,28 @@ function QnaDetail() {
                       }}
                     ></textarea>{" "}
                     <br />
-                    <button onClick={() => SaveEditedReply(reply.no, index)}>
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => SaveEditedReply(reply.no, index)}
+                    >
                       저장
                     </button>
                   </>
                 ) : (
                   <>
                     {reply.contents} <br />
-                    <button onClick={() => EditReply(reply.no)}>
-                      수정
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => EditReply(reply.no)}
+                    >
+                      수정 &nbsp; |
                     </button>{" "}
-                    <button onClick={() => DeleteReply(reply.no)}>삭제</button>
+                    <button
+                      id="qna_detail_rebtn"
+                      onClick={() => DeleteReply(reply.no)}
+                    >
+                      삭제
+                    </button>
                   </>
                 )}
               </li>

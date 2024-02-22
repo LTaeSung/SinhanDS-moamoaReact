@@ -19,7 +19,7 @@ const MyLogin = () => {
     });
   };
   const save = () => {
-    if (document.querySelector("input").value == "") {
+    if (document.querySelector("input").value === "") {
       alert("이메일을 입력해 주세요");
     }
 

@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.list_container {
+  width: 400px;
+  height: 100px;
+  display: flex;
+}
+
+.fund_info {
+  width: 300px;
+  font-size: 10px;
+}
+
+#joined_funding_image {
+  width: 80px;
+  height: 82px;
+}
+
+.fund_title {
+  height: 20px;
+  width: 350px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.fund_status {
+  height: 15px;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.fund_amount {
+  width: 290px;
+  height: 15px;
+  margin-bottom: 20px;
+}
+
+.all_amount {
+  color: black;
+  font-size: 10px;
+}
+
+.day_left {
+  font-size: 10px;
+  float: right;
+  margin-right: 20px;
+  width: 50px;
+  margin-top: 65px;
+}

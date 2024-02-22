@@ -8,6 +8,8 @@ import $ from "jquery";
 import Calender from "./Calender";
 import AddCardToFund from "./AddCardToFund";
 import { useLocation } from "react-router-dom";
+import RegistedImagePath from "../../registedImagePath";
+import "./makefunding.css";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
@@ -16,74 +18,9 @@ function MakeFunding() {
   const [file, setFile] = useState([]); //파일
   const [selectedCard, setSelectedCard] = useState(null);
   const location = useLocation();
-
-  const handleSelectCard = (paymentNo) => {
-    setSelectedCard(paymentNo);
-    setParam({
-      ...param,
-      payment_no: paymentNo,
-    });
-  };
-
-  const handleChange = (e) => {
-    setParam({
-      ...param,
-      [e.target.name]: e.target.value,
-    });
-    console.log(param);
-  };
-  const handleChangeFile = (e) => {
-    console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
-  };
-  useEffect(() => {
-    console.log(file);
-  }, [file]);
-  const getApi = () => {
-    console.log(param);
-    axios.post(bootpath + "/fund/regist", param).then((res) => {
-      if (res.data.result === "success") {
-        alert("정상적으로 저장되었습니다.");
-        navigate("/board/list");
-      }
-    });
-  };
-  const save = () => {
-    getApi();
-  };
-
-  const emptyCheck = (e) => {
-    console.log("empty check");
-    console.log(param);
-    if (
-      "title" in param &&
-      "monthly_payment_amount" in param &&
-      "monthly_payment_date" in param
-    ) {
-      if (param.title.replace(" ", "") === "") {
-        alert("제목은 비워둘 수 없습니다.");
-        e.preventDefault();
-        return;
-      } else if (param.monthly_payment_amount < 5000) {
-        alert("매월 결제 금액은 5000원 이상이어야 합니다.");
-        e.preventDefault();
-        return;
-      } else if (param.monthly_payment_date === "===") {
-        alert("매월 결제일은 1일에서 28일까지만 선택 가능합니다.");
-        e.preventDefault();
-        return;
-      } else if (!("payment_no" in param) || param.payment_no === "") {
-        alert("정기 결제 될 카드를 선택해주세요.");
-        e.preventDefault();
-        return;
-      }
-      console.log("check");
-    } else {
-      alert("펀딩의 제목, 매월 결제금액, 매월 결제일은 필수 입력 사항입니다.");
-      e.preventDefault();
-      return;
-    }
-  };
+  const { registedImagePath } = useContext(RegistedImagePath);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
   const dayOptions = [
     "---",
@@ -117,6 +54,101 @@ function MakeFunding() {
     28,
   ];
 
+  const handleImageClick = () => {
+    document.getElementById("file").click();
+  };
+
+  const handleChangeFile = (event) => {
+    if (event.target.files[0] == null) {
+      return;
+    }
+    setSelectedFile(event.target.files[0]);
+    setUploadedImageUrl(URL.createObjectURL(event.target.files[0])); // 업로드된 이미지 URL 설정
+    console.log(event.target.files[0]);
+    setFile(event.target.files[0]);
+  };
+
+  const handleSelectCard = (paymentNo) => {
+    setSelectedCard(paymentNo);
+    setParam({
+      ...param,
+      payment_no: paymentNo,
+    });
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await fetch({
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("사진이 변경되었습니다.");
+      } else {
+        console.error("사진 변경이 실패했습니다. 나중에 다시 시도해주세요.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
+  const handleChange = (e) => {
+    setParam({
+      ...param,
+      [e.target.name]: e.target.value,
+    });
+    console.log(param);
+  };
+  useEffect(() => {
+    console.log(file);
+  }, [file]);
+  const getApi = () => {
+    console.log(param);
+    axios.post(bootpath + "/fund/regist", param).then((res) => {
+      if (res.data.result === "success") {
+        alert("정상적으로 저장되었습니다.");
+        navigate("/board/list");
+      }
+    });
+  };
+  const save = () => {
+    getApi();
+  };
+
+  const emptyCheck = (e) => {
+    console.log("empty check");
+    console.log(param);
+    if (
+      "title" in param &&
+      "monthly_payment_amount" in param &&
+      "monthly_payment_date" in param
+    ) {
+      if (param.title.replace(" ", "") === "") {
+        alert("제목은 비워둘 수 없습니다.");
+        e.preventDefault();
+      } else if (param.monthly_payment_amount < 1) {
+        alert("매월 결제 금액은 1원 이상이어야 합니다.");
+        e.preventDefault();
+      } else if (param.monthly_payment_date === "===") {
+        alert("매월 결제일은 1일에서 28일까지만 선택 가능합니다.");
+        e.preventDefault();
+        return;
+      } else if (!("payment_no" in param) || param.payment_no === "") {
+        alert("정기 결제 될 카드를 선택해주세요.");
+        e.preventDefault();
+      }
+      console.log("check");
+    } else {
+      alert("펀딩의 제목, 매월 결제금액, 매월 결제일은 필수 입력 사항입니다.");
+      e.preventDefault();
+      return;
+    }
+  };
+
   return (
     <>
       <FundingHeader />
@@ -125,38 +157,70 @@ function MakeFunding() {
           <h3 className="sub_title">펀드 생성</h3>
 
           <div>
-            펀딩명 <input type="text" name="title" onChange={handleChange} />
+            <input
+              id={"main_title"}
+              type="text"
+              placeholder="챌린지 제목"
+              name="title"
+              onChange={handleChange}
+            />
           </div>
           <div>
-            설명
             <div>
               <textarea
+                id={"textarea"}
                 name="description"
                 maxLength="255"
+                placeholder="설명은 255자 이하로 작성해 주세요"
                 onChange={handleChange}
               />
             </div>
           </div>
-          <div>
-            사진
+          <div className="imgetag">
+            <table>
+              <tr>
+                <td rowSpan="5">
+                  <div class="info_frame" id="info_frame">
+                    <img
+                      className="info_image"
+                      id="info_image"
+                      onClick={handleImageClick}
+                      src={uploadedImageUrl || `${registedImagePath}`}
+                      width=""
+                      alt="대표사진을 첨부해 주세요"
+                    />
+                  </div>
+                  <input
+                    id="fileInput"
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleChangeFile}
+                  />
+                  <br />
+                </td>
+              </tr>
+            </table>
+
             <input type="file" id="file" onChange={handleChangeFile}></input>
           </div>
-          <div>
-            마감일
-            <Calender param={param} setParam={setParam} />
+          <div className="finish_date">
+            <p id={"title_tag"}>마감일</p>
+            <Calender className="calender" param={param} setParam={setParam} />
           </div>
-          <div>
-            결제 금액(매월)
+          <div className={"payamount"}>
+            <p id={"title_tag"}>결제 금액(매월)</p>
             <input
+              id={"payinput"}
               type="number"
               name="monthly_payment_amount"
               onChange={handleChange}
             />
-            원
+            <p id={"title_tag_back"}>원</p>
           </div>
-          <div>
-            결제 날짜(매월)
+          <div className={"paydate"}>
+            <p id={"title_tag"}>결제 날짜(매월)</p>
             <select
+              id="select"
               onChange={handleChange}
               //type="text"
               name="monthly_payment_date"
@@ -167,7 +231,7 @@ function MakeFunding() {
                 </option>
               ))}
             </select>
-            일
+            <p id={"title_tag_back"}>일</p>
           </div>
           <AddCardToFund onSelectCard={handleSelectCard} />
           <div className="btnSet" style={{ textAlign: "right" }}>

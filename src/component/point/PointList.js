@@ -11,6 +11,7 @@ function PointList() {
     const selectedValue = event.target.value;
     navigate(selectedValue); // 선택된 값으로 페이지를 업데이트
   };
+  const bankList = ["없음", "신한", "농협", "국민", "우리"];
 
   const { bootpath } = useContext(BootPath);
   const [data, setData] = useState([]);
@@ -87,7 +88,7 @@ function PointList() {
 
                             <div className="noAmount_container">
                               <p className="no">
-                                인출계좌 : {data.bank} {data.account}
+                                인출계좌 : {bankList[data.bank]} {data.account}
                               </p>
                               <p className="amount"> {data.amount}원</p>
                             </div>

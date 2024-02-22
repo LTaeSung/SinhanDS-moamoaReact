@@ -15,14 +15,19 @@ function MemberInfo() {
   const { registedImagePath } = useContext(RegistedImagePath);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+  const [postImg, setPostImg] = useState("edit");
 
   const handleImageClick = () => {
     document.getElementById("fileInput").click();
   };
 
   const handleFileChange = (event) => {
+    if (event.target.files[0] == null) {
+      return;
+    }
     setSelectedFile(event.target.files[0]);
     setUploadedImageUrl(URL.createObjectURL(event.target.files[0])); // 업로드된 이미지 URL 설정
+    setPostImg("posting");
   };
 
   const handleSubmit = async (event) => {
@@ -30,6 +35,8 @@ function MemberInfo() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
+
+    console.log(formData);
 
     try {
       const response = await fetch(
@@ -48,6 +55,7 @@ function MemberInfo() {
     } catch (error) {
       console.error("Error uploading file:", error);
     }
+    setPostImg("edit");
   };
 
   const getData = async () => {
@@ -78,7 +86,7 @@ function MemberInfo() {
             <tr>
               <td rowSpan="5">
                 {data && (
-                  <div class="info_frame">
+                  <div className="info_frame">
                     <img
                       className="info_image"
                       onClick={handleImageClick}
@@ -96,10 +104,16 @@ function MemberInfo() {
                   style={{ display: "none" }}
                   onChange={handleFileChange}
                 />
-                <br />
-                <button className="changeImage" onClick={handleSubmit}>
-                  프로필 사진 변경
-                </button>
+                <br />{" "}
+                {postImg === "edit" ? (
+                  <button className="changeImage" onClick={handleImageClick}>
+                    프로필 사진 변경
+                  </button>
+                ) : (
+                  <button className="changeImage" onClick={handleSubmit}>
+                    프로필 사진 등록
+                  </button>
+                )}
               </td>
               <td className="infoId">
                 <p className="Id_color"> {data && data.email.split("@")[0]}</p>

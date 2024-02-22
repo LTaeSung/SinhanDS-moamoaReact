@@ -87,9 +87,20 @@ function Friendlist() {
             </ul>
           ) : (
             <>
-              {" "}
-              <div>친구가 없습니다 친구를 추가해보세요</div>
-              <Link to="/member/friend/search">친구 찾기</Link>
+              <div className="space_container"></div>
+              <img
+                className="glass_icon"
+                src={`${registedImagePath}Magnifying_glass_icon.png`}
+                alt="돋보기"
+              />
+              <div className="space_container"></div>
+              <div className="no_friend">
+                친구가 없습니다
+                <br /> 친구를 추가해보세요
+              </div>
+              <Link to="/member/friend/search">
+                <button className="go_add_friend">친구 찾기</button>
+              </Link>
             </>
           )}
         </div>

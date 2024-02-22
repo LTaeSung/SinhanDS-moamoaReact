@@ -12,20 +12,28 @@ function SearchMember() {
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
   const handleSearch = () => {
+    if (email === null || email.replaceAll(" ", "") === "") {
+      alert("검색할 수 없는 값입니다.");
+      return;
+    }
+
     axios
       .get(bootpath + "/member/friend/search", {
-        params: { member_no: member_no, email: email }, // member_no를 적절한 값으로 변경
+        params: { member_no: member_no, email: email },
       })
       .then((response) => {
         const data = response.data;
         if (!data || data.length === 0) {
           alert("이미 친구로 등록되어있거나 정보가 없습니다.");
+          setMemberList([]);
+        } else {
+          console.log(response.data);
+          setMemberList(response.data);
+          setError(null);
         }
-        console.log(response.data);
-        setMemberList(response.data);
-        setError(null);
       })
       .catch((error) => {
         console.error("Error searching members:", error);
@@ -55,6 +63,7 @@ function SearchMember() {
         });
     }
   };
+
   return (
     <>
       <MemberHeader />
@@ -76,39 +85,53 @@ function SearchMember() {
           </div>
           {error && <p>{error}</p>}
           <div>
-            <ul>
-              <div className="search_space_container"></div>
-              {memberList.map((member) => (
-                <li key={member.no}>
-                  <div className="user_searched_container">
-                    <div className="photo_range">
-                      <div className="user_frame">
-                        <img
-                          className="user_image"
-                          src={
-                            member.photo ||
-                            `${registedImagePath}header_Profile.png`
-                          }
-                          alt="프로필 사진"
-                        />
+            <div className="search_space_container"></div>
+            {memberList.length > 0 ? (
+              <ul>
+                {memberList.map((member) => (
+                  <li key={member.no}>
+                    <div className="user_searched_container">
+                      <div className="photo_range">
+                        <div className="user_frame">
+                          <img
+                            className="user_image"
+                            src={
+                              member.photo ||
+                              `${registedImagePath}header_Profile.png`
+                            }
+                            alt="프로필 사진"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="nameEmail">
-                      {member.name} {member.email}
-                    </div>
+                      <div className="nameEmail">
+                        {member.name} <br />
+                        {member.email.split("@")[0]}
+                      </div>
 
-                    <button
-                      className="friend_Add"
-                      id="Add-friend-btn"
-                      onClick={() => handleAddFriend(member_no, member)}
-                    >
-                      친구 등록
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                      <button
+                        className="friend_Add"
+                        id="Add-friend-btn"
+                        onClick={() => handleAddFriend(member_no, member)}
+                      >
+                        친구 등록
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div>
+                <div className="space_container"></div>
+                <img
+                  className="glass_icon"
+                  src={`${registedImagePath}Magnifying_glass_icon.png`}
+                  alt="돋보기"
+                />
+                <div className="space_container"></div>
+                <div className="no_friend">친구를 추가해보세요</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
