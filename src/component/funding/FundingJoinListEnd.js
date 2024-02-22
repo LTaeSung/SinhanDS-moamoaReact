@@ -15,6 +15,7 @@ const FundingJoinListEnd = ({ render, setRender }) => {
       .get(`${bootpath}/funding/member/join/end?member_no=${member_no}`)
       .then((res) => {
         setData(res.data);
+        console.log(res.data);
       });
   };
   useEffect(() => {

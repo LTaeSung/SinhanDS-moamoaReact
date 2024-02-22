@@ -22,6 +22,7 @@ function InvitedFunding() {
       const response = await axios.get(
         `${bootpath}/funding/member/invitedList?member_no=${member_no}`
       );
+
       if (response.data.length === 0) {
         setData(null);
       } else {
@@ -75,7 +76,7 @@ function InvitedFunding() {
           {data ? (
             <ul>
               {data.map((Data) => (
-                <li className="liner" key={Data.no}>
+                <li key={Data.fundingMemberNo}>
                   <div className="list_container">
                     <div className="image_container">
                       <img
@@ -90,30 +91,37 @@ function InvitedFunding() {
                     </div>
                     <div className="fund_info">
                       <div className="fund_title">
-                        {Data.startmembername}님이 {Data.fundtitle}에
+                        {Data.startMemberName}님이 {Data.fundTitle}에
                         초대하였습니다.
                       </div>
                       <br />
-                      <p>초대 수락 기한 : {Data.inviteddate.split("T")[0]}</p>
-                      <p> 결제액 : 매월 {Data.monthlypaymentamount}원</p>
-                      <Link
-                        to="/funding/accept"
-                        state={{
-                          fundingMemberNo: Data.no,
-                          fundingNo: Data.fundingno,
-                        }}
-                      >
-                        <button className="invite_agree">수락</button>
-                      </Link>
-                      &nbsp;
-                      <button
-                        className="invite_refuse"
-                        onClick={refuse}
-                        id={Data.no}
-                      >
-                        거절
-                      </button>
-                      <br />
+                      <p>
+                        펀딩마감기한 :{" "}
+                        {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
+                        {Data.fundingDueDate}
+                      </p>
+                      <p> 결제액 : 매월 {Data.monthlyPaymentAmmount}원</p>
+
+                      <div>
+                        <Link
+                          to="/funding/accept"
+                          state={{
+                            fundingMemberNo: Data.fundingMemberNo,
+                            fundingNo: Data.fundingNo,
+                          }}
+                        >
+                          <button className="invite_agree">수락</button>
+                        </Link>
+                        &nbsp;
+                        <button
+                          className="invite_refuse"
+                          onClick={refuse}
+                          id={Data.fundingMemberNo}
+                        >
+                          거절
+                        </button>
+                        <br />
+                      </div>
                     </div>
                   </div>
                 </li>
