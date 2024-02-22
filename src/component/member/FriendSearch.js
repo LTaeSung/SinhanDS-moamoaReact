@@ -13,7 +13,6 @@ function SearchMember() {
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
   const { commonImagePath } = useContext(CommonImagePath);
 
   const handleSearch = () => {
