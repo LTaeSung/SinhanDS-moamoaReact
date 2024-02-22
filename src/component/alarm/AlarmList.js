@@ -19,7 +19,6 @@ function AlarmList() {
   }, []);
 
   const earseAlarm = (alarmNo) => {
-    console.log(alarmNo);
     axios.get(`${bootpath}/alarm/erase?alarm_no=${alarmNo}`).then((res) => {
       getApi();
     });

@@ -186,10 +186,20 @@ function FundingComment() {
       {data &&
         data.map((item) => (
           <div id="reply" key={item.no}>
-            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
-            <p id="reply" style={{ float: "left" }}>
-              {item.name} :
-            </p>
+            {item.name === writer ? (
+              <>
+                <p id="me" style={{ float: "right" }}>
+                  :-me
+                </p>{" "}
+              </>
+            ) : (
+              <>
+                <p id="reply" style={{ float: "left" }}>
+                  {item.name} :
+                </p>
+              </>
+            )}
+
             {editingCommentId === item.no ? (
               <>
                 <textarea
@@ -203,23 +213,25 @@ function FundingComment() {
                   저장
                 </button>
               </>
+            ) : item.name !== writer ? (
+              <>{item.contents} </>
             ) : (
               <>
-                {item.contents}{" "}
                 <button
                   className="comment_minbtn"
                   onClick={() => editClick(item.no)}
                 >
                   수정
                 </button>{" "}
+                <button
+                  className="comment_minbtn"
+                  onClick={() => deleteClick(item.no)}
+                >
+                  | 삭제
+                </button>
+                <p id="mycoment">{item.contents}</p>
               </>
             )}
-            <button
-              className="comment_minbtn"
-              onClick={() => deleteClick(item.no)}
-            >
-              삭제
-            </button>
           </div>
         ))}
 

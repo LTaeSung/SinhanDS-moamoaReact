@@ -30,6 +30,7 @@ html {
 .main_headerNav {
   height: auto;
   background-color: white;
+  border: 2px solid #e0e0e0;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -65,15 +66,15 @@ html {
 
 .App-header {
   max-width: 400px;
+  min-height: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .App-container {
   background-color: #ffffff;
-  border-style: solid;
+  border-style: 2px solid;
   border-color: #e0e0e0;
-
   display: flex;
   flex-direction: column;
   align-items: center;

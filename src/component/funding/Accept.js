@@ -7,7 +7,6 @@ import axios from "axios";
 import $ from "jquery";
 function Accept({ fundingMemberNo, fundingNo }) {
   const location = useLocation();
-  console.log("fundingNo: " + location.state.fundingNo);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
@@ -32,10 +31,8 @@ function Accept({ fundingMemberNo, fundingNo }) {
   const [select, setSelect] = useState({
     fundingMemberNo: location.state.fundingMemberNo,
   });
-  console.log("typeof: " + typeof select.fundingMemberNo);
   const handleRadioButton = (e) => {
     setSelect({ ...select, payment_no: e.target.value });
-    console.log(select);
   };
 
   const submit = (e) => {
@@ -43,7 +40,6 @@ function Accept({ fundingMemberNo, fundingNo }) {
       alert("정기 결제에 등록할 카드를 선택해주세요.");
       return;
     }
-    console.log("카드 선택됨" + select.payment_no);
     axios.post(bootpath + "/funding/member/accept", select, {}).then((res) => {
       if (res.data === "success") {
         // navigate("/funding/afterAcceptFunding");

@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import BootPath from "../../BootPath";
 import React, { useEffect, useState, useContext } from "react";
-import PlusPoint from "../point/PlusPoint";
-import MinusPoint from "../point/MinusPoint";
-import PointList from "../point/PointList";
 import RegistedImagePath from "../../registedImagePath";
 import axios from "axios";
 import "./MemberInfo.css";
