@@ -244,7 +244,7 @@ function QnaDetail() {
       <div className="sub">
         <div className="size">
           <div className="slect_detail">
-            <h3 className="span_title_detail"> Q&A </h3>
+            <h3 className="span_title_detail"> 자유게시판 </h3>
           </div>
           <div>
             <div>
