@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 import "./FundingJoinListEnd.css";
+import CommonImagePath from "../../commonImagePath";
 
 const FundingJoinListEnd = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
+  const { commonImagePath } = useContext(CommonImagePath);
   const getApi = async () => {
     axios
       .get(`${bootpath}/funding/member/join/end?member_no=${member_no}`)
@@ -48,7 +50,7 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
-                              : registedImagePath + "challenge.jpg"
+                              : commonImagePath + "challenge.jpg"
                           }
                           alt={""}
                         />
@@ -85,7 +87,7 @@ const FundingJoinListEnd = ({ render, setRender }) => {
             <div>
               <img
                 className="no_fund_search"
-                src={`${registedImagePath}no_money.png`}
+                src={`${commonImagePath}no_money.png`}
                 alt=""
                 width={100}
               />

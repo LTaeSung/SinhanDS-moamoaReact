@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
+import CommonImagePath from "../../commonImagePath";
 import "./FundingHostListEnd.css";
 
 const FundingHostListEnd = ({ render, setRender }) => {
@@ -10,6 +11,7 @@ const FundingHostListEnd = ({ render, setRender }) => {
   const [data, setData] = useState([]);
   const member_no = sessionStorage.getItem("no");
   const { registedImagePath } = useContext(RegistedImagePath);
+  const { commonImagePath } = useContext(CommonImagePath);
   const getApi = async () => {
     axios
       .get(`${bootpath}/fund/host/end?member_no=${member_no}`)
@@ -43,7 +45,7 @@ const FundingHostListEnd = ({ render, setRender }) => {
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
-                              : registedImagePath + "challenge.jpg"
+                              : commonImagePath + "challenge.jpg"
                           }
                           alt=""
                         />
@@ -79,7 +81,7 @@ const FundingHostListEnd = ({ render, setRender }) => {
             <div>
               <img
                 className="no_fund_search"
-                src={`${registedImagePath}no_money.png`}
+                src={`${commonImagePath}no_money.png`}
                 alt=""
                 width={100}
               />

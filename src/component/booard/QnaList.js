@@ -86,13 +86,13 @@ function QnaList() {
       <div className="sub">
         <div className="size">
           <div className="slect">
-            <span className="span_title">Q&A</span>
+            <span className="span_title">자유게시판</span>
             <span>총 {totalElement} 건 </span>
           </div>
           <div className="hide">
             <span id="writer">{writer}</span>
             <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
-              Q&A 쓰기
+              새 글쓰기
             </button>
             <br />
             {showNewQna && (

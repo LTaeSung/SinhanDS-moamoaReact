@@ -163,6 +163,7 @@ function MakeFunding() {
               placeholder="챌린지 제목"
               name="title"
               onChange={handleChange}
+              maxLength={18}
             />
           </div>
           <div>

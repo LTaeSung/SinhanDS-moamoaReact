@@ -5,6 +5,8 @@ import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
+import CommonImagePath from "../../commonImagePath";
+
 import "./InvitedFunding.css";
 
 function InvitedFunding() {
@@ -13,6 +15,8 @@ function InvitedFunding() {
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
+  const { commonImagePath } = useContext(CommonImagePath);
+
   const getData = async () => {
     try {
       if (!member_no) {
@@ -84,7 +88,7 @@ function InvitedFunding() {
                         src={
                           Data.photo
                             ? registedImagePath + Data.photo
-                            : registedImagePath + "challenge.jpg"
+                            : commonImagePath + "challenge.jpg"
                         }
                         alt=""
                       />
@@ -133,7 +137,7 @@ function InvitedFunding() {
               <div>
                 <img
                   className="no_fund_search"
-                  src={`${registedImagePath}no_mail.png`}
+                  src={`${commonImagePath}no_mail.png`}
                   alt=""
                   width={100}
                 />
