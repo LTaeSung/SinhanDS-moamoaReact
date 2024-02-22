@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import BootPathContext from "./../../BootPath";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import "./FundingComment.css";
 
-const FundingComment = (props) => {
+function FundingComment() {
   const bootPath = useContext(BootPathContext);
   const [params, setParams] = useSearchParams();
   const [totalElement, setTotalElement] = useState(0);
@@ -23,7 +24,6 @@ const FundingComment = (props) => {
       .then((res) => {
         setData(res.data);
         setTotalElement(res.data.length);
-        props.totalElement(data);
         console.log(res.data);
       })
       .catch((error) => {
@@ -195,7 +195,7 @@ const FundingComment = (props) => {
         data.map((item) => (
           <div id="reply" key={item.no}>
             {item.name === writer ? console.log("맞다") : console.log("틀리다")}
-            <p style={{ float: "right" }}>{item.name} </p>
+            <p style={{ float: "left" }}>{item.name} </p>
             {editingCommentId === item.no ? (
               <>
                 <textarea
@@ -245,6 +245,6 @@ const FundingComment = (props) => {
       </div>
     </>
   );
-};
+}
 
 export default FundingComment;

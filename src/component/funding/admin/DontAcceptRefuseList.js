@@ -1,4 +1,4 @@
-import MemberHeader from "../../member/MemberHeader";
+import AdminHeader from "./AdminHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
@@ -37,7 +37,7 @@ function DontAcceptRefuseInWeekMemberList() {
 
   return (
     <>
-      <MemberHeader />
+      <AdminHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">초대마감일 지난 멤버 목록</h3>

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
+import "./InvitedFunding.css";
 
 function InvitedFunding() {
   const { bootpath } = useContext(BootPath);
@@ -21,6 +22,7 @@ function InvitedFunding() {
       const response = await axios.get(
         `${bootpath}/funding/member/invitedList?member_no=${member_no}`
       );
+
       if (response.data.length === 0) {
         setData(null);
       } else {
@@ -68,54 +70,82 @@ function InvitedFunding() {
       <FundingHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container_invited"></div>
           <h3 className="sub_title">초대받은 펀딩 리스트</h3>
+          <div className="space_container_invited"></div>
           {data ? (
             <ul>
               {data.map((Data) => (
-                <li key={Data.no}>
-                  <div>
-                    <img src={registedImagePath + Data.photo} width="100" />
-                  </div>
-                  <div>
-                    {Data.no} , {Data.startmembername}님이 {Data.fundtitle}에
-                    초대하였습니다.
-                    <br />
-                    펀드번호 : {Data.fundingno}
-                    <br />
-                    초대 수락 기한 : {Data.inviteddate}
-                    <br />
-                    결제액 : 매월 {Data.monthlypaymentamount}원
-                    <br />
-                    <div>
-                      <Link
-                        className="btn"
-                        to="/funding/accept"
-                        state={{
-                          fundingMemberNo: Data.no,
-                          fundingNo: Data.fundingno,
-                        }}
-                      >
-                        수락
-                      </Link>
-                      &nbsp;&nbsp;&nbsp;
-                      <button onClick={refuse} id={Data.no}>
-                        거절
-                      </button>
+                <li key={Data.fundingMemberNo}>
+                  <div className="list_container_invited">
+                    <div className="image_container_invited">
+                      <img
+                        id="invited_funding_image_invited"
+                        src={
+                          Data.photo
+                            ? registedImagePath + Data.photo
+                            : registedImagePath + "challenge.jpg"
+                        }
+                        alt=""
+                      />
                     </div>
-                    <br />
-                    <br />
+                    <div className="fund_info_invited">
+                      <div className="fund_title_invited">
+                        {Data.startMemberName}님이 {Data.fundTitle}에
+                        초대하였습니다.
+                      </div>
+                      <br />
+                      <p>
+                        펀딩마감기한 :{" "}
+                        {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
+                        {Data.fundingDueDate}
+                      </p>
+                      <p> 결제액 : 매월 {Data.monthlyPaymentAmmount}원</p>
+
+                      <div>
+                        <Link
+                          to="/funding/accept"
+                          state={{
+                            fundingMemberNo: Data.fundingMemberNo,
+                            fundingNo: Data.fundingNo,
+                          }}
+                        >
+                          <button className="invite_agree_invited">수락</button>
+                        </Link>
+                        &nbsp;
+                        <button
+                          className="invite_refuse_invited"
+                          onClick={refuse}
+                          id={Data.fundingMemberNo}
+                        >
+                          거절
+                        </button>
+                        <br />
+                      </div>
+                    </div>
                   </div>
                 </li>
               ))}
             </ul>
           ) : (
             <>
-              {" "}
               <div>
-                초대받은 펀드가 없습니다
-                <br /> 펀드를 새로 만들어보세요!
+                <img
+                  className="no_fund_search"
+                  src={`${registedImagePath}no_mail.png`}
+                  alt=""
+                  width={100}
+                />
+                <div className="space_container_invited"></div>
+                <div className="no_fund_text">
+                  초대받은 펀드가 없습니다
+                  <br /> 펀드를 새로 만들어보세요!
+                </div>
               </div>
-              <Link to="/funding/make">펀드 만들기</Link>
+              <Link id="go_make_fund" to="/funding/make">
+                펀드 만들기
+              </Link>
+              <div className="space_container_invited2"></div>
             </>
           )}
         </div>
