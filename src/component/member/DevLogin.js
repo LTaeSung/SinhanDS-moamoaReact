@@ -33,6 +33,12 @@ const MyLogin = () => {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("email", res.data.email);
         sessionStorage.setItem("name", res.data.name);
+
+        if (sessionStorage.getItem("no") == 0) {
+          window.location.href = "/admin/regularpay";
+          return;
+        }
+
         window.location.href = "/member/info";
       }
     });

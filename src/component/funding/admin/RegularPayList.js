@@ -1,4 +1,4 @@
-import MemberHeader from "../../member/MemberHeader";
+import AdminHeader from "./AdminHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
@@ -35,7 +35,7 @@ function RegularPayList() {
 
   return (
     <>
-      <MemberHeader />
+      <AdminHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">오늘 결제 예정 목록</h3>
