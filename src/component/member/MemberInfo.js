@@ -91,10 +91,13 @@ function MemberInfo() {
                       className="info_image"
                       onClick={handleImageClick}
                       src={
-                        uploadedImageUrl || `${registedImagePath}${data.photo}`
+                        data.photo
+                          ? `${registedImagePath}${data.photo}`
+                          : uploadedImageUrl ||
+                            `${registedImagePath}header_Profile.png`
                       }
                       width="100"
-                      alt="Selected"
+                      alt=""
                     />
                   </div>
                 )}

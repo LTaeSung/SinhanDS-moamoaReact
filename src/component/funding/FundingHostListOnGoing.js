@@ -29,10 +29,10 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
               {data.map((Data) => (
                 <li key={Data.fundingNo} className="liWithUnderBar">
                   <Link to={"/funding/info?no=" + Data.fundingNo}>
-                    <div className="list_container">
-                      <div className="image_container">
+                    <div className="list_container_host_ongoing">
+                      <div className="image_container_host_ongoing">
                         <img
-                          id="hosted_funding_image"
+                          id="hosted_funding_image_host_ongoing"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
@@ -42,27 +42,29 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
                         />
                       </div>
 
-                      <div className="fund_info">
-                        <span className="day_left">
-                          {Data.dueDateLeft}일 남음
-                        </span>
-
-                        <div className="fund_title">{Data.title}</div>
+                      <div className="fund_info_host_ongoing">
+                        <div className="fund_title_host_ongoing">
+                          {Data.title}
+                        </div>
+                        <br />
                         <br />
 
                         <div
-                          className="fund_status"
+                          className="fund_status_host_ongoing"
                           style={{ color: Data.color }}
                         >
                           {Data.stateMessage}
 
-                          <div className="fund_amount">
-                            <span className="all_amount">
+                          <div className="fund_amount_host_ongoing">
+                            <span className="all_amount_host_ongoing">
                               총 금액: {Data.totalPayAmount}
+                            </span>
+                            <span className="day_left_host_ongoing">
+                              {Data.dueDateLeft}일 남음
                             </span>
 
                             <div
-                              className="status_bar_start"
+                              className="status_bar_host_start"
                               style={{
                                 width: "270px", // 너비
                                 height: "4px", // 높이
@@ -79,7 +81,26 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
             </ul>
           </>
         ) : (
-          <>참여한 펀딩이 없어요!</>
+          <>
+            <div className="space_container_invited"></div>
+            <div>
+              <img
+                className="no_fund_search"
+                src={`${registedImagePath}no_money.png`}
+                alt=""
+                width={100}
+              />
+              <div className="space_container_invited"></div>
+              <div className="no_fund_text">
+                주최한 펀드가 없습니다.
+                <br /> 펀드를 새로 만들어보세요!
+              </div>
+            </div>
+            <Link id="go_make_fund" to="/funding/make">
+              펀드 만들기
+            </Link>
+            <div className="space_container_invited2"></div>
+          </>
         )}
       </div>
     </>

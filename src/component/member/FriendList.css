@@ -9,6 +9,7 @@
   width: 380px;
   height: 60px;
 }
+
 /* 친삭 버튼 */
 .friend_delete {
   display: inline-block;
@@ -24,12 +25,14 @@
   height: 30px;
 
   margin-top: 12px;
-  margin-left: 15px;
+  float: right;
+  margin-right: 10px;
 }
 
 .photo_range {
   width: 100px;
   margin-left: 25px;
+  margin-top: 5px;
 }
 
 /* 프로필 사진 액자 */
@@ -49,10 +52,10 @@
 }
 
 .name_font {
-  width: 120px;
+  width: 200px;
   font-size: 25px;
   font-weight: 500;
-  padding-top: 7px;
+  padding-top: 9px;
   padding-left: 7px;
 }
 
@@ -82,4 +85,12 @@
   height: 35px;
   margin-left: 20px;
   margin-bottom: 7px;
+}
+
+#final_line {
+  border-radius: 5px;
+  border: 3px solid white;
+  border-bottom-color: #d1d5db;
+  font-size: 20px;
+  margin: 3px 8px;
 }

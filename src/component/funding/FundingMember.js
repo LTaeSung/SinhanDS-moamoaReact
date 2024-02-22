@@ -34,12 +34,13 @@ function FundingMember() {
               {item.giveup === true ? null : item.participationdate ===
                 null ? null : (
                 <>
-                  <p>{item.membername}</p>
+                  <p id="member">{item.membername}</p>
                   {item.settlementamount != null ? (
-                    <p>정산금: {item.settlementamount}원</p>
+                    <p id="member_pay">정산금: {item.settlementamount}원</p>
                   ) : null}
                 </>
               )}
+              <br></br>
             </div>
           ))}
       </div>

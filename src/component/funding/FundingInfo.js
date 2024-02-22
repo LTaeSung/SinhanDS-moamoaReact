@@ -4,7 +4,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import BootPathContext from "./../../BootPath";
-import Formatter from "./../../Formatter";
+import Formatter_notime from "./../../Formatter_notime";
 import RegistedImagePath from "../../registedImagePath";
 import FundingMember from "./FundingMember";
 import FundingComment from "./FundingComment";
@@ -17,7 +17,7 @@ function FundingInfo() {
   const [state, setState] = useState({});
   const { registedImagePath } = useContext(RegistedImagePath);
   const [showComment, setShowComment] = useState(false);
-  const formatter = Formatter;
+  const formatter = Formatter_notime;
 
   let no = params.get("no");
 
@@ -47,7 +47,12 @@ function FundingInfo() {
     console.log("상태3");
     console.log(state);
   }, [state]);
-  console.log(data);
+
+  useEffect(() => {
+    console.log("데이");
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <FundingHeader />
@@ -86,11 +91,18 @@ function FundingInfo() {
               </p>{" "}
               <p className="listline">원</p>
             </div>
-            <p id="fundinginfo_completeinterest">
-              성공 여부: {data.completeinterest}
+            <p id="fundinginfo_completeinterest"></p>
+            <p id="fundinginfo_">
+              기간:
+              {data.startdate == null
+                ? null
+                : formatter.format(new Date(data.startdate))}
+              ~
+              {data.fundingduedate == null
+                ? null
+                : formatter.format(new Date(data.fundingduedate))}
+              {/* {data.startdate} ~{data.fundingduedate} */}
             </p>
-            <p id="fundinginfo_">시작일: {data.startdate}</p>
-            <p id="fundinginfo_">마감일: {data.fundingduedate}</p>
             <br></br>
             <p id="fundinginfo_description">챌린지 소개:</p>
             <p id="fundinginfo_"> {data.description}</p>
@@ -112,7 +124,6 @@ function FundingInfo() {
             </button>
             {showComment && (
               <div>
-                <p>펀딩 타입: {data.fundingtype}</p>
                 <FundingComment totalElement={data.totalElement} />
               </div>
             )}

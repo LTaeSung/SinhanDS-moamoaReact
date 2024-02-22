@@ -74,14 +74,18 @@ function Friendlist() {
                     </div>
 
                     <div className="name_font">{Data.friend.name}</div>
-                    <button
-                      className="friend_delete"
-                      id="delete-friend-btn"
-                      onClick={() => handleDeleteFriend(Data.friend.no)}
-                    >
-                      친구 삭제
-                    </button>
+
+                    <div className="button_area">
+                      <button
+                        className="friend_delete"
+                        id="delete-friend-btn"
+                        onClick={() => handleDeleteFriend(Data.friend.no)}
+                      >
+                        친구 삭제
+                      </button>
+                    </div>
                   </div>
+                  <hr id="final_line"></hr>
                 </li>
               ))}
             </ul>
