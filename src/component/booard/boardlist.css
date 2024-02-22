@@ -31,13 +31,14 @@ span {
   width: 30px;
 }
 
-li {
+.liWithUnderBar {
   border-radius: 5px;
   border: 3px solid white;
   border-bottom-color: #d1d5db;
   font-size: 20px;
   margin: 3px 8px;
 }
+
 p {
   font-size: 10px;
 }
