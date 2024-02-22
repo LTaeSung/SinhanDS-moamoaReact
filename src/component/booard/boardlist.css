@@ -1,7 +1,7 @@
 .slect {
   margin-top: 15px;
   background-color: #d1d5db;
-  text-align: right;
+  text-align: left;
   border: 3px solid #d1d5db;
   border-top-color: #ff4742;
   height: 45px;
@@ -16,12 +16,13 @@
   width: 100%;
 }
 .span_title {
-  font-size: 15px;
+  font-size: 20px;
   text-align: left;
   font-weight: 700;
   margin-top: 12px;
+  margin-left: 10px;
+  margin-right: 20px;
   color: #ff4742;
-  margin-right: 240px;
 }
 
 span {
@@ -89,8 +90,13 @@ button {
   font-weight: 700;
   font-size: 15px;
   text-align: center;
-  width: 300px;
+  margin-left: 80px;
+  width: 100px;
   height: 30px;
+}
+.hide {
+  text-align: right;
+  margin-right: 10px;
 }
 
 /* qna detail */
