@@ -2,6 +2,7 @@ import React from "react";
 import ReactPath from "../../ReactPath";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../moamoalogo.png";
 import "./Login.css";
 function Login() {
   const { reactpath } = useContext(ReactPath);
@@ -18,6 +19,7 @@ function Login() {
         <div className="size">
           <h3 className="login_title">로그인</h3>
           <hr className="line"></hr>
+          <img className="moamoa_main" src={logo} />
           <div className="naver_button_container">
             <div onClick={NaverLogin} className="login_btn">
               N 네이버로 로그인하기
