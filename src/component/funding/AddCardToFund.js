@@ -7,7 +7,6 @@ import axios from "axios";
 import $ from "jquery";
 function AddCardToFund({ onSelectCard }) {
   const location = useLocation();
-  // console.log(location.state.no);
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
@@ -30,7 +29,6 @@ function AddCardToFund({ onSelectCard }) {
   const [select, setSelect] = useState(null);
   const handleRadioButton = (e) => {
     // setSelect({ ...select, payment_no: e.target.value });
-    // console.log(select);
     const selectedPaymentNo = e.target.value;
     setSelect({ payment_no: selectedPaymentNo });
     onSelectCard(selectedPaymentNo);
@@ -61,10 +59,10 @@ function AddCardToFund({ onSelectCard }) {
                         name="inputBox"
                         id={i}
                         type="radio"
-                        value={bankList[payment.no]}
+                        value={payment.no}
                         onChange={handleRadioButton}
                       />
-                      <p>카드사명: {payment.company}</p>
+                      <p>카드사명: {bankList[payment.company]}</p>
                       <p>카드번호: {payment.account}</p>
                     </li>
                   ))}

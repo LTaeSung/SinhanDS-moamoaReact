@@ -1,15 +1,10 @@
-import MemberHeader from "./MemberHeader";
 import React from "react";
-import BootPath from "../../BootPath";
 import ReactPath from "../../ReactPath";
 import { useContext } from "react";
-import CommonImagePath from "../../commonImagePath";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 function Login() {
-  const { bootpath } = useContext(BootPath);
   const { reactpath } = useContext(ReactPath);
-  const { commonImagePath } = useContext(CommonImagePath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디
   const REDIRECT_URI = reactpath + "/login/after"; // Callback URL
   const STATE = "false";
@@ -21,9 +16,7 @@ function Login() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title" style={{ textAlign: "center" }}>
-            로그인
-          </h3>
+          <h3 className="login_title">로그인</h3>
           <hr className="line"></hr>
           <div className="naver_button_container">
             <div onClick={NaverLogin} className="login_btn">

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import MemberHeader from "./MemberHeader";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import BootPath from "./../../BootPath";
 import "./Login.css";
@@ -47,13 +46,18 @@ const MyLogin = () => {
     <>
       <div className="sub">
         <div className="size">
-          <form method="post" action="" style={{ textAlign: "center" }}>
-            <input type="text" name="email" onChange={handleChange} />
-            <Link className="btn" onClick={save}>
-              로그인
-            </Link>
-            <hr className="line"></hr>
-          </form>
+          <input
+            type="text"
+            name="email"
+            onChange={handleChange}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") save();
+            }}
+          />
+          <Link className="btn" onClick={save}>
+            로그인
+          </Link>
+          <hr className="line"></hr>
           <br />
           <Login />
         </div>

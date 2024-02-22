@@ -31,7 +31,7 @@ function BoardHeader() {
             };
           }}
         >
-          Q&A
+          자유게시판
         </NavLink>
       </div>
     </div>

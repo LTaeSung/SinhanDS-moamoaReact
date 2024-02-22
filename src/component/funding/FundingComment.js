@@ -65,13 +65,11 @@ function FundingComment() {
   };
 
   const commentSubmit = async () => {
-    //빈값 체크
-    if (
-      !("contents" in newReply) ||
-      newReply.contents.replaceAll(" ", "") === ""
-    ) {
-      alert("댓글 내용은 비워둘 수 없습니다.");
-      return;
+    if ("contents" in newReply) {
+      if (newReply.contents.replaceAll(" ", "") === "") {
+        alert("댓글을 입력해 주세요.");
+        return;
+      }
     }
 
     try {
@@ -99,15 +97,6 @@ function FundingComment() {
 
       if (commentWriter !== writer) {
         alert("작성자가 아닙니다.");
-        return;
-      }
-
-      //빈값 체크
-      if (
-        "contents" in updatedContents ||
-        updatedContents.contents.replaceAll(" ", "") === ""
-      ) {
-        alert("댓글 내용은 비워둘 수 없습니다.");
         return;
       }
 
@@ -151,10 +140,13 @@ function FundingComment() {
   const saveEditedComment = (commentId) => {
     const updatedContents = modReply.contents;
 
-    if (updatedContents.trim() === "") {
-      setModReply({
-        contents: data.find((item) => item.no === commentId).contents,
-      });
+    if ("contents" in modReply) {
+      if (modReply.contents.replaceAll(" ", "") === "") {
+        alert("댓글을 입력해 주세요.");
+        return;
+      }
+    } else {
+      alert("댓글 내용을 입력해 주세요.");
       return;
     }
 
@@ -194,10 +186,20 @@ function FundingComment() {
       {data &&
         data.map((item) => (
           <div id="reply" key={item.no}>
-            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
-            <p id="reply" style={{ float: "left" }}>
-              {item.name} :
-            </p>
+            {item.name === writer ? (
+              <>
+                <p id="me" style={{ float: "right" }}>
+                  :-me
+                </p>{" "}
+              </>
+            ) : (
+              <>
+                <p id="reply" style={{ float: "left" }}>
+                  {item.name} :
+                </p>
+              </>
+            )}
+
             {editingCommentId === item.no ? (
               <>
                 <textarea
@@ -211,23 +213,25 @@ function FundingComment() {
                   저장
                 </button>
               </>
+            ) : item.name !== writer ? (
+              <>{item.contents} </>
             ) : (
               <>
-                {item.contents}{" "}
                 <button
                   className="comment_minbtn"
                   onClick={() => editClick(item.no)}
                 >
                   수정
                 </button>{" "}
+                <button
+                  className="comment_minbtn"
+                  onClick={() => deleteClick(item.no)}
+                >
+                  | 삭제
+                </button>
+                <p id="mycoment">{item.contents}</p>
               </>
             )}
-            <button
-              className="comment_minbtn"
-              onClick={() => deleteClick(item.no)}
-            >
-              삭제
-            </button>
           </div>
         ))}
 

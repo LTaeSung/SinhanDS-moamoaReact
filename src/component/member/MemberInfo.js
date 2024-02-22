@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import BootPath from "../../BootPath";
 import React, { useEffect, useState, useContext } from "react";
-import PlusPoint from "../point/PlusPoint";
-import MinusPoint from "../point/MinusPoint";
-import PointList from "../point/PointList";
 import RegistedImagePath from "../../registedImagePath";
 import axios from "axios";
 import "./MemberInfo.css";
+import CommonImagePath from "../../commonImagePath";
 
 function MemberInfo() {
   const { bootpath } = useContext(BootPath);
@@ -16,6 +14,7 @@ function MemberInfo() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
   const [postImg, setPostImg] = useState("edit");
+  const { commonImagePath } = useContext(CommonImagePath);
 
   const handleImageClick = () => {
     document.getElementById("fileInput").click();
@@ -94,7 +93,7 @@ function MemberInfo() {
                         data.photo
                           ? `${registedImagePath}${data.photo}`
                           : uploadedImageUrl ||
-                            `${registedImagePath}header_Profile.png`
+                            `${commonImagePath}header_Profile.png`
                       }
                       width="100"
                       alt=""

@@ -6,6 +6,8 @@ import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
+import CommonImagePath from "../../commonImagePath";
+
 import "./InvitedFunding.css";
 
 function InvitedFunding() {
@@ -14,16 +16,10 @@ function InvitedFunding() {
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
+
   const formatter = Formatter;
-  // const formatter = new Intl.DateTimeFormat("ko-KR", {
-  //   year: "numeric",
-  //   month: "2-digit",
-  //   day: "2-digit",
-  //   hour: "numeric",
-  //   minute: "numeric",
-  //   second: "numeric",
-  //   timeZone: "Asia/Seoul", // 시간대 설정
-  // });
+
+  const { commonImagePath } = useContext(CommonImagePath);
 
   const getData = async () => {
     try {
@@ -96,7 +92,7 @@ function InvitedFunding() {
                         src={
                           Data.photo
                             ? registedImagePath + Data.photo
-                            : registedImagePath + "challenge.jpg"
+                            : commonImagePath + "challenge.jpg"
                         }
                         alt=""
                       />
@@ -145,7 +141,7 @@ function InvitedFunding() {
               <div>
                 <img
                   className="no_fund_search"
-                  src={`${registedImagePath}no_mail.png`}
+                  src={`${commonImagePath}no_mail.png`}
                   alt=""
                   width={100}
                 />

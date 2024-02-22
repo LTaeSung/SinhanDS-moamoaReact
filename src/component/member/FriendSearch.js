@@ -4,6 +4,7 @@ import BootPath from "../../BootPath";
 import MemberHeader from "./MemberHeader";
 import RegistedImagePath from "../../registedImagePath";
 import "./FriendSearch.css";
+import CommonImagePath from "../../commonImagePath";
 
 function SearchMember() {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ function SearchMember() {
   const member_no = sessionStorage.getItem("no");
   const [memberList, setMemberList] = useState([]);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
+  const { commonImagePath } = useContext(CommonImagePath);
 
   const handleSearch = () => {
     if (email === null || email.replaceAll(" ", "") === "") {
@@ -78,6 +79,9 @@ function SearchMember() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ID로 검색"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSearch();
+              }}
             />
             <button className="search_button" onClick={handleSearch}>
               Search
@@ -125,7 +129,7 @@ function SearchMember() {
                 <div className="space_container"></div>
                 <img
                   className="glass_icon"
-                  src={`${registedImagePath}Magnifying_glass_icon.png`}
+                  src={`${commonImagePath}Magnifying_glass_icon.png`}
                   alt="돋보기"
                 />
                 <div className="space_container"></div>

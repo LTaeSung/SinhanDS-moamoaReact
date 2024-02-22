@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
-import $ from "jquery";
 import Calender from "./Calender";
 import AddCardToFund from "./AddCardToFund";
 import { useLocation } from "react-router-dom";
@@ -163,6 +162,7 @@ function MakeFunding() {
               placeholder="챌린지 제목"
               name="title"
               onChange={handleChange}
+              maxLength={18}
             />
           </div>
           <div>
