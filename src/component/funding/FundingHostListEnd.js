@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
+import "./FundingHostListEnd.css";
 
 const FundingHostListEnd = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
@@ -35,16 +36,39 @@ const FundingHostListEnd = ({ render, setRender }) => {
                       Data.stateMessage
                     }
                   >
-                    <img src={registedImagePath + Data.photo} width="100" />
-                    <div>펀드명 : {Data.title}</div>
-                    <div>내가 낸 금액 : {Data.myPayAmount}</div>
-                    <div>내가 받은 금액: {Data.settlementAmount}</div>
-                    <div>메세지 : {Data.message}</div>
-                  </Link>
+                    <div className="list_container">
+                      <div className="image_container">
+                        <img
+                          id="hosted_funding_image"
+                          src={
+                            Data.photo
+                              ? registedImagePath + Data.photo
+                              : registedImagePath + "challenge.jpg"
+                          }
+                          alt=""
+                        />
+                      </div>
 
-                  <br />
-                  <br />
-                  <br />
+                      <div className="fund_info">
+                        <div className="fund_title">{Data.title}</div>
+                        <br />
+
+                        <div className="fund_amount">
+                          <p>{Data.settlementAmount}</p>
+                          <p>{Data.myPayAmount}</p>
+                          <p>{Data.message}</p>
+                          <div
+                            className="status_bar_end"
+                            style={{
+                              width: "270px", // 너비
+                              height: "4px", // 높이
+                              backgroundColor: "black", // 배경색
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>
