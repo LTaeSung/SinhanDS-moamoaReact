@@ -19,7 +19,7 @@ function FundingHostList() {
       <div className="sub">
         <div className="size">
           <div className="space_container"></div>
-          <h3 className="sub_title">주최한 펀딩 리스트</h3>
+          <h3 className="sub_title_host_funding">주최한 펀딩 리스트</h3>
           <div className="space_container"></div>
           <select id="option_host" onChange={handleSelect} value={select}>
             <option value="0">진행중</option>

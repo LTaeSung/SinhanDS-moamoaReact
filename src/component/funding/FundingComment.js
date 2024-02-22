@@ -187,7 +187,9 @@ function FundingComment() {
         data.map((item) => (
           <div id="reply" key={item.no}>
             {item.name === writer ? console.log("맞다") : console.log("틀리다")}
-            <p style={{ float: "left" }}>{item.name} </p>
+            <p id="reply" style={{ float: "left" }}>
+              {item.name} :
+            </p>
             {editingCommentId === item.no ? (
               <>
                 <textarea
@@ -195,7 +197,7 @@ function FundingComment() {
                   onChange={inputMod}
                 ></textarea>{" "}
                 <button
-                  className="btn"
+                  className="comment_minbtn"
                   onClick={() => saveEditedComment(item.no)}
                 >
                   저장

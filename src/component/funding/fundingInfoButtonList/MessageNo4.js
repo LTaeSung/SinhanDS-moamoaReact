@@ -59,10 +59,10 @@ const MessageNo4 = ({ obj }) => {
   };
   return (
     <>
-      <Link className="btn" onClick={voteSuccess}>
+      <Link id="state_btn_left" onClick={voteSuccess}>
         성공
       </Link>
-      <Link className="btn" onClick={voteFail}>
+      <Link id="state_btn_right" onClick={voteFail}>
         실패
       </Link>
     </>
