@@ -21,6 +21,7 @@ function InvitedFunding() {
       const response = await axios.get(
         `${bootpath}/funding/member/invitedList?member_no=${member_no}`
       );
+
       if (response.data.length === 0) {
         setData(null);
       } else {
@@ -72,33 +73,35 @@ function InvitedFunding() {
           {data ? (
             <ul>
               {data.map((Data) => (
-                <li key={Data.no}>
+                <li key={Data.fundingMemberNo}>
                   <div>
                     <img src={registedImagePath + Data.photo} width="100" />
                   </div>
                   <div>
-                    {Data.no} , {Data.startmembername}님이 {Data.fundtitle}에
-                    초대하였습니다.
+                    {Data.fundingMemberNo} , {Data.startMemberName}님이{" "}
+                    {Data.fundTitle}에 초대하였습니다.
                     <br />
-                    펀드번호 : {Data.fundingno}
+                    펀드번호 : {Data.fundingNo}
                     <br />
-                    초대 수락 기한 : {Data.inviteddate}
+                    펀딩마감기한 :{" "}
+                    {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
+                    {Data.fundingDueDate}
                     <br />
-                    결제액 : 매월 {Data.monthlypaymentamount}원
+                    결제액 : 매월 {Data.monthlyPaymentAmmount}원
                     <br />
                     <div>
                       <Link
                         className="btn"
                         to="/funding/accept"
                         state={{
-                          fundingMemberNo: Data.no,
-                          fundingNo: Data.fundingno,
+                          fundingMemberNo: Data.fundingMemberNo,
+                          fundingNo: Data.fundingNo,
                         }}
                       >
                         수락
                       </Link>
                       &nbsp;&nbsp;&nbsp;
-                      <button onClick={refuse} id={Data.no}>
+                      <button onClick={refuse} id={Data.fundingMemberNo}>
                         거절
                       </button>
                     </div>
