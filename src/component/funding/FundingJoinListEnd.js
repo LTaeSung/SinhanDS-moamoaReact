@@ -40,10 +40,10 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                       Data.fundingMemberNo
                     }
                   >
-                    <div className="list_container">
-                      <div className="image_container">
+                    <div className="list_container_join_end">
+                      <div className="image_container_join_end">
                         <img
-                          id="joined_funding_image"
+                          id="joined_funding_image_join_end"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
@@ -53,17 +53,17 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                         />
                       </div>
 
-                      <div className="fund_info">
-                        <div className="fund_title">{Data.title}</div>
+                      <div className="fund_info_join_end">
+                        <div className="fund_title_join_end">{Data.title}</div>
                         <br />
 
-                        <div className="fund_amount">
+                        <div className="fund_amount_join_end">
                           <p>{Data.settlementAmount}</p>
                           <p>{Data.myPayAmount}</p>
                           <p>{Data.message}</p>
 
                           <div
-                            className="status_bar_end"
+                            className="status_bar_join_end"
                             style={{
                               width: "270px", // 너비
                               height: "4px", // 높이

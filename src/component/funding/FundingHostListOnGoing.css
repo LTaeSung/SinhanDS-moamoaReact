@@ -1,52 +1,53 @@
 @charset "utf-8";
 
-.list_container {
+.list_container_host_ongoing {
   width: 400px;
-  height: 100px;
+  height: 90px;
   display: flex;
 }
 
-.image_container {
+.image_container_host_ongoing {
   width: 90px;
 }
-.fund_info {
+
+.fund_info_host_ongoing {
   width: 300px;
   font-size: 10px;
 }
 
-#hosted_funding_image {
+#hosted_funding_image_host_ongoing {
   width: 80px;
   height: 82px;
 }
 
-.fund_title {
+.fund_title_host_ongoing {
   height: 15px;
   width: 350px;
   font-size: 15px;
   font-weight: 600;
 }
 
-.fund_status {
+.fund_status_host_ongoing {
   height: 15px;
   font-weight: 600;
   font-size: 10px;
 }
 
-.fund_amount {
+.fund_amount_host_ongoing {
   width: 290px;
   height: 15px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
-.all_amount {
+.all_amount_host_ongoing {
   color: black;
   font-size: 10px;
 }
 
-.day_left {
+.day_left_host_ongoing {
   font-size: 10px;
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
   width: 50px;
-  margin-top: 60px;
 }

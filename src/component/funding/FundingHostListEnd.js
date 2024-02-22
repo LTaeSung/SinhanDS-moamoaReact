@@ -36,10 +36,10 @@ const FundingHostListEnd = ({ render, setRender }) => {
                       Data.stateMessage
                     }
                   >
-                    <div className="list_container">
-                      <div className="image_container">
+                    <div className="list_container_host_end">
+                      <div className="image_container_host_end">
                         <img
-                          id="hosted_funding_image"
+                          id="hosted_funding_image_host_end"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
@@ -49,11 +49,11 @@ const FundingHostListEnd = ({ render, setRender }) => {
                         />
                       </div>
 
-                      <div className="fund_info">
-                        <div className="fund_title">{Data.title}</div>
+                      <div className="fund_info_host_end">
+                        <div className="fund_title_host_end">{Data.title}</div>
                         <br />
 
-                        <div className="fund_amount">
+                        <div className="fund_amount_host_end">
                           <p>{Data.settlementAmount}</p>
                           <p>{Data.myPayAmount}</p>
                           <p>{Data.message}</p>

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
+import "./InvitedFunding.css";
 
 function InvitedFunding() {
   const { bootpath } = useContext(BootPath);
@@ -68,42 +69,52 @@ function InvitedFunding() {
       <FundingHeader />
       <div className="sub">
         <div className="size">
+          <div className="space_container"></div>
           <h3 className="sub_title">초대받은 펀딩 리스트</h3>
+          <div className="space_container"></div>
           {data ? (
             <ul>
               {data.map((Data) => (
-                <li key={Data.no}>
-                  <div>
-                    <img src={registedImagePath + Data.photo} width="100" />
-                  </div>
-                  <div>
-                    {Data.no} , {Data.startmembername}님이 {Data.fundtitle}에
-                    초대하였습니다.
-                    <br />
-                    펀드번호 : {Data.fundingno}
-                    <br />
-                    초대 수락 기한 : {Data.inviteddate}
-                    <br />
-                    결제액 : 매월 {Data.monthlypaymentamount}원
-                    <br />
-                    <div>
+                <li className="liner" key={Data.no}>
+                  <div className="list_container">
+                    <div className="image_container">
+                      <img
+                        id="invited_funding_image"
+                        src={
+                          Data.photo
+                            ? registedImagePath + Data.photo
+                            : registedImagePath + "challenge.jpg"
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <div className="fund_info">
+                      <div className="fund_title">
+                        {Data.startmembername}님이 {Data.fundtitle}에
+                        초대하였습니다.
+                      </div>
+                      <br />
+                      <p>초대 수락 기한 : {Data.inviteddate.split("T")[0]}</p>
+                      <p> 결제액 : 매월 {Data.monthlypaymentamount}원</p>
                       <Link
-                        className="btn"
                         to="/funding/accept"
                         state={{
                           fundingMemberNo: Data.no,
                           fundingNo: Data.fundingno,
                         }}
                       >
-                        수락
+                        <button className="invite_agree">수락</button>
                       </Link>
-                      &nbsp;&nbsp;&nbsp;
-                      <button onClick={refuse} id={Data.no}>
+                      &nbsp;
+                      <button
+                        className="invite_refuse"
+                        onClick={refuse}
+                        id={Data.no}
+                      >
                         거절
                       </button>
+                      <br />
                     </div>
-                    <br />
-                    <br />
                   </div>
                 </li>
               ))}
