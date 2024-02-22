@@ -41,7 +41,7 @@ function BoardList() {
           <div className="notices">
             <ul>
               {data.map((item) => (
-                <li key={item.no}>
+                <li key={item.no} className="liWithUnderBar">
                   <Link to={`/board/detail?no=${item.no}`}>
                     <div>{item.title}</div>
                     <p>
