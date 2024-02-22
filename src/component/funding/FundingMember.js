@@ -14,7 +14,6 @@ function FundingMember() {
       .get(`${bootPath.bootpath}/funding/member/challenge/${fund_no}`)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("참여중인 인원이 없습니다.", error);
@@ -27,23 +26,21 @@ function FundingMember() {
 
   return (
     <>
-      <div className="sub">
-        {data &&
-          data.map((item) => (
-            <div key={item.no}>
-              {item.giveup === true ? null : item.participationdate ===
-                null ? null : (
-                <>
-                  <p id="member">{item.membername}</p>
-                  {item.settlementamount != null ? (
-                    <p id="member_pay">정산금: {item.settlementamount}원</p>
-                  ) : null}
-                </>
-              )}
-              <br></br>
-            </div>
-          ))}
-      </div>
+      {data &&
+        data.map((item) => (
+          <div key={item.no}>
+            {item.giveup === true ? null : item.participationdate ===
+              null ? null : (
+              <>
+                <p id="member">{item.membername}</p>
+                {item.settlementamount != null ? (
+                  <p id="member_pay">정산금: {item.settlementamount}원</p>
+                ) : null}
+              </>
+            )}
+            <br></br>
+          </div>
+        ))}
       <br />
     </>
   );

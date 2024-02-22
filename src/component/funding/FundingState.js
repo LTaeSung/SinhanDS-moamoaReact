@@ -3,8 +3,6 @@ import FundingInfo from "./FundingInfo";
 import React, { Component, useEffect, useState } from "react";
 
 function FundingState(props) {
-  console.log(props);
-
   let { Json } = this.props;
   return (
     <>

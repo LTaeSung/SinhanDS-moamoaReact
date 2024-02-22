@@ -21,7 +21,6 @@ function PlusPoint() {
         ` ${bootpath}/point/point_history/mypoint?member_no=${member_no}`
       );
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

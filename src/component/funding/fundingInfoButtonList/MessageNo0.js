@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BootPath from "./../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
@@ -9,9 +9,6 @@ const MessageNo0 = ({ obj }) => {
   const refuse = async (e) => {
     let param = {};
     param = { no: e.target.id };
-
-    console.log("이펀딩no");
-    console.log(obj.fundingNo);
 
     await axios.post(bootpath + "/funding/member/refuse", param).then((res) => {
       if (res.data === "success") {

@@ -24,7 +24,6 @@ const FundingComment = (props) => {
         setData(res.data);
         setTotalElement(res.data.length);
         props.totalElement(data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log("funding_no값이 없습니다. ", error);
@@ -44,9 +43,7 @@ const FundingComment = (props) => {
 
   //로그인정보
   const getApi = () => {
-    console.log(param);
     axios.post(bootPath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
@@ -194,7 +191,6 @@ const FundingComment = (props) => {
       {data &&
         data.map((item) => (
           <div id="reply" key={item.no}>
-            {item.name === writer ? console.log("맞다") : console.log("틀리다")}
             <p style={{ float: "left" }}>{item.name} </p>
             {editingCommentId === item.no ? (
               <>

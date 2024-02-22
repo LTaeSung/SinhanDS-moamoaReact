@@ -1,7 +1,7 @@
 .slect {
   margin-top: 15px;
   background-color: #d1d5db;
-  text-align: right;
+  text-align: left;
   border: 3px solid #d1d5db;
   border-top-color: #ff4742;
   height: 45px;
@@ -10,18 +10,20 @@
 
 .sub {
   width: 100%;
+  min-height: 800px;
 }
 
 .size {
   width: 100%;
 }
 .span_title {
-  font-size: 15px;
+  font-size: 20px;
   text-align: left;
   font-weight: 700;
   margin-top: 12px;
+  margin-left: 10px;
+  margin-right: 20px;
   color: #ff4742;
-  margin-right: 270px;
 }
 
 span {
@@ -71,6 +73,7 @@ button {
 /* qna list */
 .btn-space {
   text-align: center;
+  margin-left: 25px;
 }
 .문의하기 {
   margin-top: 3px;
@@ -89,8 +92,13 @@ button {
   font-weight: 700;
   font-size: 15px;
   text-align: center;
-  width: 300px;
+  margin-left: 80px;
+  width: 100px;
   height: 30px;
+}
+.hide {
+  text-align: right;
+  margin-right: 10px;
 }
 
 /* qna detail */
@@ -118,16 +126,19 @@ button {
   margin-bottom: 10px;
 }
 #qna_time {
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 500;
   text-align: right;
   margin-right: 5px;
 }
 .qna_title_area {
   border-radius: 5px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 3px;
+  margin-top: 10px;
   margin-left: 8px;
   margin-right: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   min-width: 360px;
   min-height: 10px;
 }
@@ -135,11 +146,10 @@ button {
   text-align: right;
 }
 #qna_writer {
-  margin-left: 15px;
+  margin-left: 10px;
   margin-bottom: 5px;
   text-align: right;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 15px;
 }
 #qna_content {
   margin-left: 8px;
@@ -166,7 +176,7 @@ button {
   font-size: 15px;
   text-align: center;
   margin-left: 6px;
-  width: 380px;
+  width: 30%;
   height: 30px;
 }
 
@@ -180,11 +190,11 @@ button {
   font-weight: 700;
   font-size: 15px;
   text-align: center;
-  width: 120px;
+  width: 30%;
   height: 30px;
 }
 .delete_area {
-  text-align: right;
+  text-align: center;
   margin-right: 10px;
 }
 #qna_reply_content {
@@ -207,6 +217,9 @@ button {
 .re_btn_area {
   text-align: center;
   margin-right: 5px;
+  padding-bottom: 20px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .slect_detail {
   margin-top: 15px;
@@ -222,7 +235,7 @@ button {
   margin-top: 13px;
   font-weight: 700;
   color: #ff4742;
-  width: 70px;
+  width: 80px;
 }
 #qna_detail_rebtn {
   color: gray;

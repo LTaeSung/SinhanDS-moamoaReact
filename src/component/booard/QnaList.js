@@ -25,9 +25,7 @@ function QnaList() {
 
   //로그인정보
   const getApi = () => {
-    console.log(param);
     axios.post(bootpath + "/member/devlogin", param).then((res) => {
-      console.log(res);
       if (res.data.result === "success") {
         sessionStorage.setItem("no", res.data.no);
         sessionStorage.setItem("name", res.data.name);
@@ -86,15 +84,13 @@ function QnaList() {
       <div className="sub">
         <div className="size">
           <div className="slect">
-            <span className="span_title">Q&A</span>
+            <span className="span_title">자유게시판</span>
             <span>총 {totalElement} 건 </span>
+            <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
+              새 글쓰기
+            </button>
           </div>
           <div className="hide">
-            <span id="writer">{writer}</span>
-            <button id="new_qna" onClick={() => setShowNewQna((prev) => !prev)}>
-              Q&A 쓰기
-            </button>
-            <br />
             {showNewQna && (
               <div className="toggle_qna">
                 <input
@@ -122,8 +118,8 @@ function QnaList() {
                 </div>
               </div>
             )}
+            <br />
           </div>
-          <br />
           <div className="qna-list">
             <ul>
               {data.map((item) => (
