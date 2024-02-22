@@ -81,7 +81,7 @@ const FundingHostListEnd = ({ render, setRender }) => {
             <div>
               <img
                 className="no_fund_search"
-                src={`${registedImagePath}no_money.png`}
+                src={`${commonImagePath}no_money.png`}
                 alt=""
                 width={100}
               />

@@ -3,10 +3,14 @@ import React, { useEffect, useState, useContext } from "react";
 import BootPath from "../../BootPath";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import CommonImagePath from "../../commonImagePath";
+
 import RegistedImagePath from "../../registedImagePath";
 import "./FriendList.css";
 function Friendlist() {
   const { bootpath } = useContext(BootPath);
+  const { commonImagePath } = useContext(CommonImagePath);
+
   const { registedImagePath } = useContext(RegistedImagePath);
   const [data, setData] = useState(null);
   const member_no = sessionStorage.getItem("no");
@@ -67,7 +71,7 @@ function Friendlist() {
                           src={
                             Data.friend.photo != null
                               ? `${registedImagePath}${Data.friend.photo}`
-                              : `${registedImagePath}header_Profile.png`
+                              : `${commonImagePath}header_Profile.png`
                           }
                           alt="프로필 사진"
                         />
@@ -95,7 +99,7 @@ function Friendlist() {
               <div className="space_container"></div>
               <img
                 className="glass_icon"
-                src={`${registedImagePath}Magnifying_glass_icon.png`}
+                src={`${commonImagePath}Magnifying_glass_icon.png`}
                 alt="돋보기"
               />
               <div className="space_container"></div>
