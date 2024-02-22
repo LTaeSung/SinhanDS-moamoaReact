@@ -16,6 +16,7 @@ function FundingInfo() {
   const [state, setState] = useState({});
   const { registedImagePath } = useContext(RegistedImagePath);
   const [showComment, setShowComment] = useState(false);
+
   let no = params.get("no");
 
   const member_no = sessionStorage.getItem("no") || "";
@@ -44,6 +45,7 @@ function FundingInfo() {
     console.log("상태3");
     console.log(state);
   }, [state]);
+  console.log(data);
   return (
     <>
       <FundingHeader />
@@ -99,9 +101,6 @@ function FundingInfo() {
             <FundingMember />
             <br></br>
             <hr id="hr"></hr>
-            <div className="">
-              <p totalElement={data.totalElement}>총 댓글 수 : </p>
-            </div>
 
             <button
               className="comment"
