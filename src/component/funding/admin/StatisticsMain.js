@@ -3,57 +3,26 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import GiveupStatistics from "./GiveupStatistics";
+import SuccessFailStatistics from "./SuccessFailStatistics";
+import DefaultStatistics from "./DefaultStatistics";
+import PersonalStatistics from "./PersonalStatistics";
 
-function RePayList() {
+function StatisticsMain() {
   const { bootpath } = useContext(BootPath);
   const [data, setData] = useState([]);
-  const getData = async () => {
-    try {
-      const response = await axios.get(` ${bootpath}/admin/repayList`);
-      setData(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const requestRePay = async () => {
-    try {
-      const result = await axios.get(bootpath + "/admin/doRepay");
-      if (result.data === "success") {
-        alert("일괄 재결제 성공, 결제 실패자에 대해 개별 알림 발송");
-      } else {
-        alert("재결제 도중 문제가 발생했습니다.");
-      }
-    } catch (error) {
-      alert("문제가 발생했습니다.");
-    }
-  };
 
   return (
     <>
       <AdminHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">재결제 예정 목록</h3>
-          <button onClick={requestRePay}>일괄결제하기</button>
+          <h3 className="sub_title">통계페이지</h3>
           <div>
-            <ul>
-              {data.map((data) => (
-                <li key={data.no}>
-                  {
-                    <ul>
-                      <p>no : {data.no}</p>
-                      <p>펀딩멤버번호 : {data.fundingmemberno}</p>
-                      <p>재결제 시도 횟수 : {data.repaycount}</p>
-                    </ul>
-                  }
-                </li>
-              ))}
-            </ul>
+            <DefaultStatistics />
+            <GiveupStatistics />
+            <SuccessFailStatistics />
+            <PersonalStatistics />
           </div>
         </div>
       </div>
@@ -61,4 +30,4 @@ function RePayList() {
   );
 }
 
-export default RePayList;
+export default StatisticsMain;
