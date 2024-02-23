@@ -64,10 +64,11 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                           className="fund_status_join_ongoing"
                           style={{ color: "black" }}
                         >
-                          내가 받은 금액 : {Data.settlementAmount}
+                          {" "}
+                          내가 낸 금액 : {Data.myPayAmount}원
                           <div className="fund_amount_join_ongoing">
                             <span className="all_amount_join_ongoing">
-                              내가 낸 금액 : {Data.myPayAmount}
+                              내가 받은 금액 : {Data.settlementAmount}원
                             </span>
 
                             <span className="day_left_join_ongoing">

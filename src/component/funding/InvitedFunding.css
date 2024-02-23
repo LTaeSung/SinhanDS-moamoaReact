@@ -24,8 +24,8 @@
   margin-bottom: 28px;
 }
 .buttonDiv {
-  margin-top: 1px;
-  margin-left: 50px;
+  float: right;
+  margin-top: -20px;
 }
 .invite_agree_invited {
   border-radius: 5px;
@@ -35,7 +35,7 @@
   text-align: center;
   font-weight: 700;
   font-size: 15px;
-  width: 80px;
+  width: 100px;
   height: 20px;
 }
 
@@ -48,9 +48,8 @@
   font-weight: 700;
 
   font-size: 15px;
-  width: 80px;
+  width: 100px;
   height: 20px;
-  margin-left: 10px;
 }
 
 .no_fund_search {
