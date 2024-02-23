@@ -53,6 +53,7 @@ import SuccessFailStatistics from "./component/funding/admin/SuccessFailStatisti
 import StatisticsMain from "./component/funding/admin/StatisticsMain";
 import DefaultStatistics from "./component/funding/admin/DefaultStatistics";
 import PersonalStatistics from "./component/funding/admin/PersonalStatistics";
+import Ranking from "./component/funding/admin/Ranking";
 
 function App() {
   const checkLogin = (Component) => {
@@ -186,16 +187,29 @@ function App() {
               element={checkDevLogin(RegularPayList)}
             />
             <Route path="/admin/repay" element={checkDevLogin(RePayList)} />
-            <Route path="/statistics/giveup" element={<GiveupStatistics />} />
             <Route
-              path="/statistics/successfail"
-              element={<SuccessFailStatistics />}
+              path="admin/statistics/giveup"
+              element={checkDevLogin(GiveupStatistics)}
             />
-            <Route path="/statistics/default" element={<DefaultStatistics />} />
-            <Route path="/statistics/main" element={<StatisticsMain />} />
             <Route
-              path="/statistics/personal"
-              element={<PersonalStatistics />}
+              path="admin/statistics/successfail"
+              element={checkDevLogin(SuccessFailStatistics)}
+            />
+            <Route
+              path="admin/statistics/default"
+              element={checkDevLogin(DefaultStatistics)}
+            />
+            <Route
+              path="admin/statistics/main"
+              element={checkDevLogin(StatisticsMain)}
+            />
+            <Route
+              path="admin/statistics/personal"
+              element={checkDevLogin(PersonalStatistics)}
+            />
+            <Route
+              path="admin/statistics/rank"
+              element={checkDevLogin(Ranking)}
             />
           </Routes>
         </div>
