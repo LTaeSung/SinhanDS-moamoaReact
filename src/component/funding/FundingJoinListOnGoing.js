@@ -50,7 +50,6 @@ const FundingJoinListOnGoing = ({ render, setRender }) => {
                           {Data.title}
                         </div>
                         <br />
-                        <br />
 
                         <div
                           className="fund_status_join_ongoing"
