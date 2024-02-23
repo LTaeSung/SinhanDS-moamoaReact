@@ -1,11 +1,13 @@
-.sub_title {
-  width: 300px;
-  font-size: 25px;
-  text-align: left;
-  font-weight: 400;
-  margin-top: 12px;
-  color: black;
-  margin-right: 270px;
+.newSize {
+  margin-left: 50px;
+}
+
+.space_container {
+  height: 30px;
+}
+
+.sub_title_add_card {
+  text-align: center;
 }
 #addcard_title {
   font-size: 15px;
