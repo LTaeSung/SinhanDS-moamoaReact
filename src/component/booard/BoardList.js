@@ -43,9 +43,11 @@ function BoardList() {
                 <li key={item.no} className="liWithUnderBar">
                   <Link to={`/board/detail?no=${item.no}`}>
                     <div>{item.title}</div>
-                    <p>
-                      안내 | {new Date(item.registdate).toLocaleDateString()}
-                    </p>
+                    <span>{item.writer}</span>
+                    <span>
+                      {" "}
+                      | {new Date(item.registdate).toLocaleDateString()}
+                    </span>
                   </Link>
                 </li>
               ))}

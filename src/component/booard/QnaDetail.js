@@ -286,7 +286,7 @@ function QnaDetail() {
               ) : (
                 <>
                   <div className="qna_title_area">
-                    <p id="qna_title">{board.title}</p>
+                    <span id="qna_title">{board.title}</span> <br />
                     <span id="qna_writer">{board.writer}</span>
                     <span id="qna_time">
                       | {new Date(board.registdate).toLocaleDateString()} 작성
