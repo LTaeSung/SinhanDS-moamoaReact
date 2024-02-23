@@ -74,12 +74,7 @@ function AddAccountList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <div className="space_container"></div>
-          <div className="title_add_acc">
-            <h3 className="sub_title_add_acc">계좌 등록</h3>
-          </div>
-          <div className="space_container"></div>
-          <div className="space_container"></div>
+          <h3 className="sub_title">계좌 등록</h3> <br />
           <form onSubmit={handleSubmit}>
             {/* <input
               type="hidden"
@@ -100,39 +95,31 @@ function AddAccountList() {
               onChange={handleInputChange}
             /> */}
 
-            <div className="company_name">은행 명 / 계좌 번호</div>
-
-            <div class="bank_company_container">
-              <div className="select_bank">
-                <select
-                  onChange={handleInputChange}
-                  id="select_lane"
-                  name="company"
-                >
-                  {bankList.map((option, idx) => (
-                    <option key={idx} value={idx}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="input_acc_info">
-              <div className="input_banker_no">
-                <input
-                  type="number"
-                  name="account"
-                  className="input_lane"
-                  value={formData.account}
-                  onChange={handleInputChange}
-                  placeholder="'-'는 제외하고 숫자만 입력"
-                  min={0}
-                />
-              </div>
+            <div id="addacc_title">
+              은행 명 / 계좌 번호
+              <br />
+              <div className="space_container"></div>
+              <select onChange={handleInputChange} name="company">
+                {bankList.map((option, idx) => (
+                  <option key={idx} value={idx}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <br />
+              <input
+                type="number"
+                name="account"
+                className="input_lane"
+                value={formData.account}
+                onChange={handleInputChange}
+                placeholder="'-'는 제외하고 숫자만 입력"
+                min={0}
+              />
               <br />
             </div>
             <br />
-            <button id="add_acc_btn" type="submit">
+            <button id="addacc_btn" type="submit">
               계좌 등록
             </button>
           </form>

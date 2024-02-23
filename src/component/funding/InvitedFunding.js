@@ -91,35 +91,38 @@ function InvitedFunding() {
                         className="fund_status_join_ongoing"
                         style={{ color: Data.color }}
                       >
+                        {" "}
+                        마감일 :{" "}
+                        {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
+                        {formatter.format(new Date(Data.fundingDueDate))}
                         <div className="fund_amount_join_ongoing">
                           <span className="all_amount_join_ongoing">
-                            마감일 :{" "}
-                            {/* {new Date(Data.fundingDueDate).toISOString().split("T")[0]} */}
-                            {formatter.format(new Date(Data.fundingDueDate))}
-                          </span>
-                          <span className="day_left_invited">
                             결제액 : {Data.monthlyPaymentAmmount}원/월
                           </span>
                           <div className="buttonDiv">
-                            <Link
-                              to="/funding/accept"
-                              state={{
-                                fundingMemberNo: Data.fundingMemberNo,
-                                fundingNo: Data.fundingNo,
-                              }}
-                            >
-                              <button className="invite_agree_invited">
-                                <p>수락</p>
+                            <div>
+                              <Link
+                                to="/funding/accept"
+                                state={{
+                                  fundingMemberNo: Data.fundingMemberNo,
+                                  fundingNo: Data.fundingNo,
+                                }}
+                              >
+                                <button className="invite_agree_invited">
+                                  <p>수락</p>
+                                </button>
+                              </Link>
+                            </div>
+                            <div>
+                              <button
+                                className="invite_refuse_invited"
+                                onClick={refuse}
+                                id={Data.fundingMemberNo}
+                              >
+                                <p>거절</p>
                               </button>
-                            </Link>
-                            &nbsp;
-                            <button
-                              className="invite_refuse_invited"
-                              onClick={refuse}
-                              id={Data.fundingMemberNo}
-                            >
-                              <p>거절</p>
-                            </button>
+                            </div>
+
                             <br />
                           </div>
                         </div>

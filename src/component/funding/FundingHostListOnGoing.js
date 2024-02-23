@@ -57,7 +57,7 @@ const FundingHostListOnGoing = ({ render, setRender }) => {
 
                           <div className="fund_amount_join_ongoing">
                             <span className="all_amount_join_ongoing">
-                              총 금액: {Data.totalPayAmount}
+                              총 금액: {Data.totalPayAmount}원
                             </span>
                             <span className="day_left_join_ongoing">
                               {Data.dueDateLeft}일 남음
