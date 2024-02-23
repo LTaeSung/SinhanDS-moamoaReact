@@ -3,6 +3,24 @@
 .space_container {
   height: 30px;
 }
+
+.user_info_container {
+  width: 370px;
+  height: 150px;
+
+  display: flex;
+}
+
+.profile_image_zone {
+  width: 170px;
+  height: 150px;
+}
+
+.profile_text_zone {
+  display: block;
+  width: 150px;
+}
+
 .line {
   border: none;
   border-top: 2px solid #ccc;
@@ -26,9 +44,25 @@
 }
 
 .infoId {
+  width: 230px;
+  height: 40px;
   font-weight: 700;
 }
 
+.infoName {
+  width: 230px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.infoPoint {
+  width: 230px;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 800;
+}
 .Id_color {
   color: red;
   font-size: 25px;
@@ -37,12 +71,6 @@
 .Id_color2 {
   color: red;
   font-size: 25px;
-  margin-left: 120px;
-}
-
-.infoName {
-  font-size: 20px;
-  font-weight: 800;
 }
 
 .button_container {
