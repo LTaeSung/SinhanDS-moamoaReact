@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+.space_container {
+  height: 30px;
+}
+
+.title_add_acc {
+  margin-left: 20px;
+}
+
+.sub_title_add_acc {
+  font-size: 20px;
+}
+
+.company_name {
+  width: 170px;
+  height: 50px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  margin-left: 20px;
+}
+
+/* 은행명 선택 창 */
+.bank_company_container {
+  width: 390px;
+  height: 50px;
+
+  display: flex;
+}
+
+.select_bank {
+  width: 200px;
+}
+
+#select_lane {
+  width: 120px;
+  height: 36px;
+  border-radius: 4px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid rgb(137, 151, 155);
+  transition: border-color 150ms ease-in-out 0s;
+  outline: none;
+  color: red;
+  background-color: rgb(255, 255, 255);
+
+  margin-left: 20px;
+}
+
+#bank_option {
+  font-size: 15px;
+}
+
+/* 계좌 번호 입력창 */
+.bank_company_container {
+  width: 390px;
+  height: 50px;
+
+  display: flex;
+}
+
+.banker_no {
+  width: 100px;
+  height: 50px;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+.input_acc_info {
+  width: 390px;
+  height: 50px;
+
+  display: flex;
+}
+
+.input_banker_no {
+  width: 290px;
+}
+
+.input_lane {
+  width: 320px;
+  height: 36px;
+  border-radius: 4px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid rgb(137, 151, 155);
+  transition: border-color 150ms ease-in-out 0s;
+  outline: none;
+  color: black;
+  background-color: rgb(255, 255, 255);
+
+  margin-left: 20px;
+}
+
+#add_acc_btn {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 6px;
+  margin-bottom: 30px;
+  width: 305px;
+  height: 40px;
+  margin-left: 40px;
+}
