@@ -17,8 +17,6 @@ function Login() {
     <>
       <div className="sub">
         <div className="size">
-          <h3 className="login_title">로그인</h3>
-          <hr className="line"></hr>
           <img className="moamoa_main" src={logo} />
           <div className="naver_button_container">
             <div onClick={NaverLogin} className="login_btn">

@@ -2,19 +2,12 @@ import "../App.css";
 import logo from "../moamoalogo.png";
 import $ from "jquery";
 function Header() {
-  const logout = (e) => {
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("no");
-    sessionStorage.removeItem("name");
-    goToLink(e);
-  };
-
   const goToLink = (e) => {
     window.location.href = $(e.target).attr("target");
   };
   return (
     <div className="main_headerNav">
-      <button onClick={logout} target="/">
+      <button onClick={goToLink} target="/main">
         <img src={logo} className="App-logo" alt="logo" />
       </button>
 

@@ -60,7 +60,7 @@ function App() {
     if (sessionStorage.getItem("no") != null) {
       return <Component />;
     } else {
-      return <Navigate to="/login/dev" />;
+      return <Navigate to="/login" />;
     }
   };
   const checkDevLogin = (Component) => {
@@ -79,7 +79,7 @@ function App() {
       <header className="App-header">
         <div className="App-container">
           <Routes>
-            <Route path="/" element={<DevLogin />} />
+            <Route path="/" element={<Main />} />
             <Route path="/main" element={<Main />} />
             <Route path="/login/dev" element={<DevLogin />} />
             <Route path="/login" element={<Login />} />
@@ -150,9 +150,8 @@ function App() {
             />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
-            <Route path="/admin/boardnew" element={<BoardNew />} />
-            <Route path="/board/qna/list" element={<QnaList />} />
-            <Route path="/board/qna/detail" element={<QnaDetail />} />
+            <Route path="/board/qna/list" element={checkLogin(QnaList)} />
+            <Route path="/board/qna/detail" element={checkLogin(QnaDetail)} />
             <Route path="/point/minus" element={checkLogin(MinusPoint)} />
             <Route path="/point/plus" element={checkLogin(PlusPoint)} />
             <Route path="/point/pointlist" element={checkLogin(PointList)} />
@@ -166,6 +165,8 @@ function App() {
             />
             <Route path="/alarm" element={checkLogin(AlarmList)} />
             <Route path="/member/leavecheck" element={checkLogin(LeaveCheck)} />
+
+            <Route path="/admin/boardnew" element={checkDevLogin(BoardNew)} />
             <Route
               path="/admin/setStatus1"
               element={checkDevLogin(DontAcceptRefuseInWeekMemberList)}

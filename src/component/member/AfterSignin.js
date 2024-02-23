@@ -23,7 +23,7 @@ const getApi = (params, callbackUrl) => {
       sessionStorage.setItem("no", res.data.no);
       sessionStorage.setItem("email", res.data.email);
       sessionStorage.setItem("name", res.data.name);
-      window.location.href = "/member/info";
+      window.location.href = "/main";
     } else {
       window.location.href = "/login/signup";
     }

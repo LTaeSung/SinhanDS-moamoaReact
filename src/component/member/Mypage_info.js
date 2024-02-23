@@ -11,11 +11,20 @@ import CardList from "./payment/CardList";
 import Accountlist from "./payment/AccountList";
 import Cardlist from "./payment/CardList";
 import MemberInfo from "./MemberInfo";
-
+import $ from "jquery";
 import { Link } from "react-router-dom";
 import "./Mypage_info.css";
 
 function Mypage_infocopy() {
+  const logout = (e) => {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("no");
+    sessionStorage.removeItem("name");
+    goToLink(e);
+  };
+  const goToLink = (e) => {
+    window.location.href = $(e.target).attr("target");
+  };
   const { bootpath } = useContext(BootPath);
   return (
     <>
@@ -28,6 +37,9 @@ function Mypage_infocopy() {
           <Accountlist />
         </div>
         <div>
+          <button className="user_logout" onClick={logout} target="/main">
+            로그아웃
+          </button>
           <button className="user_leave">
             <Link to={`/member/leavecheck`}>회원 탈퇴</Link>
           </button>
