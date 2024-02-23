@@ -4,6 +4,9 @@
   margin-right: 240px;
   font-size: 20px;
 }
+.size_alarm {
+  width: 100%;
+}
 #alarm_li {
   margin-top: 3%;
   margin-bottom: 2%;

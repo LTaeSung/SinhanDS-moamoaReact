@@ -29,7 +29,7 @@ function AlarmList() {
   return (
     <>
       <div className="sub">
-        <div className="size">
+        <div className="size_alarm">
           <span id="alarm_span_title">내 알림</span>
           <span>총 {totalElement} 건 </span>
           <div className="line">
