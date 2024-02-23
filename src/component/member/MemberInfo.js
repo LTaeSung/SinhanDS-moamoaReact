@@ -121,7 +121,7 @@ function MemberInfo() {
         </tr>
         <tr>
           <td className="infoId">
-            보유 포인트: <p className="Id_color2">{data && data.point}</p>
+            보유 포인트: <p className="Id_color2">{data && data.point}원</p>
           </td>
         </tr>
       </table>
