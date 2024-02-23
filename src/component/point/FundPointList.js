@@ -39,16 +39,13 @@ function FundPointList() {
 
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
           <div className="space_container"></div>
-          <h3 className="sub_title">펀드포인트 정보</h3>
+          <h3 className="sub_title_point">이용 내역</h3>
           <div className="selectBox_container">
             <select className="option" onChange={handleSelectChange}>
-              <option value="/point/Fundpointlist">
-                펀드 포인트 거래 내역
-              </option>
+              <option value="/point/Fundpointlist">이용 내역</option>
               <option value="/point/pointlist">포인트 내역</option>
             </select>
           </div>
