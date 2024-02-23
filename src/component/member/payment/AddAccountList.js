@@ -74,7 +74,8 @@ function AddAccountList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">계좌 등록</h3> <br />
+          <div className="space_container"></div>
+          <h3 className="sub_title_add_acc">계좌 등록</h3> <br />
           <form onSubmit={handleSubmit}>
             {/* <input
               type="hidden"
@@ -96,10 +97,13 @@ function AddAccountList() {
             /> */}
 
             <div id="addacc_title">
-              은행 명 / 계좌 번호
+              은행 명
               <br />
-              <div className="space_container"></div>
-              <select onChange={handleInputChange} name="company">
+              <select
+                className="input_lane_select_box"
+                onChange={handleInputChange}
+                name="company"
+              >
                 {bankList.map((option, idx) => (
                   <option key={idx} value={idx}>
                     {option}
@@ -107,6 +111,8 @@ function AddAccountList() {
                 ))}
               </select>
               <br />
+              <br />
+              계좌 번호
               <input
                 type="number"
                 name="account"
