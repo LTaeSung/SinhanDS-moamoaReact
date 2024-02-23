@@ -4,6 +4,7 @@ import BootPath from "../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import CommonImagePath from "../commonImagePath";
+import { Link, NavLink } from "react-router-dom";
 import "./main.css";
 
 function Main() {
@@ -98,6 +99,15 @@ function Main() {
               <div className="chall_count">{data.totalmoney}</div>
               <span className="dog"> 원</span>
             </div>
+          </div>
+          <div className="space_container"></div>
+          <div className="goBoard_container">
+            <Link id="goBoard" to={""}>
+              <p id="board_text">공지사항</p>
+            </Link>
+            <Link id="goBoard" to={""}>
+              <p id="board_text">Q & A</p>
+            </Link>
           </div>
         </div>
       </div>
