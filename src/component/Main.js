@@ -106,7 +106,7 @@ function Main() {
               <p id="board_text">공지사항</p>
             </Link>
             <Link id="goBoard" to={""}>
-              <p id="board_text">Q & A</p>
+              <p id="board_text">자유게시판</p>
             </Link>
           </div>
         </div>
