@@ -17,7 +17,7 @@ function FundingHeader() {
             };
           }}
         >
-          참여한 펀딩
+          참여한 챌린지
         </NavLink>
         <NavLink
           className="navbarMenu"
@@ -29,7 +29,7 @@ function FundingHeader() {
             };
           }}
         >
-          주최한 펀딩
+          주최한 챌린지
         </NavLink>
         <NavLink
           className="navbarMenu"
@@ -41,7 +41,7 @@ function FundingHeader() {
             };
           }}
         >
-          초대받은 펀딩
+          초대받은 챌린지
         </NavLink>
         <br />
       </div>

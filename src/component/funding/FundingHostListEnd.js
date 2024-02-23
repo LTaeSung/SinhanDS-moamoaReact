@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
 import CommonImagePath from "../../commonImagePath";
-import "./FundingHostListEnd.css";
 
 const FundingHostListEnd = ({ render, setRender }) => {
   const { bootpath } = useContext(bootPath);
@@ -35,38 +34,55 @@ const FundingHostListEnd = ({ render, setRender }) => {
                       "/funding/info?no=" +
                       Data.fundingNo +
                       "&stateMessage=" +
-                      Data.stateMessage
+                      Data.stateMessage +
+                      "&messageNo=" +
+                      Data.messageNo +
+                      "&fundingMemberNo=" +
+                      Data.fundingMemberNo
                     }
                   >
-                    <div className="list_container_host_end">
-                      <div className="image_container_host_end">
+                    <div className="list_container_join_ongoing">
+                      <div className="image_container_join_ongoing">
                         <img
-                          id="hosted_funding_image_host_end"
+                          id="joined_funding_image_join_ongoing"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
                               : commonImagePath + "challenge.jpg"
                           }
-                          alt=""
+                          alt={""}
                         />
                       </div>
 
-                      <div className="fund_info_host_end">
-                        <div className="fund_title_host_end">{Data.title}</div>
+                      <div className="fund_info_join_ongoing">
+                        <div className="fund_title_join_ongoing">
+                          {Data.title}
+                        </div>
                         <br />
 
-                        <div className="fund_amount_host_end">
-                          <p>{Data.settlementAmount}</p>
-                          <p>{Data.myPayAmount}</p>
-                          <p>{Data.message}</p>
-                          <div
-                            className="status_bar_end"
-                            style={{
-                              width: "270px", // 너비
-                              height: "4px", // 높이
-                              backgroundColor: "black", // 배경색
-                            }}
-                          ></div>
+                        <div
+                          className="fund_status_join_ongoing"
+                          style={{ color: "black" }}
+                        >
+                          내가 받은 금액 : {Data.settlementAmount}
+                          <div className="fund_amount_join_ongoing">
+                            <span className="all_amount_join_ongoing">
+                              내가 낸 금액 : {Data.myPayAmount}
+                            </span>
+
+                            <span className="day_left_join_ongoing">
+                              {Data.message}
+                            </span>
+
+                            <div
+                              className="status_bar_start_join_ongoing"
+                              style={{
+                                width: "270px", // 너비
+                                height: "4px", // 높이
+                                backgroundColor: "black", // 배경색
+                              }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     </div>
