@@ -29,13 +29,8 @@ function AlarmList() {
     <>
       <div className="sub">
         <div className="size">
-          <div id="alarmtitle">
-            <h3 className="alarm_sub_title">내 알림</h3>
-          </div>
-          <div className="slect">
-            <span id="alarm_span_title">내 알림</span>
-            <span>총 {totalElement} 건 </span>
-          </div>
+          <span id="alarm_span_title">내 알림</span>
+          <span>총 {totalElement} 건 </span>
           <div className="line">
             {data.length > 0 ? (
               <ul>

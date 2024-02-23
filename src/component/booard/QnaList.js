@@ -128,7 +128,7 @@ function QnaList() {
                     <div>{item.title}</div>
                     <span>{item.writer}</span>
                     <span>
-                      {new Date(item.registdate).toLocaleDateString()}
+                      | {new Date(item.registdate).toLocaleDateString()}
                     </span>
                   </Link>
                 </li>
