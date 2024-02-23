@@ -77,24 +77,21 @@ function MemberInfo() {
   return (
     <>
       <div className="space_container"></div>
-      <table>
-        <tr>
-          <td rowSpan="5">
+      <div className="user_info_container">
+        <div className="profile_image_zone">
+          <div className="info_frame">
             {data && (
-              <div className="info_frame">
-                <img
-                  className="info_image"
-                  onClick={handleImageClick}
-                  src={
-                    data.photo
-                      ? uploadedImageUrl || `${registedImagePath}${data.photo}`
-                      : uploadedImageUrl ||
-                        `${commonImagePath}header_Profile.png`
-                  }
-                  width="100"
-                  alt=""
-                />
-              </div>
+              <img
+                className="info_image"
+                onClick={handleImageClick}
+                src={
+                  data.photo
+                    ? uploadedImageUrl || `${registedImagePath}${data.photo}`
+                    : uploadedImageUrl || `${commonImagePath}header_Profile.png`
+                }
+                width="100"
+                alt=""
+              />
             )}
             <input
               id="fileInput"
@@ -102,30 +99,29 @@ function MemberInfo() {
               style={{ display: "none" }}
               onChange={handleFileChange}
             />
-            <br />{" "}
-            {postImg === "edit" ? (
-              <button className="changeImage" onClick={handleImageClick}>
-                프로필 사진 변경
-              </button>
-            ) : (
-              <button className="changeImage" onClick={handleSubmit}>
-                프로필 사진 등록
-              </button>
-            )}
-          </td>
-          <td className="infoId">
+          </div>
+          {postImg === "edit" ? (
+            <button className="changeImage" onClick={handleImageClick}>
+              프로필 사진 변경
+            </button>
+          ) : (
+            <button className="changeImage" onClick={handleSubmit}>
+              프로필 사진 등록
+            </button>
+          )}
+        </div>
+
+        <div className="profile_text_zone">
+          <div className="infoId">
             <p className="Id_color"> {data && data.email.split("@")[0]}</p>
-          </td>
-        </tr>
-        <tr>
-          <td className="infoName">{data && data.name}</td>
-        </tr>
-        <tr>
-          <td className="infoId">
-            보유 포인트: <p className="Id_color2">{data && data.point}</p>
-          </td>
-        </tr>
-      </table>
+          </div>
+          <div className="infoName">{data && data.name}</div>
+          <div className="infoPoint">
+            보유 포인트:
+            <p className="Id_color2">{data && data.point}원</p>
+          </div>
+        </div>
+      </div>
       <div class="button_container">
         <button className="list_button">
           <Link to={"/point/pointlist"}>내역</Link>
