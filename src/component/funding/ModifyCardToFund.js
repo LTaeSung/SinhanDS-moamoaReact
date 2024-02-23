@@ -32,7 +32,17 @@ function ModifyCardToFund() {
 
     fetchPaymentList();
   }, []);
+  const changeRadio = (e) => {
+    let data_no = $(e.target).data("no");
+    let target = $("input").map((i, e) => {
+      if ($(e).data("no") == data_no) return e;
+    });
 
+    $('input[name="inputBox"]').each(function () {
+      $(this).prop("checked", false);
+    });
+    $(target).prop("checked", true);
+  };
   const [select, setSelect] = useState({
     memberNo: member_no,
     fundingNo: no,
@@ -67,15 +77,25 @@ function ModifyCardToFund() {
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
                         <li key={i}>
-                          <input
-                            name="inputBox"
-                            id={i}
-                            type="radio"
-                            value={payment.no}
-                            onChange={handleRadioButton}
-                          />
-                          <p>카드사명: {payment.company}</p>
-                          <p>카드번호: {payment.account}</p>
+                          <div id="card">
+                            <div data-no={i} onClick={changeRadio}>
+                              <input
+                                name="inputBox"
+                                data-no={i}
+                                id={i}
+                                type="radio"
+                                value={payment.no}
+                                onChange={handleRadioButton}
+                                onClick={changeRadio}
+                              />
+                              <p data-no={i} onClick={changeRadio}>
+                                카드사명: {payment.company}
+                              </p>
+                              <p data-no={i} onClick={changeRadio}>
+                                카드번호: {payment.account}
+                              </p>
+                            </div>
+                          </div>
                         </li>
                       ))}
                   </ul>

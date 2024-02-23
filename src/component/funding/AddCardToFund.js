@@ -39,11 +39,8 @@ function AddCardToFund({ onSelectCard }) {
       if ($(e).data("no") == data_no) return e;
     });
 
-    console.log(data_no);
-
     $('input[name="inputBox"]').each(function () {
       $(this).prop("checked", false);
-      console.log(this.checked);
     });
     $(target).prop("checked", true);
   };

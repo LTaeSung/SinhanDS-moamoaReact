@@ -47,7 +47,7 @@ function PlusPoint() {
 
           <div className="cash_container">
             <p className="cash_font">현재 보유 포인트 :</p>
-            <p className="cash_color">{data}</p>
+            <p className="cash_color">{data}원</p>
           </div>
 
           <input
