@@ -5,6 +5,7 @@ import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
 import "./PointList.css";
+
 function PointList() {
   const navigate = useNavigate();
   const handleSelectChange = (event) => {
@@ -36,17 +37,14 @@ function PointList() {
 
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
           <div className="space_container"></div>
-          <h3 className="sub_title">포인트 정보</h3>
+          <h3 className="sub_title_point">포인트 내역</h3>
           <div className="selectBox_container">
             <select className="option" onChange={handleSelectChange}>
               <option value="/point/pointlist">포인트 내역</option>
-              <option value="/point/Fundpointlist">
-                펀드 포인트 거래 내역
-              </option>
+              <option value="/point/Fundpointlist">이용 내역</option>
             </select>
           </div>
           <div className="space_container"></div>
@@ -60,11 +58,10 @@ function PointList() {
                         {data.direction === false ? (
                           <ul>
                             <div className="fontDate_container">
-                              <div className="font">충전</div>
-
-                              <p className="date">
+                              <span className="font">충전</span>
+                              <span className="date">
                                 {data.transactiondate.split("T")[0]}
-                              </p>
+                              </span>
                             </div>
 
                             <div className="noAmount_container">
@@ -78,18 +75,17 @@ function PointList() {
                         ) : (
                           <ul>
                             <div className="fontDate_container">
-                              <div className="font">인출</div>
-
-                              <p className="date">
+                              <span className="font">인출</span>
+                              <span className="date">
                                 {data.transactiondate.split("T")[0]}
-                              </p>
+                              </span>
                             </div>
 
                             <div className="noAmount_container">
-                              <p className="no">
+                              <span className="no">
                                 인출계좌 : {bankList[data.bank]} {data.account}
-                              </p>
-                              <p className="amount"> {data.amount}원</p>
+                              </span>
+                              <span className="amount"> {data.amount}원</span>
                             </div>
                           </ul>
                         )}

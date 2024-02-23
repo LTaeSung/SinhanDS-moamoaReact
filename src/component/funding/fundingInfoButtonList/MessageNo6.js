@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MessageNo6 = ({ obj }) => {
+  console.log(obj);
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const MessageNo6 = ({ obj }) => {
   return (
     <>
       <button className="btn" onClick={doSettlement}>
-        정산받기 : 금액 : 얼마
+        {obj.willsettlementamount}원 정산받기
       </button>
     </>
   );

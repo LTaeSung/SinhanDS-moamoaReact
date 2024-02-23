@@ -1,49 +1,47 @@
 @charset "utf-8";
 
-.sub_title {
-  width: 300px;
-  font-size: 25px;
-  text-align: left;
-  font-weight: 400;
-  margin-top: 12px;
-  color: black;
-  margin-right: 270px;
+.space_container {
+  height: 30px;
 }
 
-.space_container {
-  height: 20px;
+.sub_title_add_acc {
+  text-align: center;
 }
+
 #addacc_title {
   font-size: 15px;
-  margin-left: 5px;
+  margin-left: 50px;
 }
+
 select {
   height: 40px;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
-
-  margin-left: 10px;
 }
 
 .input_lane {
-  width: 200px;
+  width: 285px;
   height: 40px;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
 
   margin-top: 10px;
+  margin-left: 0px;
 }
 
-#addacc_num {
-  width: 50px;
+.input_lane_select_box {
+  width: 100px;
   height: 40px;
-  text-align: center;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
+
+  margin-top: 10px;
+  margin-left: 0px;
 }
+
 #addacc_input {
   width: 200px;
   height: 30px;
@@ -60,7 +58,7 @@ select {
   color: #fff;
   background-color: #ff4742;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   margin-left: 50px;
   margin-bottom: 30px;

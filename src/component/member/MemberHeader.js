@@ -25,7 +25,7 @@ function MemberHeader() {
           }}
           to={"/member/info"}
         >
-          회원정보
+          회원 정보
         </NavLink>
 
         <NavLink

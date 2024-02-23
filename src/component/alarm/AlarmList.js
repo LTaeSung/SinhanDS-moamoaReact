@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import BootPath from "./../../BootPath";
-import Formatter from "./../../Formatter";
+import Formatter from "./../../Formatter_notime";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Alarmlist.css";
+
 function AlarmList() {
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
@@ -28,7 +29,7 @@ function AlarmList() {
   return (
     <>
       <div className="sub">
-        <div className="size">
+        <div className="size_alarm">
           <span id="alarm_span_title">내 알림</span>
           <span>총 {totalElement} 건 </span>
           <div className="line">
@@ -36,17 +37,20 @@ function AlarmList() {
               <ul>
                 {data &&
                   data.map((e, i) => (
-                    <li key={i}>
+                    <li key={i} id="alarm_li">
                       <Link to={e.link}>
                         <p id="title">{e.content}</p>
+                      </Link>
+                      <div id="delbtn_area">
+                        <button id="btn" onClick={() => earseAlarm(e.no)}>
+                          삭제
+                        </button>
+                      </div>
+                      <div id="date_area">
                         <p id="date">
                           {formatter.format(new Date(e.alarmdate))}
                         </p>
-                      </Link>
-                      <button id="btn" onClick={() => earseAlarm(e.no)}>
-                        삭제
-                      </button>
-                      <hr id="hr"></hr>
+                      </div>
                     </li>
                   ))}
               </ul>

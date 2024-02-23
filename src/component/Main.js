@@ -36,19 +36,34 @@ function Main() {
           <div className="space_container"></div>
 
           <div className="icon_container">
-            <div className="regist_challenge">
+            <div
+              className="regist_challenge"
+              onClick={() => {
+                window.location.href = "/funding/make";
+              }}
+            >
               <img id="rc_icon" src={`${commonImagePath}note.png`} alt="" />
               <div className="icon_textlane_challenge">챌린지 등록</div>
             </div>
 
-            <div className="participation_funding">
+            <div
+              className="participation_funding"
+              onClick={() => {
+                window.location.href = "/funding/member/join";
+              }}
+            >
               <img id="pf_icon" src={`${commonImagePath}Vector.png`} alt="" />
-              <p className="icon_textlane_participation">참여 중 펀딩</p>
+              <p className="icon_textlane_participation">참여 중 챌린지</p>
             </div>
 
-            <div className="cancel_funding">
+            <div
+              className="cancel_funding"
+              onClick={() => {
+                window.location.href = "/funding/host";
+              }}
+            >
               <img id="cf_icon" src={`${commonImagePath}list.png`} alt="" />
-              <p className="icon_textlane_cancel">종료된 펀딩</p>
+              <p className="icon_textlane_cancel">주최한 챌린지</p>
             </div>
           </div>
           <div className="space_container"></div>
@@ -102,11 +117,11 @@ function Main() {
           </div>
           <div className="space_container"></div>
           <div className="goBoard_container">
-            <Link id="goBoard" to={""}>
+            <Link id="goBoard" to={"/board/list"}>
               <p id="board_text">공지사항</p>
             </Link>
-            <Link id="goBoard" to={""}>
-              <p id="board_text">Q & A</p>
+            <Link id="goBoard" to={"/board/qna/list"}>
+              <p id="board_text">자유게시판</p>
             </Link>
           </div>
         </div>

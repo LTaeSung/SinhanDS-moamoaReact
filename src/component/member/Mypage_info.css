@@ -1,12 +1,28 @@
 @charset "UTF-8";
 
-.user_leave {
+.user_logout {
   display: inline-block;
   outline: 0;
   border-radius: 5px;
   border: 2px solid #ff4742;
   color: #fff;
   background-color: #ff4742;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  width: 100px;
+  height: 34px;
+  float: right;
+  margin-right: 15px;
+  margin-top: 30px;
+}
+.user_leave {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid gray;
+  color: #fff;
+  background-color: gray;
   font-weight: 700;
   font-size: 16px;
   text-align: center;

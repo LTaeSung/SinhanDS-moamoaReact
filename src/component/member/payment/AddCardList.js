@@ -110,9 +110,11 @@ function AddCardList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">신용카드 등록</h3> <br />
+          <div className="space_container"></div>
+          <h3 className="sub_title_add_card">신용카드 등록</h3> <br />
           <form onSubmit={handleSubmit}>
-            {/* <input
+            <div className="newSize">
+              {/* <input
               type="hidden"
               name="memberno"
               value={formData.memberno || ""}
@@ -123,82 +125,92 @@ function AddCardList() {
               value={formData.paymenttype || ""}
             />
             <br /> */}
-            {/*<input
+              {/*<input
               type="number"
               name="company"
               value={formData.company}
               onChange={handleInputChange}
             />*/}
-            <div id="addcard_title">
-              카드사 / 카드번호 <br />
-              <select onChange={handleInputChange} name="company">
-                {bankList.map((option, idx) => (
-                  <option key={idx} value={idx}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              <br /> <br />
+              <div id="addcard_title">
+                카드사
+                <br />
+                <select
+                  className="input_lane_select_box"
+                  onChange={handleInputChange}
+                  name="company"
+                >
+                  {bankList.map((option, idx) => (
+                    <option key={idx} value={idx}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <br />
+                카드 번호
+                <br />
+                <input
+                  type="number"
+                  name="account1"
+                  id="addcard_num"
+                  value={formData.account1}
+                  onChange={handleInputChange}
+                />{" "}
+                -
+                <input
+                  type="number"
+                  name="account2"
+                  id="addcard_num"
+                  value={formData.account2}
+                  onChange={handleInputChange}
+                />{" "}
+                -
+                <input
+                  type="number"
+                  name="account3"
+                  id="addcard_num"
+                  value={formData.account3}
+                  onChange={handleInputChange}
+                />{" "}
+                -
+                <input
+                  type="number"
+                  name="account4"
+                  id="addcard_num"
+                  value={formData.account4}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <br />
+              <p id="addcard_limitdate">
+                카드 유효기간
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CVC
+              </p>
               <input
                 type="number"
-                name="account1"
-                id="addcard_num"
-                value={formData.account1}
-                onChange={handleInputChange}
-              />{" "}
-              -
-              <input
-                type="number"
-                name="account2"
-                id="addcard_num"
-                value={formData.account2}
-                onChange={handleInputChange}
-              />{" "}
-              -
-              <input
-                type="number"
-                name="account3"
-                id="addcard_num"
-                value={formData.account3}
-                onChange={handleInputChange}
-              />{" "}
-              -
-              <input
-                type="number"
-                name="account4"
-                id="addcard_num"
-                value={formData.account4}
+                name="validdate_month"
+                id="addcard_limitnum"
+                value={formData.validdate_month}
                 onChange={handleInputChange}
               />
+              <input
+                type="number"
+                name="validdate_year"
+                id="addcard_limitnum"
+                value={formData.validdate_year}
+                onChange={handleInputChange}
+              />
+              &nbsp;&nbsp;&nbsp;
+              <input
+                type="number"
+                name="cvc"
+                id="addcard_input"
+                value={formData.cvc}
+                onChange={handleInputChange}
+              />
+              <br />
+              <br />
             </div>
-            <br />
-            <p id="addcard_limitdate">카드 유효기간</p>
-            <input
-              type="number"
-              name="validdate_month"
-              id="addcard_limitnum"
-              value={formData.validdate_month}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="validdate_year"
-              id="addcard_limitnum"
-              value={formData.validdate_year}
-              onChange={handleInputChange}
-            />
-            <br />
-            <br />
-            <p id="addcard_cvc">CVC</p>
-            <input
-              type="number"
-              name="cvc"
-              id="addcard_input"
-              value={formData.cvc}
-              onChange={handleInputChange}
-            />
-            <br />
-            <br />
             <div className="btn_area">
               <button id="addcard_btn" type="submit">
                 카드 추가
