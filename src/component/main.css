@@ -15,7 +15,7 @@
 #main_dragon {
   width: 350px;
   height: 200px;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .icon_container {
@@ -145,4 +145,33 @@
 .price_ALL {
   width: 390px;
   height: 100px;
+}
+
+.goBoard_container {
+  width: 400px;
+  height: 70px;
+  display: flex;
+}
+
+#goBoard {
+  display: inline-block;
+  outline: 0;
+  color: #fff;
+  background-color: #4b5564;
+  width: 200px;
+  height: 50px;
+
+  margin-top: 20px;
+  margin-right: 2px;
+}
+
+#board_text {
+  font-size: 20px;
+  text-align: center;
+
+  margin-top: 9px;
+  font-weight: 700;
+}
+.goQnA {
+  width: 50%;
 }
