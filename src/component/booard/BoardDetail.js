@@ -33,12 +33,16 @@ function BoardDetail() {
             <p className="span_title"> 공지사항 </p>
           </div>
           <div>
-            <span id="board_detail_title">{board.title}</span> <br />
-            <p id="board_detail_writer">{board.writer}</p>
-            <p id="board_detail_date">
-              {new Date(board.registdate).toLocaleDateString()}
-            </p>
-            <p id="board_detail_content">{board.contents}</p>
+            <div className="qna_title_area">
+              <span id="board_detail_title">{board.title}</span> <br />
+              <span id="board_detail_writer">{board.writer}</span>
+              <span id="board_detail_date">
+                | {new Date(board.registdate).toLocaleDateString()} 작성
+              </span>
+            </div>
+            <div className="qna_content_area">
+              <p id="board_detail_content">{board.contents}</p>
+            </div>
           </div>
         </div>
       </div>
