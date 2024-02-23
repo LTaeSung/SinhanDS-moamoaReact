@@ -132,15 +132,23 @@ function AddCardList() {
               onChange={handleInputChange}
             />*/}
               <div id="addcard_title">
-                카드사 / 카드번호 <br />
-                <select onChange={handleInputChange} name="company">
+                카드사
+                <br />
+                <select
+                  className="input_lane_select_box"
+                  onChange={handleInputChange}
+                  name="company"
+                >
                   {bankList.map((option, idx) => (
                     <option key={idx} value={idx}>
                       {option}
                     </option>
                   ))}
                 </select>
-                <br /> <br />
+                <br />
+                <br />
+                카드 번호
+                <br />
                 <input
                   type="number"
                   name="account1"
@@ -174,7 +182,10 @@ function AddCardList() {
                 />
               </div>
               <br />
-              <p id="addcard_limitdate">카드 유효기간</p>
+              <p id="addcard_limitdate">
+                카드 유효기간
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CVC
+              </p>
               <input
                 type="number"
                 name="validdate_month"
@@ -189,9 +200,7 @@ function AddCardList() {
                 value={formData.validdate_year}
                 onChange={handleInputChange}
               />
-              <br />
-              <br />
-              <p id="addcard_cvc">CVC</p>
+              &nbsp;&nbsp;&nbsp;
               <input
                 type="number"
                 name="cvc"

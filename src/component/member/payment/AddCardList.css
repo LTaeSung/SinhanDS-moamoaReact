@@ -9,45 +9,54 @@
 .sub_title_add_card {
   text-align: center;
 }
+
 #addcard_title {
   font-size: 15px;
   margin-left: 5px;
 }
-select {
-  width: 70px;
+
+.input_lane_select_box {
+  width: 100px;
   height: 40px;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
+
+  margin-top: 10px;
+  margin-left: 0px;
 }
+
 #addcard_num {
   width: 50px;
   height: 40px;
-  text-align: center;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
+
+  margin-top: 10px;
+  margin-left: 0px;
 }
+
 #addcard_limitdate {
   font-size: 15px;
   margin-left: 10px;
 }
 #addcard_limitnum {
-  width: 80px;
+  width: 50px;
   height: 40px;
-  margin-left: 10px;
-  text-align: center;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
 }
+
 #addcard_cvc {
   font-size: 15px;
   margin-left: 10px;
 }
+
 #addcard_input {
-  width: 200px;
-  height: 30px;
+  width: 50px;
+  height: 40px;
   background-color: #fff;
   border: 1px solid gray;
   border-radius: 5px;
@@ -63,7 +72,7 @@ select {
   color: #fff;
   background-color: #ff4742;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   margin-left: 6px;
   margin-bottom: 30px;
