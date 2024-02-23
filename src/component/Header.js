@@ -10,7 +10,6 @@ function Header() {
       <button onClick={goToLink} target="/main">
         <img src={logo} className="App-logo" alt="logo" />
       </button>
-
       <img
         className="header-logo"
         src={"/img/header_bell.png"}
@@ -31,7 +30,7 @@ function Header() {
         onClick={goToLink}
         target="/member/info"
         alt="profile"
-      />
+      />{" "}
     </div>
   );
 }
