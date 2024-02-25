@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { da, id } from "date-fns/locale";
 
+import $ from "jquery";
 import "./MinusPoint.css";
 
 function MinusPoint() {
@@ -91,6 +92,17 @@ function MinusPoint() {
       );
     }
   };
+  const changeRadio = (e) => {
+    let data_no = $(e.target).data("no");
+    let target = $("input").map((i, e) => {
+      if ($(e).data("no") == data_no) return e;
+    });
+
+    $('input[name="inputBox"]').each(function () {
+      $(this).prop("checked", false);
+    });
+    $(target).prop("checked", true);
+  };
 
   const bankList = [
     "없음",
@@ -147,15 +159,18 @@ function MinusPoint() {
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
                       <li key={i}>
-                        <div className="acc_container">
-                          <div className="acc_info">
-                            <p>은행명: {bankList[payment.company]}</p>
-                            <p>계좌번호: {payment.account}</p>
-                          </div>
+                        {" "}
+                        <div id="card">
+                          <div data-no={i} onClick={changeRadio}>
+                            <p data-no={i}>
+                              은행명: {bankList[payment.company]}
+                            </p>
+                            <p data-no={i}>계좌번호: {payment.account}</p>
 
-                          <div className="radio_button">
                             <input
-                              id={i}
+                              id="inputBox"
+                              name="inputBox"
+                              data-no={i}
                               type="radio"
                               value={payment.company + "_" + payment.account}
                               checked={
