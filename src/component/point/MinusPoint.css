@@ -78,3 +78,39 @@
   margin-left: 20px;
   margin-bottom: 7px;
 }
+
+/* 카드 정보 란 */
+
+.rounded-square {
+  width: 370px;
+  height: 63px;
+  margin-left: 5px;
+  border: 2px solid #374151;
+  border-radius: 7px;
+  margin-top: 2px;
+}
+
+.cardSelectBox {
+  margin-top: 27px;
+  margin-left: 20px;
+}
+
+.checkBox_zone {
+  width: 50px;
+  height: 30px;
+}
+
+.card_info_ex {
+  width: 200px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+#inputBox {
+  margin-top: 25px;
+}
+
+#card_out_info {
+  padding-bottom: 175px;
+  font-weight: 700;
+}

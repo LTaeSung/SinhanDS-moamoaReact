@@ -1,0 +1,28 @@
+@charset "utf-8";
+.rounded-square {
+  width: 370px;
+  height: 63px;
+  margin-left: 5px;
+  border: 2px solid #374151;
+  border-radius: 7px;
+  margin-top: 2px;
+}
+
+.checkBox_zone {
+  width: 50px;
+  height: 30px;
+}
+
+.card_info_ex {
+  width: 200px;
+  height: 30px;
+
+  margin-bottom: 50px;
+}
+
+.card_info_ex td {
+  padding-bottom: 95px;
+  margin-left: 90px;
+
+  font-weight: 700;
+}

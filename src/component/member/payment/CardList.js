@@ -94,7 +94,7 @@ function CardList() {
                             <tr>
                               {/* <td rowSpan={2}>
                                 <input type="radio" value={""}></input>
-                  </td>*/}
+                            </td>*/}
                               <td className="table_font">
                                 카드사: {payment.company}
                               </td>

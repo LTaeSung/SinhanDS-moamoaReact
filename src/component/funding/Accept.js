@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
+import "./Accept.css";
+
 function Accept({ fundingMemberNo, fundingNo }) {
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
@@ -66,15 +68,30 @@ function Accept({ fundingMemberNo, fundingNo }) {
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
                         <li key={i}>
-                          <input
-                            name="inputBox"
-                            id={i}
-                            type="radio"
-                            value={payment.no}
-                            onChange={handleRadioButton}
-                          />
-                          <p>카드사명: {bankList[payment.company]}</p>
-                          <p>카드번호: {payment.account}</p>
+                          <div className="rounded-square">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td className="checkBox_zone" rowSpan={2}>
+                                    <input
+                                      name="inputBox"
+                                      id={i}
+                                      type="radio"
+                                      value={payment.no}
+                                      onChange={handleRadioButton}
+                                    />
+                                  </td>
+                                </tr>
+
+                                <tr className="card_info_ex">
+                                  <td id="card_info" data-no={i}>
+                                    {bankList[payment.company]}카드 <br />
+                                    {payment.account}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </li>
                       ))}
                   </ul>

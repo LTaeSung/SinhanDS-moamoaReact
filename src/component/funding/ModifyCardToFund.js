@@ -2,6 +2,7 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
+import "./ModifyCardToFund.css";
 import {
   Link,
   useLocation,
@@ -77,24 +78,40 @@ function ModifyCardToFund() {
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
                         <li key={i}>
-                          <div id="card">
-                            <div data-no={i} onClick={changeRadio}>
-                              <input
-                                name="inputBox"
-                                data-no={i}
-                                id={i}
-                                type="radio"
-                                value={payment.no}
-                                onChange={handleRadioButton}
-                                onClick={changeRadio}
-                              />
-                              <p data-no={i} onClick={changeRadio}>
-                                카드사명: {payment.company}
-                              </p>
-                              <p data-no={i} onClick={changeRadio}>
-                                카드번호: {payment.account}
-                              </p>
-                            </div>
+                          <div className="rounded-square">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td
+                                    className="checkBox_zone"
+                                    data-no={i}
+                                    onClick={changeRadio}
+                                    rowSpan={2}
+                                  >
+                                    <input
+                                      name="inputBox"
+                                      data-no={i}
+                                      id={i}
+                                      type="radio"
+                                      value={payment.no}
+                                      onChange={handleRadioButton}
+                                      onClick={changeRadio}
+                                    />{" "}
+                                  </td>
+                                </tr>
+
+                                <tr className="card_info_ex">
+                                  <td
+                                    id="card_info"
+                                    data-no={i}
+                                    onClick={changeRadio}
+                                  >
+                                    {payment.company} <br />
+                                    {payment.account}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                         </li>
                       ))}

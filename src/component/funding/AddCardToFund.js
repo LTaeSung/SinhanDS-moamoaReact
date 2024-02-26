@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
+import "./AddCardToFund.css";
 function AddCardToFund({ onSelectCard }) {
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
@@ -66,30 +67,31 @@ function AddCardToFund({ onSelectCard }) {
                   .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                   .map((payment, i) => (
                     <li key={i}>
-                      <div id="card">
-                        <div data-no={i} onClick={changeRadio}>
-                          <p id="card_name" data-no={i}>
-                            {bankList[payment.company]}카드
-                          </p>
-                          <p id="card_num" data-no={i}>
-                            {payment.account}
-                          </p>
-                          <input
-                            id="inputBox"
-                            // style={{
-                            //   display: "block",
-                            //   height: 0,
-                            //   width: 0,
-                            //   border: 0,
-                            //   padding: 0,
-                            // }} 라디오버튼 없애기
-                            name="inputBox"
-                            data-no={i}
-                            type="radio"
-                            value={payment.no}
-                            onChange={handleRadioButton}
-                          ></input>
-                        </div>
+                      <div className="rounded-square">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="checkBox_zone" rowSpan={2}>
+                                <input
+                                  id="inputBox"
+                                  className="cardSelectBox"
+                                  name="inputBox"
+                                  data-no={i}
+                                  type="radio"
+                                  value={payment.no}
+                                  onChange={handleRadioButton}
+                                />
+                              </td>
+                            </tr>
+                            <tr className="card_info_ex">
+                              <td id="card_info" data-no={i}>
+                                {bankList[payment.company]}카드
+                                <br />
+                                {payment.account}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </li>
                   ))}
