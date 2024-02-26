@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Admin.css";
 
 function SettlementDueList() {
   const { bootpath } = useContext(BootPath);
@@ -38,17 +39,20 @@ function SettlementDueList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">정산마감일 지난 펀딩 목록</h3>
-          <button onClick={requestRefuse}>펀딩 완료 상태로 전환하기</button>
+          <button className="statusbtn" onClick={requestRefuse}>
+            펀딩 완료 상태로 전환하기
+          </button>
           <div>
             <ul>
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>펀딩번호 : {data.no}</p>
                       <p>정산마감일자 : {data.settlementduedate}</p>
                       <p>참여자 수 : {data.candidate}</p>
                       <p>모인 금액 : {data.collectedpoint}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>

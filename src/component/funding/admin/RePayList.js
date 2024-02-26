@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Admin.css";
 
 function RePayList() {
   const { bootpath } = useContext(BootPath);
@@ -38,16 +39,19 @@ function RePayList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">재결제 예정 목록</h3>
-          <button onClick={requestRePay}>일괄결제하기</button>
+          <button className="statusbtn" onClick={requestRePay}>
+            일괄결제하기
+          </button>
           <div>
             <ul>
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>no : {data.no}</p>
                       <p>펀딩멤버번호 : {data.fundingmemberno}</p>
                       <p>재결제 시도 횟수 : {data.repaycount}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>
