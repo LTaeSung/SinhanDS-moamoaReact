@@ -7,6 +7,7 @@ import CommonImagePath from "../commonImagePath";
 import { Link, NavLink } from "react-router-dom";
 import "./main.css";
 import EmptyHeader from "./../EmptyHeader";
+import Footer from "./Footer";
 
 function Main() {
   const { bootpath } = useContext(BootPath);
@@ -123,6 +124,7 @@ function Main() {
           <p id="board_text">자유게시판</p>
         </Link>
       </div>
+      <Footer />
     </>
   );
 }
