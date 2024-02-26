@@ -43,6 +43,7 @@ function BoardList() {
                 <li key={item.no} className="liWithUnderBar">
                   <Link to={`/board/detail?no=${item.no}`}>
                     <div>{item.title}</div>
+
                     <span>{item.writer}</span>
                     <span>
                       {" "}
