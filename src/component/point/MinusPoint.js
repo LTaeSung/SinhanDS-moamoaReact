@@ -93,6 +93,7 @@ function MinusPoint() {
     }
   };
   const changeRadio = (e) => {
+    console.log(e.target);
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;
@@ -157,16 +158,21 @@ function MinusPoint() {
                   {payment
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
-                      <li key={i}>
+                      <li key={payment.no}>
                         <div className="rounded-square">
                           <table>
                             <tbody>
-                              <tr>
-                                <td className="checkBox_zone" rowSpan={2}>
+                              <tr data-no={payment.no} onClick={changeRadio}>
+                                <td
+                                  className="checkBox_zone"
+                                  rowSpan={2}
+                                  data-no={payment.no}
+                                  onClick={changeRadio}
+                                >
                                   <input
                                     id="inputBox"
                                     name="inputBox"
-                                    data-no={i}
+                                    data-no={payment.no}
                                     type="radio"
                                     value={
                                       payment.company + "_" + payment.account
@@ -175,7 +181,7 @@ function MinusPoint() {
                                       select.merchant_id ===
                                       payment.company + "_" + payment.account
                                     }
-                                    onChange={handleRadioButton}
+                                    onClick={changeRadio}
                                   />
                                 </td>
                               </tr>
