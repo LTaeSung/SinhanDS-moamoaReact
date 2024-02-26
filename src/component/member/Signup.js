@@ -5,6 +5,8 @@ import ReactPath from "../../ReactPath";
 import { useContext } from "react";
 import RegistedImagePath from "../../registedImagePath";
 import CommonImagePath from "../../commonImagePath";
+import "./Signup.css";
+
 function Signup() {
   const { bootpath } = useContext(BootPath);
   const { reactpath } = useContext(ReactPath);
@@ -35,21 +37,23 @@ function Signup() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원가입</h3>
-          <button onClick={NaverLogin}>
-            <div>
-              {/* <img src={commonImagePath + "naver.png"} width="100" /> */}
-              가입하기
-            </div>
-          </button>
-          <br />
           <label>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
-            />
-            회원가입에 필요한 개인정보 제공에 동의하십니까?
+            <div className="signupcheck">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />{" "}
+              회원가입에 필요한 개인정보 제공에 동의하십니까?
+            </div>
           </label>
+
+          <div className="singupbtn">
+            <button className="NaverSignup" onClick={NaverLogin}>
+              <div>가입하기</div>
+            </button>
+          </div>
+          <br />
         </div>
       </div>
     </>

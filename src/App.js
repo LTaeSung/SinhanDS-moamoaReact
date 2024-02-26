@@ -85,11 +85,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/after" element={<AfterSignin />} />
             <Route path="/member/info" element={checkLogin(Mypage_info)} />
-            <Route path="/login/signup" element={checkLogin(Signup)} />
-            <Route
-              path="/login/beforeSignup"
-              element={checkLogin(Beforesignup)}
-            />
+            <Route path="/login/signup" element={<Signup />} />
+            <Route path="/login/beforeSignup" element={<Beforesignup />} />
             <Route
               path="/member/friend/list"
               element={checkLogin(FriendList)}
