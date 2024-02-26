@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Admin.css";
 
 function RegularPayList() {
   const { bootpath } = useContext(BootPath);
@@ -38,7 +39,9 @@ function RegularPayList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">오늘 결제 예정 목록</h3>
-          <button onClick={requestRegularPay}>일괄결제하기</button>
+          <button className="statusbtn" onClick={requestRegularPay}>
+            일괄결제하기
+          </button>
           <div>
             <ul>
               {data.map((data) => (

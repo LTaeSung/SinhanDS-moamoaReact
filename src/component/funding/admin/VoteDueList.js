@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Admin.css";
 
 function VoteDueList() {
   const { bootpath } = useContext(BootPath);
@@ -38,7 +39,9 @@ function VoteDueList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">투표마감일 지난 펀딩 목록</h3>
-          <button onClick={requestRefuse}>펀딩 정산 상태로 전환하기</button>
+          <button className="statusbtn" onClick={requestRefuse}>
+            펀딩 정산 상태로 전환하기
+          </button>
           <div>
             <ul>
               {data.map((data) => (

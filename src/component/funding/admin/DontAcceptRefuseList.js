@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Admin.css";
 
 function DontAcceptRefuseInWeekMemberList() {
   const { bootpath } = useContext(BootPath);
@@ -40,7 +41,7 @@ function DontAcceptRefuseInWeekMemberList() {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">초대마감일 지난 멤버 목록</h3>
-          <button onClick={requestRefuse}>
+          <button className="statusbtn" onClick={requestRefuse}>
             일괄 삭제 후 펀딩 시작 처리하기
           </button>
           <div>

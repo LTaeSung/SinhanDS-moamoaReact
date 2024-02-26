@@ -22,7 +22,7 @@ function DefaultStatistics() {
   return (
     <>
       <div className="defaultStatistics">
-        <p className="chartTitle">주요 통계</p>
+        <p className="chartBigTitle">주요 통계</p>
         <div className="statisticsGroup">
           <p>
             인당 평균 정산금액 :{" "}

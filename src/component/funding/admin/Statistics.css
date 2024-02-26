@@ -24,6 +24,14 @@
   color: #2f3134;
 }
 
+.chartBigTitle {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: #2f3134;
+}
+
 .roundChartArea {
   height: 350px;
   width: 350px;
@@ -38,7 +46,7 @@
 
 .statisticsGroup > p {
   font-size: 15px;
-  margin-left: 30px;
+  margin-left: 33px;
   white-space: nowrap;
 }
 
