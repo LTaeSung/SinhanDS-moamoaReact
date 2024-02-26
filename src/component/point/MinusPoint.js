@@ -59,9 +59,6 @@ function MinusPoint() {
   const [select, setSelect] = useState({
     merchant_id: "",
   });
-  const handleRadioButton = (e) => {
-    setSelect({ ...select, merchant_id: e.target.value });
-  };
 
   const requestPayBack = async () => {
     const data = {
@@ -93,7 +90,8 @@ function MinusPoint() {
     }
   };
   const changeRadio = (e) => {
-    console.log(e.target);
+    console.log($(e.target).attr("value"));
+    console.log($(e.target).data("no"));
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;
@@ -103,8 +101,8 @@ function MinusPoint() {
       $(this).prop("checked", false);
     });
     $(target).prop("checked", true);
+    setSelect({ ...select, merchant_id: $(e.target).attr("value") });
   };
-
   const bankList = [
     "없음",
     "신한",
@@ -158,29 +156,36 @@ function MinusPoint() {
                   {payment
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
-                      <li key={i}>
-                        {" "}
+                      <li key={payment.no}>
                         <div id="card">
                           <div
                             className="tempCard"
-                            data-no={i}
+                            data-no={payment.no}
+                            value={payment.company + "_" + payment.account}
                             onClick={changeRadio}
                           >
-                            <p data-no={i}>
+                            <p
+                              data-no={payment.no}
+                              value={payment.company + "_" + payment.account}
+                            >
                               은행명: {bankList[payment.company]}
                             </p>
-                            <p data-no={i}>계좌번호: {payment.account}</p>
+                            <p
+                              data-no={payment.no}
+                              value={payment.company + "_" + payment.account}
+                            >
+                              계좌번호: {payment.account}
+                            </p>
                             <input
                               id="inputBox"
                               name="inputBox"
-                              data-no={i}
+                              data-no={payment.no}
                               type="radio"
                               value={payment.company + "_" + payment.account}
                               checked={
                                 select.merchant_id ===
                                 payment.company + "_" + payment.account
                               }
-                              onChange={handleRadioButton}
                             />
                           </div>
                         </div>
