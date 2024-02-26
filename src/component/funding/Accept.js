@@ -31,9 +31,6 @@ function Accept({ fundingMemberNo, fundingNo }) {
   const [select, setSelect] = useState({
     fundingMemberNo: location.state.fundingMemberNo,
   });
-  const handleRadioButton = (e) => {
-    setSelect({ ...select, payment_no: e.target.value });
-  };
 
   const submit = (e) => {
     if (!("payment_no" in select) || select.payment_no === "") {
@@ -50,6 +47,7 @@ function Accept({ fundingMemberNo, fundingNo }) {
     });
   };
   const changeRadio = (e) => {
+    console.log($(e.target).data("no"));
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;
@@ -59,6 +57,10 @@ function Accept({ fundingMemberNo, fundingNo }) {
       $(this).prop("checked", false);
     });
     $(target).prop("checked", true);
+    changePaymentNo($(e.target).data("no"));
+  };
+  const changePaymentNo = (no) => {
+    setSelect({ ...select, payment_no: no });
   };
   return (
     <>
@@ -76,21 +78,22 @@ function Accept({ fundingMemberNo, fundingNo }) {
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
-                        <li key={i}>
+                        <li key={payment.no}>
                           <div id="card">
-                            <div data-no={i} onClick={changeRadio}>
+                            <div data-no={payment.no} onClick={changeRadio}>
                               <input
                                 name="inputBox"
-                                data-no={i}
-                                id={i}
+                                data-no={payment.no}
+                                id={payment.no}
                                 type="radio"
                                 value={payment.no}
-                                onChange={handleRadioButton}
                               />
-                              <p data-no={i}>
+                              <p data-no={payment.no}>
                                 카드사명: {bankList[payment.company]}
                               </p>
-                              <p data-no={i}>카드번호: {payment.account}</p>
+                              <p data-no={payment.no}>
+                                카드번호: {payment.account}
+                              </p>
                             </div>
                           </div>
                         </li>
