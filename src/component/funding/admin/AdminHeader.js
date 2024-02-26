@@ -1,31 +1,32 @@
 import { Link, NavLink } from "react-router-dom";
+import "./Admin.css";
 const AdminHeader = () => {
   return (
     <>
-      <div>
-        <Link className="btn" to="/admin/setStatus1">
+      <div className="buttonGroup">
+        <Link className="adminbtn" to="/admin/setStatus1">
           초대 기간 만료
         </Link>
-        <Link className="btn" to="/admin/setStatus2">
+        <Link className="adminbtn" to="/admin/setStatus2">
           펀드 기간 만료
         </Link>
-        <Link className="btn" to="/admin/setStatus3">
+        <Link className="adminbtn" to="/admin/setStatus3">
           투표 기간 만료
         </Link>
-        <Link className="btn" to="/admin/setStatus4">
+        <Link className="adminbtn" to="/admin/setStatus4">
           정산 기간 만료
         </Link>
-        <Link className="btn" to="/admin/regularpay">
-          오늘 결제 예정
+        <Link className="adminbtn" to="/admin/regularpay">
+          오늘 정기 결제
         </Link>
-        <Link className="btn" to="/admin/repay">
-          재결제 예정
+        <Link className="adminbtn" to="/admin/repay">
+          재결제 예정자
         </Link>
-        <Link className="btn" to="/admin/boardnew">
+        <Link className="adminbtn" to="/admin/boardnew">
           공지사항 작성
         </Link>
-        <Link className="btn" to="/admin/statistics/main">
-          통계
+        <Link className="adminbtn" to="/admin/statistics/main">
+          전체 통계 확인
         </Link>
       </div>
     </>

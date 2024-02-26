@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Statistics.css";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -40,16 +41,17 @@ function SuccessFailStatistics() {
 
   return (
     <>
-      <h5>
-        성공율 :{" "}
-        {Math.round((data.success / (data.success + data.fail)) * 10000) / 100}%
-      </h5>
-      <h5>
-        실패율 :{" "}
-        {Math.round((data.fail / (data.success + data.fail)) * 10000) / 100}%
-      </h5>
-      <div className="chartArea">
-        <Doughnut data={chartdata} />
+      <div className="roundChartjsArea">
+        <p className="chartTitle">
+          성공율 :
+          {Math.round((data.success / (data.success + data.fail)) * 10000) /
+            100}
+          % 실패율 :
+          {Math.round((data.fail / (data.success + data.fail)) * 10000) / 100}%
+        </p>
+        <div className="roundChartArea">
+          <Doughnut data={chartdata} />
+        </div>
       </div>
     </>
   );

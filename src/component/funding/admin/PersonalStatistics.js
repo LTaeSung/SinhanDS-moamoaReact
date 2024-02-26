@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Statistics.css";
 
 import {
   Chart as ChartJS,
@@ -72,10 +73,13 @@ function PersonalStatistics() {
 
   return (
     <>
-      <h5>사용자별 통계-최대, 평균, 최소</h5>
-      <p>(금액 단위 : 천)</p>
-      <div className="chartArea">
-        <Bar data={chartdata} />
+      <div className="chartjsArea">
+        <p className="chartTitle">
+          사용자 별 최대, 평균, 최소 <small>(금액 단위 : 천)</small>
+        </p>
+        <div className="chartArea">
+          <Bar data={chartdata} />
+        </div>
       </div>
     </>
   );

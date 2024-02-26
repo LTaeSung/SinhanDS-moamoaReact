@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Statistics.css";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -14,7 +15,6 @@ function GiveupStatistics() {
     try {
       const response = await axios.get(` ${bootpath}/statistics/giveup`);
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -41,14 +41,16 @@ function GiveupStatistics() {
 
   return (
     <>
-      <h5>
-        중도포기율 :{" "}
-        {Math.round((data.giveup / (data.giveup + data.nogiveup)) * 10000) /
-          100}
-        %
-      </h5>
-      <div className="chartArea">
-        <Doughnut data={chartdata} />
+      <div className="roundChartjsArea">
+        <p className="chartTitle">
+          중도포기율 :{" "}
+          {Math.round((data.giveup / (data.giveup + data.nogiveup)) * 10000) /
+            100}
+          %
+        </p>
+        <div className="roundChartArea">
+          <Doughnut data={chartdata} />
+        </div>
       </div>
     </>
   );

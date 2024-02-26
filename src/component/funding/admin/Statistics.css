@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.roundChartjsArea {
+  height: 400px;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.defaultStatistics {
+  margin-bottom: 30px;
+}
+.chartjsArea {
+  height: auto;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.chartTitle {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: #2f3134;
+}
+
+.roundChartArea {
+  height: 350px;
+  width: 350px;
+  margin-left: 25px;
+}
+
+.chartArea {
+  height: 200px;
+  width: 380px;
+  margin-left: 7px;
+}
+
+.statisticsGroup > p {
+  font-size: 15px;
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+.redtext {
+  font-size: 22px;
+  color: #ff5757;
+}

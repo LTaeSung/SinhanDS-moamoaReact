@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../../BootPath";
 import { useContext } from "react";
 import axios from "axios";
+import "./Statistics.css";
 
 function DefaultStatistics() {
   const { bootpath } = useContext(BootPath);
@@ -20,19 +21,40 @@ function DefaultStatistics() {
 
   return (
     <>
-      <h5>여러가지 통계들 묶음</h5>
-      <div>
-        <p>인당 평균 정산금액 : {Math.round(data.avgSettlement)} 원</p>
-        <p>
-          펀드당 평균 월결제금액 : {Math.round(data.avgMonthlyPayAmount)} 원
-        </p>
-        <p>
-          완료된 펀드당 평균 총 결제금액 :{" "}
-          {Math.round(data.avgMonthlyCollected)} 원
-        </p>
-        <p>이번달 펀드 총 개최 수 : {data.monthlyNewFund} 개</p>
-        <p>이번달 펀드 총 참여인원 : {data.monthlyMember} 명</p>
-        <p>이번달 펀드 총 금액 : {data.monthlyPay} 원</p>
+      <div className="defaultStatistics">
+        <p className="chartTitle">주요 통계</p>
+        <div className="statisticsGroup">
+          <p>
+            인당 평균 정산금액 :{" "}
+            <span className="redtext">{Math.round(data.avgSettlement)}</span>원
+          </p>
+          <p>
+            펀드당 평균 월결제금액 :{" "}
+            <span className="redtext">
+              {Math.round(data.avgMonthlyPayAmount)}
+            </span>
+            원
+          </p>
+          <p>
+            완료된 펀드당 평균 총 결제금액 :{" "}
+            <span className="redtext">
+              {Math.round(data.avgMonthlyCollected)}
+            </span>
+            원
+          </p>
+          <p>
+            이번달 펀드 총 개최 수 :{" "}
+            <span className="redtext">{data.monthlyNewFund}</span>개
+          </p>
+          <p>
+            이번달 펀드 총 참여인원 :{" "}
+            <span className="redtext">{data.monthlyMember}</span>명
+          </p>
+          <p>
+            이번달 펀드 총 금액 :{" "}
+            <span className="redtext">{data.monthlyPay}</span>원
+          </p>
+        </div>
       </div>
     </>
   );
