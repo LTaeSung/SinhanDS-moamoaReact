@@ -9,6 +9,7 @@ import AddCardToFund from "./AddCardToFund";
 import { useLocation } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
 import "./makefunding.css";
+import { data } from "jquery";
 
 function MakeFunding() {
   const { bootpath } = useContext(BootPath);
@@ -78,6 +79,7 @@ function MakeFunding() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
+    console.log(param);
 
     try {
       const response = await fetch({
@@ -114,6 +116,7 @@ function MakeFunding() {
   };
 
   const emptyCheck = (e) => {
+    console.log(param);
     if (
       "title" in param &&
       "monthly_payment_amount" in param &&
