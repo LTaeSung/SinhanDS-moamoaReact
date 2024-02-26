@@ -85,7 +85,11 @@ function ModifyCardToFund() {
                       .map((payment, i) => (
                         <li key={payment.no}>
                           <div id="card">
-                            <div data-no={payment.no} onClick={changeRadio}>
+                            <div
+                              className="tempCard"
+                              data-no={payment.no}
+                              onClick={changeRadio}
+                            >
                               <input
                                 name="inputBox"
                                 data-no={payment.no}

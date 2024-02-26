@@ -67,7 +67,11 @@ function AddCardToFund({ onSelectCard }) {
                   .map((payment, i) => (
                     <li key={payment.no}>
                       <div id="card">
-                        <div data-no={payment.no} onClick={changeRadio}>
+                        <div
+                          className="tempCard"
+                          data-no={payment.no}
+                          onClick={changeRadio}
+                        >
                           <p id="card_name" data-no={payment.no}>
                             {bankList[payment.company]}카드
                           </p>
