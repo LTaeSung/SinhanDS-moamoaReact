@@ -158,27 +158,40 @@ function MinusPoint() {
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
                       <li key={i}>
-                        {" "}
-                        <div id="card">
-                          <div data-no={i} onClick={changeRadio}>
-                            <p data-no={i}>
-                              은행명: {bankList[payment.company]}
-                            </p>
-                            <p data-no={i}>계좌번호: {payment.account}</p>
+                        <div className="rounded-square">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="checkBox_zone" rowSpan={2}>
+                                  <input
+                                    id="inputBox"
+                                    name="inputBox"
+                                    data-no={i}
+                                    type="radio"
+                                    value={
+                                      payment.company + "_" + payment.account
+                                    }
+                                    checked={
+                                      select.merchant_id ===
+                                      payment.company + "_" + payment.account
+                                    }
+                                    onChange={handleRadioButton}
+                                  />
+                                </td>
+                              </tr>
 
-                            <input
-                              id="inputBox"
-                              name="inputBox"
-                              data-no={i}
-                              type="radio"
-                              value={payment.company + "_" + payment.account}
-                              checked={
-                                select.merchant_id ===
-                                payment.company + "_" + payment.account
-                              }
-                              onChange={handleRadioButton}
-                            />
-                          </div>
+                              <tr id="text_Goup">
+                                <td
+                                  id="card_out_info"
+                                  data-no={i}
+                                  onClick={changeRadio}
+                                >
+                                  {bankList[payment.company]} <br />
+                                  {payment.account}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </li>
                     ))}

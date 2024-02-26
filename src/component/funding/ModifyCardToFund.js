@@ -2,6 +2,7 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
+import "./ModifyCardToFund.css";
 import {
   Link,
   useLocation,

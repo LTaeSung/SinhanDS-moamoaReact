@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
+import "./AddCardToFund.css";
 function AddCardToFund({ onSelectCard }) {
   const location = useLocation();
   const { bootpath } = useContext(BootPath);

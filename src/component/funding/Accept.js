@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
+import "./Accept.css";
+
 function Accept({ fundingMemberNo, fundingNo }) {
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
