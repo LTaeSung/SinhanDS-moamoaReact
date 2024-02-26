@@ -62,7 +62,7 @@
 }
 
 .no {
-  width: 80%;
+  width: 70%;
   font-size: 13px;
   font-weight: 700;
   margin-top: 12px;
@@ -71,7 +71,6 @@
 }
 
 .amount {
-  width: 100px;
   color: red;
   text-align: right;
   margin-left: 10px;
