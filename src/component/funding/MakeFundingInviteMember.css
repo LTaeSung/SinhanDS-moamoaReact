@@ -1,0 +1,33 @@
+.friend_lists {
+  margin-top: 40px;
+  margin-left: 35px;
+  width: 400px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#invite_btns {
+}
+
+.friend_list_one {
+  margin-top: 30px;
+}
+
+.friend_name {
+  width: 20%;
+  display: inline;
+  float: left;
+  margin-top: 3px;
+  margin-left: 100px;
+  margin-right: 80px;
+}
+
+.friend_image {
+  float: left;
+}
+
+.invite_btns {
+  width: 35%;
+  clear: both;
+  margin-top: 4px;
+}

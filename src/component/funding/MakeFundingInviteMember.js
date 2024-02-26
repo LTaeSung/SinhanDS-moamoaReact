@@ -6,12 +6,18 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
 import { useLoaderData } from "react-router-dom";
+import "./MakeFundingInviteMember.css";
+import CommonImagePath from "../../commonImagePath";
+import RegistedImagePath from "../../registedImagePath";
+
 function MakeFundingInviteMember({ state }) {
   const { bootpath } = useContext(BootPath);
   const location = useLocation();
   //   const param = location.state.param;
   const [param, setParam] = useState({ ...location.state.param });
   const [member, setMember] = useState({});
+  const { commonImagePath } = useContext(CommonImagePath);
+  const { registedImagePath } = useContext(RegistedImagePath);
 
   const registedFile = location.state.file;
   const [data, setData] = useState(null);
@@ -77,20 +83,29 @@ function MakeFundingInviteMember({ state }) {
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">친구목록</h3>
-          <div>
+          <div className="friend_lists">
             {data ? (
               <ul>
                 {data.map((Data) => (
-                  <li key={Data.no}>
-                    <input
-                      type="checkbox"
-                      id={Data.friend.no}
-                      onChange={addFriend}
-                    />{" "}
-                    {Data.friend.name}
-                    <br />
-                    &nbsp;&nbsp;&nbsp;
-                    {Data.friend.email}
+                  <li key={Data.no} className="friend_list_one">
+                    {" "}
+                    <img
+                      className="friend_image"
+                      src={
+                        Data.friend.photo != null
+                          ? `${registedImagePath}${Data.friend.photo}`
+                          : `${commonImagePath}header_Profile.png`
+                      }
+                      alt="프로필 사진"
+                    />
+                    <div className="friend_name">{Data.friend.name}</div>
+                    <div id="invite_btns">
+                      <input
+                        type="checkbox"
+                        id={Data.friend.no}
+                        onChange={addFriend}
+                      />
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -101,7 +116,7 @@ function MakeFundingInviteMember({ state }) {
           <div>
             <button
               className={"btn"}
-              style={{ marginLeft: "35px" }}
+              style={{ marginLeft: "35px", marginTop: "50px" }}
               onClick={regist}
             >
               초대하기

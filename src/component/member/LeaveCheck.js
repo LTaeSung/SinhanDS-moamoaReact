@@ -4,6 +4,7 @@ import BootPath from "../../BootPath";
 import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./LeaveCheck.css";
 
 function LeaveCheck() {
   const { bootpath } = useContext(BootPath);
@@ -26,6 +27,9 @@ function LeaveCheck() {
 
     if (response.data.result === "leave_finish") {
       alert("회원탈퇴가 완료되었습니다.");
+      sessionStorage.removeItem("email");
+      sessionStorage.removeItem("no");
+      sessionStorage.removeItem("name");
       navigate("/");
     }
 
@@ -47,12 +51,12 @@ function LeaveCheck() {
       <div className="sub">
         <div className="size">
           <br />
-          <div> 정말로 탈퇴하시겠습니까? </div>
+          <div className="real_leave"> 정말로 탈퇴하시겠습니까? </div>
           <br />
-          <Link className="btn" onClick={goLeave}>
+          <Link className="leave_btn" onClick={goLeave}>
             탈퇴
           </Link>
-          <Link className="btn" onClick={goBack}>
+          <Link className="leave_btn" onClick={goBack}>
             아니오
           </Link>
         </div>
