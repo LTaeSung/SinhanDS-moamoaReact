@@ -51,6 +51,17 @@ function Accept({ fundingMemberNo, fundingNo }) {
       }
     });
   };
+  const changeRadio = (e) => {
+    let data_no = $(e.target).data("no");
+    let target = $("input").map((i, e) => {
+      if ($(e).data("no") == data_no) return e;
+    });
+
+    $('input[name="inputBox"]').each(function () {
+      $(this).prop("checked", false);
+    });
+    $(target).prop("checked", true);
+  };
   return (
     <>
       <FundingHeader />

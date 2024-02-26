@@ -1,0 +1,25 @@
+.NaverSignup {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 140px;
+  width: 30%;
+  height: 30px;
+}
+
+.singupbtn {
+  width: 400px;
+}
+
+.signupcheck {
+  margin-top: 100px;
+  margin-bottom: 40px;
+  font-size: 15px;
+  margin-left: 10px;
+}

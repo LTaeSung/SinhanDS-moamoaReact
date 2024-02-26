@@ -1,17 +1,13 @@
 @charset "utf-8";
 
-.space_container {
-  height: 20px;
-}
-
-.space_container2 {
-  height: 15px;
-}
 .main_image_container {
+  margin-bottom: 30px;
   width: 400px;
   height: 200px;
 }
-
+.statistic_main {
+  margin-top: 40px;
+}
 #main_dragon {
   width: 350px;
   height: 200px;

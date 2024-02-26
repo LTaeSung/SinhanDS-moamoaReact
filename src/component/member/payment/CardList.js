@@ -17,6 +17,27 @@ function CardList() {
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
   const location = useLocation();
+  const bankList = [
+    "없음",
+    "신한",
+    "KEB하나",
+    "SC제일",
+    "국민",
+    "외환",
+    "우리",
+    "한국시티",
+    "농협",
+    "기업",
+    "수협",
+    "경남",
+    "광주",
+    "대구",
+    "부산",
+    "전북",
+    "제주",
+    "한국산업",
+    "한국수출입",
+  ];
 
   const [formData, setFormData] = useState({
     //전송할 데이터, 여기에서는 선택한 no만 전송해서 삭제요청. no는 payment테이블의 no임
@@ -96,7 +117,7 @@ function CardList() {
                                 <input type="radio" value={""}></input>
                             </td>*/}
                               <td className="table_font">
-                                카드사: {payment.company}
+                                카드사: {bankList[payment.company]}
                               </td>
                               <td rowSpan={2}>
                                 <button

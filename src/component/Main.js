@@ -6,6 +6,7 @@ import axios from "axios";
 import CommonImagePath from "../commonImagePath";
 import { Link, NavLink } from "react-router-dom";
 import "./main.css";
+import EmptyHeader from "./../EmptyHeader";
 
 function Main() {
   const { bootpath } = useContext(BootPath);
@@ -26,14 +27,12 @@ function Main() {
 
   return (
     <>
+      <EmptyHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"></h3>
-          <div className="space_container"></div>
           <div className="main_image_container">
             <img id="main_dragon" src={`${commonImagePath}dragon.png`} alt="" />
           </div>
-          <div className="space_container"></div>
 
           <div className="icon_container">
             <div
@@ -66,53 +65,54 @@ function Main() {
               <p className="icon_textlane_cancel">주최한 챌린지</p>
             </div>
           </div>
-          <div className="space_container"></div>
-          <div className="space_container"></div>
 
-          <div className="challenge_ALL">
-            <div className="iconic_moment">
-              <img id="go_up_icon" src={`${commonImagePath}go_up.png`} alt="" />
+          <div className="statistic_main">
+            <div className="challenge_ALL">
+              <div className="iconic_moment">
+                <img
+                  id="go_up_icon"
+                  src={`${commonImagePath}go_up.png`}
+                  alt=""
+                />
+              </div>
+
+              <div className="iconic_moment_textline">
+                <div className="chall_text">현재까지 진행된 챌린지</div>
+                <div className="chall_count">{data.totalchallenge}</div>
+                <span className="dog"> 개</span>
+              </div>
             </div>
 
-            <div className="iconic_moment_textline">
-              <div className="chall_text">현재까지 진행된 챌린지</div>
-              <div className="chall_count">{data.totalchallenge}</div>
-              <span className="dog"> 개</span>
-            </div>
-          </div>
+            <div className="challenge_ALL">
+              <div className="iconic_moment">
+                <img
+                  id="go_up_icon2"
+                  src={`${commonImagePath}trophy.png`}
+                  alt=""
+                />
+              </div>
 
-          <div className="space_container2"></div>
-
-          <div className="challenge_ALL">
-            <div className="iconic_moment">
-              <img
-                id="go_up_icon2"
-                src={`${commonImagePath}trophy.png`}
-                alt=""
-              />
+              <div className="iconic_moment_textline">
+                <div className="chall_text">챌린지에 성공한 사람</div>
+                <div className="chall_count">{data.totalsuccess}</div>
+                <span className="dog"> 명</span>
+              </div>
             </div>
 
-            <div className="iconic_moment_textline">
-              <div className="chall_text">챌린지에 성공한 사람</div>
-              <div className="chall_count">{data.totalsuccess}</div>
-              <span className="dog"> 명</span>
-            </div>
-          </div>
+            <div className="challenge_ALL">
+              <div className="iconic_moment">
+                <img
+                  id="go_up_icon"
+                  src={`${commonImagePath}no_money.png`}
+                  alt=""
+                />
+              </div>
 
-          <div className="space_container2"></div>
-          <div className="challenge_ALL">
-            <div className="iconic_moment">
-              <img
-                id="go_up_icon"
-                src={`${commonImagePath}no_money.png`}
-                alt=""
-              />
-            </div>
-
-            <div className="iconic_moment_textline">
-              <div className="chall_text">총 상금액</div>
-              <div className="chall_count">{data.totalmoney}</div>
-              <span className="dog"> 원</span>
+              <div className="iconic_moment_textline">
+                <div className="chall_text">총 상금액</div>
+                <div className="chall_count">{data.totalmoney}</div>
+                <span className="dog"> 원</span>
+              </div>
             </div>
           </div>
         </div>
@@ -123,9 +123,6 @@ function Main() {
           <p id="board_text">자유게시판</p>
         </Link>
       </div>
-      <div className="space_container2"></div>
-      <div className="space_container2"></div>
-      <div className="space_container2"></div>
     </>
   );
 }
