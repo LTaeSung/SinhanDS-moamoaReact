@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
+import "./AddCardToFund.css";
 function AddCardToFund({ onSelectCard }) {
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
@@ -27,13 +28,8 @@ function AddCardToFund({ onSelectCard }) {
   }, []);
 
   const [select, setSelect] = useState(null);
-  const handleRadioButton = (e) => {
-    // setSelect({ ...select, payment_no: e.target.value });
-    const selectedPaymentNo = e.target.value;
-    setSelect({ payment_no: selectedPaymentNo });
-    onSelectCard(selectedPaymentNo);
-  };
   const changeRadio = (e) => {
+    console.log($(e.target).data("no"));
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;
@@ -43,8 +39,12 @@ function AddCardToFund({ onSelectCard }) {
       $(this).prop("checked", false);
     });
     $(target).prop("checked", true);
+    changePaymentNo($(e.target).data("no"));
   };
-
+  const changePaymentNo = (no) => {
+    setSelect({ payment_no: no });
+    onSelectCard(no);
+  };
   const bankList = ["없음", "신한", "농협", "국민", "우리"];
 
   // const submit = () => {
@@ -65,13 +65,17 @@ function AddCardToFund({ onSelectCard }) {
                 {payment
                   .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                   .map((payment, i) => (
-                    <li key={i}>
+                    <li key={payment.no}>
                       <div id="card">
-                        <div data-no={i} onClick={changeRadio}>
-                          <p id="card_name" data-no={i}>
+                        <div
+                          className="tempCard"
+                          data-no={payment.no}
+                          onClick={changeRadio}
+                        >
+                          <p id="card_name" data-no={payment.no}>
                             {bankList[payment.company]}카드
                           </p>
-                          <p id="card_num" data-no={i}>
+                          <p id="card_num" data-no={payment.no}>
                             {payment.account}
                           </p>
                           <input
@@ -84,10 +88,9 @@ function AddCardToFund({ onSelectCard }) {
                             //   padding: 0,
                             // }} 라디오버튼 없애기
                             name="inputBox"
-                            data-no={i}
+                            data-no={payment.no}
                             type="radio"
                             value={payment.no}
-                            onChange={handleRadioButton}
                           ></input>
                         </div>
                       </div>

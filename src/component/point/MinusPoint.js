@@ -160,12 +160,15 @@ function MinusPoint() {
                       <li key={i}>
                         {" "}
                         <div id="card">
-                          <div data-no={i} onClick={changeRadio}>
+                          <div
+                            className="tempCard"
+                            data-no={i}
+                            onClick={changeRadio}
+                          >
                             <p data-no={i}>
                               은행명: {bankList[payment.company]}
                             </p>
                             <p data-no={i}>계좌번호: {payment.account}</p>
-
                             <input
                               id="inputBox"
                               name="inputBox"

@@ -78,3 +78,14 @@
   margin-left: 20px;
   margin-bottom: 7px;
 }
+
+/* 카드 정보 란 */
+
+.aaa {
+  width: 280px;
+  height: 50px;
+}
+
+.tempCard {
+  height: 100%;
+}
