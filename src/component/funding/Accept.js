@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import CommonImagePath from "../../commonImagePath";
 import axios from "axios";
 import $ from "jquery";
-import "./Accept.css";
-
 function Accept({ fundingMemberNo, fundingNo }) {
+  const { commonImagePath } = useContext(CommonImagePath);
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
@@ -33,6 +33,9 @@ function Accept({ fundingMemberNo, fundingNo }) {
   const [select, setSelect] = useState({
     fundingMemberNo: location.state.fundingMemberNo,
   });
+  const handleRadioButton = (e) => {
+    setSelect({ ...select, payment_no: e.target.value });
+  };
 
   const submit = (e) => {
     if (!("payment_no" in select) || select.payment_no === "") {
@@ -47,22 +50,6 @@ function Accept({ fundingMemberNo, fundingNo }) {
         navigate(0);
       }
     });
-  };
-  const changeRadio = (e) => {
-    console.log($(e.target).data("no"));
-    let data_no = $(e.target).data("no");
-    let target = $("input").map((i, e) => {
-      if ($(e).data("no") == data_no) return e;
-    });
-
-    $('input[name="inputBox"]').each(function () {
-      $(this).prop("checked", false);
-    });
-    $(target).prop("checked", true);
-    changePaymentNo($(e.target).data("no"));
-  };
-  const changePaymentNo = (no) => {
-    setSelect({ ...select, payment_no: no });
   };
   return (
     <>
@@ -80,28 +67,16 @@ function Accept({ fundingMemberNo, fundingNo }) {
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
-                        <li key={payment.no}>
-                          <div id="card">
-                            <div
-                              className="tempCard"
-                              data-no={payment.no}
-                              onClick={changeRadio}
-                            >
-                              <input
-                                name="inputBox"
-                                data-no={payment.no}
-                                id={payment.no}
-                                type="radio"
-                                value={payment.no}
-                              />
-                              <p data-no={payment.no}>
-                                카드사명: {bankList[payment.company]}
-                              </p>
-                              <p data-no={payment.no}>
-                                카드번호: {payment.account}
-                              </p>
-                            </div>
-                          </div>
+                        <li key={i}>
+                          <input
+                            name="inputBox"
+                            id={i}
+                            type="radio"
+                            value={payment.no}
+                            onChange={handleRadioButton}
+                          />
+                          <p>카드사명: {bankList[payment.company]}</p>
+                          <p>카드번호: {payment.account}</p>
                         </li>
                       ))}
                   </ul>
@@ -112,10 +87,22 @@ function Accept({ fundingMemberNo, fundingNo }) {
                   </div>
                 </>
               ) : (
-                <p>
-                  등록된 카드가 없습니다. 카드를 추가해주세요.{" "}
-                  <Link to="/member/payment/card/add">카드 추가</Link>
-                </p>
+                <>
+                  <Link to={`/member/payment/card/add`}>
+                    <div>
+                      <img
+                        className="no_card_search"
+                        src={`${commonImagePath}credit_card.png`}
+                        alt=""
+                        width={100}
+                      />
+                      <div className="no_card_text">
+                        등록된 카드가 없습니다
+                        <br /> 카드를 추가해주세요.
+                      </div>
+                    </div>
+                  </Link>
+                </>
               )}
             </>
           </div>

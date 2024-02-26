@@ -1,5 +1,6 @@
 import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
+import CommonImagePath from "../../commonImagePath";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import "./ModifyCardToFund.css";
@@ -12,6 +13,7 @@ import {
 import axios from "axios";
 import $ from "jquery";
 function ModifyCardToFund() {
+  const { commonImagePath } = useContext(CommonImagePath);
   const location = useLocation();
   const [params, setParams] = useSearchParams();
   let no = params.get("no");
@@ -117,10 +119,22 @@ function ModifyCardToFund() {
                   </div>
                 </>
               ) : (
-                <p>
-                  등록된 카드가 없습니다. 카드를 추가해주세요.{" "}
-                  <Link to="/member/payment/card/add">카드 추가</Link>
-                </p>
+                <>
+                  <Link to={`/member/payment/card/add`}>
+                    <div>
+                      <img
+                        className="no_card_search"
+                        src={`${commonImagePath}credit_card.png`}
+                        alt=""
+                        width={100}
+                      />
+                      <div className="no_card_text">
+                        등록된 카드가 없습니다
+                        <br /> 카드를 추가해주세요.
+                      </div>
+                    </div>
+                  </Link>
+                </>
               )}
             </>
           </div>
