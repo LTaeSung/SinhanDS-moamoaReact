@@ -4,6 +4,7 @@ import Formatter from "./../../Formatter_notime";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Alarmlist.css";
+import EmptyHeader from "./../../EmptyHeader";
 
 function AlarmList() {
   const { bootpath } = useContext(BootPath);
@@ -59,7 +60,8 @@ function AlarmList() {
             )}
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <EmptyHeader />
     </>
   );
 }
