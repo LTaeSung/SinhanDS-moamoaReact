@@ -4,6 +4,7 @@
 }
 
 #select {
+  width: 50px;
   margin-left: 170px;
   font-weight: 700;
   font-size: 12px;
@@ -85,7 +86,8 @@ input[type="file"] {
 #payinput {
   vertical-align: middle;
   height: 32px;
-  width: 203px;
+  width: 173px;
+  margin-left: 40px;
 }
 
 /*결제 날짜 태그*/
@@ -105,4 +107,30 @@ input[type="file"] {
   text-align: center;
   width: 80%;
   margin-right: 20px;
+}
+
+#card {
+  margin-left: 15px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid gray;
+  width: 360px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+#card_name {
+  font-size: 13px;
+  text-align: center;
+}
+#card_num {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 12px;
+  text-align: center;
+}
+
+#inputBox {
+  text-align: center;
+  margin-bottom: 120px;
 }

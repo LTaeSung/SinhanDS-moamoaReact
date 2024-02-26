@@ -1,57 +1,80 @@
 @charset "utf-8";
 
+.sub_title_point {
+  text-align: center;
+}
+.size {
+  width: 100%;
+  height: 100%;
+}
 .space_container {
   height: 30px;
 }
-
+.ul_line {
+  border-bottom: 1px solid #e5e5e5;
+}
+.sub_title {
+  font-size: 27px;
+  margin-left: 30px;
+  text-align: center;
+}
 .selectBox_container {
-  width: 260px;
-  margin-left: 210px;
+  width: 100px;
+  margin-top: 5px;
+  margin-left: 240px;
+  text-align: center;
 }
 
 .option {
-  font-size: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ff4742;
 }
 
 .fontDate_container {
-  width: 375px;
+  width: 100%;
+  padding-top: 12px;
   display: flex;
 }
 
 .font {
-  width: 200px;
+  width: 13%;
+  text-align: left;
   font-size: 25px;
   font-weight: 600;
-
-  margin-left: 35px;
+  margin-left: 20px;
 }
 
 .date {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
+  width: 90px;
   color: gray;
-  margin-left: 20px;
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 .noAmount_container {
-  width: 375px;
+  width: 367px;
   display: flex;
+  margin-left: 20px;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .no {
-  width: 350px;
-  font-size: 10px;
+  width: 80%;
+  font-size: 13px;
   font-weight: 700;
-  margin-left: 40px;
-  margin-top: 10px;
+  margin-top: 12px;
+  margin-bottom: 3px;
+  text-align: left;
 }
 
 .amount {
-  width: 200px;
+  width: 100px;
   color: red;
+  text-align: right;
+  margin-left: 10px;
   font-size: 20px;
   font-weight: 700;
-
-  margin-bottom: 10px;
 }

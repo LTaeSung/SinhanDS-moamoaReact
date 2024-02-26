@@ -9,20 +9,27 @@
 
 #fundinginfo_ {
   font-size: 16px;
-  margin-top: 6px;
 }
 
-/* 모인금액 */
+.fundingTitle {
+  margin-top: 15px;
+}
 
 .listline {
   float: left;
   font-size: 16px;
   margin-right: 4px;
 }
-#fundinginfo_collectedpoint {
+#fundinginfo_collectedpoint_des {
   font-size: 16px;
-  margin-top: 5px;
-  height: 40px;
+  margin-top: 15px;
+}
+#fundinginfo_collectedpoint {
+  margin-top: -8px;
+  margin-bottom: 15px;
+  font-size: 25px;
+  font-weight: 600;
+  color: red;
 }
 
 #collectedpoint {

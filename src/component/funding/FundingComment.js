@@ -186,7 +186,7 @@ function FundingComment() {
             {item.name === writer ? (
               <>
                 <p id="me" style={{ float: "right" }}>
-                  :-me
+                  :-
                 </p>{" "}
               </>
             ) : (

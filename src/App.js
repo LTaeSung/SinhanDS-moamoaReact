@@ -50,13 +50,17 @@ import SettlementDueList from "./component/funding/admin/SettlementDueList";
 import Main from "./component/Main";
 import GiveupStatistics from "./component/funding/admin/GiveupStatistics";
 import SuccessFailStatistics from "./component/funding/admin/SuccessFailStatistics";
+import StatisticsMain from "./component/funding/admin/StatisticsMain";
+import DefaultStatistics from "./component/funding/admin/DefaultStatistics";
+import PersonalStatistics from "./component/funding/admin/PersonalStatistics";
+import Ranking from "./component/funding/admin/Ranking";
 
 function App() {
   const checkLogin = (Component) => {
     if (sessionStorage.getItem("no") != null) {
       return <Component />;
     } else {
-      return <Navigate to="/login/dev" />;
+      return <Navigate to="/login" />;
     }
   };
   const checkDevLogin = (Component) => {
@@ -75,7 +79,7 @@ function App() {
       <header className="App-header">
         <div className="App-container">
           <Routes>
-            <Route path="/" element={<DevLogin />} />
+            <Route path="/" element={<Main />} />
             <Route path="/main" element={<Main />} />
             <Route path="/login/dev" element={<DevLogin />} />
             <Route path="/login" element={<Login />} />
@@ -146,9 +150,8 @@ function App() {
             />
             <Route path="/board/list" element={<BoardList />} />
             <Route path="/board/detail" element={<BoardDetail />} />
-            <Route path="/admin/boardnew" element={<BoardNew />} />
-            <Route path="/board/qna/list" element={<QnaList />} />
-            <Route path="/board/qna/detail" element={<QnaDetail />} />
+            <Route path="/board/qna/list" element={checkLogin(QnaList)} />
+            <Route path="/board/qna/detail" element={checkLogin(QnaDetail)} />
             <Route path="/point/minus" element={checkLogin(MinusPoint)} />
             <Route path="/point/plus" element={checkLogin(PlusPoint)} />
             <Route path="/point/pointlist" element={checkLogin(PointList)} />
@@ -162,6 +165,8 @@ function App() {
             />
             <Route path="/alarm" element={checkLogin(AlarmList)} />
             <Route path="/member/leavecheck" element={checkLogin(LeaveCheck)} />
+
+            <Route path="/admin/boardnew" element={checkDevLogin(BoardNew)} />
             <Route
               path="/admin/setStatus1"
               element={checkDevLogin(DontAcceptRefuseInWeekMemberList)}
@@ -183,10 +188,29 @@ function App() {
               element={checkDevLogin(RegularPayList)}
             />
             <Route path="/admin/repay" element={checkDevLogin(RePayList)} />
-            <Route path="/statistics/giveup" element={<GiveupStatistics />} />
             <Route
-              path="/statistics/successfail"
-              element={<SuccessFailStatistics />}
+              path="admin/statistics/giveup"
+              element={checkDevLogin(GiveupStatistics)}
+            />
+            <Route
+              path="admin/statistics/successfail"
+              element={checkDevLogin(SuccessFailStatistics)}
+            />
+            <Route
+              path="admin/statistics/default"
+              element={checkDevLogin(DefaultStatistics)}
+            />
+            <Route
+              path="admin/statistics/main"
+              element={checkDevLogin(StatisticsMain)}
+            />
+            <Route
+              path="admin/statistics/personal"
+              element={checkDevLogin(PersonalStatistics)}
+            />
+            <Route
+              path="admin/statistics/rank"
+              element={checkDevLogin(Ranking)}
             />
           </Routes>
         </div>

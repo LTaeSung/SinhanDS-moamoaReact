@@ -3,9 +3,10 @@
 }
 
 .App-logo {
-  width: 160px;
-  height: 40px;
-  margin-right: 150px;
+  width: 140px;
+  height: 30px;
+  padding: 6px 6px;
+  margin-right: 130px;
   pointer-events: none;
 }
 
@@ -42,6 +43,16 @@ html {
 .navbarMenu {
   font-size: 16px;
   margin: 20px;
+  border-bottom-style: solid;
+  flex-direction: row;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+
+.fund_navbarMenu {
+  font-size: 16px;
+  margin: 13px;
   border-bottom-style: solid;
   flex-direction: row;
   text-decoration: none;

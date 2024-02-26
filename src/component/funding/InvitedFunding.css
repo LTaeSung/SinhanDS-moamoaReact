@@ -7,66 +7,27 @@
 .space_container_invited2 {
   height: 15px;
 }
-
 .sub_title_invited {
   text-align: center;
 }
-
-.list_container_invited {
-  width: 400px;
-  height: 100px;
-  display: flex;
+.day_left_invited {
+  font-size: 13px;
+  float: right;
+  text-align: right;
+  width: 150px;
 }
-
-.image_container_invited {
-  width: 90px;
-}
-.fund_info_invited {
-  width: 300px;
-  font-size: 10px;
-}
-
-#invited_funding_image_invited {
-  width: 80px;
-  height: 82px;
-}
-
 .fund_title_invited {
   height: 15px;
   width: 280px;
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 }
-
-.fund_status_invited {
-  height: 15px;
-  font-weight: 600;
-  font-size: 10px;
-}
-
-.fund_amount_invited {
-  width: 290px;
-  height: 15px;
-  margin-bottom: 20px;
-}
-
-.all_amount_invited {
-  color: black;
-  font-size: 10px;
-}
-
-.day_left_invited {
-  font-size: 10px;
+.buttonDiv {
   float: right;
-  margin-right: 20px;
-  width: 50px;
-  margin-top: 60px;
+  margin-top: -20px;
 }
-
 .invite_agree_invited {
-  display: inline-block;
-  outline: 0;
   border-radius: 5px;
   border: 2px solid #ff4742;
   color: #fff;
@@ -74,22 +35,21 @@
   text-align: center;
   font-weight: 700;
   font-size: 15px;
-  width: 200px;
-  height: 30px;
+  width: 100px;
+  height: 20px;
 }
 
 .invite_refuse_invited {
-  display: inline-block;
-  outline: 0;
   border-radius: 5px;
   border: 2px solid gray;
   color: #fff;
   background-color: gray;
   text-align: center;
   font-weight: 700;
+
   font-size: 15px;
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 20px;
 }
 
 .no_fund_search {

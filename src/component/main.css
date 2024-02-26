@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+.space_container {
+  height: 20px;
+}
+
+.space_container2 {
+  height: 15px;
+}
+.main_image_container {
+  width: 400px;
+  height: 200px;
+}
+
+#main_dragon {
+  width: 350px;
+  height: 200px;
+  margin-left: 25px;
+}
+
+.icon_container {
+  width: 400px;
+  height: 90px;
+  display: flex;
+
+  margin-left: 20px;
+}
+
+/*중간 아이콘 메뉴 생성*/
+.regist_challenge {
+  width: 130px;
+  height: 90px;
+}
+
+.participation_funding {
+  width: 130px;
+  height: 90px;
+}
+
+.cancel_funding {
+  width: 130px;
+  height: 90px;
+}
+
+#rc_icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+#pf_icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#cf_icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.icon_textlane_challenge {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
+
+  margin-left: 10px;
+}
+
+.icon_textlane_participation {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.icon_textlane_cancel {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 4px;
+}
+
+.challenge_ALL {
+  width: 390px;
+  height: 100px;
+}
+
+.iconic_moment {
+  width: 130px;
+  height: 100px;
+  float: left;
+}
+
+.iconic_moment_textline {
+  width: 200px;
+  height: 100px;
+  margin-left: 10px;
+  float: left;
+}
+
+#go_up_icon {
+  width: 85px;
+  height: 70px;
+  margin-left: 35px;
+  margin-top: 5px;
+}
+
+#go_up_icon2 {
+  width: 65px;
+  height: 65px;
+  margin-left: 45px;
+  margin-top: 10px;
+}
+
+.chall_text {
+  width: 350px;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.chall_count {
+  display: inline;
+  font-size: 40px;
+  font-weight: 600;
+  color: red;
+  line-height: 0.8;
+}
+
+.dog {
+  color: #000;
+  font-size: 20px;
+}
+
+.success_ALL {
+  width: 390px;
+  height: 100px;
+}
+
+.price_ALL {
+  width: 390px;
+  height: 100px;
+}
+
+.goBoard_container {
+  display: flex;
+}
+
+#goBoard {
+  display: inline-block;
+  outline: 0;
+  color: #fff;
+  background-color: #4b5564;
+  width: 198px;
+  height: 50px;
+  float: left;
+  margin-top: 20px;
+}
+
+#goQna {
+  display: inline-block;
+  outline: 0;
+  color: #fff;
+  background-color: #4b5564;
+  width: 198px;
+  height: 50px;
+  float: right;
+  margin-top: 20px;
+}
+
+#board_text {
+  font-size: 20px;
+  text-align: center;
+
+  margin-top: 9px;
+  font-weight: 700;
+}
+.goQnA {
+  width: 50%;
+}

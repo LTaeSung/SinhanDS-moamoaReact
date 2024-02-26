@@ -41,13 +41,14 @@ function GiveupStatistics() {
 
   return (
     <>
-      <div className="sub">
-        <div className="size">
-          <h3 className="sub_title">중도포기율</h3>
-          <div className="chartArea">
-            <Doughnut data={chartdata} />
-          </div>
-        </div>
+      <h5>
+        중도포기율 :{" "}
+        {Math.round((data.giveup / (data.giveup + data.nogiveup)) * 10000) /
+          100}
+        %
+      </h5>
+      <div className="chartArea">
+        <Doughnut data={chartdata} />
       </div>
     </>
   );

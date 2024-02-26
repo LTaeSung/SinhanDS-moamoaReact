@@ -1,16 +1,17 @@
 .slect {
-  margin-top: 15px;
+  margin-top: 2.5%;
+  align-items: center;
   background-color: #d1d5db;
   text-align: left;
   border: 3px solid #d1d5db;
   border-top-color: #ff4742;
   height: 45px;
-  width: 100%;
+  width: 99%;
 }
 
 .sub {
   width: 100%;
-  min-height: 800px;
+  min-height: 830px;
 }
 
 .size {
@@ -35,7 +36,7 @@ span {
 
 .liWithUnderBar {
   border-radius: 5px;
-  border: 3px solid white;
+  border: 2px solid white;
   border-bottom-color: #d1d5db;
   font-size: 20px;
   margin: 3px 8px;
@@ -93,7 +94,7 @@ button {
   font-size: 15px;
   text-align: center;
   margin-left: 80px;
-  width: 100px;
+  width: 90px;
   height: 30px;
 }
 .hide {
@@ -104,10 +105,8 @@ button {
 /* qna detail */
 
 #qna_title {
-  color: black;
-  font-size: 20px;
-  font-weight: 200px;
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 8px;
 }
 #qna_edit_title {
   min-width: 360px;
@@ -126,10 +125,10 @@ button {
   margin-bottom: 10px;
 }
 #qna_time {
+  margin-bottom: 10px;
+  margin-left: 8px;
+  text-align: left;
   font-size: 10px;
-  font-weight: 500;
-  text-align: right;
-  margin-right: 5px;
 }
 .qna_title_area {
   border-radius: 5px;
@@ -146,10 +145,10 @@ button {
   text-align: right;
 }
 #qna_writer {
-  margin-left: 10px;
-  margin-bottom: 5px;
-  text-align: right;
+  margin-top: 10px;
+  margin-left: 8px;
   font-size: 15px;
+  text-align: left;
 }
 #qna_content {
   margin-left: 8px;
@@ -257,17 +256,25 @@ button {
   margin-left: 8px;
 }
 #board_detail_writer {
+  margin-top: 10px;
+  margin-left: 8px;
   font-size: 15px;
-  text-align: right;
+  text-align: left;
 }
 #board_detail_date {
-  text-align: right;
-  font-size: 15px;
+  margin-bottom: 10px;
+  margin-left: 8px;
+  text-align: left;
+  font-size: 10px;
 }
 #board_detail_content {
-  font-size: 15px;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 8px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  min-width: 360px;
+  min-height: 200px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 /* board new */

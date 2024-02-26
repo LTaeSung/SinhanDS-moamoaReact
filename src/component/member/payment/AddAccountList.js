@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import MemberHeader from "./../MemberHeader";
 import { useNavigate } from "react-router-dom";
+import "./AddAccountList.css";
 
 function AddAccountList() {
   const { bootpath } = useContext(BootPath);
@@ -73,7 +74,8 @@ function AddAccountList() {
       <MemberHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">계좌 추가</h3>
+          <div className="space_container"></div>
+          <h3 className="sub_title_add_acc">계좌 등록</h3> <br />
           <form onSubmit={handleSubmit}>
             {/* <input
               type="hidden"
@@ -93,26 +95,39 @@ function AddAccountList() {
               value={formData.company}
               onChange={handleInputChange}
             /> */}
-            <div>
-              은행명
-              <select onChange={handleInputChange} name="company">
+
+            <div id="addacc_title">
+              은행 명
+              <br />
+              <select
+                className="input_lane_select_box"
+                onChange={handleInputChange}
+                name="company"
+              >
                 {bankList.map((option, idx) => (
                   <option key={idx} value={idx}>
                     {option}
                   </option>
                 ))}
               </select>
+              <br />
+              <br />
+              계좌 번호
+              <input
+                type="number"
+                name="account"
+                className="input_lane"
+                value={formData.account}
+                onChange={handleInputChange}
+                placeholder="'-'는 제외하고 숫자만 입력"
+                min={0}
+              />
+              <br />
             </div>
             <br />
-            계좌번호('-'는 제외하고 숫자만 입력):{" "}
-            <input
-              type="number"
-              name="account"
-              value={formData.account}
-              onChange={handleInputChange}
-            />
-            <br />
-            <button type="submit">계좌 추가</button>
+            <button id="addacc_btn" type="submit">
+              계좌 등록
+            </button>
           </form>
         </div>
       </div>

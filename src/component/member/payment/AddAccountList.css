@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+.space_container {
+  height: 30px;
+}
+
+.sub_title_add_acc {
+  text-align: center;
+}
+
+#addacc_title {
+  font-size: 15px;
+  margin-left: 50px;
+}
+
+select {
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.input_lane {
+  width: 285px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.input_lane_select_box {
+  width: 100px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+#addacc_input {
+  width: 200px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#addacc_btn {
+  display: inline-block;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #ff4742;
+  color: #fff;
+  background-color: #ff4742;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 50px;
+}

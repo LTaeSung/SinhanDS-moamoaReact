@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import bootPath from "../../BootPath";
 import RegistedImagePath from "../../registedImagePath";
-import "./FundingJoinListEnd.css";
 import CommonImagePath from "../../commonImagePath";
 
 const FundingJoinListEnd = ({ render, setRender }) => {
@@ -42,10 +41,10 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                       Data.fundingMemberNo
                     }
                   >
-                    <div className="list_container_join_end">
-                      <div className="image_container_join_end">
+                    <div className="list_container_join_ongoing">
+                      <div className="image_container_join_ongoing">
                         <img
-                          id="joined_funding_image_join_end"
+                          id="joined_funding_image_join_ongoing"
                           src={
                             Data.photo
                               ? registedImagePath + Data.photo
@@ -55,23 +54,36 @@ const FundingJoinListEnd = ({ render, setRender }) => {
                         />
                       </div>
 
-                      <div className="fund_info_join_end">
-                        <div className="fund_title_join_end">{Data.title}</div>
+                      <div className="fund_info_join_ongoing">
+                        <div className="fund_title_join_ongoing">
+                          {Data.title}
+                        </div>
                         <br />
 
-                        <div className="fund_amount_join_end">
-                          <p>{Data.settlementAmount}</p>
-                          <p>{Data.myPayAmount}</p>
-                          <p>{Data.message}</p>
+                        <div
+                          className="fund_status_join_ongoing"
+                          style={{ color: "black" }}
+                        >
+                          {" "}
+                          내가 낸 금액 : {Data.myPayAmount}원
+                          <div className="fund_amount_join_ongoing">
+                            <span className="all_amount_join_ongoing">
+                              내가 받은 금액 : {Data.settlementAmount}원
+                            </span>
 
-                          <div
-                            className="status_bar_join_end"
-                            style={{
-                              width: "270px", // 너비
-                              height: "4px", // 높이
-                              backgroundColor: "black", // 배경색
-                            }}
-                          ></div>
+                            <span className="day_left_join_ongoing">
+                              {Data.message}
+                            </span>
+
+                            <div
+                              className="status_bar_start_join_ongoing"
+                              style={{
+                                width: "270px", // 너비
+                                height: "4px", // 높이
+                                backgroundColor: "black", // 배경색
+                              }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     </div>
