@@ -56,7 +56,6 @@ function RegularPayList() {
                   }
                 </li>
               ))}
-              <p>더 필요한거 있으면 원하는대로 꺼내오시면 됩니다</p>
             </ul>
           </div>
         </div>
