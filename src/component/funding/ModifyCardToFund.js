@@ -2,6 +2,7 @@ import FundingHeader from "./FundingHeader";
 import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
+import "./ModifyCardToFund.css";
 import {
   Link,
   useLocation,
@@ -33,6 +34,7 @@ function ModifyCardToFund() {
     fetchPaymentList();
   }, []);
   const changeRadio = (e) => {
+    console.log($(e.target).data("no"));
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;
@@ -42,11 +44,16 @@ function ModifyCardToFund() {
       $(this).prop("checked", false);
     });
     $(target).prop("checked", true);
+    changePaymentNo($(e.target).data("no"));
+  };
+  const changePaymentNo = (no) => {
+    setSelect({ ...select, payment_no: no });
   };
   const [select, setSelect] = useState({
     memberNo: member_no,
     fundingNo: no,
   });
+
   const handleRadioButton = (e) => {
     setSelect({ ...select, payment_no: e.target.value });
   };
@@ -76,22 +83,26 @@ function ModifyCardToFund() {
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
-                        <li key={i}>
+                        <li key={payment.no}>
                           <div id="card">
-                            <div data-no={i} onClick={changeRadio}>
+                            <div
+                              className="tempCard"
+                              data-no={payment.no}
+                              onClick={changeRadio}
+                            >
                               <input
                                 name="inputBox"
-                                data-no={i}
-                                id={i}
+                                data-no={payment.no}
+                                id={payment.no}
                                 type="radio"
                                 value={payment.no}
                                 onChange={handleRadioButton}
                                 onClick={changeRadio}
                               />
-                              <p data-no={i} onClick={changeRadio}>
+                              <p data-no={payment.no} onClick={changeRadio}>
                                 카드사명: {payment.company}
                               </p>
-                              <p data-no={i} onClick={changeRadio}>
+                              <p data-no={payment.no} onClick={changeRadio}>
                                 카드번호: {payment.account}
                               </p>
                             </div>
