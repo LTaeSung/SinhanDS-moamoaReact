@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import BootPath from "./../../BootPath";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import BoardHeader from "./BoardHeader";
+import AdminHeader from "../funding/admin/AdminHeader";
 
 function BoardNew() {
   const { bootpath } = useContext(BootPath);
@@ -55,9 +55,6 @@ function BoardNew() {
 
       setNewQna({ title: "", contents: "" });
       const confirmation = window.confirm("공지사항이 등록되었습니다.");
-      if (confirmation) {
-        navigate("/board/list");
-      }
     } catch (error) {
       console.log("에러 발생", error);
     }
@@ -83,13 +80,14 @@ function BoardNew() {
 
   return (
     <>
-      <BoardHeader />
+      <AdminHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title"> 공지사항 새 글 </h3>
+          <h3 className="sub_title"> 공지사항 작성 </h3>
           <p id="boardnew_writer">{writer}</p>
           <input
             type="text"
+            id="boardnew_title"
             value={newQna.title}
             placeholder="제목"
             onChange={(e) => setNewQna({ ...newQna, title: e.target.value })}
@@ -97,13 +95,20 @@ function BoardNew() {
           <br />
           <textarea
             value={newQna.contents}
+            id="boardnew_content"
             placeholder="내용"
             onChange={(e) => setNewQna({ ...newQna, contents: e.target.value })}
           ></textarea>{" "}
           <br />
-          <button className="qna_detail_btn" onClick={SaveQna}>
+          <button className="boardnew_btn" onClick={SaveQna}>
             저장하기
           </button>{" "}
+          <button
+            className="boardnew_btn"
+            onClick={() => navigate("/board/list")}
+          >
+            공지사항 리스트
+          </button>
           <br />
           <br />
         </div>
