@@ -12,7 +12,27 @@ function AddAccountList() {
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no") || "";
   const navigate = useNavigate();
-  const bankList = ["은행 선택", "신한", "농협", "국민", "우리", "뭐시기"];
+  const bankList = [
+    "없음",
+    "신한",
+    "KEB하나",
+    "SC제일",
+    "국민",
+    "외환",
+    "우리",
+    "한국시티",
+    "농협",
+    "기업",
+    "수협",
+    "경남",
+    "광주",
+    "대구",
+    "부산",
+    "전북",
+    "제주",
+    "한국산업",
+    "한국수출입",
+  ];
 
   const [formData, setFormData] = useState({
     //전송할 데이터 필드

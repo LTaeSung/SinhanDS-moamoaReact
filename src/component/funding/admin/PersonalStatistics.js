@@ -44,7 +44,7 @@ function PersonalStatistics() {
         label: "max",
         data: [
           data.maxFundCount,
-          5, //Math.round(data.maxTotalpay) / 1000,
+          Math.round(data.maxTotalpay) / 1000,
           Math.round(data.maxTotalSettlement) / 1000,
         ],
         backgroundColor: "rgba(255, 99, 132, 0.5)",
@@ -53,9 +53,8 @@ function PersonalStatistics() {
         label: "min",
         data: [
           data.minFundCount,
-          3,
-          //Math.round(data.minTotalpay) / 1000,
-          5, //Math.round(data.minTotalSettlement) / 1000,
+          Math.round(data.minTotalpay) / 1000,
+          Math.round(data.minTotalSettlement) / 1000,
         ],
         backgroundColor: "rgba(201, 203, 207, 0.5)",
       },
@@ -74,7 +73,7 @@ function PersonalStatistics() {
   return (
     <>
       <h5>사용자별 통계-최대, 평균, 최소</h5>
-      <p>(데이터 안예쁘게 나옴...대충 이런 느낌이다 하고 봐주세요)</p>
+      <p>(금액 단위 : 천)</p>
       <div className="chartArea">
         <Bar data={chartdata} />
       </div>
