@@ -44,6 +44,11 @@ function QnaList() {
       return;
     }
 
+    if (sessionStorage.getItem("no") == null) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+
     try {
       const response = await axios.post(`${bootpath}/board/add`, {
         memberno: no,
