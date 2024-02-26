@@ -6,9 +6,11 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import CommonImagePath from "./../../../commonImagePath";
 import "./AccountList.css";
 
 function AccountList() {
+  const { commonImagePath } = useContext(CommonImagePath);
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
   const member_no = sessionStorage.getItem("no");
@@ -101,47 +103,64 @@ function AccountList() {
                   .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                   .map((payment) => (
                     <li key={payment.no}>
-                      <div className="rounded-square">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td className="table_font">
-                                은행명: {bankList[payment.company]}
-                              </td>
-                              <td rowSpan={2}>
-                                <button className="account_delete">
-                                  <Link onClick={() => AccountNo(payment.no)}>
-                                    계좌 삭제
-                                  </Link>
-                                </button>
-                              </td>
-                            </tr>
+                      <div className="movesideway">
+                        <div className="rounded-square">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="table_font">
+                                  은행명: {bankList[payment.company]}
+                                </td>
+                                <td rowSpan={2}>
+                                  <button className="account_delete">
+                                    <Link onClick={() => AccountNo(payment.no)}>
+                                      계좌 삭제
+                                    </Link>
+                                  </button>
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <td className="table_font_no">
-                                계좌번호: {payment.account}
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                              <tr>
+                                <td className="table_font_no">
+                                  계좌번호: {payment.account}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </li>
                   ))}
+                <Link to="/member/payment/account/add">
+                  <p className="account_add">+ 계좌 추가</p>
+                </Link>
               </ul>
             ) : (
-              <p>계좌가 없습니다.</p>
+              <>
+                <Link to={`/member/payment/account/add`}>
+                  <div>
+                    <img
+                      className="no_card_search"
+                      src={`${commonImagePath}bank_account.png`}
+                      alt=""
+                      width={100}
+                    />
+                    <div className="no_card_text">
+                      등록된 계좌가 없습니다
+                      <br /> 계좌를 새로 등록해보세요!
+                    </div>
+                  </div>
+                </Link>
+              </>
             )}
-            <Link to="/member/payment/account/add">
-              <p className="account_add">+ 계좌 추가</p>
-            </Link>
           </>
         ) : (
           <p>
-            {" "}
             <Link to="/">로그인 해주세요.</Link>
           </p>
         )}
       </div>
+      <hr />
     </>
   );
 }
