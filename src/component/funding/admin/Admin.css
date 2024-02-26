@@ -50,3 +50,12 @@
   font-weight: bold;
   border-radius: 5px;
 }
+
+.adminlist > p {
+  font-size: 17px;
+  margin-left: 20px;
+}
+
+.adminlist > hr {
+  width: 90%;
+}

@@ -47,10 +47,11 @@ function RegularPayList() {
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>no : {data.no}</p>
                       <p>펀딩번호 : {data.fundingno}</p>
                       <p>금액 : {data.monthlypaymentamount}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>

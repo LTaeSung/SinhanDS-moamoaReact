@@ -49,11 +49,12 @@ function DontAcceptRefuseInWeekMemberList() {
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>no : {data.no}</p>
                       <p>펀딩번호 : {data.fundingno}</p>
                       <p>멤버번호 : {data.memberno}</p>
                       <p>초대일자 : {data.inviteddate}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>

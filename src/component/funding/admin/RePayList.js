@@ -47,10 +47,11 @@ function RePayList() {
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>no : {data.no}</p>
                       <p>펀딩멤버번호 : {data.fundingmemberno}</p>
                       <p>재결제 시도 횟수 : {data.repaycount}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>

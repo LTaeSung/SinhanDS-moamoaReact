@@ -47,11 +47,12 @@ function SettlementDueList() {
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>펀딩번호 : {data.no}</p>
                       <p>정산마감일자 : {data.settlementduedate}</p>
                       <p>참여자 수 : {data.candidate}</p>
                       <p>모인 금액 : {data.collectedpoint}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>

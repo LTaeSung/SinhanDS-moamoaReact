@@ -47,11 +47,12 @@ function FundingDueList() {
               {data.map((data) => (
                 <li key={data.no}>
                   {
-                    <ul>
+                    <ul className="adminlist">
                       <p>펀딩번호 : {data.no}</p>
                       <p>펀딩시작일자 : {data.startdate}</p>
                       <p>결제마감일자 : {data.fundingduedate}</p>
                       <p>모인 금액 : {data.collectedpoint}</p>
+                      <hr></hr>
                     </ul>
                   }
                 </li>
