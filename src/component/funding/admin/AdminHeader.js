@@ -21,6 +21,12 @@ const AdminHeader = () => {
         <Link className="btn" to="/admin/repay">
           재결제 예정
         </Link>
+        <Link className="btn" to="/admin/boardnew">
+          공지사항 작성
+        </Link>
+        <Link className="btn" to="/admin/statistics/main">
+          통계
+        </Link>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ function FundingHeader() {
     <div>
       <div className="headerNav">
         <NavLink
-          className="navbarMenu"
+          className="fund_navbarMenu "
           to={"/funding/member/join"}
           style={({ isActive }) => {
             return {
@@ -20,7 +20,7 @@ function FundingHeader() {
           참여한 챌린지
         </NavLink>
         <NavLink
-          className="navbarMenu"
+          className="fund_navbarMenu "
           to={"/funding/host"}
           style={({ isActive }) => {
             return {
@@ -32,7 +32,7 @@ function FundingHeader() {
           주최한 챌린지
         </NavLink>
         <NavLink
-          className="navbarMenu"
+          className="fund_navbarMenu "
           to={"/funding/invited"}
           style={({ isActive }) => {
             return {

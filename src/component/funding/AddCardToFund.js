@@ -33,6 +33,17 @@ function AddCardToFund({ onSelectCard }) {
     setSelect({ payment_no: selectedPaymentNo });
     onSelectCard(selectedPaymentNo);
   };
+  const changeRadio = (e) => {
+    let data_no = $(e.target).data("no");
+    let target = $("input").map((i, e) => {
+      if ($(e).data("no") == data_no) return e;
+    });
+
+    $('input[name="inputBox"]').each(function () {
+      $(this).prop("checked", false);
+    });
+    $(target).prop("checked", true);
+  };
 
   const bankList = ["없음", "신한", "농협", "국민", "우리"];
 
@@ -55,15 +66,31 @@ function AddCardToFund({ onSelectCard }) {
                   .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                   .map((payment, i) => (
                     <li key={i}>
-                      <input
-                        name="inputBox"
-                        id={i}
-                        type="radio"
-                        value={payment.no}
-                        onChange={handleRadioButton}
-                      />
-                      <p>카드사명: {bankList[payment.company]}</p>
-                      <p>카드번호: {payment.account}</p>
+                      <div id="card">
+                        <div data-no={i} onClick={changeRadio}>
+                          <p id="card_name" data-no={i}>
+                            {bankList[payment.company]}카드
+                          </p>
+                          <p id="card_num" data-no={i}>
+                            {payment.account}
+                          </p>
+                          <input
+                            id="inputBox"
+                            // style={{
+                            //   display: "block",
+                            //   height: 0,
+                            //   width: 0,
+                            //   border: 0,
+                            //   padding: 0,
+                            // }} 라디오버튼 없애기
+                            name="inputBox"
+                            data-no={i}
+                            type="radio"
+                            value={payment.no}
+                            onChange={handleRadioButton}
+                          ></input>
+                        </div>
+                      </div>
                     </li>
                   ))}
               </ul>

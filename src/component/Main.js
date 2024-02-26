@@ -115,17 +115,17 @@ function Main() {
               <span className="dog"> 원</span>
             </div>
           </div>
-          <div className="space_container"></div>
-          <div className="goBoard_container">
-            <Link id="goBoard" to={"/board/list"}>
-              <p id="board_text">공지사항</p>
-            </Link>
-            <Link id="goBoard" to={"/board/qna/list"}>
-              <p id="board_text">자유게시판</p>
-            </Link>
-          </div>
         </div>
+        <Link id="goBoard" to={"/board/list"}>
+          <p id="board_text">공지사항</p>
+        </Link>
+        <Link id="goQna" to={"/board/qna/list"}>
+          <p id="board_text">자유게시판</p>
+        </Link>
       </div>
+      <div className="space_container2"></div>
+      <div className="space_container2"></div>
+      <div className="space_container2"></div>
     </>
   );
 }

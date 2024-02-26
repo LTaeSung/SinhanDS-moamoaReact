@@ -20,9 +20,9 @@ function StatisticsMain() {
           <h3 className="sub_title">통계페이지</h3>
           <div>
             <DefaultStatistics />
+            <PersonalStatistics />
             <GiveupStatistics />
             <SuccessFailStatistics />
-            <PersonalStatistics />
           </div>
         </div>
       </div>
