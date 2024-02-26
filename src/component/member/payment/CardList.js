@@ -9,9 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Routes, Route } from "react-router-dom";
 import AddCardList from "./AddCardList";
+import CommonImagePath from "./../../../commonImagePath";
 
 import "./CardList.css";
+
 function CardList() {
+  const { commonImagePath } = useContext(CommonImagePath);
   const { bootpath } = useContext(BootPath);
   const [payment, setPayment] = useState([]);
   const member_no = sessionStorage.getItem("no");
@@ -109,43 +112,57 @@ function CardList() {
                   .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                   .map((payment) => (
                     <li key={payment.no}>
-                      <div className="rounded-square">
-                        <table>
-                          <tbody>
-                            <tr>
-                              {/* <td rowSpan={2}>
-                                <input type="radio" value={""}></input>
-                            </td>*/}
-                              <td className="table_font">
-                                카드사: {bankList[payment.company]}
-                              </td>
-                              <td rowSpan={2}>
-                                <button
-                                  className="card_delete"
-                                  onClick={() => CardNo(payment.no)}
-                                >
-                                  카드 삭제
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="table_font_no">
-                                카드 번호: {payment.account}
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      <div className="movesideway">
+                        <div className="rounded-square">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="table_font">
+                                  카드사: {bankList[payment.company]}
+                                </td>
+                                <td rowSpan={2}>
+                                  <button
+                                    className="card_delete"
+                                    onClick={() => CardNo(payment.no)}
+                                  >
+                                    카드 삭제
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="table_font_no">
+                                  카드 번호: {payment.account}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </li>
                   ))}
+
+                <Link to={`/member/payment/card/add`}>
+                  <p className="card_add">+ 카드 추가</p>
+                </Link>
               </ul>
             ) : (
-              <p>카드가 없습니다.</p>
+              <>
+                <Link to={`/member/payment/card/add`}>
+                  <div>
+                    <img
+                      className="no_card_search"
+                      src={`${commonImagePath}credit_card.png`}
+                      alt=""
+                      width={100}
+                    />
+                    <div className="no_card_text">
+                      등록된 카드가 없습니다
+                      <br /> 카드를 새로 등록해보세요!
+                    </div>
+                  </div>
+                </Link>
+              </>
             )}
-
-            <Link to={`/member/payment/card/add`}>
-              <p className="card_add">+ 카드 추가</p>
-            </Link>
           </>
         ) : (
           <p>

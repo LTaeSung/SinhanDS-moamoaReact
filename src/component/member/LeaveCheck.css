@@ -1,0 +1,27 @@
+.real_leave {
+  margin-top: 50px;
+  margin-left: 80px;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.leave_btn {
+  font-size: 14px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 20px;
+  min-width: 64px;
+  border: 2px solid #ff4742;
+  color: #fff !important;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ff4742;
+  width: 80%;
+  margin-left: 20px;
+}

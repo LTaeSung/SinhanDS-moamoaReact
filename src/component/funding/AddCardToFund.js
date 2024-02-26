@@ -72,21 +72,14 @@ function AddCardToFund({ onSelectCard }) {
                           data-no={payment.no}
                           onClick={changeRadio}
                         >
-                          <p id="card_name" data-no={payment.no}>
+                          <p id="card_name_actf" data-no={payment.no}>
                             {bankList[payment.company]}카드
                           </p>
-                          <p id="card_num" data-no={payment.no}>
+                          <p id="card_num_actf" data-no={payment.no}>
                             {payment.account}
                           </p>
                           <input
-                            id="inputBox"
-                            // style={{
-                            //   display: "block",
-                            //   height: 0,
-                            //   width: 0,
-                            //   border: 0,
-                            //   padding: 0,
-                            // }} 라디오버튼 없애기
+                            id="inputBox_actf"
                             name="inputBox"
                             data-no={payment.no}
                             type="radio"
