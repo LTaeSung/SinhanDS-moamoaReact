@@ -158,46 +158,31 @@ function MinusPoint() {
                   {payment
                     .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
                     .map((payment, i) => (
-                      <li key={payment.no}>
-                        <div className="rounded-square">
-                          <table>
-                            <tbody>
-                              <tr data-no={payment.no} onClick={changeRadio}>
-                                <td
-                                  className="checkBox_zone"
-                                  rowSpan={2}
-                                  data-no={payment.no}
-                                  onClick={changeRadio}
-                                >
-                                  <input
-                                    id="inputBox"
-                                    name="inputBox"
-                                    data-no={payment.no}
-                                    type="radio"
-                                    value={
-                                      payment.company + "_" + payment.account
-                                    }
-                                    checked={
-                                      select.merchant_id ===
-                                      payment.company + "_" + payment.account
-                                    }
-                                    onClick={changeRadio}
-                                  />
-                                </td>
-                              </tr>
-
-                              <tr id="text_Goup">
-                                <td
-                                  id="card_out_info"
-                                  data-no={i}
-                                  onClick={changeRadio}
-                                >
-                                  {bankList[payment.company]} <br />
-                                  {payment.account}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <li key={i}>
+                        {" "}
+                        <div id="card">
+                          <div
+                            className="tempCard"
+                            data-no={i}
+                            onClick={changeRadio}
+                          >
+                            <p data-no={i}>
+                              은행명: {bankList[payment.company]}
+                            </p>
+                            <p data-no={i}>계좌번호: {payment.account}</p>
+                            <input
+                              id="inputBox"
+                              name="inputBox"
+                              data-no={i}
+                              type="radio"
+                              value={payment.company + "_" + payment.account}
+                              checked={
+                                select.merchant_id ===
+                                payment.company + "_" + payment.account
+                              }
+                              onChange={handleRadioButton}
+                            />
+                          </div>
                         </div>
                       </li>
                     ))}

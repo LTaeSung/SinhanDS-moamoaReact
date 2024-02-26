@@ -97,8 +97,9 @@ function SearchMember() {
                           <img
                             className="user_image"
                             src={
-                              member.photo ||
-                              `${registedImagePath}header_Profile.png`
+                              member.photo != null
+                                ? `${registedImagePath}${member.photo}`
+                                : `${commonImagePath}header_Profile.png`
                             }
                             alt="프로필 사진"
                           />

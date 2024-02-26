@@ -5,11 +5,12 @@
 
 #select {
   width: 50px;
+  height: 30px;
   margin-left: 170px;
   font-weight: 700;
   font-size: 12px;
   background-color: white;
-  border: white;
+  border: solid 2px black;
   margin-bottom: 10px;
 }
 
@@ -66,6 +67,7 @@
 }
 input[type="file"] {
   vertical-align: middle;
+  display: none;
   height: 22px;
   width: 80%;
   margin-right: 6px;
