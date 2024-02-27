@@ -39,7 +39,7 @@ function PersonalStatistics() {
   }, []);
 
   const chartdata = {
-    labels: ["펀드 참여 횟수", "펀드 참여 금액", "펀드 정산 금액"],
+    labels: ["챌린지 참여 횟수", "챌린지 참여 금액", "챌린지 정산 금액"],
     datasets: [
       {
         label: "max",

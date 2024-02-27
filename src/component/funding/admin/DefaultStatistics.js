@@ -29,29 +29,29 @@ function DefaultStatistics() {
             <span className="redtext">{Math.round(data.avgSettlement)}</span>원
           </p>
           <p>
-            펀드당 평균 월결제금액 :{" "}
+            챌린지당 평균 월결제금액 :{" "}
             <span className="redtext">
               {Math.round(data.avgMonthlyPayAmount)}
             </span>
             원
           </p>
           <p>
-            완료된 펀드당 평균 총 결제금액 :{" "}
+            완료된 챌린지당 평균 총 결제금액 :{" "}
             <span className="redtext">
               {Math.round(data.avgMonthlyCollected)}
             </span>
             원
           </p>
           <p>
-            이번달 펀드 총 개최 수 :{" "}
+            이번달 챌린지 총 개최 수 :{" "}
             <span className="redtext">{data.monthlyNewFund}</span>개
           </p>
           <p>
-            이번달 펀드 총 참여인원 :{" "}
+            이번달 챌린지 총 참여인원 :{" "}
             <span className="redtext">{data.monthlyMember}</span>명
           </p>
           <p>
-            이번달 펀드 총 금액 :{" "}
+            이번달 챌린지 총 금액 :{" "}
             <span className="redtext">{data.monthlyPay}</span>원
           </p>
         </div>
