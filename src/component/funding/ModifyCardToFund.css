@@ -26,3 +26,27 @@
 
   font-weight: 700;
 }
+
+.modify_cardinfo {
+  margin-top: 40px;
+}
+
+.card_selbtn {
+  font-size: 14px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 20px;
+  min-width: 64px;
+  border: 2px solid #ff4742;
+  color: #fff !important;
+  margin: 10px 15px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ff4742;
+  width: 91%;
+}
