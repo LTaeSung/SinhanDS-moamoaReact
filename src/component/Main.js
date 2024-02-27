@@ -28,6 +28,7 @@ function Main() {
 
   return (
     <>
+      <EmptyHeader />
       <div className="sub">
         <div className="size">
           <img id="main_dragon" src={`${commonImagePath}dragon.png`} alt="" />

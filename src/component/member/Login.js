@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../moamoalogo.png";
 import "./Login.css";
+import EmptyHeader from "./../../EmptyHeader";
 function Login() {
   const { reactpath } = useContext(ReactPath);
   const NAVER_CLIENT_ID = "CdK5qEW_eg3VAa_uRt9l"; // 발급받은 클라이언트 아이디
@@ -49,6 +50,8 @@ function Login() {
           </Link>
         </div>
       </div>
+      <EmptyHeader />
+      <EmptyHeader />
     </>
   );
 }
