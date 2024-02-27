@@ -9,6 +9,7 @@
 
 #fundinginfo_ {
   font-size: 16px;
+  width: 360px;
 }
 
 .fundingTitle {
@@ -68,6 +69,7 @@
 #fundinginfo_description {
   font-size: 16px;
   font-weight: 700;
+  width: 360px;
 }
 
 #comment_textarea {
