@@ -9,9 +9,12 @@
   margin-top: 40px;
 }
 #main_dragon {
-  width: 350px;
-  height: 200px;
-  margin-left: 25px;
+  width: 90%;
+  height: auto; /*to preserve the aspect ratio of the image*/
+  /* width: 350px;
+  height: 200px; */
+  margin-left: 5%;
+  display: flex;
 }
 
 .icon_container {
@@ -20,6 +23,7 @@
   display: flex;
 
   margin-left: 20px;
+  margin-top: 25px;
 }
 
 /*중간 아이콘 메뉴 생성*/
@@ -182,7 +186,7 @@
 }
 
 #main_btn {
-  margin-left: 6px;
-  width: 390px;
+  margin-left: 2.5%;
+  width: 95%;
   display: flex;
 }
