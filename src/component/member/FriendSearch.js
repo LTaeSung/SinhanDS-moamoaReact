@@ -93,9 +93,9 @@ function SearchMember() {
                   <li key={member.no}>
                     <div className="user_searched_container">
                       <div className="photo_range">
-                        <div className="user_frame">
+                        <div className="friend_frame">
                           <img
-                            className="user_image"
+                            className="friend_image"
                             src={
                               member.photo != null
                                 ? `${registedImagePath}${member.photo}`
