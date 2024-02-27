@@ -42,7 +42,7 @@ function PlusPoint() {
       <div className="sub">
         <div className="size">
           <div className="space_container"></div>
-          <h3 className="sub_title">포인트 충전하기</h3>
+          <h3 className="sub_title_pluspoint">포인트 충전하기</h3>
           <div className="space_container"></div>
 
           <div className="cash_container">

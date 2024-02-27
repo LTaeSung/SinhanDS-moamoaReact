@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import CommonImagePath from "../../commonImagePath";
 import axios from "axios";
 import $ from "jquery";
+import "./Accept.css";
 function Accept({ fundingMemberNo, fundingNo }) {
   const { commonImagePath } = useContext(CommonImagePath);
   const location = useLocation();
@@ -13,7 +14,27 @@ function Accept({ fundingMemberNo, fundingNo }) {
   const member_no = sessionStorage.getItem("no");
   const navigate = useNavigate();
   const [payment, setPayment] = useState([]);
-  const bankList = ["없음", "신한", "농협", "국민", "우리"];
+  const bankList = [
+    "없음",
+    "신한",
+    "KEB하나",
+    "SC제일",
+    "국민",
+    "외환",
+    "우리",
+    "한국시티",
+    "농협",
+    "기업",
+    "수협",
+    "경남",
+    "광주",
+    "대구",
+    "부산",
+    "전북",
+    "제주",
+    "한국산업",
+    "한국수출입",
+  ];
 
   useEffect(() => {
     const fetchPaymentList = async () => {
@@ -30,6 +51,22 @@ function Accept({ fundingMemberNo, fundingNo }) {
     fetchPaymentList();
   }, []);
 
+  const changeRadio = (e) => {
+    console.log($(e.target).data("no"));
+    let data_no = $(e.target).data("no");
+    let target = $("input").map((i, e) => {
+      if ($(e).data("no") == data_no) return e;
+    });
+
+    $('input[name="inputBox"]').each(function () {
+      $(this).prop("checked", false);
+    });
+    $(target).prop("checked", true);
+    changePaymentNo($(e.target).data("no"));
+  };
+  const changePaymentNo = (no) => {
+    setSelect({ ...select, payment_no: no });
+  };
   const [select, setSelect] = useState({
     fundingMemberNo: location.state.fundingMemberNo,
   });
@@ -51,6 +88,7 @@ function Accept({ fundingMemberNo, fundingNo }) {
       }
     });
   };
+
   return (
     <>
       <FundingHeader />
@@ -58,7 +96,7 @@ function Accept({ fundingMemberNo, fundingNo }) {
         <div className="size">
           <h3 className="sub_title">결제카드 선택</h3>
 
-          <div>
+          <div className="accept_fundcard">
             <>
               {payment.filter((payment) => payment.paymenttype === 1).length >
               0 ? (
@@ -67,21 +105,33 @@ function Accept({ fundingMemberNo, fundingNo }) {
                     {payment
                       .filter((payment) => payment.paymenttype === 1) // 카드만 필터
                       .map((payment, i) => (
-                        <li key={i}>
-                          <input
-                            name="inputBox"
-                            id={i}
-                            type="radio"
-                            value={payment.no}
-                            onChange={handleRadioButton}
-                          />
-                          <p>카드사명: {bankList[payment.company]}</p>
-                          <p>카드번호: {payment.account}</p>
+                        <li key={payment.no}>
+                          <div id="card">
+                            <div
+                              className="tempCard"
+                              data-no={payment.no}
+                              onClick={changeRadio}
+                            >
+                              <input
+                                id="inputBox_actf"
+                                name="inputBox"
+                                data-no={payment.no}
+                                type="radio"
+                                value={payment.no}
+                              ></input>
+                              <p id="card_name_actf" data-no={payment.no}>
+                                {bankList[payment.company]}카드
+                              </p>
+                              <p id="card_num_actf" data-no={payment.no}>
+                                {payment.account}
+                              </p>
+                            </div>
+                          </div>
                         </li>
                       ))}
                   </ul>
                   <div>
-                    <button className="btn" onClick={submit}>
+                    <button className="card_selbtn" onClick={submit}>
                       카드 선택
                     </button>
                   </div>

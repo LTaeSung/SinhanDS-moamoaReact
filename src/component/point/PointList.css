@@ -10,9 +10,8 @@
 .ul_line {
   border-bottom: 1px solid #e5e5e5;
 }
-.sub_title {
+.sub_title_point {
   font-size: 27px;
-  margin-left: 30px;
   text-align: center;
 }
 .selectBox_container {

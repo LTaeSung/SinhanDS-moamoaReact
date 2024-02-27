@@ -15,7 +15,7 @@
 }
 
 .cash_font {
-  width: 200px;
+  width: 250px;
   font-size: 15px;
   font-weight: 700;
   margin-top: 10px;
@@ -45,6 +45,7 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   margin-left: 22px;
+  margin-top: 10px;
 }
 
 .acc_container {
@@ -64,19 +65,23 @@
 }
 
 .min_money {
+  font-size: 14px;
+  text-decoration: none !important;
+  white-space: nowrap;
   display: inline-block;
-  outline: 0;
-  border-radius: 4px;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 20px;
+  min-width: 64px;
   border: 2px solid #ff4742;
-  color: #fff;
-  background-color: #ff4742;
+  color: #fff !important;
+  margin: 10px 15px;
   text-align: center;
-  font-weight: 700;
-  font-size: 15px;
-  width: 350px;
-  height: 35px;
-  margin-left: 20px;
-  margin-bottom: 7px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ff4742;
+  width: 91%;
 }
 
 /* 카드 정보 란 */
@@ -88,4 +93,18 @@
 
 .tempCard {
   height: 100%;
+}
+
+#bank {
+  margin-left: 15px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid gray;
+  width: 360px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+.bank_infos {
+  margin-top: 20px;
 }
