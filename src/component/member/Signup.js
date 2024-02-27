@@ -33,7 +33,6 @@ function Signup() {
 
   return (
     <>
-      <MemberHeader />
       <div className="sub">
         <div className="size">
           <h3 className="sub_title">회원가입</h3>

@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import BootPath from "../../BootPath";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import CommonImagePath from "../../commonImagePath";
 import axios from "axios";
 import $ from "jquery";
 import "./AddCardToFund.css";
 function AddCardToFund({ onSelectCard }) {
+  const { commonImagePath } = useContext(CommonImagePath);
   const location = useLocation();
   const { bootpath } = useContext(BootPath);
   const member_no = sessionStorage.getItem("no");
@@ -92,12 +94,22 @@ function AddCardToFund({ onSelectCard }) {
               </ul>
             </>
           ) : (
-            <p>
-              등록된 카드가 없습니다. 카드를 추가해주세요.{" "}
+            <>
               <Link to={`/member/payment/card/add?link=${location.pathname}`}>
-                카드 추가
+                <div>
+                  <img
+                    className="no_card_search"
+                    src={`${commonImagePath}credit_card.png`}
+                    alt=""
+                    width={100}
+                  />
+                  <div className="no_card_text">
+                    등록된 카드가 없습니다
+                    <br /> 카드를 추가해주세요.
+                  </div>
+                </div>
               </Link>
-            </p>
+            </>
           )}
         </>
       </div>

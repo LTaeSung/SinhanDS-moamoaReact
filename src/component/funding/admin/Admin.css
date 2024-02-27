@@ -25,6 +25,27 @@
   border-radius: 5px;
 }
 
+.adminbtn_black {
+  width: 20%;
+  height: 20px;
+  background-color: #000000;
+  font-size: 14px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 23px 4px 7px;
+  min-width: 30px;
+  border: 2px solid #000000;
+  color: #fff !important;
+  margin: 0 3px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 .sub_title {
   font-size: 25px;
   margin-left: 0px;
