@@ -59,7 +59,7 @@ function AlarmList() {
               </ul>
             ) : (
               <>
-                <div className="space_container_invited"></div>
+                <div className="space_container_invited2"></div>
                 <div>
                   <img
                     className="no_fund_search"
