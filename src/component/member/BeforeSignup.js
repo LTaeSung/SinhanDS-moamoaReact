@@ -26,7 +26,7 @@ const getApi = (params, callbackUrl) => {
       window.location.href = "/login";
     } else {
       // 같은 이메일인 계정이 존재할 경우
-      alert("이미 계정이 존재합니다.");
+      alert("회원가입에 실패하셨습니다.");
       window.location.href = "/login";
     }
   });
