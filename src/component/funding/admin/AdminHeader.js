@@ -8,11 +8,7 @@ const AdminHeader = () => {
           초대 기간 만료
         </Link>
         <Link className="adminbtn_black" to="/admin/setStatus2">
-<<<<<<< HEAD
-          챌린지 기간 만료
-=======
           결제 기간 만료
->>>>>>> 0de9770e1f46512ca5d1a4af30c92749f23aeaad
         </Link>
         <Link className="adminbtn_black" to="/admin/setStatus3">
           투표 기간 만료
