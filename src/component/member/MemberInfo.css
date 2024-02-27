@@ -138,6 +138,29 @@
   border-radius: 200px;
 }
 
+/* 프로필 사진 액자 */
+.member_info_image_frame {
+  display: inline-block;
+  position: relative; /* 상대 위치 설정 */
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 200px;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.member_info_image {
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 부모 요소의 상단으로부터 50% 위치 */
+  left: 50%; /* 부모 요소의 왼쪽으로부터 50% 위치 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 200px;
+}
 .changeImage {
   margin-left: 37px;
   color: gray;

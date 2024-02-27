@@ -177,7 +177,6 @@ function MakeFunding() {
                 <td rowSpan="5">
                   <div class="info_frame" id="info_frame">
                     <img
-                      className="info_image"
                       id="info_image"
                       onClick={handleImageClick}
                       src={uploadedImageUrl || `${registedImagePath}`}

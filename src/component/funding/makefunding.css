@@ -20,9 +20,9 @@
   display: inline-block;
   border: 2px solid #ccc;
   border-radius: 5px;
-  width: 340px;
+  width: 337px;
   margin-top: 8px;
-  margin-left: 8px;
+  margin-right: 30px;
 }
 
 #info_image {
@@ -76,12 +76,14 @@ input[type="file"] {
 /*마감일 태그*/
 .finish_date {
   margin-top: 8px;
+  margin-left: 20px;
   text-align: center;
   width: 100%;
 }
 /*결제금액 태그*/
 .payamount {
   margin-top: 8px;
+  margin-left: 20px;
   width: 100%;
 }
 
@@ -96,6 +98,7 @@ input[type="file"] {
 
 .paydate {
   margin-top: 8px;
+  margin-left: 20px;
   width: 100%;
 }
 #dateinput {
