@@ -1,13 +1,15 @@
 @charset "UTF-8";
 
 .footer {
-  margin-top: -120px;
-  height: 120px;
+  padding-left: 15px;
   background-color: #efefef;
-  width: 370px;
-  padding-left: 30px;
-  padding-top: 15px;
   color: #2f3134;
+  height: 135px;
+}
+#footer_title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .footer > p {

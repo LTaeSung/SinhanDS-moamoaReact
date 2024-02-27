@@ -5,8 +5,8 @@ import { useContext } from "react";
 import axios from "axios";
 import CommonImagePath from "../commonImagePath";
 import { Link, NavLink } from "react-router-dom";
-import EmptyHeader from "./../EmptyHeader";
 import "./main.css";
+import EmptyHeader from "./../EmptyHeader";
 import Footer from "./Footer";
 
 function Main() {
@@ -28,9 +28,12 @@ function Main() {
 
   return (
     <>
+      <EmptyHeader />
       <div className="sub">
         <div className="size">
-          <img id="main_dragon" src={`${commonImagePath}dragon.png`} alt="" />
+          <div className="main_image_container">
+            <img id="main_dragon" src={`${commonImagePath}dragon.png`} alt="" />
+          </div>
 
           <div className="icon_container">
             <div
@@ -63,7 +66,7 @@ function Main() {
               <p className="icon_textlane_cancel">주최한 챌린지</p>
             </div>
           </div>
-          <hr id="hr"></hr>
+
           <div className="statistic_main">
             <div className="challenge_ALL">
               <div className="iconic_moment">
@@ -113,17 +116,15 @@ function Main() {
               </div>
             </div>
           </div>
-          <div id="main_btn">
-            <Link id="goBoard" to={"/board/list"}>
-              <p id="board_text">공지사항</p>
-            </Link>
-            <Link id="goQna" to={"/board/qna/list"}>
-              <p id="board_text">자유게시판</p>
-            </Link>
-          </div>
         </div>
-        <Footer />
+        <Link id="goBoard" to={"/board/list"}>
+          <p id="board_text">공지사항</p>
+        </Link>
+        <Link id="goQna" to={"/board/qna/list"}>
+          <p id="board_text">자유게시판</p>
+        </Link>
       </div>
+      <Footer />
     </>
   );
 }
