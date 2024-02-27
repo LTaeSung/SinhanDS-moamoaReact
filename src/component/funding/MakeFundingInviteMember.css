@@ -7,27 +7,26 @@
 }
 
 #invite_btns {
+  margin-left: 240px;
+  margin-top: 3px;
 }
 
 .friend_list_one {
+  width: 80%;
   margin-top: 30px;
+  margin-left: 15px;
 }
 
 .friend_name {
-  width: 20%;
+  width: 200%;
   display: inline;
   float: left;
   margin-top: 3px;
-  margin-left: 100px;
+  margin-left: 80px;
   margin-right: 80px;
+  font-size: 15px;
 }
 
 .friend_image {
   float: left;
-}
-
-.invite_btns {
-  width: 35%;
-  clear: both;
-  margin-top: 4px;
 }

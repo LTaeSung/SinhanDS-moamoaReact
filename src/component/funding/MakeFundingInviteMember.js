@@ -89,22 +89,24 @@ function MakeFundingInviteMember({ state }) {
                 {data.map((Data) => (
                   <li key={Data.no} className="friend_list_one">
                     {" "}
-                    <img
-                      className="friend_image"
-                      src={
-                        Data.friend.photo != null
-                          ? `${registedImagePath}${Data.friend.photo}`
-                          : `${commonImagePath}header_Profile.png`
-                      }
-                      alt="프로필 사진"
-                    />
-                    <div className="friend_name">{Data.friend.name}</div>
-                    <div id="invite_btns">
-                      <input
-                        type="checkbox"
-                        id={Data.friend.no}
-                        onChange={addFriend}
+                    <div className="friend_frame">
+                      <img
+                        className="friend_image"
+                        src={
+                          Data.friend.photo != null
+                            ? `${registedImagePath}${Data.friend.photo}`
+                            : `${commonImagePath}header_Profile.png`
+                        }
+                        alt="프로필 사진"
                       />
+                      <div className="friend_name">{Data.friend.name}</div>
+                      <div id="invite_btns">
+                        <input
+                          type="checkbox"
+                          id={Data.friend.no}
+                          onChange={addFriend}
+                        />
+                      </div>
                     </div>
                   </li>
                 ))}

@@ -56,7 +56,6 @@ const MyLogin = () => {
           </Link>
           <hr className="line"></hr>
           <br />
-          <Login />
         </div>
       </div>
     </>

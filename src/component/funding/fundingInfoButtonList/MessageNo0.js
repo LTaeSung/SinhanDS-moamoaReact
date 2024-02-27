@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const MessageNo0 = ({ obj }) => {
   const { bootpath } = useContext(BootPath);
   const refuse = async (e) => {
+    window.confirm("펀드 초대를 거부합니다.");
     let param = {};
     param = { no: e.target.id };
 
