@@ -62,22 +62,6 @@
   margin-left: 25px;
 }
 
-/* 프로필 사진 액자 */
-.user_frame {
-  display: inline-block;
-  border: 2px solid #ccc;
-  padding: 10px;
-  border-radius: 200px;
-}
-
-.user_image {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 200px;
-}
-
 .nameEmail {
   width: 170px;
   font-size: 15px;
