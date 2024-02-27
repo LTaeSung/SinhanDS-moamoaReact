@@ -5,13 +5,13 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { da, id } from "date-fns/locale";
-
+import CommonImagePath from "../../commonImagePath";
 import $ from "jquery";
 import "./MinusPoint.css";
 
 function MinusPoint() {
   const { bootpath } = useContext(BootPath);
-
+  const { commonImagePath } = useContext(CommonImagePath);
   const [minusPoint, setMinusPoint] = useState({
     amount: "",
   });
@@ -188,21 +188,36 @@ function MinusPoint() {
                               }
                             />
                           </div>
+                          <button
+                            className="min_money"
+                            onClick={requestPayBack}
+                          >
+                            인출하기
+                          </button>
                         </div>
                       </li>
                     ))}
                 </ul>
               ) : (
-                <p>
-                  등록된 계좌가 없습니다. 계좌를 추가해주세요.{" "}
-                  <Link to="/member/payment/account/add">계좌 추가</Link>
-                </p>
+                <>
+                  <Link to={`/member/payment/account/add`}>
+                    <div>
+                      <img
+                        className="no_card_search"
+                        src={`${commonImagePath}bank_account.png`}
+                        alt=""
+                        width={100}
+                      />
+                      <div className="no_card_text">
+                        등록된 계좌가 없습니다
+                        <br /> 계좌를 새로 등록해보세요!
+                      </div>
+                    </div>
+                  </Link>
+                </>
               )}
             </>
           </div>
-          <button className="min_money" onClick={requestPayBack}>
-            인출하기
-          </button>
         </div>
       </div>
     </>
