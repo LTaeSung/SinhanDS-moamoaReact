@@ -65,7 +65,7 @@ function AddAccountList() {
       e.preventDefault();
       return;
     } else if (formData.account.length < 10 || formData.account.length > 14) {
-      alert("계좌번호를 형식에 맞체 입력해주세요.");
+      alert("계좌번호를 형식에 맞게 입력해주세요.");
       e.preventDefault();
       return;
     }
@@ -133,14 +133,17 @@ function AddAccountList() {
               <br />
               <br />
               계좌 번호
+              <br />
               <input
-                type="number"
+                type="text"
+                pattern="\d*"
                 name="account"
                 className="input_lane"
                 value={formData.account}
                 onChange={handleInputChange}
-                placeholder="'-'는 제외하고 숫자만 입력"
-                min={0}
+                placeholder="'-'와 공백은 제외하고 숫자만 입력"
+                maxLength="14"
+                minLength="10"
               />
               <br />
             </div>
