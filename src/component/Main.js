@@ -64,7 +64,7 @@ function Main() {
               <p className="icon_textlane_cancel">주최한 챌린지</p>
             </div>
           </div>
-          <hr id="hr"></hr>
+          <hr id="main_hr"></hr>
           <div className="statistic_main">
             <div className="challenge_ALL">
               <div className="iconic_moment">
