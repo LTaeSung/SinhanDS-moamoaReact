@@ -36,3 +36,31 @@
 
   font-weight: 700;
 }
+
+#inputBox_actf {
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  margin-top: 24px;
+}
+
+#card_name_actf {
+  float: left;
+  margin-left: 8px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  margin-top: 18px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#card_num_actf {
+  float: left;
+  margin-left: 8px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  margin-top: 18px;
+  font-weight: bold;
+  font-size: 15px;
+}
