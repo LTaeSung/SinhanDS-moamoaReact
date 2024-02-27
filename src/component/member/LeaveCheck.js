@@ -56,7 +56,7 @@ function LeaveCheck() {
           <Link className="leave_btn" onClick={goLeave}>
             탈퇴
           </Link>
-          <Link className="leave_btn" onClick={goBack}>
+          <Link className="leave_btn_black" onClick={goBack}>
             아니오
           </Link>
         </div>
