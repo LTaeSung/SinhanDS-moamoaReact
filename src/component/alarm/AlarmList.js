@@ -5,9 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Alarmlist.css";
 import EmptyHeader from "./../../EmptyHeader";
+import CommonImagePath from "../../commonImagePath";
 
 function AlarmList() {
   const { bootpath } = useContext(BootPath);
+  const { commonImagePath } = useContext(CommonImagePath);
   const member_no = sessionStorage.getItem("no");
   const [totalElement, setTotalElement] = useState(0);
   const [data, setData] = useState([]);
@@ -56,7 +58,26 @@ function AlarmList() {
                   ))}
               </ul>
             ) : (
-              <>없어용</>
+              <>
+                <div className="space_container_invited"></div>
+                <div>
+                  <img
+                    className="no_fund_search"
+                    src={`${commonImagePath}header_bell.png`}
+                    alt=""
+                    width={100}
+                  />
+                  <div className="space_container_invited"></div>
+                  <div className="no_fund_text">
+                    알림 내역이 없습니다.
+                    <br /> 새로운 펀드를 만들어보세요!
+                  </div>
+                </div>
+                <Link id="go_make_fund" to="/funding/make">
+                  펀드 만들기
+                </Link>
+                <div className="space_container_invited2"></div>
+              </>
             )}
           </div>
         </div>
