@@ -223,7 +223,7 @@ function AddCardList() {
                 id="addcard_limitnum"
                 value={formData.validdate_month}
                 onChange={handleInputChange}
-                placeholder="00"
+                placeholder="MM"
                 maxLength="2"
               />
               <input
@@ -233,7 +233,7 @@ function AddCardList() {
                 id="addcard_limitnum"
                 value={formData.validdate_year}
                 onChange={handleInputChange}
-                placeholder="00"
+                placeholder="YY"
                 maxLength="2"
               />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
