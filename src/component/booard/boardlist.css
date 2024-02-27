@@ -151,7 +151,7 @@ button {
   text-align: left;
 }
 #qna_content {
-  white-space: pre;
+  white-space: pre-wrap;
   margin-left: 8px;
   margin-bottom: 2px;
   border-radius: 5px;
@@ -163,7 +163,7 @@ button {
 .qna_content_area {
   margin-left: 8px;
   margin-right: 8px;
-  white-space: pre;
+  white-space: pre-wrap;
   max-width: 360px;
 }
 
@@ -200,7 +200,7 @@ button {
   margin-right: 10px;
 }
 #qna_reply_content {
-  white-space: pre;
+  white-space: pre-wrap;
   margin-left: 8px;
   min-width: 340px;
   min-height: 50px;
@@ -273,7 +273,7 @@ button {
   font-size: 10px;
 }
 #board_detail_content {
-  white-space: pre;
+  white-space: pre-wrap;
   margin-left: 8px;
   margin-bottom: 2px;
   border-radius: 5px;
@@ -299,7 +299,7 @@ button {
   margin-left: 8px;
 }
 #boardnew_content {
-  white-space: pre;
+  white-space: pre-wrap;
   margin-left: 8px;
   margin-bottom: 2px;
   border-radius: 5px;
