@@ -148,56 +148,59 @@ function MinusPoint() {
             onChange={onChangeAmount}
           />
 
-          <div>
+          <div className="bank_infos">
             <>
               {payment.filter((payment) => payment.paymenttype === 0).length >
               0 ? (
-                <ul>
-                  {payment
-                    .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
-                    .map((payment, i) => (
-                      <li key={payment.no}>
-                        <div id="card">
-                          <div
-                            className="tempCard"
-                            data-no={payment.no}
-                            value={payment.company + "_" + payment.account}
-                            onClick={changeRadio}
-                          >
-                            <p
+                <>
+                  <ul>
+                    {payment
+                      .filter((payment) => payment.paymenttype === 0) // 계좌만 필터
+                      .map((payment, i) => (
+                        <li key={payment.no}>
+                          <div id="bank">
+                            <div
+                              className="tempCard"
                               data-no={payment.no}
                               value={payment.company + "_" + payment.account}
+                              onClick={changeRadio}
                             >
-                              은행명: {bankList[payment.company]}
-                            </p>
-                            <p
-                              data-no={payment.no}
-                              value={payment.company + "_" + payment.account}
-                            >
-                              계좌번호: {payment.account}
-                            </p>
-                            <input
-                              id="inputBox"
-                              name="inputBox"
-                              data-no={payment.no}
-                              type="radio"
-                              value={payment.company + "_" + payment.account}
-                              checked={
-                                select.merchant_id ===
-                                payment.company + "_" + payment.account
-                              }
-                            />
+                              <input
+                                id="inputBox_actf"
+                                name="inputBox"
+                                data-no={payment.no}
+                                type="radio"
+                                value={payment.company + "_" + payment.account}
+                                checked={
+                                  select.merchant_id ===
+                                  payment.company + "_" + payment.account
+                                }
+                              />
+                              <p
+                                id="card_name_actf"
+                                data-no={payment.no}
+                                value={payment.company + "_" + payment.account}
+                              >
+                                {bankList[payment.company]}은행
+                              </p>
+                              <p
+                                id="card_num_actf"
+                                data-no={payment.no}
+                                value={payment.company + "_" + payment.account}
+                              >
+                                {payment.account}
+                              </p>
+                            </div>
                           </div>
-                          <button
-                            className="min_money"
-                            onClick={requestPayBack}
-                          >
-                            인출하기
-                          </button>
-                        </div>
-                      </li>
-                    ))}
-                </ul>
+                        </li>
+                      ))}
+                  </ul>
+                  <div>
+                    <button className="min_money" onClick={requestPayBack}>
+                      인출하기
+                    </button>
+                  </div>
+                </>
               ) : (
                 <>
                   <Link to={`/member/payment/account/add`}>

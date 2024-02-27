@@ -94,12 +94,6 @@ function AddCardToFund({ onSelectCard }) {
                           data-no={payment.no}
                           onClick={changeRadio}
                         >
-                          <p id="card_name_actf" data-no={payment.no}>
-                            {bankList[payment.company]}카드
-                          </p>
-                          <p id="card_num_actf" data-no={payment.no}>
-                            {payment.account}
-                          </p>
                           <input
                             id="inputBox_actf"
                             name="inputBox"
@@ -107,6 +101,12 @@ function AddCardToFund({ onSelectCard }) {
                             type="radio"
                             value={payment.no}
                           ></input>
+                          <p id="card_name_actf" data-no={payment.no}>
+                            {bankList[payment.company]}카드
+                          </p>
+                          <p id="card_num_actf" data-no={payment.no}>
+                            {payment.account}
+                          </p>
                         </div>
                       </div>
                     </li>

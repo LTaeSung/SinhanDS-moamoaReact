@@ -69,6 +69,29 @@ function ModifyCardToFund() {
         }
       });
   };
+
+  const bankList = [
+    "없음",
+    "신한",
+    "KEB하나",
+    "SC제일",
+    "국민",
+    "외환",
+    "우리",
+    "한국시티",
+    "농협",
+    "기업",
+    "수협",
+    "경남",
+    "광주",
+    "대구",
+    "부산",
+    "전북",
+    "제주",
+    "한국산업",
+    "한국수출입",
+  ];
+
   return (
     <>
       <FundingHeader />
@@ -76,7 +99,7 @@ function ModifyCardToFund() {
         <div className="size">
           <h3 className="sub_title">결제정보 수정하기</h3>
 
-          <div>
+          <div className="modify_cardinfo">
             <>
               {payment.filter((payment) => payment.paymenttype === 1).length >
               0 ? (
@@ -93,19 +116,17 @@ function ModifyCardToFund() {
                               onClick={changeRadio}
                             >
                               <input
+                                id="inputBox_actf"
                                 name="inputBox"
                                 data-no={payment.no}
-                                id={payment.no}
                                 type="radio"
                                 value={payment.no}
-                                onChange={handleRadioButton}
-                                onClick={changeRadio}
-                              />
-                              <p data-no={payment.no} onClick={changeRadio}>
-                                카드사명: {payment.company}
+                              ></input>
+                              <p id="card_name_actf" data-no={payment.no}>
+                                {bankList[payment.company]}카드
                               </p>
-                              <p data-no={payment.no} onClick={changeRadio}>
-                                카드번호: {payment.account}
+                              <p id="card_num_actf" data-no={payment.no}>
+                                {payment.account}
                               </p>
                             </div>
                           </div>
@@ -113,7 +134,7 @@ function ModifyCardToFund() {
                       ))}
                   </ul>
                   <div>
-                    <button className="btn" onClick={submit}>
+                    <button className="card_selbtn" onClick={submit}>
                       카드 선택
                     </button>
                   </div>
