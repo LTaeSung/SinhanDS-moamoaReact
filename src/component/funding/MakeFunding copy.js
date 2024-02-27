@@ -89,7 +89,7 @@ function MakeFunding() {
       <FundingHeader />
       <div className="sub">
         <div className="size">
-          <h3 className="sub_title">펀드 생성</h3>
+          <h3 className="sub_title">챌린지 생성</h3>
 
           <div>
             <input

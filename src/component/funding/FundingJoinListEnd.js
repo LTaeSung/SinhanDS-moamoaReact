@@ -104,12 +104,13 @@ const FundingJoinListEnd = ({ render, setRender }) => {
               />
               <div className="space_container_invited"></div>
               <div className="no_fund_text">
-                참여했던 펀드가 없습니다.
-                <br /> 펀드를 새로 만들어보세요!
+                참여했던 챌린지가 없습니다.
+                <br /> 챌린지를 새로 만들어보세요!
               </div>
             </div>
-            <Link id="go_make_fund" to="/funding/make">
-              펀드 만들기
+
+            <Link id="go_make_fund_end" to="/funding/make">
+              챌린지 만들기
             </Link>
             <div className="space_container_invited2"></div>
           </>

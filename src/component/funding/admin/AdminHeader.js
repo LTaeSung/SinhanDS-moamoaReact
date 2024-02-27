@@ -8,7 +8,7 @@ const AdminHeader = () => {
           초대 기간 만료
         </Link>
         <Link className="adminbtn_black" to="/admin/setStatus2">
-          펀드 기간 만료
+          결제 기간 만료
         </Link>
         <Link className="adminbtn_black" to="/admin/setStatus3">
           투표 기간 만료

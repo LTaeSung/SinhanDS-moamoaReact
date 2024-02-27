@@ -70,11 +70,11 @@ function AlarmList() {
                   <div className="space_container_invited"></div>
                   <div className="no_fund_text">
                     알림 내역이 없습니다.
-                    <br /> 새로운 펀드를 만들어보세요!
+                    <br /> 새로운 챌린지를 만들어보세요!
                   </div>
                 </div>
                 <Link id="go_make_fund" to="/funding/make">
-                  펀드 만들기
+                  챌린지 만들기
                 </Link>
                 <div className="space_container_invited2"></div>
               </>
