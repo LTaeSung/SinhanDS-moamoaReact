@@ -15,7 +15,7 @@
 }
 
 .icon_container {
-  width: 400px;
+  width: 370px;
   height: 90px;
   display: flex;
 
@@ -24,17 +24,18 @@
 
 /*중간 아이콘 메뉴 생성*/
 .regist_challenge {
-  width: 130px;
+  margin-left: 15px;
+  width: 110px;
   height: 90px;
 }
 
 .participation_funding {
-  width: 130px;
+  width: 110px;
   height: 90px;
 }
 
 .cancel_funding {
-  width: 130px;
+  width: 110px;
   height: 90px;
 }
 
@@ -114,7 +115,7 @@
 }
 
 .chall_text {
-  width: 350px;
+  width: 210px;
   font-size: 20px;
   font-weight: 900;
   margin-bottom: 10px;
@@ -152,9 +153,9 @@
   outline: 0;
   color: #fff;
   background-color: #4b5564;
-  width: 198px;
+  width: 196px;
   height: 50px;
-  float: left;
+
   margin-top: 20px;
 }
 
@@ -163,10 +164,10 @@
   outline: 0;
   color: #fff;
   background-color: #4b5564;
-  width: 198px;
+  width: 196px;
   height: 50px;
-  float: right;
   margin-top: 20px;
+  margin-left: 3px;
 }
 
 #board_text {
@@ -178,4 +179,10 @@
 }
 .goQnA {
   width: 50%;
+}
+
+#main_btn {
+  margin-left: 6px;
+  width: 390px;
+  display: flex;
 }
