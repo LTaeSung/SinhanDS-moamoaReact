@@ -35,7 +35,7 @@ const MessageNo6 = ({ obj }) => {
   };
   return (
     <>
-      <button className="btn" onClick={doSettlement}>
+      <button className="settle_btn" onClick={doSettlement}>
         {obj.willsettlementamount}원 정산받기
       </button>
     </>

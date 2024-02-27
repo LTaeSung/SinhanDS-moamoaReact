@@ -167,10 +167,42 @@
   margin-top: 4px;
 }
 
+#text_message_inviting {
+  color: #ff4742;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 330px;
+}
+
 #text_message {
   color: #ff4742;
   font-size: 16px;
   font-weight: 700;
+}
+
+#text_message_giveup {
+  color: #ff4742;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 330px;
+}
+
+#text_message_voting {
+  color: #ff4742;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 330px;
+}
+
+#text_message_settling {
+  color: #ff4742;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 330px;
 }
 
 #member {
@@ -189,4 +221,24 @@
 
 .funding_info_btns {
   margin-left: 12px;
+}
+
+.settle_btn {
+  font-size: 14px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 20px;
+  min-width: 64px;
+  border: 2px solid #ff4742;
+  color: #fff !important;
+  margin-left: 18px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ff4742;
+  width: 80%;
 }
