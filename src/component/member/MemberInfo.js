@@ -79,19 +79,22 @@ function MemberInfo() {
       <div className="space_container"></div>
       <div className="user_info_container">
         <div className="profile_image_zone">
-          <div className="info_frame">
+          <div className="member_info_image_frame">
             {data && (
-              <img
-                className="info_image"
-                onClick={handleImageClick}
-                src={
-                  data.photo
-                    ? uploadedImageUrl || `${registedImagePath}${data.photo}`
-                    : uploadedImageUrl || `${commonImagePath}header_Profile.png`
-                }
-                width="100"
-                alt=""
-              />
+              <div className="info_image_frame">
+                <img
+                  className="member_info_image"
+                  onClick={handleImageClick}
+                  src={
+                    data.photo
+                      ? uploadedImageUrl || `${registedImagePath}${data.photo}`
+                      : uploadedImageUrl ||
+                        `${commonImagePath}header_Profile.png`
+                  }
+                  width="100"
+                  alt=""
+                />
+              </div>
             )}
             <input
               id="fileInput"

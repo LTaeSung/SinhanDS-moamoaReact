@@ -97,6 +97,23 @@ function AddCardList() {
       alert("유효 기간을 양식에 맞춰 입력해주세요.");
       e.preventDefault();
       return;
+    } else if (
+      formData.validdate_month != "01" &&
+      formData.validdate_month != "02" &&
+      formData.validdate_month != "03" &&
+      formData.validdate_month != "04" &&
+      formData.validdate_month != "05" &&
+      formData.validdate_month != "06" &&
+      formData.validdate_month != "07" &&
+      formData.validdate_month != "08" &&
+      formData.validdate_month != "09" &&
+      formData.validdate_month != "10" &&
+      formData.validdate_month != "11" &&
+      formData.validdate_month != "12"
+    ) {
+      alert("1월 ~ 12월 이내의 유효기간을 입력해주세요.");
+      e.preventDefault();
+      return;
     } else if (formData.cvc.length !== 3) {
       alert(
         "cvc번호를 양식에 맞춰 입력해주세요(cvc는 카드 뒷면에 적힌 번호 맨 뒤 세자리입니다.)"

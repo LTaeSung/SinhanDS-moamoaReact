@@ -147,6 +147,7 @@ function InvitedFunding() {
                   <br /> 챌린지를 새로 만들어보세요!
                 </div>
               </div>
+
               <Link id="go_make_fund_invited" to="/funding/make">
                 챌린지 만들기
               </Link>
