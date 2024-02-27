@@ -39,13 +39,13 @@ function AddCardList() {
     memberno: member_no,
     paymenttype: 1, //카드인경우 type이 1
     company: "",
-    account1: "0000",
-    account2: "0000",
-    account3: "0000",
-    account4: "0000",
+    account1: "",
+    account2: "",
+    account3: "",
+    account4: "",
     account: "",
-    validdate_month: "01",
-    validdate_year: "24",
+    validdate_month: "",
+    validdate_year: "",
     validdate: "",
     cvc: "",
   });
@@ -165,38 +165,50 @@ function AddCardList() {
                 </select>
                 <br />
                 <br />
-                카드 번호
+                카드 번호 (숫자만 입력)
                 <br />
                 <input
-                  type="number"
+                  type="text"
+                  pattern="\d*"
                   name="account1"
                   id="addcard_num"
                   value={formData.account1}
                   onChange={handleInputChange}
+                  placeholder="0000"
+                  maxLength="4"
                 />{" "}
                 -
                 <input
-                  type="number"
+                  type="text"
+                  pattern="\d*"
                   name="account2"
                   id="addcard_num"
                   value={formData.account2}
                   onChange={handleInputChange}
+                  placeholder="0000"
+                  maxLength="4"
                 />{" "}
                 -
                 <input
-                  type="number"
+                  type="text"
+                  pattern="\d*"
                   name="account3"
                   id="addcard_num"
                   value={formData.account3}
                   onChange={handleInputChange}
+                  placeholder="0000"
+                  maxLength="4"
                 />{" "}
                 -
                 <input
-                  type="number"
+                  type="text"
+                  pattern="\d*"
                   name="account4"
                   id="addcard_num"
                   value={formData.account4}
                   onChange={handleInputChange}
+                  placeholder="0000"
+                  maxLength="4"
                 />
               </div>
               <br />
@@ -205,26 +217,35 @@ function AddCardList() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CVC
               </p>
               <input
-                type="number"
+                type="text"
+                pattern="\d*"
                 name="validdate_month"
                 id="addcard_limitnum"
                 value={formData.validdate_month}
                 onChange={handleInputChange}
+                placeholder="00"
+                maxLength="2"
               />
               <input
-                type="number"
+                type="text"
+                pattern="\d*"
                 name="validdate_year"
                 id="addcard_limitnum"
                 value={formData.validdate_year}
                 onChange={handleInputChange}
+                placeholder="00"
+                maxLength="2"
               />
-              &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input
-                type="number"
+                type="text"
+                pattern="\d*"
                 name="cvc"
                 id="addcard_input"
                 value={formData.cvc}
                 onChange={handleInputChange}
+                placeholder="000"
+                maxLength="3"
               />
               <br />
               <br />

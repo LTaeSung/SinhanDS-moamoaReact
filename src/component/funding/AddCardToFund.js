@@ -47,7 +47,27 @@ function AddCardToFund({ onSelectCard }) {
     setSelect({ payment_no: no });
     onSelectCard(no);
   };
-  const bankList = ["없음", "신한", "농협", "국민", "우리"];
+  const bankList = [
+    "없음",
+    "신한",
+    "KEB하나",
+    "SC제일",
+    "국민",
+    "외환",
+    "우리",
+    "한국시티",
+    "농협",
+    "기업",
+    "수협",
+    "경남",
+    "광주",
+    "대구",
+    "부산",
+    "전북",
+    "제주",
+    "한국산업",
+    "한국수출입",
+  ];
 
   // const submit = () => {
   //   axios.post(bootpath + "/funding/addcard", select, {}).then((res) => {
