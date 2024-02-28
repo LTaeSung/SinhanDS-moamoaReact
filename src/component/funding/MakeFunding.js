@@ -79,7 +79,6 @@ function MakeFunding() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-    console.log(param);
 
     try {
       const response = await fetch({
@@ -116,7 +115,6 @@ function MakeFunding() {
   };
 
   const emptyCheck = (e) => {
-    console.log(param);
     if (
       "title" in param &&
       "monthly_payment_amount" in param &&

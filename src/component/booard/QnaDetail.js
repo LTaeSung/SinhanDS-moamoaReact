@@ -189,8 +189,6 @@ function QnaDetail() {
       const updatedReplies = [...replies];
       const editedReply = updatedReplies[replyIdx];
 
-      console.log("확인" + editedReply.contents + "확인");
-
       //댓글 내용 비어있는지 체크
       if ("contents" in editedReply) {
         if (editedReply.contents.replaceAll(" ", "") === "") {

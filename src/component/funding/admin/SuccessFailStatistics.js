@@ -17,7 +17,6 @@ function SuccessFailStatistics() {
         ` ${bootpath}/statistics/successAndFail`
       );
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

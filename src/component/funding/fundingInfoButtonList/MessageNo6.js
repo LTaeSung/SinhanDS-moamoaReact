@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MessageNo6 = ({ obj }) => {
-  console.log(obj);
   const { bootpath } = useContext(BootPath);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

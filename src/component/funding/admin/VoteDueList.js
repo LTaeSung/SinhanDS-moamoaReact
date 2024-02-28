@@ -11,7 +11,6 @@ function VoteDueList() {
   const getData = async () => {
     try {
       const response = await axios.get(` ${bootpath}/admin/VoteDueList`);
-      setData(response.data);
     } catch (error) {
       console.log(error);
     }

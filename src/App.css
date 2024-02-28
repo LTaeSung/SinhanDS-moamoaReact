@@ -14,8 +14,16 @@
 .header-logo {
   width: 8%;
   height: 30px;
+  margin-left: 0.7%;
+  margin-right: 0.7%;
 }
-
+.iconDiv {
+  margin-left: -1.5%;
+  display: inline;
+}
+.MainUpperDiv {
+  height: 10px;
+}
 html {
   background-color: #e0e0e0;
 }

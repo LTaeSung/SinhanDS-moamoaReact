@@ -76,8 +76,6 @@ function AddAccountList() {
         formData
       );
 
-      console.log("서버 응답:", response.data);
-
       if (response.data.result === "success") {
         // Success인 경우, 계좌 리스트 페이지로 이동
         navigate("/member/info");

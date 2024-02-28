@@ -36,7 +36,6 @@ function ModifyCardToFund() {
     fetchPaymentList();
   }, []);
   const changeRadio = (e) => {
-    console.log($(e.target).data("no"));
     let data_no = $(e.target).data("no");
     let target = $("input").map((i, e) => {
       if ($(e).data("no") == data_no) return e;

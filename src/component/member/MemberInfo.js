@@ -24,7 +24,6 @@ function MemberInfo() {
     if (event.target.files[0] == null) {
       return;
     }
-    console.log(event.target.files[0]);
     setSelectedFile(event.target.files[0]);
     setUploadedImageUrl(URL.createObjectURL(event.target.files[0])); // 업로드된 이미지 URL 설정
     setPostImg("posting");

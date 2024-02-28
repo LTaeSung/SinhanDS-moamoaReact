@@ -7,30 +7,33 @@ function Header() {
   };
   return (
     <div className="main_headerNav">
+      <div className="MainUpperDiv" />
       <button onClick={goToLink} target="/main">
         <img src={logo} className="App-logo" alt="logo" />
       </button>
-      <img
-        className="header-logo"
-        src={"/img/header_bell.png"}
-        onClick={goToLink}
-        target="/alarm"
-        alt="bell"
-      />
-      <img
-        className="header-logo "
-        src={"/img/header_challenge.png"}
-        onClick={goToLink}
-        target="/funding/member/join"
-        alt="challenge"
-      />
-      <img
-        className="header-logo "
-        src={"/img/header_Profile.png"}
-        onClick={goToLink}
-        target="/member/info"
-        alt="profile"
-      />{" "}
+      <div className="iconDiv">
+        <img
+          className="header-logo"
+          src={"/img/header_bell.png"}
+          onClick={goToLink}
+          target="/alarm"
+          alt="bell"
+        />
+        <img
+          className="header-logo "
+          src={"/img/header_challenge.png"}
+          onClick={goToLink}
+          target="/funding/member/join"
+          alt="challenge"
+        />
+        <img
+          className="header-logo "
+          src={"/img/header_Profile.png"}
+          onClick={goToLink}
+          target="/member/info"
+          alt="profile"
+        />
+      </div>
     </div>
   );
 }

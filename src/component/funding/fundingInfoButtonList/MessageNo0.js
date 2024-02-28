@@ -16,7 +16,6 @@ const MessageNo0 = ({ obj }) => {
         window.alert("성공적으로 삭제되었습니다.");
         window.location.href = "/funding/info?no=" + obj.fundingNo;
       } else {
-        console.log(res);
         window.alert("삭제 실패.");
       }
     });
