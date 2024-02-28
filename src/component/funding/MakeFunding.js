@@ -9,6 +9,7 @@ import AddCardToFund from "./AddCardToFund";
 import { useLocation } from "react-router-dom";
 import RegistedImagePath from "../../registedImagePath";
 import "./makefunding.css";
+import "./../member/MemberInfo.css";
 import { data } from "jquery";
 
 function MakeFunding() {
@@ -170,7 +171,7 @@ function MakeFunding() {
             </div>
           </div>
           <div className="imgetag">
-            <table>
+            <table className="img_add_table">
               <tr>
                 <td rowSpan="5">
                   <div class="info_frame" id="info_frame">
@@ -196,7 +197,7 @@ function MakeFunding() {
             <input type="file" id="file" onChange={handleChangeFile}></input>
           </div>
           <div className="finish_date">
-            <p id={"title_tag"}>마감일</p>
+            <p id={"title_tag2"}>마감일</p>
             <Calender className="calender" param={param} setParam={setParam} />
           </div>
           <div className={"payamount"}>

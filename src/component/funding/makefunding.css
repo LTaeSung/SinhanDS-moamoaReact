@@ -16,13 +16,18 @@
 
 /*이미지 태그*/
 /* 프로필 사진 액자 */
+
+.img_add_table {
+  width: 390px;
+}
+
 #info_frame {
   display: inline-block;
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 337px;
   margin-top: 8px;
-  margin-right: 30px;
+  margin-right: 15px;
 }
 
 #info_image {
@@ -58,9 +63,18 @@
   font-size: 12px;
 }
 
+#title_tag2 {
+  padding-top: 9px;
+  margin-left: 8px;
+  float: left;
+  font-weight: 700;
+  font-size: 12px;
+  margin-right: 18px;
+}
+
 #title_tag_back {
   padding-top: 9px;
-  margin-right: 60px;
+  margin-right: 30px;
   float: right;
   font-weight: 700;
   font-size: 12px;
@@ -78,13 +92,13 @@ input[type="file"] {
   margin-top: 8px;
   margin-left: 20px;
   text-align: center;
-  width: 100%;
+  width: 95%;
 }
 /*결제금액 태그*/
 .payamount {
   margin-top: 8px;
   margin-left: 20px;
-  width: 100%;
+  width: 95%;
 }
 
 #payinput {
@@ -99,7 +113,7 @@ input[type="file"] {
 .paydate {
   margin-top: 8px;
   margin-left: 20px;
-  width: 100%;
+  width: 95%;
 }
 #dateinput {
   vertical-align: middle;

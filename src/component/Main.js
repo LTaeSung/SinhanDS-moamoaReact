@@ -101,7 +101,7 @@ function Main() {
             <div className="challenge_ALL">
               <div className="iconic_moment">
                 <img
-                  id="go_up_icon"
+                  id="go_up_icon3"
                   src={`${commonImagePath}no_money.png`}
                   alt=""
                 />
